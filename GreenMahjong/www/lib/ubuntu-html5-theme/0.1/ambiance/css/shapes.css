@@ -17,7 +17,38 @@
  
  * You should have received a copy of the GNU Lesser General Public 
  * License along with this program. If not, see 
- * <http://www.gnu.org/licenses/>
+ * <http://www.gnu.org/licenses/>.
  */
 
-@import url("default.css");
+/* ----------------------------------
+ * Toolbars
+ * ---------------------------------- */
+
+[data-role="shape"] {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: bottom;
+    position: relative;
+    z-index: 100;
+}
+
+[data-role="shape"]:after {
+    background: url(../img/ubuntushape_medium_radius_idle@18.png) no-repeat;
+    background-size: 100% 100%;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+[data-role="shape"] img {
+    height: 100%;
+    width: 100%;
+    border-radius: 1.5rem;
+    margin-bottom: 0;
+    display: inline-block;
+}

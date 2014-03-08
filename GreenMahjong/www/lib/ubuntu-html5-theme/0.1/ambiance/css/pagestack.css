@@ -17,7 +17,29 @@
  
  * You should have received a copy of the GNU Lesser General Public 
  * License along with this program. If not, see 
- * <http://www.gnu.org/licenses/>
+ * <http://www.gnu.org/licenses/>.
  */
 
-@import url("default.css");
+/* ----------------------------------
+ * Pagestack
+ * ---------------------------------- */
+
+[data-role="pagestack"] {
+    position: relative;
+    -webkit-transition: all 0 linear;
+    transition: all 0 linear;
+}
+
+[data-role="pagestack"] [data-role="page"] {
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+[data-role="pagestack"] [data-role="page"]:first-child {
+    display: block;
+}

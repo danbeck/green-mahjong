@@ -13,15 +13,19 @@ if (cordovaUsed()) {
  * and connects events to handlers
  */
 function onDeviceReady() {
-    var UI = new UbuntuUI();
+    var ubuntuUI = new UbuntuUI();
+    
     //needed because of a bug with "toolbar"
-    UI.init();
-//    this.convergence = computeConvergence();
-//    this.backButton = document.querySelector("li a[data-role=\"back\"]");
-//    this.configuration = configuration;
+    UI = ubuntuUI;
+    ubuntuUI.init();
 
     // Set up the app by pushing the main view
-    UI.pagestack.push("mainPage");
+    ubuntuUI.pagestack.push("mainPage");
+    var toolbar = ubuntuUI.toolbar("footer");
+    toolbar.touch(function(){
+        toolbar.toggle();
+    });
+    
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
 
 

@@ -20,17 +20,32 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-/* Buttons */
-var Button = function (id) {
-    this.id =  id;
-    this.button = document.getElementById(this.id);
-};
+/* ----------------------------------
+ * Sliders
+ * ---------------------------------- */
 
-Button.prototype = {
-    click: function (callback) {
-	if ( ! document.getElementById(this.id)) {
-	    throw "Invalid button ID";
-	}
-        new FastButton(document.getElementById(this.id), callback);
-    }
-};
+input[type=range] {
+    -webkit-appearance: none;
+    background-color: rgba(192, 192, 192, 0.1);
+    width: 200px;
+    height: 35px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 5px 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+     -webkit-appearance: none;
+    background-color: #bbbbbb;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 6px;
+    width: 38px;
+    height: 35px;
+    background-color: #bbbbbb;
+    -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.1);
+}

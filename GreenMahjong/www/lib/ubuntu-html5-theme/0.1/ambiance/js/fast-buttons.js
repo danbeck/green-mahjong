@@ -2,21 +2,21 @@
  * Copyright (C) 2013 Adnane Belmadiaf <daker@ubuntu.com>
  * License granted by Canonical Limited
  *
- * This file is part of ubuntu-html5-ui-toolkit.
+ * This file is part of ubuntu-html5-theme.
  *
  * This package is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 3 of the
+ * it under the terms of the GNU Lesser General Public License as 
+ * published by the Free Software Foundation; either version 3 of the 
  * License, or
  * (at your option) any later version.
-
+ 
  * This package is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, see
+ 
+ * You should have received a copy of the GNU Lesser General Public 
+ * License along with this program. If not, see 
  * <http://www.gnu.org/licenses/>.
  */
 
@@ -68,7 +68,7 @@
 
     /* Remove event handling when no longer needed for this button */
     this.FastButton.prototype.destroy = function () {
-        for (var i = this.events.length - 1; i >= 0; i -= 1)
+        for (i = this.events.length - 1; i >= 0; i -= 1)
             this.events[i].destroy();
         this.events = this.touchEvents = this.element = this.handler = this.fastButton = null;
     };
@@ -121,7 +121,7 @@
     };
 
     this.FastButton.prototype.reset = function () {
-        for (var i = this.touchEvents.length - 1; i >= 0; i -= 1)
+        for (i = this.touchEvents.length - 1; i >= 0; i -= 1)
             this.touchEvents[i].destroy();
         this.touchEvents = [];
     };

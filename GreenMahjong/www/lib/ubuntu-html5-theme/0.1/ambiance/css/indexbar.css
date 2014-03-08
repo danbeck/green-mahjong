@@ -17,7 +17,44 @@
  
  * You should have received a copy of the GNU Lesser General Public 
  * License along with this program. If not, see 
- * <http://www.gnu.org/licenses/>
+ * <http://www.gnu.org/licenses/>.
  */
 
-@import url("default.css");
+/* ----------------------------------
+ * Lists
+ * ----------------------------------
+   ================================================== */
+
+[data-role="indexbar"] {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    bottom: 0;
+}
+
+[data-role="indexbar"] ol {
+    padding: 0.3rem 0;
+    margin: 5.5rem 0;
+    width: 2rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4rem;
+    opacity: 0.6;
+    list-style: none;
+    background: #c2c2c2;
+}
+
+[data-role="indexbar"] li {
+    font-size: 1rem;
+    line-height: 1.4em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+[data-role="indexbar"] li a {
+    display: block;
+    color: #333;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
