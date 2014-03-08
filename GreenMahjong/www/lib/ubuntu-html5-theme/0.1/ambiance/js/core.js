@@ -58,7 +58,7 @@ var UbuntuUI = (function () {
         a.setAttribute('id', PAGESTACK_BACK_ID + '-' + Math.random());
 
         var img = d.createElement('img');
-        img.setAttribute('src', '/usr/share/ubuntu-html5-ui-toolkit/0.1/ambiance/img/back@18.png');
+        img.setAttribute('src', 'lib/ubuntu-html5-theme/0.1/ambiance/img/back@18.png');
 
         // TODO: translation?
         img.setAttribute('alt', 'Back');
