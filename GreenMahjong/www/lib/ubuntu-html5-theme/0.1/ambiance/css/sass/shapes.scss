@@ -1,0 +1,62 @@
+/*
+ * Copyright (C) 2013 Adnane Belmadiaf <daker@ubuntu.com>
+ * License granted by Canonical Limited
+ *
+ * This file is part of ubuntu-html5-ui-toolkit.
+ *
+ * This package is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 3 of the
+ * License, or
+ * (at your option) any later version.
+
+ * This package is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+
+/* ----------------------------------
+ * Toolbars
+ * ---------------------------------- */
+
+[data-role="shape"] {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: bottom;
+    position: relative;
+    z-index: 100;
+
+    &:after {
+        background: url(../img/ubuntushape_medium_radius_idle@18.png) no-repeat;
+        background-size: 100% 100%;
+        content: ' ';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: 1.5rem;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+
+    div {
+        height: 100%;
+        width: 100%;
+        border-radius: 1.5rem;
+        margin-bottom: 0;
+        display: inline-block;
+    }
+}

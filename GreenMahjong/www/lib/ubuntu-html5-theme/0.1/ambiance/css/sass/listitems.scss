@@ -1,0 +1,145 @@
+/*
+ * Copyright (C) 2013 Adnane Belmadiaf <daker@ubuntu.com>
+ * License granted by Canonical Limited
+ *
+ * This file is part of ubuntu-html5-ui-toolkit.
+ *
+ * This package is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 3 of the
+ * License, or
+ * (at your option) any later version.
+
+ * This package is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+
+/* ----------------------------------
+ * Lists
+ * ---------------------------------- */
+
+[data-role="list"] {
+    border-top: 1px solid #f0f0f0;
+
+    header {
+        border-bottom: 0.1rem solid #c9c9c9;
+        line-height: 1.8rem;
+        color: $text_color;
+        font-size: 0.9rem;
+        padding-left: 1rem;
+    }
+
+    ul {
+        list-style: none;
+        overflow: hidden;
+
+        li {
+            @include box_sizing (border-box);
+            width: 100%;
+            height: 3.5rem;
+            border-bottom: solid 0.1rem #c7c7c7;
+            color: $text_color;
+            position: relative;
+
+            > a {
+                text-decoration: none;
+                color: $text_color;
+                display: block;
+                height: 3.4rem;
+                position: relative;
+                border: none;
+                line-height: 3.4rem;
+                padding-left: 1rem;
+                padding-right: 1.5rem;
+                border-top: 1px solid #ebebeb;
+                font-size: 0.9rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &:after {
+                    content: "";
+                    background: transparent url(../img/chevron@27.png) no-repeat 0.5rem 0.5rem;
+                    background-size: 40% 75%;
+                    position: absolute;
+                    width: 2rem;
+                    height: 2rem;
+                    top: 50%;
+                    right: 0;
+                    margin-top: -1rem;
+                    z-index: 0;
+                }
+
+                &:active {
+                    background: #e6e6e6;
+                    border-color: #ebebeb;
+                }
+            }
+
+            p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                border: none;
+                display: block;
+                color: $text_color;
+                font-size: 0.9rem;
+                padding-left: 1rem;
+                padding-top: 0.5rem;
+                line-height: 1rem;
+
+                &:only-child,
+                &:first-of-type:last-of-type {
+                    line-height: 2.5rem;
+                }
+            }
+
+            > label {
+                z-index: 100;
+                width: 4.5rem;
+                height: 2.2rem;
+                right: 0.5rem;
+                margin-top: -1.1rem;
+                position: absolute;
+                top: 50%;
+            }
+        }
+    }
+
+    aside {
+        float: left;
+        margin: -1.2em 0 0 0;
+        max-width: 100%;
+        vertical-align: bottom;
+        position: relative;
+        top: 50%;
+        z-index: 2;
+
+        img {
+            border-radius: 6px;
+            margin-bottom: 0;
+            float: left;
+        }
+
+        &:after {
+            background: url(../img/ubuntushape_medium_radius_idle@18.png) no-repeat;
+            background-size: 100% 100%;
+            content: ' ';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    > header + ul li {
+        padding-left: 20px;
+    }
+}

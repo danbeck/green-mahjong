@@ -1,0 +1,116 @@
+/*
+ * Copyright (C) 2013 Adnane Belmadiaf <daker@ubuntu.com>
+ * License granted by Canonical Limited
+ *
+ * This file is part of ubuntu-html5-ui-toolkit.
+ *
+ * This package is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 3 of the
+ * License, or
+ * (at your option) any later version.
+
+ * This package is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+
+/* ----------------------------------
+ * Progress + activities
+ * ---------------------------------- */
+
+progress {
+    -webkit-appearance: none;
+    height: 35px;
+    width: 100%;
+    position: relative;
+    background: #b2b2b2;
+    border-radius: 6px;
+    overflow: hidden;
+
+    &:after {
+        content: attr(data-percentage);
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        top: -28px;
+        opacity: 1;
+    }
+
+    &:not([value]) {
+        background: url(../img/spinner@8.png) no-repeat center center / 100% auto;
+        -webkit-animation: 1s rotate infinite steps(30);
+        animation: 1s rotate infinite steps(30);
+        width: 24px;
+        height: 24px;
+        border: none;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* Bigger Spinner */
+    &.bigger:not([value]) {
+        background: url(../img/spinner@30.png) no-repeat center center / 100% auto;
+        width: 90px;
+        height: 90px;
+    }
+
+    &:not([value])::-webkit-progress-bar {
+        background: none;
+        -webkit-box-shadow: none;
+    }
+
+    /* Progress bar */
+    &[value]::-webkit-progress-value {
+        width: 100%;
+        background: #2ab7ec;
+        border: none;
+        display: block;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    &[value]::-webkit-progress-bar {
+        padding: 1px;
+        background-color: rgba(192, 192, 192, 0.1);
+        width: 100%;
+        height: 35px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 6px;
+        padding: 0;
+        -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    &[value].infinite::-webkit-progress-value {
+        -webkit-appearance: none;
+    }
+
+    &.infinite:after {
+        content: "In progress";
+        -webkit-animation: 1.3s fade-in-out infinite;
+        animation: 1.3s fade-in-out infinite;
+        color: #fff;
+        text-shadow: none;
+    }
+}
+
+/* Animations */
+@-webkit-keyframes rotate {
+    from { -webkit-transform: rotate(1deg); }
+    to   { -webkit-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes fade-in-out {
+    0%   { opacity: 0; }
+    50%  { opacity: 1; }
+    100% { opacity: 0; }
+}

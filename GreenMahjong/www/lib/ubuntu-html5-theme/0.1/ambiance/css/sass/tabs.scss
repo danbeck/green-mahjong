@@ -1,0 +1,100 @@
+/*
+ * Copyright (C) 2013 Adnane Belmadiaf <daker@ubuntu.com>
+ * License granted by Canonical Limited
+ *
+ * This file is part of ubuntu-html5-ui-toolkit.
+ *
+ * This package is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 3 of the
+ * License, or
+ * (at your option) any later version.
+
+ * This package is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>
+ */
+
+/* ----------------------------------
+ * Tabs
+ * ---------------------------------- */
+
+[data-role="header"] {
+    background: #ededf0 url("../img/background_paper@30.png") repeat-x top left;
+    height: 74px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+        background: #C2C2C2;
+        content: "";
+        border-top: 1px solid #afafaf;
+        height: 14px;
+        width: 100%;
+        display: block;
+    }
+
+    .active {
+        color: #484647;
+        padding-left: 15px;
+        -webkit-opacity: 1;
+        opacity: 1;
+
+        &:after {
+            content: "›";
+            padding-left: 10px;
+            -webkit-opacity: 0.5;
+            opacity: 0.5;
+        }
+    }
+
+    .inactive {
+        color: #a0a0a0;
+        -webkit-opacity: 0.5;
+        opacity: 0.5;
+    }
+}
+
+[data-role="tabs"] {
+    width: 100%;
+    white-space: nowrap;
+}
+
+[data-role="tabitem"] {
+    display: inline-block;
+    font: 35px $font_family;
+    letter-spacing: -1px;
+    line-height: 60px;
+    padding-left: 35px;
+    text-decoration: none;
+    color: #a0a0a0;
+    -webkit-opacity: 0;
+    opacity: 0;
+    -webkit-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out;
+    cursor: pointer;
+
+    &:only-child:after {
+        content: "";
+        padding-left: 10px;
+    }
+}
+
+[data-role="tab"] {
+    @include box_sizing (border-box);
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+
+    &:first-child {
+        display: block;
+    }
+}

@@ -1,0 +1,80 @@
+/*
+ * Copyright (C) 2013 Adnane Belmadiaf <daker@ubuntu.com>
+ * License granted by Canonical Limited
+ *
+ * This file is part of ubuntu-html5-ui-toolkit.
+ *
+ * This package is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 3 of the
+ * License, or
+ * (at your option) any later version.
+
+ * This package is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+
+/* ----------------------------------
+ * Toolbars
+ * ---------------------------------- */
+
+[data-role="footer"] {
+    background: transparent url('../img/toolbar_dropshadow@20.png') repeat-x top left;
+    height: 85px;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    bottom: -65px;
+    -webkit-transition: -webkit-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+
+    &.revealed {
+        -webkit-transform: translate3d(0, -65px, 0);
+        transform: translate3d(0, -65px, 0);
+    }
+
+    nav {
+        background: #fdfdfd;
+        margin-top: 20px;
+        display: block;
+        height: 55px;
+        padding-top: 10px;
+
+        ul {
+            list-style: none;
+
+            li,
+            li a {
+                color: #7d767b;
+                font-size: 0.6rem;
+                text-align: center;
+                width: 60px;
+                float: right;
+                text-decoration: none;
+            }
+            li {
+                padding-top: 4px;
+
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                span {
+                    display: block;
+                }
+
+                &:last-child {
+                    float: left;
+                }
+            }
+        }
+    }
+}
