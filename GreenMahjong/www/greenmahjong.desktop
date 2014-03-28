@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Green Mahjong
-Comment=A Mahjong game
-Exec=qmlscene $@ greenmajong.qml
+Comment=A simple mahjong game
+Exec=/usr/bin/qmlscene $@ /usr/share/greenmahjong/greenmahjong.qml
 Icon=./greenmahjong.png
 Terminal=false
 Type=Application

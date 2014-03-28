@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ubuntu SDK: HTML5 App</title>
+    <meta name="description" content="An example HTML5 application">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Ubuntu UI Style imports - Ambiance theme -->
+    <link href="/usr/share/ubuntu-html5-theme/0.1/ambiance/css/appTemplate.css" rel="stylesheet" type="text/css" />
+
+    <!-- Ubuntu UI javascript imports - Ambiance theme -->
+    <script src="/usr/share/ubuntu-html5-theme/0.1/ambiance/js/fast-buttons.js"></script>
+    <script src="/usr/share/ubuntu-html5-theme/0.1/ambiance/js/core.js"></script>
+    <script src="/usr/share/ubuntu-html5-theme/0.1/ambiance/js/buttons.js"></script>
+    <script src="/usr/share/ubuntu-html5-theme/0.1/ambiance/js/dialogs.js"></script>
+    <script src="/usr/share/ubuntu-html5-theme/0.1/ambiance/js/pagestacks.js"></script>
+    <script src="/usr/share/ubuntu-html5-theme/0.1/ambiance/js/popovers.js"></script>
+
+    <!-- Application script -->
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div data-role="page">
+
+      <header data-role="header">
+        <nav data-role="navbar" class="tabs" >
+          <div class="tabs-inner">
+            <ul>
+              <li class="active" role="tab">
+                <a href="#item1" class="tab-item">My Header</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <div data-role="content">
+
+        <div data-role="pagestack">
+
+          <div data-role="page" id="main">
+            <section data-role="list">
+              <ul data-role="listview">
+                <li><a href="#">My Item 1</a></li>
+                <li><a href="#">My Item 2</a></li>
+                <li><a href="#">My Item 3</a></li>
+              </ul>
+            </section>
+
+            <button data-role="button" class="success" id="pressme">Press Me!</button>
+          </div>
+
+          <div data-role="page" id="item-view">
+            <h1>Hello from page2</h1>
+            <section data-role="list" id="item-view-content">
+            </section>
+          </div>
+
+        </div>
+
+        <!-- PageStack -->
+        <div data-role="dialog" id="mydialog">
+          <section>
+            <h1>Hello world!</h1>
+            <menu>
+              <button data-role="button" class="success" id="yes">OK</button>
+            </menu>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
