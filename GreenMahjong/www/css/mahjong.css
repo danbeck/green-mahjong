@@ -37,22 +37,28 @@ body {
 }
 
 .cardWithoutLeftNeighbor {
-    -webkit-box-shadow: 0 0 10px black;
-    box-shadow: 0 0 10px black;
+    -webkit-box-shadow: -5px 0 5px -2px darkgreen;
+    box-shadow: -5px 0 5px -2px darkgreen;
 }
 
-.cardWithoutHigherNeighbor {
-    -webkit-box-shadow: 0 0 10px blue;
-    box-shadow: 0 0 10px blue;
+.cardWithoutAboveNeighbor {
+    -webkit-box-shadow: 0px -5px 5px -2px darkgreen;
+    box-shadow: 0px -5px 5px -2px darkgreen;
 }
 
+.cardWithoutLeftNeighbor.cardWithoutAboveNeighbor {
+    -webkit-box-shadow: -5px -5px 5px -2px darkgreen;
+    box-shadow: -5px -5px 5px -2px darkgreen;
+}
+
+.cardWithoutLeftNeighbor.cardWithoutAboveNeighbor.card-selected,
 .card-selected {
   //-webkit-box-shadow: 0 0 20px orange;
   //box-shadow: 0 0 20px orange;
   //-webkit-transition-property: opacity, transform, box-shadow;
   //-webkit-transition-duration: 3s;
-  -webkit-box-shadow: 0 0 40px orange;
-  box-shadow: 0 0 40px orange;
+  -webkit-box-shadow: 0 0 5px 4px orange;
+  box-shadow: 0 0 5px 4px orange;
 }
 
 .card-nonselectable {
