@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link href="lib/ubuntu-html5-theme/0.1/ambiance/css/appTemplate.css" rel="stylesheet" type="text/css" />
-    <!--<link href="css/ramsamsam-withoutscrolling.css" rel="stylesheet" type="text/css" />-->
-
+    <link href="css/mahjong.css" rel="stylesheet"/>
+    <link href="css/ubuntu-overrides.css" rel="stylesheet"/>
   </head>
   <body>
 
@@ -27,8 +27,8 @@
 
               <li id="newGameButton">
                 <!--<a href="#" id="newGameButton">-->
-                  <img src="./img/addFeed.png" alt="New Game" />
-                  <span>New Game</span>
+                <img src="./img/addFeed.png" alt="New Game" />
+                <span>New Game</span>
                 <!--</a>-->
               </li>
               <li>
@@ -39,7 +39,7 @@
               </li>
               <li>
                 <a href="#" id="undoButton">
-                  <img src="./img/undo.png" alt="Undo" />
+                  <img src="images/undo.png" alt="Undo" />
                   <span>Undo</span>
                 </a>
               </li>
@@ -59,7 +59,12 @@
         </div>
 
         <div data-role="page" id="mainPage">
-          <section>Here comes the game</section>
+          <section id="game">
+            <div id="cards">      
+              <div class="card">
+              </div>
+            </div>
+          </section>    
         </div>
 
 
@@ -68,6 +73,8 @@
     </div>
 
     <script src="lib/jquery/jquery-2.1.0.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="js/mahjong.js"></script>
 
     <!-- Ubuntu UI javascript imports - Ambiance theme -->
     <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/fast-buttons.js"></script>

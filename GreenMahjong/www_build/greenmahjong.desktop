@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Green Mahjong
 Comment=
-Exec=qmlscene $@ QtCreator.qml
+Exec=qmlscene $@ 
 Icon=./greenmahjong.png
 Terminal=false
 Type=Application

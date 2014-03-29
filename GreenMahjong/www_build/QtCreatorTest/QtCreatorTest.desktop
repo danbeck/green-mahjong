@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=QtCreatorTest
+Comment=Description of QtCreatorTest
+Exec=cordova-ubuntu-2.8 .
+Icon=qmlscene
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
