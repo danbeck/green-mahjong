@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="myicons.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="332.75333"
+     inkscape:cy="399.80983"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1860"
+     inkscape:window-height="1056"
+     inkscape:window-x="60"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:snap-grids="true"
+     inkscape:snap-to-guides="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none"
+       id="rect3040"
+       width="231.138"
+       height="231.138"
+       x="182.1568"
+       y="69.711296"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/configure.png"
+       inkscape:export-xdpi="35.043999"
+       inkscape:export-ydpi="35.043999" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none"
+       id="rect3022"
+       width="200.30714"
+       height="200.30714"
+       x="525.21838"
+       y="329.11328"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/reload.png"
+       inkscape:export-xdpi="40.437901"
+       inkscape:export-ydpi="40.437901" />
+    <rect
+       style="fill:#808080;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       id="rect2993"
+       width="34.285713"
+       height="140"
+       x="157.14285"
+       y="361.64789"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/addFeed.png"
+       inkscape:export-xdpi="0.64285713"
+       inkscape:export-ydpi="0.64285713" />
+    <rect
+       y="104.28571"
+       x="-448.79074"
+       height="140"
+       width="34.285713"
+       id="rect3774"
+       style="fill:#808080;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       transform="matrix(0,-1,1,0,0,0)"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/addFeed.png"
+       inkscape:export-xdpi="0.64285713"
+       inkscape:export-ydpi="0.64285713" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:none"
+       id="rect3795"
+       width="190.71428"
+       height="177.14285"
+       x="67.14286"
+       y="339.50504"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/addFeed.png"
+       inkscape:export-xdpi="0.64285713"
+       inkscape:export-ydpi="0.64285713" />
+    <rect
+       style="fill:none;stroke:none"
+       id="rect3797"
+       width="151.86201"
+       height="197.14287"
+       x="52.142857"
+       y="305.93362"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/addFeed.png"
+       inkscape:export-xdpi="0.64285713"
+       inkscape:export-ydpi="0.64285713" />
+    <rect
+       style="fill:none;stroke:none"
+       id="rect3799"
+       width="337.14285"
+       height="235.71428"
+       x="-48.57143"
+       y="450.21933" />
+    <rect
+       style="fill:none;stroke:none"
+       id="rect3801"
+       width="195.71428"
+       height="183.17743"
+       x="76.85714"
+       y="339.21933"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/addFeed.png"
+       inkscape:export-xdpi="0.64285713"
+       inkscape:export-ydpi="0.64285713" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;fill-opacity:1;stroke:none"
+       d="m 361.06326,603.36514 c -26.55062,0 -50.50291,10.68934 -67.53134,27.86463 l 35.4063,9.15725 c 9.4369,-5.31887 20.41278,-8.37148 32.12504,-8.37148 35.30682,0 63.93759,27.68884 63.93759,61.8341 0,34.14526 -28.63077,61.8341 -63.93759,61.8341 -25.52042,0 -47.5059,-14.4753 -57.75008,-35.3899 l -0.59375,-0.15111 -29.03129,6.1955 c 13.49903,33.9229 47.54068,57.99591 87.37512,57.99591 51.67814,0 93.59388,-40.50652 93.59388,-90.4845 0,-49.97798 -41.91574,-90.4845 -93.59388,-90.4845 z"
+       id="path2990" />
+    <path
+       sodipodi:type="star"
+       style="fill:#808080;fill-opacity:1;stroke:none"
+       id="path3766"
+       sodipodi:sides="3"
+       sodipodi:cx="327.14285"
+       sodipodi:cy="268.07648"
+       sodipodi:r1="56.22477"
+       sodipodi:r2="28.112385"
+       sodipodi:arg1="1.0471976"
+       sodipodi:arg2="2.0943952"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 355.25524,316.76856 -42.16858,-24.34604 -42.16858,-24.34605 42.16858,-24.34603 42.16858,-24.34604 0,48.69208 z"
+       inkscape:transform-center-x="-14.819929"
+       inkscape:transform-center-y="7.0588142"
+       transform="matrix(0.28407054,0.64367363,-0.64367363,0.28407054,393.16491,354.785)" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3798"
+       d="m 422.375,360.5625 -7.1875,26.8125 c 9.47193,5.37892 17.66031,13.26036 23.5,23.375 17.49131,30.29584 7.10834,69.03994 -23.1875,86.53125 -30.29584,17.49131 -69.00869,7.10834 -86.5,-23.1875 -5.53317,-9.58374 -8.26588,-20.01235 -8.46875,-30.34375 l -27.1875,0 c 0.20146,14.94802 4.11861,30.03877 12.125,43.90625 24.9866,43.27807 80.34694,58.1116 123.625,33.125 43.27807,-24.98661 58.08036,-80.31568 33.09375,-123.59375 -9.59872,-16.62547 -23.66358,-29.04184 -39.8125,-36.625 z"
+       style="fill:#808080;fill-opacity:1;stroke:none" />
+    <path
+       style="fill:#808080;fill-opacity:1;stroke:none"
+       inkscape:transform-center-x="-2.6232298"
+       inkscape:transform-center-y="-8.0267838"
+       d="m 411.83366,410.32387 -21.77246,-28.6239 -21.77245,-28.62389 35.67525,-4.54356 35.67525,-4.54355 -13.90279,33.16745 z"
+       id="path3804"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g3018"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/reload.png"
+       inkscape:export-xdpi="40.437901"
+       inkscape:export-ydpi="40.437901">
+      <path
+         style="fill:#808080;fill-opacity:1;stroke:none"
+         d="m 627.3125,341.4375 c -19.19744,0 -36.98334,5.99371 -51.625,16.1875 l 19.625,19.625 c 9.39425,-5.51348 20.32062,-8.6875 32,-8.6875 34.98262,0 63.34375,28.36113 63.34375,63.34375 0,34.98262 -28.36113,63.34375 -63.34375,63.34375 -28.03152,0 -51.78824,-18.23036 -60.125,-43.46875 l -27.40625,3.125 c 10.16817,38.84386 45.50127,67.5 87.53125,67.5 49.97321,0 90.5,-40.52679 90.5,-90.5 0,-49.97321 -40.52679,-90.46875 -90.5,-90.46875 z m -88.0625,69.625 c -0.0536,0.22737 -0.1044,0.45946 -0.15625,0.6875 l 0.78125,-0.0625 -0.625,-0.625 z"
+         id="path3859"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:transform-center-y="-8.0267838"
+         inkscape:transform-center-x="-2.6232298"
+         transform="matrix(0.94800728,0.31824861,-0.31824861,0.94800728,363.74028,-34.04606)"
+         d="m 372.24121,324.04221 -32.37442,15.66092 -32.37442,15.66092 2.62445,-35.86753 2.62446,-35.86753 29.74996,20.20661 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="false"
+         sodipodi:arg2="1.1202381"
+         sodipodi:arg1="0.073040565"
+         sodipodi:r2="20.763489"
+         sodipodi:r1="41.526978"
+         sodipodi:cy="321.01175"
+         sodipodi:cx="330.82495"
+         sodipodi:sides="3"
+         id="path3861"
+         style="fill:#808080;fill-opacity:1;stroke:none"
+         sodipodi:type="star" />
+    </g>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       d="m 203.6275,562.28861 -44.9375,44.9375 90.40625,90.4375 44.9375,-44.96875 -90.40625,-90.40625 z"
+       id="rect3793"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g3036"
+       style="fill:#808080;fill-opacity:1"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/RSSFeed-WithUbuntuCordova/public_html/img/configure.png"
+       inkscape:export-xdpi="35.043999"
+       inkscape:export-ydpi="35.043999">
+      <path
+         id="rect3024"
+         d="M 269.375 131.4375 L 239.0625 161.71875 L 366.34375 289 C 366.34375 289 381.43584 298.20254 394.34375 287.4375 C 407.25165 276.67245 396.65625 258.71875 396.65625 258.71875 L 269.375 131.4375 z M 378.3125 259.40625 C 384.17036 259.40625 388.90625 264.14214 388.90625 270 C 388.90625 275.85786 384.17036 280.59375 378.3125 280.59375 C 372.45464 280.59375 367.6875 275.85786 367.6875 270 C 367.6875 264.14214 372.45464 259.40625 378.3125 259.40625 z "
+         style="fill:#808080;stroke:none;fill-opacity:1" />
+      <path
+         id="path3027"
+         d="M 241.4375 78.0625 C 233.59188 78.0625 226.14315 79.833814 219.46875 82.9375 L 250.9375 114.40625 C 250.9375 114.40625 261.5329 132.3912 248.625 143.15625 C 235.71709 153.92129 220.625 144.71875 220.625 144.71875 L 191.40625 115.5 C 190.03368 120.17043 189.28125 125.10408 189.28125 130.21875 C 189.28125 159.01645 212.6398 182.375 241.4375 182.375 C 270.2352 182.375 293.5625 159.01645 293.5625 130.21875 C 293.5625 101.42105 270.2352 78.0625 241.4375 78.0625 z "
+         style="fill:#808080;fill-opacity:1;stroke:none" />
+    </g>
+    <path
+       sodipodi:type="star"
+       style="fill:none;stroke:#808080;stroke-width:21;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3001"
+       sodipodi:sides="5"
+       sodipodi:cx="597.00012"
+       sodipodi:cy="627.59302"
+       sodipodi:r1="107.92131"
+       sodipodi:r2="43.816051"
+       sodipodi:arg1="0.39319638"
+       sodipodi:arg2="1.0215149"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 696.68586,668.94229 -76.8105,-3.97857 -31.39615,70.2137 -19.9519,-74.28057 -76.47914,-8.16229 64.47954,-41.92935 -15.87055,-75.25827 59.80245,48.36681 66.6706,-38.34988 -27.5196,71.82168 z"
+       inkscape:transform-center-y="-20.481077"
+       transform="matrix(0.59891601,0.34578432,-0.34578432,0.59891601,421.86364,126.36588)"
+       inkscape:transform-center-x="-16.963073" />
+  </g>
+</svg>
