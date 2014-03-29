@@ -405,18 +405,19 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:43.03645706px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="232.51221"
-       y="610.09918"
+       style="font-size:46.27095032px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="208.62393"
+       y="619.79468"
        id="text4481"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/daniel/NetBeansProjects/green-mahjong/GreenMahjong/www/greenmahjong.png"
        inkscape:export-xdpi="90.349998"
-       inkscape:export-ydpi="90.349998"><tspan
+       inkscape:export-ydpi="90.349998"
+       transform="scale(1.0097823,0.99031247)"><tspan
          sodipodi:role="line"
          id="tspan4483"
-         x="232.51221"
-         y="610.09918"
-         style="font-size:68.85832977px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Purisa;-inkscape-font-specification:Purisa">Mahjong</tspan></text>
+         x="208.62393"
+         y="619.79468"
+         style="font-size:74.03351593px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Purisa;-inkscape-font-specification:Purisa">Mahjong</tspan></text>
   </g>
 </svg>
