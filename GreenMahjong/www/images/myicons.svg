@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -232,6 +232,9 @@
        d="m 696.68586,668.94229 -76.8105,-3.97857 -31.39615,70.2137 -19.9519,-74.28057 -76.47914,-8.16229 64.47954,-41.92935 -15.87055,-75.25827 59.80245,48.36681 66.6706,-38.34988 -27.5196,71.82168 z"
        inkscape:transform-center-y="-20.481077"
        transform="matrix(0.59891601,0.34578432,-0.34578432,0.59891601,421.86364,126.36588)"
-       inkscape:transform-center-x="-16.963073" />
+       inkscape:transform-center-x="-16.963073"
+       inkscape:export-filename="/home/daniel/NetBeansProjects/green-mahjong/GreenMahjong/www/images/NewGame.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>
