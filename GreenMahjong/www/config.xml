@@ -17,5 +17,5 @@
   <access origin="*" />
   <content src="index.html" />
   <icon src="greenmahjong.png"/>
-  <uses-sdk android:minSdkVersion="14" />
+  <preference name="android-minSdkVersion" value="14" />
 </widget>
