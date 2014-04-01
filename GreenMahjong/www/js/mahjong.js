@@ -358,13 +358,13 @@ function removeTookCards() {
     var removedCards = $(".card-removed");
     matchingGame.undoList.unshift(removedCards);
     $(".card-removed").css({"visibility": "hidden"});   
-    paintShadowsForNeighborsOfRemovedCards();   
+    paintShadowsForNeighbors($(".card-removed"));   
     $(".card-removed").removeClass("card-removed");
 }
 
-function paintShadowsForNeighborsOfRemovedCards(){
-    var i = 0;
-    $(".card-removed").each(function() {
+
+function paintShadowsForNeighbors(elements){
+    elements.each(function() {
         var positionX = parseInt($(this).css("left"));
         var positionY = parseInt($(this).css("top"));
         var zIndex = parseInt($(this).css("z-index"));
@@ -384,8 +384,6 @@ function paintShadowsForNeighborsOfRemovedCards(){
             var zIdx = parseInt($(this).css("z-index"));
             paintShadows($(this), posX, posY, zIdx);
         });
-        
-        i++;
     });
 }
 
@@ -393,11 +391,15 @@ function paintShadows(element, positionX, positionY, zIndex){
     var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, zIndex);
         if (numberOfLeftNeighbors === 0){
             element.addClass("cardWithoutLeftNeighbor");
+        } else {
+            element.removeClass("cardWithoutLeftNeighbor");
         }
         
         var numberOfAboveNeighbors = getNumberOfAboveNeighbors(positionX, positionY, zIndex);
         if (numberOfAboveNeighbors === 0){
             element.addClass("cardWithoutAboveNeighbor");
+        }  else {
+            element.removeClass("cardWithoutAboveNeighbor");
         }
 }
 
@@ -420,6 +422,10 @@ function restartGame() {
 function undo() {
     if (matchingGame.undoList.length >= 1) {
         (matchingGame.undoList[0]).css({"visibility": "visible"});
+        paintShadowsForNeighbors((matchingGame.undoList[0]));
+        matchingGame.undoList[0].each(function() {
+            var positionX = parseInt($(this).css("left"));
+        });
         matchingGame.undoList.shift();
     }
 }
