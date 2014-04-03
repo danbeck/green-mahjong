@@ -143,12 +143,14 @@ matchingGame.shift = [
 ];
 
 
-matchingGame.borderWidthRight = 8;
-matchingGame.borderWidthBelow = 8;
-matchingGame.cardWidth = 80;
+matchingGame.borderWidthRight = 3;
+matchingGame.borderWidthBelow = 3;
+//matchingGame.cardWidth = 80;
+matchingGame.cardWidth = 48;
 matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.borderWidthRight;
 
-matchingGame.cardHeight = 99;
+//matchingGame.cardHeight = 99;
+matchingGame.cardHeight = 60;
 matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.borderWidthBelow;
 
 matchingGame.shiftValue = 3;

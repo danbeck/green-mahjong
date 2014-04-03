@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Green Mahjong</title>
+    <meta charset="UTF-8">
+    <!--1008+80xx637+99 = 1088x736-->
+    <!--<meta id="Viewport" name="viewport" content="target-densitydpi=device-dpi,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">-->
+    <!--<meta id="Viewport" name="viewport" content="target-densitydpi=device-dpi,width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <meta id="Viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!--<meta name="viewport" content="width=1120, initial-scale=1.0">-->
+    <!--<meta name="viewport" content="width=1100,height=800,initial-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1.0">-->
+    <link href="lib/ubuntu-html5-theme/0.1/ambiance/css/appTemplate.css" rel="stylesheet" type="text/css" />
+    <link href="css/mahjong_klein.css" rel="stylesheet"/>
+    <link href="css/ubuntu-overrides.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+
+    <div data-role="content">
+      <div data-role="pagestack">
+
+        <!-- Application wide footer -->
+        <footer data-role="footer" id="footer" class="revealed">
+          <nav id="footer1">
+            <ul>
+              <!--                            <li>
+                                              <a href="#" id="configureButton">
+                                                  <img src="./img/configure.png" alt="Configure" />
+                                                  <span>Configure</span>
+                                              </a>
+                                          </li>-->
+
+              <li id="newGameButton">
+                <!--<a href="#" id="newGameButton">-->
+                <img src="./images/NewGame.png" alt="New Game" />
+                <span>New Game</span>
+                <!--</a>-->
+              </li>
+              <li>
+                <a href="#" id="replayGameButton">
+                  <img src="./images/reload.png" alt="Replay" />
+                  <span>Replay Game</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" id="undoButton">
+                  <img src="images/undo.png" alt="Undo" />
+                  <span>Undo</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </footer>
+
+        <div data-role="dialog" id="newGameDialog">
+          <section>
+            <h1>Do you really want to abondon this game and start a new game</h1>
+            <!--<p>Feed Url  feed search you want to add.</p><p> You can also search for feeds.</p>-->
+            <menu>
+              <button data-role="button" id="newGameNo">Cancel</button>
+              <button data-role="button" id="newGameYes" class="success" >Add</button>
+            </menu>
+          </section>
+        </div>
+
+        <div data-role="page" id="mainPage">
+          <p>&nbsp;</p>
+          <section id="game">
+            <div id="cards">      
+              <div class="card">
+              </div>
+            </div>
+          </section>    
+        </div>
+
+
+      </div> <!-- PageStack -->
+
+    </div>
+
+    <script src="lib/jquery/jquery-2.1.0.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="js/mahjong.js"></script>
+
+    <!-- Ubuntu UI javascript imports - Ambiance theme -->
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/fast-buttons.js"></script>
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/core.js"></script>
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/buttons.js"></script>
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/dialogs.js"></script>
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/pagestacks.js"></script>
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/popovers.js"></script>
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/list.js"></script>
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/toolbars.js"></script>
+    <!--<script src="lib/ubuntu-html5-theme/0.1/ambiance/js/i18n.js"></script>-->
+    <script src="lib/ubuntu-html5-theme/0.1/ambiance/js/tabs.js"></script>
+
+    <!-- Cordova API script -->
+    <!--<script src="/usr/share/cordova-ubuntu-2.8/www/cordova-2.8.js"></script>-->
+
+
+    <!-- Application script -->
+    <!--        <script src="js/lz-string-1.3.3.js"></script>
+            <script src="js/ulzss.js"></script>-->
+    <script src="js/util.js"></script>        
+    <script src="js/mahjong.js"></script>
+
+  </body>
+</html>

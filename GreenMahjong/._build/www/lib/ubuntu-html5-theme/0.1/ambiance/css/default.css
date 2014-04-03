@@ -1,0 +1,87 @@
+/*
+ * Copyright (C) 2013 Adnane Belmadiaf <daker@ubuntu.com>
+ * License granted by Canonical Limited
+ *
+ * This file is part of ubuntu-html5-theme.
+ *
+ * This package is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as 
+ * published by the Free Software Foundation; either version 3 of the 
+ * License, or
+ * (at your option) any later version.
+ 
+ * This package is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ 
+ * You should have received a copy of the GNU Lesser General Public 
+ * License along with this program. If not, see 
+ * <http://www.gnu.org/licenses/>
+ */
+
+@import url("reset.css");
+@import url("header.css");
+@import url("pagestack.css");
+@import url("tabs.css");
+@import url("text-input.css");
+@import url("progress-bars.css");
+@import url("dialogs.css");
+@import url("buttons.css");
+@import url("sliders.css");
+@import url("toggles.css");
+@import url("popover.css");
+@import url("listitems.css");
+@import url("toolbars.css");
+@import url("shapes.css");
+@import url("indexbar.css");
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    background: #ededf0 url("../img/background_paper@30.png") repeat top left;
+    font-family: Ubuntu;
+    font-weight: normal;
+}
+
+[data-role="content"] {
+    background: #ededf0 url("../img/background_paper@30.png") repeat top left;
+    border-top: 1px solid #f0f0f0;
+    height: auto;
+    min-height: auto;
+    width: 100%;
+    font-size: 1rem "Ubuntu";
+    color: #787878;
+}
+
+[data-role="content"] p {
+    font: 0.9rem "Ubuntu";
+    color: #787878;
+}
+
+[data-role="content"] h1,
+[data-role="content"] h2,
+[data-role="content"] h3 {
+    color: #747278;
+    font: 1.3rem "Ubuntu Light";
+    font-weight: bold;
+}
+
+[data-role="content"] h2 {
+    font-size: 1.1rem;
+}
+
+[data-role="content"] h3 {
+    font-size: 0.9rem;
+}
+
+[data-role="content"] img {
+    margin: 0 auto;
+    max-width: 98%;
+}
+
+.inset {
+    margin-bottom: 10px;
+}

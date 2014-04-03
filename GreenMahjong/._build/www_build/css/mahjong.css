@@ -1,0 +1,119 @@
+body {
+  text-align: center;  
+  background: #b2b2a8 url(../images/Background.JPG) center no-repeat !important;
+  //-webkit-background-size: cover;
+  background-size: cover;
+  font-size: 16px;
+}
+#game {
+  border-radius: 10px;
+  border: 1px solid #666;
+  width: 1088px;
+  height: 734px;
+  /*opacity:0.6;*/
+  /*background: rgba(178, 178, 168, .8);*/
+  background: rgba(255, 255, 255, .4);
+  /*background: green;*/
+  margin: 0 auto;
+  display: box;
+  webkit-box-pack: center;
+  webkit-box-align: center;
+  -webkit-filter: sepia(0.2);
+}
+#cards {
+  position: relative;  
+  width: 380px;
+  height: 400px;
+}
+.card {
+    border-radius: 14px;
+    opacity: 1;
+    height: 99px;
+    width: 80px;
+    left: 72px;
+    top: 0px;
+    position: absolute;
+    background: transparent url('../images/mahjong.png');
+}
+
+.cardWithoutLeftNeighbor {
+    -webkit-box-shadow: -5px 0 5px -2px darkgreen;
+    box-shadow: -5px 0 5px -2px darkgreen;
+}
+
+.cardWithoutAboveNeighbor {
+    -webkit-box-shadow: 0px -5px 5px -2px darkgreen;
+    box-shadow: 0px -5px 5px -2px darkgreen;
+}
+
+.cardWithoutLeftNeighbor.cardWithoutAboveNeighbor {
+    -webkit-box-shadow: -5px -5px 5px -2px darkgreen;
+    box-shadow: -5px -5px 5px -2px darkgreen;
+}
+
+.cardWithoutLeftNeighbor.cardWithoutAboveNeighbor.card-selected,
+.card-selected {
+  //-webkit-box-shadow: 0 0 20px orange;
+  //box-shadow: 0 0 20px orange;
+  //-webkit-transition-property: opacity, transform, box-shadow;
+  //-webkit-transition-duration: 3s;
+  -webkit-box-shadow: 0 0 5px 4px orange;
+  box-shadow: 0 0 5px 4px orange;
+}
+
+.card-nonselectable {
+  -webkit-box-shadow: 0 0 20px red;
+  box-shadow: 0 0 20px blue;
+}
+
+//.cardZahl1 {background-image: url('../images/mahjong.svg#cardZahl1');}
+//.cardZahl2 {background-image: url('../images/mahjong.svg#cardMuenze4');}
+//.cardZahl2 {background-image: url('../images/faces.svg#svgView(viewBox(0,0,48,41))');}
+.cardZahl1 {background-position: 0 0}
+.cardZahl2 {background-position: -80px 0; }
+.cardZahl3 {background-position: -160px 0;}
+.cardZahl4 {background-position: -240px 0;}
+.cardZahl5 {background-position: -320px 0;}
+.cardZahl6 {background-position: -400px 0;}
+.cardZahl7 {background-position: -480px 0;}
+.cardZahl8 {background-position: -560px 0;}
+.cardZahl9 {background-position: -640px 0;}
+
+.cardBambus1 {background-position: -0 -99px;}
+.cardBambus2 {background-position: -80px -99px;}
+.cardBambus3 {background-position: -160px -99px;}
+.cardBambus4 {background-position: -240px  -99px;}
+.cardBambus5 {background-position: -320px -99px;}
+.cardBambus6 {background-position: -400px -99px;}
+.cardBambus7 {background-position: -480px -99px;}
+.cardBambus8 {background-position: -560px -99px;}
+.cardBambus9 {background-position: -640px -99px;}
+
+.cardMuenze1 {background-position: -0 -198px;}
+.cardMuenze2 {background-position: -80px -198px;}
+.cardMuenze3 {background-position: -160px -198px;}
+.cardMuenze4 {background-position: -240px -198px;}
+.cardMuenze5 {background-position: -320px -198px;}
+.cardMuenze6 {background-position: -400px -198px;}
+.cardMuenze7 {background-position: -480px -198px;}
+.cardMuenze8 {background-position: -560px -198px;}
+.cardMuenze9 {background-position: -640px -198px;}
+
+.cardNordwind {background-position: -720px 0;}
+.cardSuedwind {background-position: -800px  0;}
+.cardOstwind {background-position: -880px 0;}
+.cardWestwind {background-position: -960px 0;}
+
+.cardFruehling {background-position: -720px -99px;}
+.cardSommer {background-position: -800px -99px;}
+.cardHerbst {background-position: -880px -99px;}
+.cardWinter {background-position: -960px -99px;}
+
+.cardBambus {background-position: -720px -198px;}
+.cardPflaume {background-position: -800px -198px;}
+.cardOrchidee {background-position: -880px -198px;}
+.cardChrysantheme {background-position: -960px -198px;}
+
+.cardDracheGruen {background-position: -1040px 0;}
+.cardDracheRot {background-position: -1040px -99px;}
+.cardDracheWeiss {background-position: -1040px -198px;}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Green Mahjong
+Comment=A simple mahjong game
+Exec=cordova-ubuntu-2.8 .
+Icon=./greenmahjong.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+
