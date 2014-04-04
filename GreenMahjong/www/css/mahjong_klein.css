@@ -88,9 +88,9 @@ body {
 .cardZahl4 {background-position: -144px 0;}
 .cardZahl5 {background-position: -192px 0;}
 .cardZahl6 {background-position: -240px 0;}
-.cardZahl7 {background-position: -336px 0;}
-.cardZahl8 {background-position: -384px 0;}
-.cardZahl9 {background-position: -432px 0;}
+.cardZahl7 {background-position: -288px 0;}
+.cardZahl8 {background-position: -336px 0;}
+.cardZahl9 {background-position: -384px 0;}
 
 .cardBambus1 {background-position: -0 -60px;}
 .cardBambus2 {background-position: -48px -60px;}
@@ -98,9 +98,9 @@ body {
 .cardBambus4 {background-position: -144px  -60px;}
 .cardBambus5 {background-position: -192px -60px;}
 .cardBambus6 {background-position: -240px -60px;}
-.cardBambus7 {background-position: -336px -60px;}
-.cardBambus8 {background-position: -384px -60px;}
-.cardBambus9 {background-position: -432px -60px;}
+.cardBambus7 {background-position: -288px -60px;}
+.cardBambus8 {background-position: -336px -60px;}
+.cardBambus9 {background-position: -384px -60px;}
 
 .cardMuenze1 {background-position: -0 -120px;}
 .cardMuenze2 {background-position: -48px -120px;}
@@ -108,9 +108,9 @@ body {
 .cardMuenze4 {background-position: -144px -120px;}
 .cardMuenze5 {background-position: -192px -120px;}
 .cardMuenze6 {background-position: -240px -120px;}
-.cardMuenze7 {background-position: -336px -120px;}
-.cardMuenze8 {background-position: -384px -120px;}
-.cardMuenze9 {background-position: -432px -120px;}
+.cardMuenze7 {background-position: -288px -120px;}
+.cardMuenze8 {background-position: -336px -120px;}
+.cardMuenze9 {background-position: -384px -120px;}
 
 .cardNordwind {background-position: -432px 0;}
 .cardSuedwind {background-position: -480px  0;}
