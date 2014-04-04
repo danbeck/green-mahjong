@@ -14,7 +14,7 @@
   <!--<feature name="http://api.phonegap.com/1.0/notification"/>-->
   <!--<feature name="http://api.phonegap.com/1.0/network"/>-->
   <access origin="*" />
-  <content src="index_bigscreen.html" />
+  <content src="index.html" />
   <icon src="greenmahjong.png"/>
   <preference name="android-minSdkVersion" value="14" />
 </widget>
