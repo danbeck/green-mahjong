@@ -9,10 +9,15 @@ Klein:
 Aussen:60x48
 Innen:57x45*/
 
+body {
+  font-size: 16px;
+}
 
 #game {
   width: 1130px;
   height: 780px;
+  padding:12px;
+  margin-top:12px;
 }
 
 #cards {
