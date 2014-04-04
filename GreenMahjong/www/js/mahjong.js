@@ -262,6 +262,10 @@ function shuffle() {
 }
 
 function selectCard() {
+    if (!isCardSelectable($(this))){
+        return;
+    }
+ 
     if ($(this)[0] === $(".card-selected")[0]){
         $(".card-selected").removeClass("card-selected");
         return;
@@ -328,7 +332,7 @@ function getBeneathNeighbors(positionX, positionY, zIndex){
     });
 }
 
-function getNumberOfHigherOverlaps(positionX, positionY, zIndex, shifting) {
+function getNumberOfHigherOverlaps(positionX, positionY, zIndex, shiftingX, shiftingY) {
    return $(".card").filter(function() {
         var zIndexActualCard = parseInt($(this).css("z-index"));
         var shiftingXActualCard = getShiftValueX(zIndexActualCard);
