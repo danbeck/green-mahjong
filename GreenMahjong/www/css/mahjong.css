@@ -66,8 +66,3 @@ body {
   -webkit-box-shadow: 0 0 5px 4px orange;
   box-shadow: 0 0 5px 4px orange;
 }
-
-.card-nonselectable {
-  -webkit-box-shadow: 0 0 20px red;
-  box-shadow: 0 0 20px blue;
-}

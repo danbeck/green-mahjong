@@ -119,26 +119,25 @@ matchingGame.shift = [
           0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     
-     // 2. Schicht
-             2, 2, 2, 2, 2, 2,
-             2, 2, 2, 2, 2, 2,
-             2, 2, 2, 2, 2, 2,
-             2, 2, 2, 2, 2, 2,
-             2, 2, 2, 2, 2, 2,
-             2, 2, 2, 2, 2, 2,
+             1, 1, 1, 1, 1, 1,
+             1, 1, 1, 1, 1, 1,
+             1, 1, 1, 1, 1, 1,
+             1, 1, 1, 1, 1, 1,
+             1, 1, 1, 1, 1, 1,
+             1, 1, 1, 1, 1, 1,
              
      // 3. Schicht
-                4, 4, 4, 4,
-                4, 4, 4, 4,
-                4, 4, 4, 4,
-                4, 4, 4, 4,
+                2, 2, 2, 2,
+                2, 2, 2, 2,
+                2, 2, 2, 2,
+                2, 2, 2, 2,
                 
     // 4. Schicht
-                   6, 6,
-                   6, 6,
+                   3, 3,
+                   3, 3,
                    
     // 5. Schicht
-                    8
+                    4
 ];
 
 matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.borderWidthRight;
@@ -220,8 +219,8 @@ function startGame() {
 
     $(".card").each(function(index) {
         
-        var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1);
-        var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - (matchingGame.shift[index] * matchingGame.shiftValue);
+        var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
+        var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
         var zIndex = zIndexBase + matchingGame.shift[index];
         
         $(this).css({
@@ -263,13 +262,6 @@ function shuffle() {
 }
 
 function selectCard() {
-    if (!isCardSelectable($(this))){
-        $(this).addClass("card-nonselectable");
-        setTimeout(400);
-        $(this).removeClass("card-nonselectable");
-        return;
-    }
-    
     if ($(this)[0] === $(".card-selected")[0]){
         $(".card-selected").removeClass("card-selected");
         return;
@@ -277,7 +269,8 @@ function selectCard() {
     
     $(this).addClass("card-selected");
     if ($(".card-selected").size() === 2) {
-        setTimeout(checkPattern, 200);
+        //setTimeout(checkPattern, 20);
+        checkPattern();
     }
 }
 
@@ -285,13 +278,22 @@ function isCardSelectable(selectedElement){
     var positionX = parseInt(selectedElement.css("left"));
     var positionY = parseInt(selectedElement.css("top"));
     var zIndex = parseInt(selectedElement.css("z-index"));
-    var shifting = zIndex * matchingGame.shiftValue;
+    var shiftingX = getShiftValueX(zIndex);
+    var shiftingY = getShiftValueY(zIndex);
     
     var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, zIndex);   
     var numberOfRightNeighbors = getNumberOfRightNeighbors(positionX, positionY, zIndex);
-    var numberOfHigherOverlaps = getNumberOfHigherOverlaps(positionX, positionY, zIndex, shifting);
+    var numberOfHigherOverlaps = getNumberOfHigherOverlaps(positionX, positionY, zIndex, shiftingX, shiftingY);
     
     return ((numberOfLeftNeighbors === 0 || numberOfRightNeighbors === 0) && numberOfHigherOverlaps === 0);
+}
+
+function getShiftValueX(zIndex){
+    return zIndex * matchingGame.borderWidthRight;
+}
+
+function getShiftValueY(zIndex){
+    return zIndex * matchingGame.borderWidthBelow;
 }
 
 function getNumberOfAboveNeighbors(positionX, positionY, zIndex){
@@ -327,13 +329,17 @@ function getBeneathNeighbors(positionX, positionY, zIndex){
 }
 
 function getNumberOfHigherOverlaps(positionX, positionY, zIndex, shifting) {
-    return $(".card").filter(function() {
-        var shiftingOfActualCard = parseInt($(this).css("z-index")) * matchingGame.shiftValue;
-        var shiftingDifference = Math.abs(shifting - shiftingOfActualCard);
+   return $(".card").filter(function() {
+        var zIndexActualCard = parseInt($(this).css("z-index"));
+        var shiftingXActualCard = getShiftValueX(zIndexActualCard);
+        var shiftingYActualCard = getShiftValueY(zIndexActualCard);
+        var shiftingDifferenceX = Math.abs(shiftingX - shiftingXActualCard);
+        var shiftingDifferenceY = Math.abs(shiftingY - shiftingYActualCard);
+        
         var isHigherOverlap = (($(this).css("visibility") === "visible") 
-                && (Math.abs(parseInt($(this).css("top")) - positionY) < (matchingGame.cardHeightWithoutBorder - shiftingDifference)) 
+                && (Math.abs(parseInt($(this).css("top")) - positionY) < (matchingGame.cardHeightWithoutBorder - shiftingDifferenceY)) 
                 && (parseInt($(this).css("z-index")) > zIndex)
-                && (Math.abs(parseInt($(this).css("left")) - positionX) < matchingGame.cardWidthWithoutBorder));
+                && (Math.abs(parseInt($(this).css("left")) - positionX) < (matchingGame.cardWidthWithoutBorder - shiftingDifferenceX)));
         return isHigherOverlap;
     }).length;
 }
@@ -350,8 +356,7 @@ function checkPattern() {
 function isMatchPattern() {
     var cards = $(".card-selected");
     var pattern = $(cards[0]).data("pattern");
-    var anotherPattern = $(cards[1]).data("pattern");
-    
+    var anotherPattern = $(cards[1]).data("pattern"); 
     return (pattern === anotherPattern);
 }
 
@@ -371,7 +376,9 @@ function paintShadowsForNeighbors(elements){
         var zIndex = parseInt($(this).css("z-index"));
         var rightNeigbors = getRightNeigbors(positionX, positionY, zIndex);
         var beneathNeigbors = getBeneathNeighbors(positionX, positionY, zIndex);
-        
+        $(this).attr("rightNeigbors", rightNeigbors);
+        console.log("rightNeigbors: " + $(this).attr("rightNeigbors"));
+
         rightNeigbors.each(function() {
             var posX = parseInt($(this).css("left"));
             var posY = parseInt($(this).css("top"));
@@ -424,9 +431,6 @@ function undo() {
     if (matchingGame.undoList.length >= 1) {
         (matchingGame.undoList[0]).css({"visibility": "visible"});
         paintShadowsForNeighbors((matchingGame.undoList[0]));
-        matchingGame.undoList[0].each(function() {
-            var positionX = parseInt($(this).css("left"));
-        });
         matchingGame.undoList.shift();
     }
 }
