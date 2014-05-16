@@ -1,0 +1,76 @@
+/*
+Groß: 
+===
+Aussen: 100x80
+Innen: 95x75
+
+Klein: 
+=====
+Aussen:60x48
+Innen:57x45*/
+
+#game {
+  width: 680px;
+  height: 460px;
+  padding:6px;
+  margin-top:6px;
+}
+#cards {
+  width: 380px;
+  height: 400px;
+}
+.card {
+    border-radius: 7px;
+    height: 50px;
+    width: 40px;
+    background: transparent url('../images/mahjong_verysmallscreen.png');
+}
+
+.cardZahl1 {background-position: 0 0}
+.cardZahl2 {background-position: -40px 0; }
+.cardZahl3 {background-position: -80px 0;}
+.cardZahl4 {background-position: -120px 0;}
+.cardZahl5 {background-position: -160px 0;}
+.cardZahl6 {background-position: -200px 0;}
+.cardZahl7 {background-position: -240px 0;}
+.cardZahl8 {background-position: -280px 0;}
+.cardZahl9 {background-position: -320px 0;}
+
+.cardBambus1 {background-position: -0 -50px;}
+.cardBambus2 {background-position: -40px -50px;}
+.cardBambus3 {background-position: -80px -50px;}
+.cardBambus4 {background-position: -120px  -50px;}
+.cardBambus5 {background-position: -160px -50px;}
+.cardBambus6 {background-position: -200px -50px;}
+.cardBambus7 {background-position: -240px -50px;}
+.cardBambus8 {background-position: -280px -50px;}
+.cardBambus9 {background-position: -320px -50px;}
+
+.cardMuenze1 {background-position: -0 -100px;}
+.cardMuenze2 {background-position: -40px -100px;}
+.cardMuenze3 {background-position: -80px -100px;}
+.cardMuenze4 {background-position: -120px -100px;}
+.cardMuenze5 {background-position: -160px -100px;}
+.cardMuenze6 {background-position: -200px -100px;}
+.cardMuenze7 {background-position: -240px -100px;}
+.cardMuenze8 {background-position: -280px -100px;}
+.cardMuenze9 {background-position: -320px -100px;}
+
+.cardNordwind {background-position: -360px 0;}
+.cardSuedwind {background-position: -400px  0;}
+.cardOstwind {background-position: -440px 0;}
+.cardWestwind {background-position: -480px 0;}
+
+.cardFruehling {background-position: -360px -50px;}
+.cardSommer {background-position: -400px -50px;}
+.cardHerbst {background-position: -440px -50px;}
+.cardWinter {background-position: -480px -50px;}
+
+.cardBambus {background-position: -360px -100px;}
+.cardPflaume {background-position: -400px -100px;}
+.cardOrchidee {background-position: -440px -100px;}
+.cardChrysantheme {background-position: -480px -100px;}
+
+.cardDracheGruen {background-position: -520px 0;}
+.cardDracheRot {background-position: -520px -50px;}
+.cardDracheWeiss {background-position: -520px -100px;}

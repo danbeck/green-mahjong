@@ -1,7 +1,7 @@
 var matchingGame = {};
 
-matchingGame.borderWidthRight = 5;
-matchingGame.borderWidthBelow = 5;
+matchingGame.borderWidthRight = 8;
+matchingGame.borderWidthBelow = 7;
 //matchingGame.cardWidth = 80;
 matchingGame.cardWidth = 80;
 

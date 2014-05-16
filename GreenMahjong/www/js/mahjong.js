@@ -157,23 +157,7 @@ if (cordovaUsed()) {
  * and connects events to handlers
  */
 function onDeviceReady() {
-    var ubuntuUI = new UbuntuUI();
-
-    //needed because of a bug with "toolbar"
-    UI = ubuntuUI;
-    ubuntuUI.init();
-
-    // Set up the app by pushing the main view
-    ubuntuUI.pagestack.push("mainPage");
-
-    var toolbar = ubuntuUI.toolbar("footer");
-    toolbar.touch(function(e) {
-        var el = e.srcElement || e.target;
-        if (el.id && /footer/i.test(el.id)) {
-            toolbar.toggle();
-        }
-    });
-
+    
 //    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 //        var ww = ($(window).width() < window.screen.width) ? $(window).width() : window.screen.width; //get proper width
 //        var mw = 1180; // min width of site
@@ -185,15 +169,15 @@ function onDeviceReady() {
 //        }
 //    }
     
-    ubuntuUI.button('newGameButton').click(function(e) {
+    $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
         startNewGame();
     });
-    ubuntuUI.button('replayGameButton').click(function(e) {
+    $('#replayGameButton').click(function(e) {
         e.stopImmediatePropagation();
         restartGame();
     });
-    ubuntuUI.button('undoButton').click(function(e) {
+    $('#undoButton').click(function(e) {
         e.stopImmediatePropagation();
         undo();
     });

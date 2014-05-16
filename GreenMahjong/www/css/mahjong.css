@@ -10,28 +10,67 @@ Aussen:60x48
 Innen:57x45*/
 
 
-body {
-  text-align: center;  
-  background: #b2b2a8 url(../images/Background.JPG) center no-repeat !important;
-  //-webkit-background-size: cover;
-  background-size: cover;
+html {
+    /*text-align: center;*/  
+    background: url(../images/Background.JPG) no-repeat center center fixed;
+    //-webkit-background-size: cover;
+    background-size: cover;
+}
+
+div.game-buttons{
+    position: absolute;
+}
+
+div.game-buttons.lowerbuttons{
+    bottom:10px;
+    right:15px;
+}
+div.game-buttons.upperbuttons{
+    top:10px;
+    right:15px;
+}
+
+div.game-buttons ul{
+    list-style: none;
+    display:block;
+}
+
+div.game-buttons  ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    /*font-weight: bold;*/
+
+}
+div.game-buttons  ul li{
+    width:80px;
+    float: right;
+    text-decoration: none;
+}
+
+div.game-buttons ul li img{
+    width:50px;
+    height: 50px;
 }
 
 #game {
-  border-radius: 10px;
-  border: 1px solid #666;
-  /*opacity:0.6;*/
-  /*background: rgba(178, 178, 168, .8);*/
-  background: rgba(255, 255, 255, .4);
-  /*background: green;*/
-  margin: 0 auto;
-  display: box;
-  webkit-box-pack: center;
-  webkit-box-align: center;
-  -webkit-filter: sepia(0.2);
+    /*border-radius: 10px;*/
+    /*border: 1px solid #666;*/
+    /*opacity:0.6;*/
+    /*background: rgba(178, 178, 168, .8);*/
+    /*background: rgba(255, 255, 255, .4);*/
+    /*background: green;*/
+    /*margin: 0 auto;*/
+    display: box;
+    margin: 0 auto;
+    /*position: absolute;*/
+    /*-webkit-box-pack: center;*/
+    /*-webkit-box-align: center;*/
+    /*-webkit-filter: sepia(0.2);*/
+    /*box-pack: center;*/
 }
 #cards {
-  position: relative;  
+    position: relative;  
 }
 
 .card {
@@ -58,10 +97,10 @@ body {
 
 .cardWithoutLeftNeighbor.cardWithoutAboveNeighbor.card-selected,
 .card-selected {
-  //-webkit-box-shadow: 0 0 20px orange;
-  //box-shadow: 0 0 20px orange;
-  //-webkit-transition-property: opacity, transform, box-shadow;
-  //-webkit-transition-duration: 3s;
-  -webkit-box-shadow: 0 0 5px 4px orange;
-  box-shadow: 0 0 5px 4px orange;
+    //-webkit-box-shadow: 0 0 20px orange;
+    //box-shadow: 0 0 20px orange;
+    //-webkit-transition-property: opacity, transform, box-shadow;
+    //-webkit-transition-duration: 3s;
+    -webkit-box-shadow: 0 0 5px 4px orange;
+    box-shadow: 0 0 5px 4px orange;
 }
