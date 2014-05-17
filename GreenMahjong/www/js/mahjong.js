@@ -182,13 +182,19 @@ function onDeviceReady() {
         undo();
     });
 
+    $("#game").click(function(e){
+        console.log("clicked");
+    });
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
     startGame();
 }
 
 
 function startGame() {
-     shuffleCards();
+    var firstDate = new Date(); 
+    shuffleCards();
+    var secondDate = new Date();
+    console.log("time taking for shuffling: " + (secondDate - firstDate));
     
     var numberOfCards = matchingGame.deck.length;
     matchingGame.cardWidth = parseInt($(".card").css('width'));
@@ -201,6 +207,10 @@ function startGame() {
         $(".card:first-child").clone().appendTo("#cards");
     }
 
+
+    var thirdDate = new Date();
+    console.log("time taking for cloning: " + (thirdDate - secondDate));
+    
     $(".card").each(function(index) {
         
         var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
@@ -221,6 +231,11 @@ function startGame() {
         $(this).attr("data-pattern", pattern);
         $(this).click(selectCard);
     });
+    
+    
+    var fourthDate = new Date();
+    console.log("time for painting position and shadow: " + (fourthDate - thirdDate));
+    
 }
 
 function getCardPattern(cardName){
