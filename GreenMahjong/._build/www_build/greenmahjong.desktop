@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Green Mahjong
-Comment=Green Mahjong is a simple Mahjong game
-Exec=qmlscene $@ index.html
-Icon=./greenmahjong.png
-Terminal=false
-Type=Application
-X-Ubuntu-Touch=true
-
