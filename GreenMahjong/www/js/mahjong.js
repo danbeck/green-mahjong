@@ -182,9 +182,13 @@ function onDeviceReady() {
         undo();
     });
 
-    $("#game").click(function(e){
-        console.log("clicked");
+    $("body").click(function(e){
+        console.log("clicked on board");
+//        $("div.game-buttons.lowerbuttons").toggle("slide", { direction: 'up'});
+        $("div.game-buttons").toggle("slide");
     });
+    
+    $("div.game-buttons").hide();
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
     startGame();
 }
@@ -260,7 +264,8 @@ function shuffle() {
     return 0.5 - Math.random();
 }
 
-function selectCard() {
+function selectCard(e) {
+    e.stopPropagation();
     if (!isCardSelectable($(this))){
         return;
     }
