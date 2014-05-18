@@ -25,10 +25,16 @@ body {
   height: 400px;
 }
 .card {
-    border-radius: 14px;
+    border-radius: 6px;
     height: 100px;
     width: 80px;
     background: transparent url('../images/mahjong_bigscreen.png');
+}
+
+.shadow {
+    height: 108px;
+    width: 88px;
+    background: transparent url('../images/tileshadow.png');
 }
 
 .cardZahl1 {background-position: 0 0}

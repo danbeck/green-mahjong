@@ -208,18 +208,25 @@ function startGame() {
     var zIndexBase = 8;
     
     for (var i = 0; i < (numberOfCards - 1); i++) {
-        $(".card:first-child").clone().appendTo("#cards");
+        //$(".card:first-child").clone().appendTo("#cards");
+        $("#cards").append('<div class="card"></div>');
+        $("#cards").append('<div class="shadow"></div>');
     }
 
 
     var thirdDate = new Date();
     console.log("time taking for cloning: " + (thirdDate - secondDate));
     
+    var j = 0;
     $(".card").each(function(index) {
         
         var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
         var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
         var zIndex = zIndexBase + matchingGame.shift[index];
+        
+        var positionXShadow = positionX - 8;
+        var positionYShadow = positionY - 8;
+        var zIndexShadow = zIndex - 1;
         
         $(this).css({
             "left": positionX,
@@ -227,15 +234,39 @@ function startGame() {
             "z-index": zIndex
         });
         
-        paintShadows($(this), positionX, positionY, zIndex);
+        
+        //$(".shadow")[j].css({
+        //    "left": positionXShadow,
+        //    "top": positionYShadow,
+        //    "z-index": zIndexShadow
+        //});
+        //paintShadows($(this), positionX, positionY, zIndex);
         
         var pattern = matchingGame.deck[index];
         $(this).addClass(pattern);       
         pattern = getCardPattern(pattern);
         $(this).attr("data-pattern", pattern);
         $(this).click(selectCard);
+        
+        j++;
     });
     
+    $(".shadow").each(function(index) {
+        
+        var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
+        var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
+        var zIndex = zIndexBase + matchingGame.shift[index];
+        
+        var positionXShadow = positionX - 8;
+        var positionYShadow = positionY - 8;
+        var zIndexShadow = zIndex - 1;
+        
+        $(this).css({
+            "left": positionXShadow,
+            "top": positionYShadow,
+            "z-index": zIndexShadow
+        });
+    });
     
     var fourthDate = new Date();
     console.log("time for painting position and shadow: " + (fourthDate - thirdDate));

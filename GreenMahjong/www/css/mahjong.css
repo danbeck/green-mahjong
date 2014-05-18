@@ -86,6 +86,10 @@ div.game-buttons ul li img{
     position: absolute;
 }
 
+.shadow {
+    position: absolute;
+}
+
 .cardWithoutLeftNeighbor {
     -webkit-box-shadow: -5px 0 5px -2px darkgreen;
     box-shadow: -5px 0 5px -2px darkgreen;
