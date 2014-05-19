@@ -188,9 +188,12 @@ function onDeviceReady() {
         $("div.game-buttons").toggle("slide");
     });
     
-    $("div.game-buttons").hide();
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
     startGame();
+    
+    setTimeout(function() {
+        $("div.game-buttons").hide(750);
+    }, 800);
 }
 
 
