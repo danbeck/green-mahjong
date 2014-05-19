@@ -140,8 +140,10 @@ matchingGame.shift = [
                     4
 ];
 
-matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.borderWidthRight;
-matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.borderWidthBelow;
+//matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
+//matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
+
+matchingGame.resolution = null;
 
 if (cordovaUsed()) {
 // This is the event that fires when Cordova is fully loaded
@@ -151,7 +153,77 @@ if (cordovaUsed()) {
     window.onload = onDeviceReady;
 }
 
+matchingGame.resolutions = {
+    verysmallscreen: {borderWidthRight: 2,
+        borderWidthBelow: 3,
+        cardWidth: 40,
+        cardHeight: 50,
+        shiftValue: 3},
+    smallscreen: {borderWidthRight: 3,
+        borderWidthBelow: 3,
+        cardWidth: 48,
+        cardHeight: 60,
+        shiftValue: 2},
+    bigscreen: {borderWidthRight: 8,
+        borderWidthBelow: 7,
+        cardWidth: 80,
+        cardHeight: 100,
+        shiftValue: 4},
+    verybigscreen: {borderWidthRight: 12,
+        borderWidthBelow: 11,
+        cardWidth: 114,
+        cardHeight: 141,
+        shiftValue: 4}
+};
 
+function registerMediaQueryListListener() {
+
+    var verybigScreenMediaQueryList = window.matchMedia("(min-width: 1600px)");
+    var bigScreenMediaQueryList = window.matchMedia("(min-width: 1130px) and (max-width:1599px)");
+    var smallScreenMediaQueryList = window.matchMedia("(min-width: 640px) and (max-width:1129px)");
+    var verysmallScreenMediaQueryList = window.matchMedia("(max-width: 639px)");
+
+    if (verybigScreenMediaQueryList.matches) {
+        matchingGame.resolution = matchingGame.resolutions.verybigscreen;
+    }
+    if (bigScreenMediaQueryList.matches) {
+        matchingGame.resolution = matchingGame.resolutions.bigscreen;
+    }
+
+    if (smallScreenMediaQueryList.matches) {
+        matchingGame.resolution = matchingGame.resolutions.smallscreen;
+    }
+    if (verysmallScreenMediaQueryList.matches) {
+        matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
+    }
+    verybigScreenMediaQueryList.addListener(function(mediaquerylist) {
+        if (mediaquerylist.matches) {
+            matchingGame.resolution = matchingGame.resolutions.verybigscreen;
+            redrawGame();
+        }
+    });
+
+    bigScreenMediaQueryList.addListener(function(mediaquerylist) {
+        if (mediaquerylist.matches) {
+            matchingGame.resolution = matchingGame.resolutions.bigscreen;
+            redrawGame();
+        }
+    });
+
+    smallScreenMediaQueryList.addListener(function(mediaquerylist) {
+        if (mediaquerylist.matches) {
+            matchingGame.resolution = matchingGame.resolutions.smallscreen;
+            redrawGame();
+        }
+    });
+
+    verysmallScreenMediaQueryList.addListener(function(mediaquerylist) {
+        if (mediaquerylist.matches) {
+            matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
+            redrawGame();
+        }
+    });
+} 
 /**
  * Entry point to the app. It initializes the Ubuntu SDK HTML5 theme
  * and connects events to handlers
@@ -187,7 +259,12 @@ function onDeviceReady() {
 //        $("div.game-buttons.lowerbuttons").toggle("slide", { direction: 'up'});
         $("div.game-buttons").toggle("slide");
     });
-    
+
+//var mql = window.matchMedia("(min-width: 480px)");
+
+    registerMediaQueryListListener();
+//
+//    $("link[href='css/mahjong.css']").after($("<link href='" + resolution.css + "' rel='stylesheet'>"));
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
     startGame();
     
@@ -196,7 +273,29 @@ function onDeviceReady() {
     }, 800);
 }
 
-
+function redrawGame(){
+    matchingGame.cardWidth = parseInt($(".card").css('width'));
+    matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
+    matchingGame.cardHeight = parseInt($(".card").css('height'));
+    matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
+    var zIndexBase = 8;
+    
+    $(".card").each(function(index) {
+        
+        var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
+        var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
+        var zIndex = zIndexBase + matchingGame.shift[index];
+        
+        $(this).css({
+            "left": positionX,
+            "top": positionY,
+            "z-index": zIndex
+        });
+        
+        paintShadows($(this), positionX, positionY, zIndex);
+    });
+    
+}
 function startGame() {
     var firstDate = new Date(); 
     shuffleCards();
@@ -205,9 +304,9 @@ function startGame() {
     
     var numberOfCards = matchingGame.deck.length;
     matchingGame.cardWidth = parseInt($(".card").css('width'));
-    matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.borderWidthRight;
+    matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
     matchingGame.cardHeight = parseInt($(".card").css('height'));
-    matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.borderWidthBelow;
+    matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
     
     for (var i = 0; i < (numberOfCards - 1); i++) {
@@ -300,11 +399,11 @@ function isCardSelectable(selectedElement){
 }
 
 function getShiftValueX(zIndex){
-    return zIndex * matchingGame.borderWidthRight;
+    return zIndex * matchingGame.resolution.borderWidthRight;
 }
 
 function getShiftValueY(zIndex){
-    return zIndex * matchingGame.borderWidthBelow;
+    return zIndex * matchingGame.resolution.borderWidthBelow;
 }
 
 function getNumberOfAboveNeighbors(positionX, positionY, zIndex){
