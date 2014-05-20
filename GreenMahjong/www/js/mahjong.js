@@ -1,3 +1,4 @@
+var matchingGame = {};
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
     'cardZahl2', 'cardZahl2', 'cardZahl2', 'cardZahl2',
@@ -153,6 +154,12 @@ if (cordovaUsed()) {
     window.onload = onDeviceReady;
 }
 
+
+matchingGame.theme = 0;
+
+matchingGame.themes = ["fruits", "classic"];
+matchingGame.resolution = null;
+
 matchingGame.resolutions = {
     verysmallscreen: {borderWidthRight: 2,
         borderWidthBelow: 3,
@@ -223,13 +230,13 @@ function registerMediaQueryListListener() {
             redrawGame();
         }
     });
-} 
+}
 /**
  * Entry point to the app. It initializes the Ubuntu SDK HTML5 theme
  * and connects events to handlers
  */
 function onDeviceReady() {
-    
+
 //    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 //        var ww = ($(window).width() < window.screen.width) ? $(window).width() : window.screen.width; //get proper width
 //        var mw = 1180; // min width of site
@@ -240,7 +247,7 @@ function onDeviceReady() {
 //            $('#Viewport').attr('content', 'initial-scale=1.0, maximum-scale=2, minimum-scale=1.0, user-scalable=yes, width=' + ww);
 //        }
 //    }
-    
+
     $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
         startNewGame();
@@ -253,8 +260,12 @@ function onDeviceReady() {
         e.stopImmediatePropagation();
         undo();
     });
+    $('#themeButton').click(function(e) {
+        e.stopImmediatePropagation();
+        changeTheme();
+    });
 
-    $("body").click(function(e){
+    $("body").click(function(e) {
         console.log("clicked on board");
 //        $("div.game-buttons.lowerbuttons").toggle("slide", { direction: 'up'});
         $("div.game-buttons").toggle("slide");
@@ -267,48 +278,48 @@ function onDeviceReady() {
 //    $("link[href='css/mahjong.css']").after($("<link href='" + resolution.css + "' rel='stylesheet'>"));
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
     startGame();
-    
+
     setTimeout(function() {
         $("div.game-buttons").hide(750);
     }, 800);
 }
 
-function redrawGame(){
+function redrawGame() {
     matchingGame.cardWidth = parseInt($(".card").css('width'));
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
     matchingGame.cardHeight = parseInt($(".card").css('height'));
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
-    
+
     $(".card").each(function(index) {
-        
+
         var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
         var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
         var zIndex = zIndexBase + matchingGame.shift[index];
-        
+
         $(this).css({
             "left": positionX,
             "top": positionY,
             "z-index": zIndex
         });
-        
+
         paintShadows($(this), positionX, positionY, zIndex);
     });
-    
+
 }
 function startGame() {
-    var firstDate = new Date(); 
+    var firstDate = new Date();
     shuffleCards();
     var secondDate = new Date();
     console.log("time taking for shuffling: " + (secondDate - firstDate));
-    
+
     var numberOfCards = matchingGame.deck.length;
     matchingGame.cardWidth = parseInt($(".card").css('width'));
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
     matchingGame.cardHeight = parseInt($(".card").css('height'));
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
-    
+
     for (var i = 0; i < (numberOfCards - 1); i++) {
         $(".card:first-child").clone().appendTo("#cards");
     }
@@ -316,49 +327,49 @@ function startGame() {
 
     var thirdDate = new Date();
     console.log("time taking for cloning: " + (thirdDate - secondDate));
-    
+
     $(".card").each(function(index) {
-        
+
         var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
         var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
         var zIndex = zIndexBase + matchingGame.shift[index];
-        
+
         $(this).css({
             "left": positionX,
             "top": positionY,
             "z-index": zIndex
         });
-        
+
         paintShadows($(this), positionX, positionY, zIndex);
-        
+
         var pattern = matchingGame.deck[index];
-        $(this).addClass(pattern);       
+        $(this).addClass(pattern);
         pattern = getCardPattern(pattern);
         $(this).attr("data-pattern", pattern);
         $(this).click(selectCard);
     });
-    
-    
+
+
     var fourthDate = new Date();
     console.log("time for painting position and shadow: " + (fourthDate - thirdDate));
-    
+
 }
 
-function getCardPattern(cardName){
-    
+function getCardPattern(cardName) {
+
     var cardJahreszeiten = ["cardFruehling", "cardSommer", "cardHerbst", "cardWinter"];
     var cardBlumen = ["cardBambus", "cardPflaume", "cardOrchidee", "cardChrysantheme"];
-    
-    if (cardJahreszeiten.indexOf(cardName) >= 0){
+
+    if (cardJahreszeiten.indexOf(cardName) >= 0) {
         return "cardJahreszeiten";
-    } else if (cardBlumen.indexOf(cardName) >= 0){
+    } else if (cardBlumen.indexOf(cardName) >= 0) {
         return "cardBlumen";
     }
-    
+
     return cardName;
 }
 
-function shuffleCards(){
+function shuffleCards() {
     matchingGame.deck = _.shuffle(matchingGame.deck);
 }
 
@@ -368,15 +379,15 @@ function shuffle() {
 
 function selectCard(e) {
     e.stopPropagation();
-    if (!isCardSelectable($(this))){
+    if (!isCardSelectable($(this))) {
         return;
     }
- 
-    if ($(this)[0] === $(".card-selected")[0]){
+
+    if ($(this)[0] === $(".card-selected")[0]) {
         $(".card-selected").removeClass("card-selected");
         return;
     }
-    
+
     $(this).addClass("card-selected");
     if ($(".card-selected").size() === 2) {
         //setTimeout(checkPattern, 20);
@@ -384,70 +395,70 @@ function selectCard(e) {
     }
 }
 
-function isCardSelectable(selectedElement){
+function isCardSelectable(selectedElement) {
     var positionX = parseInt(selectedElement.css("left"));
     var positionY = parseInt(selectedElement.css("top"));
     var zIndex = parseInt(selectedElement.css("z-index"));
     var shiftingX = getShiftValueX(zIndex);
     var shiftingY = getShiftValueY(zIndex);
-    
-    var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, zIndex);   
+
+    var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, zIndex);
     var numberOfRightNeighbors = getNumberOfRightNeighbors(positionX, positionY, zIndex);
     var numberOfHigherOverlaps = getNumberOfHigherOverlaps(positionX, positionY, zIndex, shiftingX, shiftingY);
-    
+
     return ((numberOfLeftNeighbors === 0 || numberOfRightNeighbors === 0) && numberOfHigherOverlaps === 0);
 }
 
-function getShiftValueX(zIndex){
+function getShiftValueX(zIndex) {
     return zIndex * matchingGame.resolution.borderWidthRight;
 }
 
-function getShiftValueY(zIndex){
+function getShiftValueY(zIndex) {
     return zIndex * matchingGame.resolution.borderWidthBelow;
 }
 
-function getNumberOfAboveNeighbors(positionX, positionY, zIndex){
+function getNumberOfAboveNeighbors(positionX, positionY, zIndex) {
     return $(".card").filter(function() {
-    return (($(this).css("visibility") === "visible") && ((parseInt($(this).css("top")) + matchingGame.cardHeightWithoutBorder) === positionY) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) === positionX));
+        return (($(this).css("visibility") === "visible") && ((parseInt($(this).css("top")) + matchingGame.cardHeightWithoutBorder) === positionY) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) === positionX));
     }).length;
 }
 
-function getRightNeigbors(positionX, positionY, zIndex){
+function getRightNeigbors(positionX, positionY, zIndex) {
     return $(".card").filter(function() {
-    return (($(this).css("visibility") === "visible") && Math.abs(parseInt($(this).css("top")) - positionY) < matchingGame.cardHeightWithoutBorder) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) - matchingGame.cardWidthWithoutBorder === positionX);
+        return (($(this).css("visibility") === "visible") && Math.abs(parseInt($(this).css("top")) - positionY) < matchingGame.cardHeightWithoutBorder) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) - matchingGame.cardWidthWithoutBorder === positionX);
     });
 }
 
-function getNumberOfRightNeighbors(positionX, positionY, zIndex){
+function getNumberOfRightNeighbors(positionX, positionY, zIndex) {
     return getRightNeigbors(positionX, positionY, zIndex).length;
 }
 
 function getNumberOfLeftNeighbors(positionX, positionY, zIndex) {
     return $(".card").filter(function() {
-        var isNeighbour = (($(this).css("visibility") === "visible") 
-                && (Math.abs(parseInt($(this).css("top")) - positionY) < matchingGame.cardHeightWithoutBorder) 
-                && (parseInt($(this).css("z-index")) === zIndex) 
-                && ((parseInt($(this).css("left")) + matchingGame.cardWidthWithoutBorder) === positionX));        
+        var isNeighbour = (($(this).css("visibility") === "visible")
+                && (Math.abs(parseInt($(this).css("top")) - positionY) < matchingGame.cardHeightWithoutBorder)
+                && (parseInt($(this).css("z-index")) === zIndex)
+                && ((parseInt($(this).css("left")) + matchingGame.cardWidthWithoutBorder) === positionX));
         return isNeighbour;
     }).length;
 }
 
-function getBeneathNeighbors(positionX, positionY, zIndex){
+function getBeneathNeighbors(positionX, positionY, zIndex) {
     return $(".card").filter(function() {
-    return (($(this).css("visibility") === "visible") && ((parseInt($(this).css("top")) - matchingGame.cardHeightWithoutBorder) === positionY) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) === positionX));
+        return (($(this).css("visibility") === "visible") && ((parseInt($(this).css("top")) - matchingGame.cardHeightWithoutBorder) === positionY) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) === positionX));
     });
 }
 
 function getNumberOfHigherOverlaps(positionX, positionY, zIndex, shiftingX, shiftingY) {
-   return $(".card").filter(function() {
+    return $(".card").filter(function() {
         var zIndexActualCard = parseInt($(this).css("z-index"));
         var shiftingXActualCard = getShiftValueX(zIndexActualCard);
         var shiftingYActualCard = getShiftValueY(zIndexActualCard);
         var shiftingDifferenceX = Math.abs(shiftingX - shiftingXActualCard);
         var shiftingDifferenceY = Math.abs(shiftingY - shiftingYActualCard);
-        
-        var isHigherOverlap = (($(this).css("visibility") === "visible") 
-                && (Math.abs(parseInt($(this).css("top")) - positionY) < (matchingGame.cardHeightWithoutBorder - shiftingDifferenceY)) 
+
+        var isHigherOverlap = (($(this).css("visibility") === "visible")
+                && (Math.abs(parseInt($(this).css("top")) - positionY) < (matchingGame.cardHeightWithoutBorder - shiftingDifferenceY))
                 && (parseInt($(this).css("z-index")) > zIndex)
                 && (Math.abs(parseInt($(this).css("left")) - positionX) < (matchingGame.cardWidthWithoutBorder - shiftingDifferenceX)));
         return isHigherOverlap;
@@ -466,20 +477,20 @@ function checkPattern() {
 function isMatchPattern() {
     var cards = $(".card-selected");
     var pattern = $(cards[0]).data("pattern");
-    var anotherPattern = $(cards[1]).data("pattern"); 
+    var anotherPattern = $(cards[1]).data("pattern");
     return (pattern === anotherPattern);
 }
 
 function removeTookCards() {
     var removedCards = $(".card-removed");
     matchingGame.undoList.unshift(removedCards);
-    $(".card-removed").css({"visibility": "hidden"});   
-    paintShadowsForNeighbors($(".card-removed"));   
+    $(".card-removed").css({"visibility": "hidden"});
+    paintShadowsForNeighbors($(".card-removed"));
     $(".card-removed").removeClass("card-removed");
 }
 
 
-function paintShadowsForNeighbors(elements){
+function paintShadowsForNeighbors(elements) {
     elements.each(function() {
         var positionX = parseInt($(this).css("left"));
         var positionY = parseInt($(this).css("top"));
@@ -495,7 +506,7 @@ function paintShadowsForNeighbors(elements){
             var zIdx = parseInt($(this).css("z-index"));
             paintShadows($(this), posX, posY, zIdx);
         });
-        
+
         beneathNeigbors.each(function() {
             var posX = parseInt($(this).css("left"));
             var posY = parseInt($(this).css("top"));
@@ -505,20 +516,20 @@ function paintShadowsForNeighbors(elements){
     });
 }
 
-function paintShadows(element, positionX, positionY, zIndex){   
+function paintShadows(element, positionX, positionY, zIndex) {
     var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, zIndex);
-        if (numberOfLeftNeighbors === 0){
-            element.addClass("cardWithoutLeftNeighbor");
-        } else {
-            element.removeClass("cardWithoutLeftNeighbor");
-        }
-        
-        var numberOfAboveNeighbors = getNumberOfAboveNeighbors(positionX, positionY, zIndex);
-        if (numberOfAboveNeighbors === 0){
-            element.addClass("cardWithoutAboveNeighbor");
-        }  else {
-            element.removeClass("cardWithoutAboveNeighbor");
-        }
+    if (numberOfLeftNeighbors === 0) {
+        element.addClass("cardWithoutLeftNeighbor");
+    } else {
+        element.removeClass("cardWithoutLeftNeighbor");
+    }
+
+    var numberOfAboveNeighbors = getNumberOfAboveNeighbors(positionX, positionY, zIndex);
+    if (numberOfAboveNeighbors === 0) {
+        element.addClass("cardWithoutAboveNeighbor");
+    } else {
+        element.removeClass("cardWithoutAboveNeighbor");
+    }
 }
 
 
@@ -534,6 +545,34 @@ function restartGame() {
     for (var i = 0; i < numberOfRemovedPatterns; i++) {
         undo();
     }
+}
+
+
+
+
+
+function changeTheme() {
+    if (matchingGame.theme === 1)
+        matchingGame.theme = 0;
+    else
+        matchingGame.theme = 1;
+
+    console.log (matchingGame.theme);
+    console.log (matchingGame.themes[matchingGame.theme]);
+    $("html").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
+    
+    
+    var resolution = "";
+    if (matchingGame.resolution === matchingGame.resolutions.verysmallscreen)
+        resolution = "verysmallscreen";
+    if (matchingGame.resolution === matchingGame.resolutions.smallscreen)
+        resolution = "smallscreen";
+    if (matchingGame.resolution === matchingGame.resolutions.bigscreen)
+        resolution = "bigscreen";
+    if (matchingGame.resolution === matchingGame.resolutions.verybigscreen)
+        resolution = "verybigscreen";
+    
+    $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
 }
 
 
