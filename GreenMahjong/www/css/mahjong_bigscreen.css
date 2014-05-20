@@ -28,7 +28,9 @@ body {
     border-radius: 6px;
     height: 100px;
     width: 80px;
-    background: transparent url('../images/mahjong_bigscreen.png');
+    /*background: transparent url('../images/mahjong_bigscreen.png');*/
+    background-color: transparent;
+    background-image:  url('../images/mahjong_bigscreen_fruits.png');
 }
 
 .shadow {
