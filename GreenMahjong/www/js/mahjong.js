@@ -9,7 +9,6 @@ matchingGame.deck = [
     'cardZahl7', 'cardZahl7', 'cardZahl7', 'cardZahl7',
     'cardZahl8', 'cardZahl8', 'cardZahl8', 'cardZahl8',
     'cardZahl9', 'cardZahl9', 'cardZahl9', 'cardZahl9',
-    
     'cardBambus1', 'cardBambus1', 'cardBambus1', 'cardBambus1',
     'cardBambus2', 'cardBambus2', 'cardBambus2', 'cardBambus2',
     'cardBambus3', 'cardBambus3', 'cardBambus3', 'cardBambus3',
@@ -19,7 +18,6 @@ matchingGame.deck = [
     'cardBambus7', 'cardBambus7', 'cardBambus7', 'cardBambus7',
     'cardBambus8', 'cardBambus8', 'cardBambus8', 'cardBambus8',
     'cardBambus9', 'cardBambus9', 'cardBambus9', 'cardBambus9',
-    
     'cardMuenze1', 'cardMuenze1', 'cardMuenze1', 'cardMuenze1',
     'cardMuenze2', 'cardMuenze2', 'cardMuenze2', 'cardMuenze2',
     'cardMuenze3', 'cardMuenze3', 'cardMuenze3', 'cardMuenze3',
@@ -29,18 +27,14 @@ matchingGame.deck = [
     'cardMuenze7', 'cardMuenze7', 'cardMuenze7', 'cardMuenze7',
     'cardMuenze8', 'cardMuenze8', 'cardMuenze8', 'cardMuenze8',
     'cardMuenze9', 'cardMuenze9', 'cardMuenze9', 'cardMuenze9',
-    
     'cardNordwind', 'cardNordwind', 'cardNordwind', 'cardNordwind',
     'cardSuedwind', 'cardSuedwind', 'cardSuedwind', 'cardSuedwind',
     'cardOstwind', 'cardOstwind', 'cardOstwind', 'cardOstwind',
     'cardWestwind', 'cardWestwind', 'cardWestwind', 'cardWestwind',
-    
     'cardDracheGruen', 'cardDracheGruen', 'cardDracheGruen', 'cardDracheGruen',
     'cardDracheRot', 'cardDracheRot', 'cardDracheRot', 'cardDracheRot',
     'cardDracheWeiss', 'cardDracheWeiss', 'cardDracheWeiss', 'cardDracheWeiss',
-    
     'cardFruehling', 'cardSommer', 'cardHerbst', 'cardWinter',
-    
     'cardBambus', 'cardPflaume', 'cardOrchidee', 'cardChrysantheme'
 ];
 
@@ -48,97 +42,85 @@ matchingGame.undoList = [];
 
 matchingGame.positionX = [
     2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-          4, 5, 6, 7, 8, 9, 10, 11,
-       3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
- 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+    4, 5, 6, 7, 8, 9, 10, 11,
+    3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
     2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-       3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-          4, 5, 6, 7, 8, 9, 10, 11,
+    3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    4, 5, 6, 7, 8, 9, 10, 11,
     2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-    
     // 2. Schicht
-             5, 6, 7, 8, 9, 10,
-             5, 6, 7, 8, 9, 10,
-             5, 6, 7, 8, 9, 10,
-             5, 6, 7, 8, 9, 10,
-             5, 6, 7, 8, 9, 10,
-             5, 6, 7, 8, 9, 10,
-             
+    5, 6, 7, 8, 9, 10,
+    5, 6, 7, 8, 9, 10,
+    5, 6, 7, 8, 9, 10,
+    5, 6, 7, 8, 9, 10,
+    5, 6, 7, 8, 9, 10,
+    5, 6, 7, 8, 9, 10,
     // 3. Schicht
-                6, 7, 8, 9,
-                6, 7, 8, 9,
-                6, 7, 8, 9,
-                6, 7, 8, 9,
-             
+    6, 7, 8, 9,
+    6, 7, 8, 9,
+    6, 7, 8, 9,
+    6, 7, 8, 9,
     // 4. Schicht
-                   7, 8,
-                   7, 8,
-                   
+    7, 8,
+    7, 8,
     // 5. Schicht
-                    7.5
+    7.5
 ];
 
 matchingGame.positionY = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          1, 1, 1, 1, 1, 1, 1, 1,
-       2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-3.5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    1, 1, 1, 1, 1, 1, 1, 1,
+    2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+    3.5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
     4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3.5, 3.5,
-       5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
-          6, 6, 6, 6, 6, 6, 6, 6,
+    5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    6, 6, 6, 6, 6, 6, 6, 6,
     7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
-    
     // 2. Schicht
-             1, 1, 1, 1, 1, 1,
-             2, 2, 2, 2, 2, 2,
-             3, 3, 3, 3, 3, 3,
-             4, 4, 4, 4, 4, 4,
-             5, 5, 5, 5, 5, 5,
-             6, 6, 6, 6, 6, 6,
-             
+    1, 1, 1, 1, 1, 1,
+    2, 2, 2, 2, 2, 2,
+    3, 3, 3, 3, 3, 3,
+    4, 4, 4, 4, 4, 4,
+    5, 5, 5, 5, 5, 5,
+    6, 6, 6, 6, 6, 6,
     // 3. Schicht
-                2, 2, 2, 2,
-                3, 3, 3, 3,
-                4, 4, 4, 4,
-                5, 5, 5, 5,
-             
+    2, 2, 2, 2,
+    3, 3, 3, 3,
+    4, 4, 4, 4,
+    5, 5, 5, 5,
     // 4. Schicht
-                   3, 3,
-                   4, 4,
-                   
+    3, 3,
+    4, 4,
     // 5. Schicht
-                    3.5
+    3.5
 ];
 
 matchingGame.shift = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
- 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    
-             1, 1, 1, 1, 1, 1,
-             1, 1, 1, 1, 1, 1,
-             1, 1, 1, 1, 1, 1,
-             1, 1, 1, 1, 1, 1,
-             1, 1, 1, 1, 1, 1,
-             1, 1, 1, 1, 1, 1,
-             
-     // 3. Schicht
-                2, 2, 2, 2,
-                2, 2, 2, 2,
-                2, 2, 2, 2,
-                2, 2, 2, 2,
-                
+    1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1,
+    // 3. Schicht
+    2, 2, 2, 2,
+    2, 2, 2, 2,
+    2, 2, 2, 2,
+    2, 2, 2, 2,
     // 4. Schicht
-                   3, 3,
-                   3, 3,
-                   
+    3, 3,
+    3, 3,
     // 5. Schicht
-                    4
+    4
 ];
 
 //matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
@@ -302,8 +284,6 @@ function redrawGame() {
             "top": positionY,
             "z-index": zIndex
         });
-
-        paintShadows($(this), positionX, positionY, zIndex);
     });
 
 }
@@ -330,11 +310,24 @@ function startGame() {
     var thirdDate = new Date();
     console.log("time taking for cloning: " + (thirdDate - secondDate));
 
+    var positionX;
+    var positionY;
+    var zIndex;
+    var positionXShadow;
+    var positionYShadow;
+    var zIndexShadow;
+    var pattern;
+
     $(".card").each(function(index) {
 
-        var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
-        var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
-        var zIndex = zIndexBase + matchingGame.shift[index];
+        positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
+        positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
+        zIndex = zIndexBase + matchingGame.shift[index];
+        positionXShadow = positionX - 8;
+        positionYShadow = positionY - 8;
+        zIndexShadow = zIndex - 1;
+
+        console.log("zIndex: " + zIndex + ", zIndexShadow: " + zIndexShadow);
 
         $(this).css({
             "left": positionX,
@@ -342,9 +335,13 @@ function startGame() {
             "z-index": zIndex
         });
 
-        paintShadows($(this), positionX, positionY, zIndex);
+        $(".shadow").eq(index).css({
+            "left": positionXShadow,
+            "top": positionYShadow,
+            "z-index": zIndexShadow
+        });
 
-        var pattern = matchingGame.deck[index];
+        pattern = matchingGame.deck[index];
         $(this).addClass(pattern);
         pattern = getCardPattern(pattern);
         $(this).attr("data-pattern", pattern);
@@ -484,63 +481,23 @@ function isMatchPattern() {
 }
 
 function removeTookCards() {
+    var index;
+    $(".card-removed").each(function(index) {
+        index = $(".card").index($(this));
+        $(".shadow").eq(index).css({"visibility": "hidden"});
+    });
+
     var removedCards = $(".card-removed");
     matchingGame.undoList.unshift(removedCards);
     $(".card-removed").css({"visibility": "hidden"});
-    paintShadowsForNeighbors($(".card-removed"));
     $(".card-removed").removeClass("card-removed");
 }
-
-
-function paintShadowsForNeighbors(elements) {
-    elements.each(function() {
-        var positionX = parseInt($(this).css("left"));
-        var positionY = parseInt($(this).css("top"));
-        var zIndex = parseInt($(this).css("z-index"));
-        var rightNeigbors = getRightNeigbors(positionX, positionY, zIndex);
-        var beneathNeigbors = getBeneathNeighbors(positionX, positionY, zIndex);
-        $(this).attr("rightNeigbors", rightNeigbors);
-        console.log("rightNeigbors: " + $(this).attr("rightNeigbors"));
-
-        rightNeigbors.each(function() {
-            var posX = parseInt($(this).css("left"));
-            var posY = parseInt($(this).css("top"));
-            var zIdx = parseInt($(this).css("z-index"));
-            paintShadows($(this), posX, posY, zIdx);
-        });
-
-        beneathNeigbors.each(function() {
-            var posX = parseInt($(this).css("left"));
-            var posY = parseInt($(this).css("top"));
-            var zIdx = parseInt($(this).css("z-index"));
-            paintShadows($(this), posX, posY, zIdx);
-        });
-    });
-}
-
-function paintShadows(element, positionX, positionY, zIndex) {
-    var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, zIndex);
-    if (numberOfLeftNeighbors === 0) {
-        element.addClass("cardWithoutLeftNeighbor");
-    } else {
-        element.removeClass("cardWithoutLeftNeighbor");
-    }
-
-    var numberOfAboveNeighbors = getNumberOfAboveNeighbors(positionX, positionY, zIndex);
-    if (numberOfAboveNeighbors === 0) {
-        element.addClass("cardWithoutAboveNeighbor");
-    } else {
-        element.removeClass("cardWithoutAboveNeighbor");
-    }
-}
-
 
 function startNewGame() {
     $("#cards").empty();
     $("#cards").append('<div class="card"></div>');
     startGame();
 }
-
 
 function restartGame() {
     var numberOfRemovedPatterns = matchingGame.undoList.length;
@@ -549,21 +506,17 @@ function restartGame() {
     }
 }
 
-
-
-
-
 function changeTheme() {
     if (matchingGame.theme === 1)
         matchingGame.theme = 0;
     else
         matchingGame.theme = 1;
 
-    console.log (matchingGame.theme);
-    console.log (matchingGame.themes[matchingGame.theme]);
+    console.log(matchingGame.theme);
+    console.log(matchingGame.themes[matchingGame.theme]);
     $("html").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
-    
-    
+
+
     var resolution = "";
     if (matchingGame.resolution === matchingGame.resolutions.verysmallscreen)
         resolution = "verysmallscreen";
@@ -573,20 +526,23 @@ function changeTheme() {
         resolution = "bigscreen";
     if (matchingGame.resolution === matchingGame.resolutions.verybigscreen)
         resolution = "verybigscreen";
-    
+
     $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
 }
 
-
 function undo() {
     if (matchingGame.undoList.length >= 1) {
+        var cardsToUndo = matchingGame.undoList[0];
+
+        cardsToUndo.each(function(index) {
+            index = $(".card").index($(this));
+            $(".shadow").eq(index).css({"visibility": "visible"});
+        });
+
         (matchingGame.undoList[0]).css({"visibility": "visible"});
-        paintShadowsForNeighbors((matchingGame.undoList[0]));
         matchingGame.undoList.shift();
     }
 }
-
-
 
 function showAlert(message) {
     if (cordovaUsed())
@@ -594,7 +550,6 @@ function showAlert(message) {
     else
         alert(message);
 }
-
 
 function cordovaUsed() {
     return navigator.notification;
