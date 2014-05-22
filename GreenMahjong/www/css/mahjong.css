@@ -21,7 +21,7 @@ html {
 }
 
 div.game-buttons{
-    position: absolute;
+    position: fixed;
     z-index: 100;
     width:100%;
 }
@@ -50,7 +50,7 @@ div.game-buttons  ul li a {
 
 }
 div.game-buttons  ul li{
-    width:80px;
+    width:78px;
     float: right;
     padding: 0 8px;
     text-decoration: none;
@@ -93,22 +93,6 @@ div.game-buttons ul li img{
     position: absolute;
 }
 
-.cardWithoutLeftNeighbor {
-    -webkit-box-shadow: -5px 0 5px -2px darkgreen;
-    box-shadow: -5px 0 5px -2px darkgreen;
-}
-
-.cardWithoutAboveNeighbor {
-    -webkit-box-shadow: 0px -5px 5px -2px darkgreen;
-    box-shadow: 0px -5px 5px -2px darkgreen;
-}
-
-.cardWithoutLeftNeighbor.cardWithoutAboveNeighbor {
-    -webkit-box-shadow: -5px -5px 5px -2px darkgreen;
-    box-shadow: -5px -5px 5px -2px darkgreen;
-}
-
-.cardWithoutLeftNeighbor.cardWithoutAboveNeighbor.card-selected,
 .card-selected {
     //-webkit-box-shadow: 0 0 20px orange;
     //box-shadow: 0 0 20px orange;

@@ -249,8 +249,7 @@ function onDeviceReady() {
 
     $("body").click(function(e) {
         console.log("clicked on board");
-//        $("div.game-buttons.lowerbuttons").toggle("slide", { direction: 'up'});
-        $("div.game-buttons").toggle("slide");
+        $("div.game-buttons").slideToggle({ direction: "down" }, 300);
     });
 
 //var mql = window.matchMedia("(min-width: 480px)");
@@ -262,8 +261,8 @@ function onDeviceReady() {
     startGame();
 
     setTimeout(function() {
-        $("div.game-buttons").hide(750);
-    }, 800);
+        $("div.game-buttons").slideToggle({ direction: "down" }, 300);
+    }, 1500);
 }
 
 function redrawGame() {
@@ -491,11 +490,18 @@ function removeTookCards() {
     matchingGame.undoList.unshift(removedCards);
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
+    
+    if (matchingGame.undoList.length === $(".card").length){
+        console.log("Spiel gewonnen");
+        $("div.game-buttons").slideToggle({ direction: "down" }, 300);
+    }
 }
 
 function startNewGame() {
+    console.log("in startNewGame");
     $("#cards").empty();
     $("#cards").append('<div class="card"></div>');
+    $("#cards").append('<div class="shadow"></div>');
     startGame();
 }
 
