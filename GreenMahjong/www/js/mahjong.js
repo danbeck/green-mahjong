@@ -172,19 +172,8 @@ function registerMediaQueryListListener() {
     var smallScreenMediaQueryList = window.matchMedia("(min-width: 640px) and (max-width:1129px)");
     var verysmallScreenMediaQueryList = window.matchMedia("(max-width: 639px)");
 
-    if (verybigScreenMediaQueryList.matches) {
-        matchingGame.resolution = matchingGame.resolutions.verybigscreen;
-    }
-    if (bigScreenMediaQueryList.matches) {
-        matchingGame.resolution = matchingGame.resolutions.bigscreen;
-    }
+    checkAndSetResolution();
 
-    if (smallScreenMediaQueryList.matches) {
-        matchingGame.resolution = matchingGame.resolutions.smallscreen;
-    }
-    if (verysmallScreenMediaQueryList.matches) {
-        matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-    }
     verybigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
@@ -212,6 +201,30 @@ function registerMediaQueryListListener() {
             redrawGame();
         }
     });
+
+    window.onorientationchange = function() {
+        console.log("orientationchange event");
+        checkAndSetResolution();
+        redrawGame();
+    };
+
+    function checkAndSetResolution() {
+
+        if (verybigScreenMediaQueryList.matches) {
+            matchingGame.resolution = matchingGame.resolutions.verybigscreen;
+        }
+        if (bigScreenMediaQueryList.matches) {
+            matchingGame.resolution = matchingGame.resolutions.bigscreen;
+        }
+
+        if (smallScreenMediaQueryList.matches) {
+            matchingGame.resolution = matchingGame.resolutions.smallscreen;
+        }
+        if (verysmallScreenMediaQueryList.matches) {
+            matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
+        }
+
+    }
 }
 /**
  * Entry point to the app. It initializes the Ubuntu SDK HTML5 theme
@@ -266,6 +279,7 @@ function onDeviceReady() {
 }
 
 function redrawGame() {
+    console.log("redraw!");
     matchingGame.cardWidth = parseInt($(".card").css('width'));
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
     matchingGame.cardHeight = parseInt($(".card").css('height'));
@@ -276,7 +290,7 @@ function redrawGame() {
     var positionYShadow;
     var zIndexShadow;
 
-    var shadowShift = matchingGame.cardWidthWithoutBorder/8;
+    var shadowShift = matchingGame.cardWidthWithoutBorder / 8;
     $(".card").each(function(index) {
 
         var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
@@ -288,7 +302,7 @@ function redrawGame() {
             "top": positionY,
             "z-index": zIndex
         });
-        
+
         positionXShadow = positionX - shadowShift;
         positionYShadow = positionY - shadowShift;
         zIndexShadow = zIndex - 1;
@@ -331,13 +345,13 @@ function startGame() {
     var positionYShadow;
     var zIndexShadow;
     var pattern;
-    var shadowShift = matchingGame.cardWidthWithoutBorder/8;
+    var shadowShift = matchingGame.cardWidthWithoutBorder / 8;
     $(".card").each(function(index) {
 
         positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
         positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
         zIndex = zIndexBase + matchingGame.shift[index];
-        
+
         positionXShadow = positionX - shadowShift;
         positionYShadow = positionY - shadowShift;
         zIndexShadow = zIndex - 1;
@@ -509,21 +523,27 @@ function removeTookCards() {
 
     console.log("Länge undolist: " + (matchingGame.undoList.length * 2) + ", Länge .card: " + $(".card").length);
     if ((matchingGame.undoList.length * 2) === $(".card").length) {
-        console.log("Spiel gewonnen");
-        $("div.game-buttons").slideToggle({direction: "down"}, 300);
+        showWinningMessage();
     }
 }
 
+function showWinningMessage() {
+    console.log("Spiel gewonnen");
+    $("div.game-buttons").slideToggle({direction: "down"}, 300);
+    $("div#winningMessage").show();
+}
 function startNewGame() {
     console.log("in startNewGame");
     $("#cards").empty();
     $("#cards").append('<div class="card"></div>');
     $("#cards").append('<div class="shadow"></div>');
     matchingGame.undoList = [];
+    $("div#winningMessage").hide();
     startGame();
 }
 
 function restartGame() {
+    $("div#winningMessage").hide();
     var numberOfRemovedPatterns = matchingGame.undoList.length;
     for (var i = 0; i < numberOfRemovedPatterns; i++) {
         undo();

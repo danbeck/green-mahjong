@@ -23,6 +23,7 @@ html {
 div#winningMessage {
     width: 200px;
     height: 280px;
+    display: none;
     background-color: red;
     padding:25px;
     border-width: 2px;
