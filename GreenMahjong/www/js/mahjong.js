@@ -491,7 +491,8 @@ function removeTookCards() {
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
     
-    if (matchingGame.undoList.length === $(".card").length){
+    console.log("Länge undolist: " + (matchingGame.undoList.length * 2) + ", Länge .card: " + $(".card").length);
+    if ((matchingGame.undoList.length * 2) === $(".card").length){
         console.log("Spiel gewonnen");
         $("div.game-buttons").slideToggle({ direction: "down" }, 300);
     }
@@ -502,6 +503,7 @@ function startNewGame() {
     $("#cards").empty();
     $("#cards").append('<div class="card"></div>');
     $("#cards").append('<div class="shadow"></div>');
+    matchingGame.undoList = [];
     startGame();
 }
 
