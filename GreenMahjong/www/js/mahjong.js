@@ -247,7 +247,7 @@ function onDeviceReady() {
         changeTheme();
     });
 
-    $("body").click(function(e) {
+    $("html").click(function(e) {
         console.log("clicked on board");
         $("div.game-buttons").slideToggle({direction: "down"}, 300);
     });
