@@ -244,7 +244,7 @@ function onDeviceReady() {
 //    }
 
 
-    FastClick.attach(document.body);
+//    FastClick.attach(document.body);
 
     $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
