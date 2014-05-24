@@ -20,6 +20,27 @@ html {
     background-size: cover;
 }
 
+div#winningMessage {
+    width: 200px;
+    height: 280px;
+    background-color: red;
+    padding:25px;
+    border-width: 2px;
+    border-style: solid;
+    border-color:#ffcc01;
+    background-color: rgba(0,0,0,0.7);
+    color:#ececea;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    text-align: center;
+    margin: auto;
+}
+
+
 div.game-buttons{
     position: fixed;
     z-index: 100;
