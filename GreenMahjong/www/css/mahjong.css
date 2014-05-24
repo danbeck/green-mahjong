@@ -45,12 +45,12 @@ div.game-buttons ul{
 div.game-buttons  ul li a {
     text-decoration: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     /*font-weight: bold;*/
 
 }
 div.game-buttons  ul li{
-    width:78px;
+    width:50px;
     float: right;
     padding: 0 8px;
     text-decoration: none;
@@ -58,8 +58,8 @@ div.game-buttons  ul li{
 }
 
 div.game-buttons ul li img{
-    width:40px;
-    height: 40px;
+    width:24px;
+    height: 24px;
 }
 
 #game {
