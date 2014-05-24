@@ -26,6 +26,12 @@ Innen:57x45*/
     background: transparent url('../images/mahjong_smallscreen_fruits.png');
 }
 
+
+.shadow {
+    height: 65px;
+    width: 53px;
+    background: transparent url('../images/shadow_smallscreen.png');
+}
 .cardZahl1 {background-position: 0 0}
 .cardZahl2 {background-position: -48px 0; }
 .cardZahl3 {background-position: -96px 0;}

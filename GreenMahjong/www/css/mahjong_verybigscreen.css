@@ -31,6 +31,13 @@ body {
     background: transparent url('../images/mahjong_verybigscreen_fruits.png');
 }
 
+
+.shadow {
+    height: 153px;
+    width: 125px;
+    background: transparent url('../images/shadow_verbigscreen.png');
+}
+
 .cardZahl1 {background-position: 0 0}
 .cardZahl2 {background-position: -114px 0; }
 .cardZahl3 {background-position: -228px 0;}
