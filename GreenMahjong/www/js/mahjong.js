@@ -249,7 +249,7 @@ function onDeviceReady() {
 
     $("body").click(function(e) {
         console.log("clicked on board");
-        $("div.game-buttons").slideToggle({ direction: "down" }, 300);
+        $("div.game-buttons").slideToggle({direction: "down"}, 300);
     });
 
 //var mql = window.matchMedia("(min-width: 480px)");
@@ -261,7 +261,7 @@ function onDeviceReady() {
     startGame();
 
     setTimeout(function() {
-        $("div.game-buttons").slideToggle({ direction: "down" }, 300);
+        $("div.game-buttons").slideToggle({direction: "down"}, 300);
     }, 1500);
 }
 
@@ -272,6 +272,11 @@ function redrawGame() {
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
 
+    var positionXShadow;
+    var positionYShadow;
+    var zIndexShadow;
+
+    var shadowShift = matchingGame.cardWidthWithoutBorder/8;
     $(".card").each(function(index) {
 
         var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
@@ -282,6 +287,16 @@ function redrawGame() {
             "left": positionX,
             "top": positionY,
             "z-index": zIndex
+        });
+        
+        positionXShadow = positionX - shadowShift;
+        positionYShadow = positionY - shadowShift;
+        zIndexShadow = zIndex - 1;
+
+        $(".shadow").eq(index).css({
+            "left": positionXShadow,
+            "top": positionYShadow,
+            "z-index": zIndexShadow
         });
     });
 
@@ -316,14 +331,15 @@ function startGame() {
     var positionYShadow;
     var zIndexShadow;
     var pattern;
-
+    var shadowShift = matchingGame.cardWidthWithoutBorder/8;
     $(".card").each(function(index) {
 
         positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
         positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
         zIndex = zIndexBase + matchingGame.shift[index];
-        positionXShadow = positionX - 8;
-        positionYShadow = positionY - 8;
+        
+        positionXShadow = positionX - shadowShift;
+        positionYShadow = positionY - shadowShift;
         zIndexShadow = zIndex - 1;
 
         console.log("zIndex: " + zIndex + ", zIndexShadow: " + zIndexShadow);
@@ -490,11 +506,11 @@ function removeTookCards() {
     matchingGame.undoList.unshift(removedCards);
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
-    
+
     console.log("Länge undolist: " + (matchingGame.undoList.length * 2) + ", Länge .card: " + $(".card").length);
-    if ((matchingGame.undoList.length * 2) === $(".card").length){
+    if ((matchingGame.undoList.length * 2) === $(".card").length) {
         console.log("Spiel gewonnen");
-        $("div.game-buttons").slideToggle({ direction: "down" }, 300);
+        $("div.game-buttons").slideToggle({direction: "down"}, 300);
     }
 }
 
