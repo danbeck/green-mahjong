@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Green Mahjong
-Comment=A simple mahjong game
-Exec=cordova-ubuntu-2.8 .
+Comment=A solitair mahjong game
+Exec=qmlscene $@ greenmahjong.qml
 Icon=./greenmahjong.png
 Terminal=false
 Type=Application
