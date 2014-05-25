@@ -1,6 +1,7 @@
 {
     "policy_groups": [
-        "networking"
+        "networking",
+        "webview"
     ],
     "policy_version": 1
 }
