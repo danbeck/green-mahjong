@@ -1,0 +1,17 @@
+{
+    "name": "Green Mahong",
+    "description": "Green Mahjong is a solitaire Mahjong game",
+    "launch_path": "/index.html",
+    "icons": {
+        "256": "/greenmahjong256.png",
+        "128": "/greenmahjong128.png",
+        "64": "/greenmahjong64.png",
+        "32": "/greenmahjong32.png",
+        "16": "/greenmahjong16.png"
+    },
+    "developer":{
+        "name": "Daniel Beck",
+        "url": "http://daniel-beck.org"
+    },
+    "default_locale": "en"
+}
