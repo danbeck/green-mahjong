@@ -1,7 +1,7 @@
 {
     "architecture": "all",
     "description": "Green Mahjong is a simple Mahjong game",
-    "framework": "ubuntu-sdk-13.10",
+    "framework": "ubuntu-sdk-14.04",
     "hooks": {
         "greenmahjong": {
             "apparmor": "greenmahjong.json",
