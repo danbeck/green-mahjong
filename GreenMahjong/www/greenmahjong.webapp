@@ -1,13 +1,14 @@
 {
     "name": "Green Mahong",
-    "description": "Green Mahjong is a solitaire Mahjong game",
-    "launch_path": "/index.html",
+    "description": "Green Mahjong is a solitaire Mahjong game. The goal is to match open pairs of identical tiles and remove them from the board,  exposing the tiles under them for play. The game is finished when all pairs of tiles have been removed from the board or when there are no exposed pairs remaining.",
+    "launch_path": "/greenmahjong/index.html",
     "icons": {
-        "256": "/greenmahjong256.png",
-        "128": "/greenmahjong128.png",
-        "64": "/greenmahjong64.png",
-        "32": "/greenmahjong32.png",
-        "16": "/greenmahjong16.png"
+        "256": "/greenmahjong/firefox/icon-256.png",
+        "128": "/greenmahjong/firefox/icon-128.png",
+        "64": "/greenmahjong/firefox/icon-64.png",
+        "60": "/greenmahjong/firefox/icon-60.png",
+        "32": "/greenmahjong/firefox/icon-32.png",
+        "16": "/greenmahjong/firefox/icon-16.png"
     },
     "developer":{
         "name": "Daniel Beck",
