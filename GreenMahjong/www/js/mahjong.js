@@ -40,6 +40,10 @@ matchingGame.deck = [
 
 matchingGame.undoList = [];
 
+matchingGame.selectableCards = {};
+
+matchingGame.matchingCards = {};
+
 matchingGame.positionX = [
     2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
     4, 5, 6, 7, 8, 9, 10, 11,
@@ -121,6 +125,33 @@ matchingGame.shift = [
     3, 3,
     // 5. Schicht
     4
+];
+
+matchingGame.selectable = [
+    true, false, false, false, false, false, false, false, false, false, false, true,
+    true, false, false, false, false, false, false, true,
+    true, false, false, false, false, false, false, false, false, true,
+    true, false, false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false, false, false, true,
+    true, false, false, false, false, false, false, false, false, true,
+    true, false, false, false, false, false, false, true,
+    true, false, false, false, false, false, false, false, false, false, false, true,
+    true, false, false, false, false, true,
+    true, false, false, false, false, true,
+    true, false, false, false, false, true,
+    true, false, false, false, false, true,
+    true, false, false, false, false, true,
+    true, false, false, false, false, true,
+    // 3. Schicht
+    true, false, false, true,
+    true, false, false, true,
+    true, false, false, true,
+    true, false, false, true,
+    // 4. Schicht
+    false, false,
+    false, false,
+    // 5. Schicht
+    true
 ];
 
 //matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
@@ -342,8 +373,12 @@ function startGame() {
     console.log("time taking for cloning: " + (thirdDate - secondDate));
 
     var positionX;
+    var cardPositionX;
     var positionY;
-    var zIndex;
+    var cardPositionY;
+    var shift;
+    var cardZIndex;
+    var selectable;
     var positionXShadow;
     var positionYShadow;
     var zIndexShadow;
@@ -351,20 +386,24 @@ function startGame() {
     var shadowShift = matchingGame.cardWidthWithoutBorder / 8;
     $(".card").each(function(index) {
 
-        positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
-        positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
-        zIndex = zIndexBase + matchingGame.shift[index];
+        shift = matchingGame.shift[index];
+        positionX = matchingGame.positionX[index];
+        positionY = matchingGame.positionY[index];
+        selectable = matchingGame.selectable[index];
+        cardPositionX = matchingGame.cardWidthWithoutBorder * (positionX - 1) - getShiftValueX(shift);
+        cardPositionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (positionY - 1)) - getShiftValueY(shift);
+        cardZIndex = zIndexBase + shift;
 
-        positionXShadow = positionX - shadowShift;
-        positionYShadow = positionY - shadowShift;
-        zIndexShadow = zIndex - 1;
+        positionXShadow = cardPositionX - shadowShift;
+        positionYShadow = cardPositionY - shadowShift;
+        zIndexShadow = cardZIndex - 1;
 
-        console.log("zIndex: " + zIndex + ", zIndexShadow: " + zIndexShadow);
+        console.log("zIndex: " + cardZIndex + ", zIndexShadow: " + zIndexShadow);
 
         $(this).css({
-            "left": positionX,
-            "top": positionY,
-            "z-index": zIndex
+            "left": cardPositionX,
+            "top": cardPositionY,
+            "z-index": cardZIndex
         });
 
         $(".shadow").eq(index).css({
@@ -377,13 +416,73 @@ function startGame() {
         $(this).addClass(pattern);
         pattern = getCardPattern(pattern);
         $(this).attr("data-pattern", pattern);
+        $(this).attr("data-position-x", positionX);
+        $(this).attr("data-position-y", positionY);
+        $(this).attr("data-shift", shift);
+        $(this).attr("data-selectable", selectable);
         $(this).click(selectCard);
     });
 
+    initMatchingCards();
 
     var fourthDate = new Date();
     console.log("time for painting position and shadow: " + (fourthDate - thirdDate));
 
+}
+
+function initMatchingCards(){
+    
+    var selectable;
+    var pattern;
+    var selectableCardsByPattern = [];
+    
+    matchingGame.selectableCards = {};
+    matchingGame.matchingCards = {};
+    
+    $(".card").each(function() {
+        selectable = $(this).data("selectable");
+        if (selectable){
+            pattern = $(this).data("pattern");
+            if (matchingGame.selectableCards[pattern] !== undefined){
+                selectableCardsByPattern = matchingGame.selectableCards[pattern];
+                selectableCardsByPattern.push($(this));
+            } else {
+                selectableCardsByPattern = [$(this)];
+                matchingGame.selectableCards[pattern]= selectableCardsByPattern;
+            }
+        }
+    });
+    
+    for (pattern in matchingGame.selectableCards){
+       selectableCardsByPattern = matchingGame.selectableCards[pattern];
+       if (selectableCardsByPattern.length > 1){
+           matchingGame.matchingCards[pattern] = selectableCardsByPattern;
+           console.log("match: "+ pattern);
+       }
+    }
+}
+
+function getNumberOfOverlappingCards(positionX, positionY, shift){
+    var overlappingCards = $(".card[data-position-x=" + positionX + "][data-position-y=" + positionY + "]");
+    console.log("overlappingCards: " + overlappingCards.length);
+    overlappingCards = overlappingCards.filter(function() {
+        return (parseInt($(this).data("shift")) > shift);});
+
+    return overlappingCards.length;
+}
+
+function getExistBlockingNeighbours(positionX, positionY, shift){
+    var positionXOfNeighbour;
+    
+    var blockingNeighboursWithSamePositionY = $(".card[data-position-y=" + positionY + "][data-shift=" + shift + "]");
+    blockingNeighboursWithSamePositionY = blockingNeighboursWithSamePositionY.filter(function() {
+        positionXOfNeighbour = $(this).data("position-x");
+        return (positionXOfNeighbour < positionX || positionXOfNeighbour > positionX);});
+    if (blockingNeighboursWithSamePositionY.length > 0){
+        return true;
+    }
+    
+    return false;
 }
 
 function getCardPattern(cardName) {
@@ -427,15 +526,15 @@ function selectCard(e) {
 }
 
 function isCardSelectable(selectedElement) {
-    var positionX = parseInt(selectedElement.css("left"));
-    var positionY = parseInt(selectedElement.css("top"));
-    var zIndex = parseInt(selectedElement.css("z-index"));
-    var shiftingX = getShiftValueX(zIndex);
-    var shiftingY = getShiftValueY(zIndex);
+    var positionX = selectedElement.data("position-x");
+    var positionY = selectedElement.data("position-y");
+    var shift = selectedElement.data("shift");
+    
+    var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, shift);
+    var numberOfRightNeighbors = getNumberOfRightNeighbors(positionX, positionY, shift);
+    var numberOfHigherOverlaps = getNumberOfHigherOverlaps(positionX, positionY, shift);
 
-    var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, zIndex);
-    var numberOfRightNeighbors = getNumberOfRightNeighbors(positionX, positionY, zIndex);
-    var numberOfHigherOverlaps = getNumberOfHigherOverlaps(positionX, positionY, zIndex, shiftingX, shiftingY);
+    console.log("numberOfLeftNeighbours: " + numberOfLeftNeighbors + ", numberOfRightNeigbours: " + numberOfRightNeighbors + ", numberOfHigherOverlaps: " + numberOfHigherOverlaps);
 
     return ((numberOfLeftNeighbors === 0 || numberOfRightNeighbors === 0) && numberOfHigherOverlaps === 0);
 }
@@ -454,22 +553,25 @@ function getNumberOfAboveNeighbors(positionX, positionY, zIndex) {
     }).length;
 }
 
-function getRightNeigbors(positionX, positionY, zIndex) {
+function getRightNeigbors(positionX, positionY, shift) {
     return $(".card").filter(function() {
-        return (($(this).css("visibility") === "visible") && Math.abs(parseInt($(this).css("top")) - positionY) < matchingGame.cardHeightWithoutBorder) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) - matchingGame.cardWidthWithoutBorder === positionX);
+        return (($(this).css("visibility") === "visible")
+                && ($(this).data("position-x") > positionX)
+                && (Math.abs($(this).data("position-y") - positionY) < 1) 
+                && ($(this).data("shift") === shift));
     });
 }
 
-function getNumberOfRightNeighbors(positionX, positionY, zIndex) {
-    return getRightNeigbors(positionX, positionY, zIndex).length;
+function getNumberOfRightNeighbors(positionX, positionY, shift) {
+    return getRightNeigbors(positionX, positionY, shift).length;
 }
 
-function getNumberOfLeftNeighbors(positionX, positionY, zIndex) {
+function getNumberOfLeftNeighbors(positionX, positionY, shift) {
     return $(".card").filter(function() {
         var isNeighbour = (($(this).css("visibility") === "visible")
-                && (Math.abs(parseInt($(this).css("top")) - positionY) < matchingGame.cardHeightWithoutBorder)
-                && (parseInt($(this).css("z-index")) === zIndex)
-                && ((parseInt($(this).css("left")) + matchingGame.cardWidthWithoutBorder) === positionX));
+            && ($(this).data("position-x") < positionX)
+            && (Math.abs($(this).data("position-y") - positionY) < 1)
+            && ($(this).data("shift") === shift));
         return isNeighbour;
     }).length;
 }
@@ -480,18 +582,12 @@ function getBeneathNeighbors(positionX, positionY, zIndex) {
     });
 }
 
-function getNumberOfHigherOverlaps(positionX, positionY, zIndex, shiftingX, shiftingY) {
+function getNumberOfHigherOverlaps(positionX, positionY, shift) {
     return $(".card").filter(function() {
-        var zIndexActualCard = parseInt($(this).css("z-index"));
-        var shiftingXActualCard = getShiftValueX(zIndexActualCard);
-        var shiftingYActualCard = getShiftValueY(zIndexActualCard);
-        var shiftingDifferenceX = Math.abs(shiftingX - shiftingXActualCard);
-        var shiftingDifferenceY = Math.abs(shiftingY - shiftingYActualCard);
-
         var isHigherOverlap = (($(this).css("visibility") === "visible")
-                && (Math.abs(parseInt($(this).css("top")) - positionY) < (matchingGame.cardHeightWithoutBorder - shiftingDifferenceY))
-                && (parseInt($(this).css("z-index")) > zIndex)
-                && (Math.abs(parseInt($(this).css("left")) - positionX) < (matchingGame.cardWidthWithoutBorder - shiftingDifferenceX)));
+                && (Math.abs($(this).data("position-y") - positionY) < 1)
+                && ($(this).data("shift") > shift)
+                && (Math.abs($(this).data("position-x") - positionX) < 1));
         return isHigherOverlap;
     }).length;
 }
@@ -520,23 +616,43 @@ function removeTookCards() {
     });
 
     var removedCards = $(".card-removed");
+    updateMatchingCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
 
-    console.log("Länge undolist: " + (matchingGame.undoList.length * 2) + ", Länge .card: " + $(".card").length);
     if ((matchingGame.undoList.length * 2) === $(".card").length) {
         showWinningMessage();
     }
 }
 
+function updateMatchingCards(removedCards){
+    var pattern;
+    var selectableCardsByPattern;
+    var matchingCardsByPattern;
+    
+    pattern = $(removedCards[0]).data("pattern");
+    
+    selectableCardsByPattern = matchingGame.selectableCards[pattern];
+    selectableCardsByPattern.unshift(removedCards);
+    if (selectableCardsByPattern.length === 0){
+        matchingGame.selectableCards[pattern] = undefined;
+    }
+    
+    matchingCardsByPattern = matchingGame.matchingCards[pattern];
+    matchingCardsByPattern.unshift(removedCards);
+    if (matchingCardsByPattern.length === 0){
+        matchingGame.matchingCardsByPattern[pattern] = undefined;
+    }
+    
+    
+}
+
 function showWinningMessage() {
-    console.log("Spiel gewonnen");
     $("div.game-buttons").slideToggle({direction: "down"}, 300);
     $("div#winningMessage").show();
 }
 function startNewGame() {
-    console.log("in startNewGame");
     $("#cards").empty();
     $("#cards").append('<div class="card"></div>');
     $("#cards").append('<div class="shadow"></div>');
@@ -559,10 +675,7 @@ function changeTheme() {
     else
         matchingGame.theme = 1;
 
-    console.log(matchingGame.theme);
-    console.log(matchingGame.themes[matchingGame.theme]);
     $("html").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
-
 
     var resolution = "";
     if (matchingGame.resolution === matchingGame.resolutions.verysmallscreen)
