@@ -566,14 +566,18 @@ function getNumberOfRightNeighbors(positionX, positionY, shift) {
     return getRightNeigbors(positionX, positionY, shift).length;
 }
 
-function getNumberOfLeftNeighbors(positionX, positionY, shift) {
+function getLeftNeighbours(positionX, positionY, shift){
     return $(".card").filter(function() {
         var isNeighbour = (($(this).css("visibility") === "visible")
             && ($(this).data("position-x") < positionX)
             && (Math.abs($(this).data("position-y") - positionY) < 1)
             && ($(this).data("shift") === shift));
         return isNeighbour;
-    }).length;
+    });
+}
+
+function getNumberOfLeftNeighbors(positionX, positionY, shift) {
+    return getLeftNeighbours(positionX, positionY, shift).length;
 }
 
 function getBeneathNeighbors(positionX, positionY, zIndex) {
@@ -616,7 +620,7 @@ function removeTookCards() {
     });
 
     var removedCards = $(".card-removed");
-    updateMatchingCards(removedCards);
+    //updateMatchingCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
