@@ -430,58 +430,63 @@ function startGame() {
 
 }
 
-function initMatchingCards(){
-    
+function initMatchingCards() {
+
     var selectable;
     var pattern;
     var selectableCardsByPattern = [];
-    
+
     matchingGame.selectableCards = {};
     matchingGame.matchingCards = {};
-    
+
     $(".card").each(function() {
         selectable = $(this).data("selectable");
-        if (selectable){
+        if (selectable) {
             pattern = $(this).data("pattern");
-            if (matchingGame.selectableCards[pattern] !== undefined){
+            if (matchingGame.selectableCards[pattern] !== undefined) {
                 selectableCardsByPattern = matchingGame.selectableCards[pattern];
                 selectableCardsByPattern.push($(this));
             } else {
                 selectableCardsByPattern = [$(this)];
-                matchingGame.selectableCards[pattern]= selectableCardsByPattern;
+                matchingGame.selectableCards[pattern] = selectableCardsByPattern;
             }
         }
     });
-    
-    for (pattern in matchingGame.selectableCards){
-       selectableCardsByPattern = matchingGame.selectableCards[pattern];
-       if (selectableCardsByPattern.length > 1){
-           matchingGame.matchingCards[pattern] = selectableCardsByPattern;
-           console.log("match: "+ pattern);
-       }
+
+    for (pattern in matchingGame.selectableCards) {
+        selectableCardsByPattern = matchingGame.selectableCards[pattern];
+        if (selectableCardsByPattern.length > 1) {
+            matchingGame.matchingCards[pattern] = selectableCardsByPattern;
+            selectableCardsByPattern.forEach(function(matchingCard){
+                matchingCard.addClass("card-matching");
+            });
+            console.log("match: " + pattern);
+        }
     }
 }
 
-function getNumberOfOverlappingCards(positionX, positionY, shift){
+function getNumberOfOverlappingCards(positionX, positionY, shift) {
     var overlappingCards = $(".card[data-position-x=" + positionX + "][data-position-y=" + positionY + "]");
     console.log("overlappingCards: " + overlappingCards.length);
     overlappingCards = overlappingCards.filter(function() {
-        return (parseInt($(this).data("shift")) > shift);});
+        return (parseInt($(this).data("shift")) > shift);
+    });
 
     return overlappingCards.length;
 }
 
-function getExistBlockingNeighbours(positionX, positionY, shift){
+function getExistBlockingNeighbours(positionX, positionY, shift) {
     var positionXOfNeighbour;
-    
+
     var blockingNeighboursWithSamePositionY = $(".card[data-position-y=" + positionY + "][data-shift=" + shift + "]");
     blockingNeighboursWithSamePositionY = blockingNeighboursWithSamePositionY.filter(function() {
         positionXOfNeighbour = $(this).data("position-x");
-        return (positionXOfNeighbour < positionX || positionXOfNeighbour > positionX);});
-    if (blockingNeighboursWithSamePositionY.length > 0){
+        return (positionXOfNeighbour < positionX || positionXOfNeighbour > positionX);
+    });
+    if (blockingNeighboursWithSamePositionY.length > 0) {
         return true;
     }
-    
+
     return false;
 }
 
@@ -529,7 +534,7 @@ function isCardSelectable(selectedElement) {
     var positionX = selectedElement.data("position-x");
     var positionY = selectedElement.data("position-y");
     var shift = selectedElement.data("shift");
-    
+
     var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, shift);
     var numberOfRightNeighbors = getNumberOfRightNeighbors(positionX, positionY, shift);
     var numberOfHigherOverlaps = getNumberOfHigherOverlaps(positionX, positionY, shift);
@@ -556,8 +561,8 @@ function getNumberOfAboveNeighbors(positionX, positionY, zIndex) {
 function getRightNeigbors(positionX, positionY, shift) {
     return $(".card").filter(function() {
         return (($(this).css("visibility") === "visible")
-                && ($(this).data("position-x") > positionX)
-                && (Math.abs($(this).data("position-y") - positionY) < 1) 
+                && ($(this).data("position-x") - positionX === 1)
+                && (Math.abs($(this).data("position-y") - positionY) < 1)
                 && ($(this).data("shift") === shift));
     });
 }
@@ -566,12 +571,12 @@ function getNumberOfRightNeighbors(positionX, positionY, shift) {
     return getRightNeigbors(positionX, positionY, shift).length;
 }
 
-function getLeftNeighbours(positionX, positionY, shift){
+function getLeftNeighbours(positionX, positionY, shift) {
     return $(".card").filter(function() {
         var isNeighbour = (($(this).css("visibility") === "visible")
-            && ($(this).data("position-x") < positionX)
-            && (Math.abs($(this).data("position-y") - positionY) < 1)
-            && ($(this).data("shift") === shift));
+                && (($(this).data("position-x") - positionX) === -1)
+                && (Math.abs($(this).data("position-y") - positionY) < 1)
+                && ($(this).data("shift") === shift));
         return isNeighbour;
     });
 }
@@ -583,6 +588,16 @@ function getNumberOfLeftNeighbors(positionX, positionY, shift) {
 function getBeneathNeighbors(positionX, positionY, zIndex) {
     return $(".card").filter(function() {
         return (($(this).css("visibility") === "visible") && ((parseInt($(this).css("top")) - matchingGame.cardHeightWithoutBorder) === positionY) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) === positionX));
+    });
+}
+
+function getUnderlayingNeighbours(positionX, positionY, shift) {
+    return $(".card").filter(function() {
+        var isUnderlayingNeighbour = (($(this).css("visibility") === "visible")
+                && (Math.abs($(this).data("position-y") - positionY) < 1)
+                && ($(this).data("shift") - shift === -1)
+                && (Math.abs($(this).data("position-x") - positionX) < 1));
+        return isUnderlayingNeighbour;
     });
 }
 
@@ -620,36 +635,92 @@ function removeTookCards() {
     });
 
     var removedCards = $(".card-removed");
-    //updateMatchingCards(removedCards);
+    removeTookCardsFromMatchingCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
+    updateMatchingCards(removedCards);
 
     if ((matchingGame.undoList.length * 2) === $(".card").length) {
         showWinningMessage();
     }
 }
 
-function updateMatchingCards(removedCards){
+function removeTookCardsFromMatchingCards(removedCards) {
     var pattern;
     var selectableCardsByPattern;
     var matchingCardsByPattern;
-    
+
     pattern = $(removedCards[0]).data("pattern");
-    
+
     selectableCardsByPattern = matchingGame.selectableCards[pattern];
     selectableCardsByPattern.unshift(removedCards);
-    if (selectableCardsByPattern.length === 0){
+    if (selectableCardsByPattern.length === 0) {
         matchingGame.selectableCards[pattern] = undefined;
     }
-    
+
     matchingCardsByPattern = matchingGame.matchingCards[pattern];
     matchingCardsByPattern.unshift(removedCards);
-    if (matchingCardsByPattern.length === 0){
+    if (matchingCardsByPattern.length === 0) {
         matchingGame.matchingCardsByPattern[pattern] = undefined;
     }
-    
-    
+}
+
+function updateMatchingCards(removedCards) {
+    var neighbours;
+    var leftNeighbours;
+    var rightNeighbours;
+    var underlayingNeighbours;
+
+    var positionX;
+    var positionY;
+    var shift;
+
+    removedCards.each(function() {
+        positionX = $(this).data("position-x");
+        positionY = $(this).data("position-y");
+        shift = $(this).data("shift");
+        leftNeighbours = getLeftNeighbours(positionX, positionY, shift);
+        rightNeighbours = getRightNeigbors(positionX, positionY, shift);
+        underlayingNeighbours = getUnderlayingNeighbours(positionX, positionY, shift);
+        
+        var allNeighbours = leftNeighbours.add(rightNeighbours).add(underlayingNeighbours);
+        if (neighbours !== undefined) {
+            neighbours = neighbours.add(allNeighbours);
+        }
+        else {
+            neighbours = allNeighbours;
+        }
+    });
+
+    var selectable;
+    var pattern;
+    var selectableCardsByPattern;
+    neighbours.each(function() {
+        selectable = isCardSelectable($(this));
+        if (!selectable) {
+            return;
+        }
+        pattern = $(this).data("pattern");
+        selectableCardsByPattern = matchingGame.selectableCards[pattern];
+        if (selectableCardsByPattern === undefined) {
+            selectableCardsByPattern = [$(this)];
+            matchingGame.selectableCards[pattern] = selectableCardsByPattern;
+        } else if (selectableCardsByPattern.indexOf($(this)) < 0) {
+            selectableCardsByPattern.push($(this));
+        }
+    });
+
+    for (pattern in matchingGame.selectableCards) {
+        selectableCardsByPattern = matchingGame.selectableCards[pattern];
+        if (selectableCardsByPattern.length > 1) {
+            matchingGame.matchingCards[pattern] = selectableCardsByPattern;
+            selectableCardsByPattern.forEach(function(matchingCard){
+                matchingCard.addClass("card-matching");
+            });
+            console.log("match: " + pattern);
+        }
+    }
 }
 
 function showWinningMessage() {

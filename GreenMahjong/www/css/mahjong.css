@@ -12,6 +12,7 @@ Innen:57x45*/
 
 html {
     /*text-align: center;*/  
+    background-color: #000088; 
     background-image: url(../images/background_fruits.jpg);
     //-webkit-background-size: cover;
     background-repeat: no-repeat;
@@ -122,4 +123,21 @@ div.game-buttons ul li img{
     //-webkit-transition-duration: 3s;
     -webkit-box-shadow: 0 0 5px 4px orange;
     box-shadow: 0 0 5px 4px orange;
+}
+
+.card-matching {
+    //-webkit-box-shadow: 0 0 20px orange;
+    //box-shadow: 0 0 20px orange;
+    //-webkit-transition-property: opacity, transform, box-shadow;
+    //-webkit-transition-duration: 3s;
+/*  -webkit-filter: hue-rotate(180deg);    
+  filter: hue-rotate(180deg);    */
+  -webkit-filter: saturate(2) contrast(2);    
+  filter: saturate(2) contrast(2);    
+/*    background-color:black;
+    opacity:0.5;*/
+/*    height: 30px;
+    width: 30px;*/
+/*    -webkit-box-shadow: 0 0 5px 4px blue;
+    box-shadow: 0 0 5px 4px blue;*/
 }
