@@ -234,7 +234,6 @@ function registerMediaQueryListListener() {
     });
 
     window.onorientationchange = function() {
-        console.log("orientationchange event");
         checkAndSetResolution();
         redrawGame();
     };
@@ -295,7 +294,6 @@ function onDeviceReady() {
     });
 
     $("html").click(function(e) {
-        console.log("clicked on board");
         $("div.game-buttons").slideToggle({direction: "down"}, 300);
     });
 
@@ -313,7 +311,6 @@ function onDeviceReady() {
 }
 
 function redrawGame() {
-    console.log("redraw!");
     matchingGame.cardWidth = parseInt($(".card").css('width'));
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
     matchingGame.cardHeight = parseInt($(".card").css('height'));
@@ -353,7 +350,6 @@ function startGame() {
     var firstDate = new Date();
     shuffleCards();
     var secondDate = new Date();
-    console.log("time taking for shuffling: " + (secondDate - firstDate));
 
     var numberOfCards = matchingGame.deck.length;
     matchingGame.cardWidth = parseInt($(".card").css('width'));
@@ -370,7 +366,6 @@ function startGame() {
 
 
     var thirdDate = new Date();
-    console.log("time taking for cloning: " + (thirdDate - secondDate));
 
     var positionX;
     var cardPositionX;
@@ -397,8 +392,6 @@ function startGame() {
         positionXShadow = cardPositionX - shadowShift;
         positionYShadow = cardPositionY - shadowShift;
         zIndexShadow = cardZIndex - 1;
-
-        console.log("zIndex: " + cardZIndex + ", zIndexShadow: " + zIndexShadow);
 
         $(this).css({
             "left": cardPositionX,
@@ -457,7 +450,7 @@ function initMatchingCards() {
         selectableCardsByPattern = matchingGame.selectableCards[pattern];
         if (selectableCardsByPattern.length > 1) {
             matchingGame.matchingCards[pattern] = selectableCardsByPattern;
-            selectableCardsByPattern.forEach(function(matchingCard){
+            selectableCardsByPattern.forEach(function(matchingCard) {
                 matchingCard.addClass("card-matching");
             });
             console.log("match: " + pattern);
@@ -467,7 +460,6 @@ function initMatchingCards() {
 
 function getNumberOfOverlappingCards(positionX, positionY, shift) {
     var overlappingCards = $(".card[data-position-x=" + positionX + "][data-position-y=" + positionY + "]");
-    console.log("overlappingCards: " + overlappingCards.length);
     overlappingCards = overlappingCards.filter(function() {
         return (parseInt($(this).data("shift")) > shift);
     });
@@ -538,8 +530,6 @@ function isCardSelectable(selectedElement) {
     var numberOfLeftNeighbors = getNumberOfLeftNeighbors(positionX, positionY, shift);
     var numberOfRightNeighbors = getNumberOfRightNeighbors(positionX, positionY, shift);
     var numberOfHigherOverlaps = getNumberOfHigherOverlaps(positionX, positionY, shift);
-
-    console.log("numberOfLeftNeighbours: " + numberOfLeftNeighbors + ", numberOfRightNeigbours: " + numberOfRightNeighbors + ", numberOfHigherOverlaps: " + numberOfHigherOverlaps);
 
     return ((numberOfLeftNeighbors === 0 || numberOfRightNeighbors === 0) && numberOfHigherOverlaps === 0);
 }
@@ -649,21 +639,58 @@ function removeTookCards() {
 function removeTookCardsFromMatchingCards(removedCards) {
     var pattern;
     var selectableCardsByPattern;
-    var matchingCardsByPattern;
-
+    
     pattern = $(removedCards[0]).data("pattern");
+    console.log("pattern to remove: " + pattern);
 
     selectableCardsByPattern = matchingGame.selectableCards[pattern];
-    selectableCardsByPattern.unshift(removedCards);
-    if (selectableCardsByPattern.length === 0) {
-        matchingGame.selectableCards[pattern] = undefined;
-    }
+    selectableCardsByPattern = removeCardsCardsFromArray(removedCards, selectableCardsByPattern);
+    selectableCardsByPattern.forEach(function(matchingCard) {
+        console.log("remove class card-matching");
+        matchingCard.removeClass("card-matching");
+    });
+    matchingGame.selectableCards[pattern] = selectableCardsByPattern;
+}
 
-    matchingCardsByPattern = matchingGame.matchingCards[pattern];
-    matchingCardsByPattern.unshift(removedCards);
-    if (matchingCardsByPattern.length === 0) {
-        matchingGame.matchingCardsByPattern[pattern] = undefined;
-    }
+function removeCardsCardsFromArray(cardsToRemove, cards) {
+    var positionXCardToRemove;
+    var positionYCardToRemove;
+    var shiftCardToRemove;
+
+    var positionX;
+    var positionY;
+    var shift;
+    var cardToRemove;
+    var resultingCards = [];
+    var isCardToRemove;
+    console.log("cards");
+    console.dir(cards);
+    console.log("cardsToRemove");
+    console.dir(cardsToRemove);
+
+    cards.forEach(function(card) {
+        positionX = card.data("position-x");
+        positionY = card.data("position-y");
+        shift = card.data("shift");
+        isCardToRemove = false;
+        cardsToRemove.each(function() {
+            cardToRemove = $(this);
+            positionXCardToRemove = cardToRemove.data("position-x");
+            positionYCardToRemove = cardToRemove.data("position-y");
+            shiftCardToRemove = cardToRemove.data("shift");
+            console.log("Positionen von cardToRemove: " + positionXCardToRemove + ", " + positionYCardToRemove + ", " + shiftCardToRemove);
+            if (positionXCardToRemove === positionX && positionYCardToRemove === positionY && shiftCardToRemove === shift) {
+                isCardToRemove = true;
+            }
+        });
+        if (!isCardToRemove){
+            resultingCards.push(card);
+        }
+    });
+    
+    console.log("Ergebnis: ");
+    console.dir(resultingCards);
+    return resultingCards;
 }
 
 function updateMatchingCards(removedCards) {
@@ -683,7 +710,7 @@ function updateMatchingCards(removedCards) {
         leftNeighbours = getLeftNeighbours(positionX, positionY, shift);
         rightNeighbours = getRightNeigbors(positionX, positionY, shift);
         underlayingNeighbours = getUnderlayingNeighbours(positionX, positionY, shift);
-        
+
         var allNeighbours = leftNeighbours.add(rightNeighbours).add(underlayingNeighbours);
         if (neighbours !== undefined) {
             neighbours = neighbours.add(allNeighbours);
@@ -703,24 +730,48 @@ function updateMatchingCards(removedCards) {
         }
         pattern = $(this).data("pattern");
         selectableCardsByPattern = matchingGame.selectableCards[pattern];
+        if (selectableCardsByPattern !== undefined) {
+            console.log(selectableCardsByPattern);
+            console.log("index des Objekts: " + pattern + ", boolescher Wert " + cardArrayContainsCard(selectableCardsByPattern, $(this)));
+        }
         if (selectableCardsByPattern === undefined) {
             selectableCardsByPattern = [$(this)];
             matchingGame.selectableCards[pattern] = selectableCardsByPattern;
-        } else if (selectableCardsByPattern.indexOf($(this)) < 0) {
+        } else if (!cardArrayContainsCard(selectableCardsByPattern, $(this))) {
             selectableCardsByPattern.push($(this));
         }
     });
 
+    matchingGame.matchingCards = {};
     for (pattern in matchingGame.selectableCards) {
         selectableCardsByPattern = matchingGame.selectableCards[pattern];
         if (selectableCardsByPattern.length > 1) {
             matchingGame.matchingCards[pattern] = selectableCardsByPattern;
-            selectableCardsByPattern.forEach(function(matchingCard){
+            selectableCardsByPattern.forEach(function(matchingCard) {
                 matchingCard.addClass("card-matching");
             });
             console.log("match: " + pattern);
         }
     }
+}
+
+function cardArrayContainsCard(cards, card) {
+    var positionX = card.data("position-x");
+    var positionY = card.data("position-y");
+    var shift = card.data("shift");
+    console.log("positionX: " + positionX + ", positionY: " + positionY + ", shift: " + shift);
+    if (cards === undefined || cards.length === 0) {
+        return false;
+    }
+
+    var containsCard = false;
+    cards.forEach(function(otherCard) {
+        //console.log("Vergleichsobjekt positionX: " + otherCard.data("position-x") + ", positionY: " + otherCard.data("position-y") + ", shift: " + otherCard.data("shift"));
+        if (otherCard.data("position-x") === positionX && otherCard.data("position-y") === positionY && otherCard.data("shift") === shift) {
+            containsCard = true;
+        }
+    });
+    return containsCard;
 }
 
 function showWinningMessage() {
