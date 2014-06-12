@@ -86,20 +86,8 @@ div.game-buttons ul li img{
 }
 
 #game {
-    /*border-radius: 10px;*/
-    /*border: 1px solid #666;*/
-    /*opacity:0.6;*/
-    /*background: rgba(178, 178, 168, .8);*/
-    /*background: rgba(255, 255, 255, .4);*/
-    /*background: green;*/
-    /*margin: 0 auto;*/
     display: box;
     margin: 0 auto;
-    /*position: absolute;*/
-    /*-webkit-box-pack: center;*/
-    /*-webkit-box-align: center;*/
-    /*-webkit-filter: sepia(0.2);*/
-    /*box-pack: center;*/
 }
 #cards {
     position: relative;  
@@ -117,27 +105,20 @@ div.game-buttons ul li img{
 }
 
 .card-selected {
-    //-webkit-box-shadow: 0 0 20px orange;
-    //box-shadow: 0 0 20px orange;
-    //-webkit-transition-property: opacity, transform, box-shadow;
-    //-webkit-transition-duration: 3s;
     -webkit-box-shadow: 0 0 5px 4px orange;
     box-shadow: 0 0 5px 4px orange;
 }
 
-.card-matching {
-    //-webkit-box-shadow: 0 0 20px orange;
-    //box-shadow: 0 0 20px orange;
-    //-webkit-transition-property: opacity, transform, box-shadow;
-    //-webkit-transition-duration: 3s;
-/*  -webkit-filter: hue-rotate(180deg);    
-  filter: hue-rotate(180deg);    */
-  -webkit-filter: saturate(2) contrast(2);    
-  filter: saturate(2) contrast(2);    
-/*    background-color:black;
-    opacity:0.5;*/
-/*    height: 30px;
-    width: 30px;*/
-/*    -webkit-box-shadow: 0 0 5px 4px blue;
-    box-shadow: 0 0 5px 4px blue;*/
+#game.hint-on .card {
+    filter:grayscale(80%);
+    -webkit-filter:grayscale(80%);
 }
+#game.hint-on .card.card-matching {
+    filter:grayscale(0%);
+    -webkit-filter:grayscale(0%);
+}
+/*.card-matching {
+  -webkit-filter: saturate(2) contrast(2);
+  -moz-filter: saturate(2) contrast(2);
+  filter: saturate(2) contrast(2);    
+}*/
