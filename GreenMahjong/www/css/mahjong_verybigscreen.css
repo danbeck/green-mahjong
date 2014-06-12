@@ -16,8 +16,6 @@ body {
 #game {
   width: 1600px;
   height: 1100px;
-  padding:12px;
-  margin-top:12px;
 }
 
 div.game-buttons  ul li{
