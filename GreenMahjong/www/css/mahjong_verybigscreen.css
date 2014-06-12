@@ -20,6 +20,15 @@ body {
   margin-top:12px;
 }
 
+div.game-buttons  ul li{
+    width:70px;
+    padding: 0 16px;
+}
+
+div.game-buttons ul li img{
+    width: 48px;
+    height:48px;
+}
 #cards {
   width: 380px;
   height: 400px;

@@ -33,6 +33,15 @@ body {
     background-image:  url('../images/mahjong_bigscreen_fruits.png');
 }
 
+div.game-buttons  ul li{
+    width:70px;
+    padding: 0 16px;
+}
+
+div.game-buttons ul li img{
+    width: 48px;
+    height:48px;
+}
 .shadow {
     height: 108px;
     width: 88px;
