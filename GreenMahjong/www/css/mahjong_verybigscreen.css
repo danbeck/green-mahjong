@@ -1,5 +1,5 @@
 /*
-Groß: 
+Größe: 
 ===
 Aussen: 100x80
 Innen: 95x75
@@ -33,7 +33,7 @@ div.game-buttons ul li img{
 }
 .card {
     border-radius: 14px;
-    height: 141px;
+    height: 142px;
     width: 113px;
     background: transparent url('../images/mahjong_verybigscreen_fruits.png');
 }
@@ -55,41 +55,41 @@ div.game-buttons ul li img{
 .cardZahl8 {background-position: -798px 0;}
 .cardZahl9 {background-position: -912px 0;}
 
-.cardBambus1 {background-position: -0 -141px;}
-.cardBambus2 {background-position: -114px -141px;}
-.cardBambus3 {background-position: -228px -141px;}
-.cardBambus4 {background-position: -342px  -141px;}
-.cardBambus5 {background-position: -456px -141px;}
-.cardBambus6 {background-position: -570px -141px;}
-.cardBambus7 {background-position: -684px -141px;}
-.cardBambus8 {background-position: -798px -141px;}
-.cardBambus9 {background-position: -912px -141px;}
+.cardBambus1 {background-position: -0 -142px;}
+.cardBambus2 {background-position: -114px -142px;}
+.cardBambus3 {background-position: -228px -142px;}
+.cardBambus4 {background-position: -342px  -142px;}
+.cardBambus5 {background-position: -456px -142px;}
+.cardBambus6 {background-position: -570px -142px;}
+.cardBambus7 {background-position: -684px -142px;}
+.cardBambus8 {background-position: -798px -142px;}
+.cardBambus9 {background-position: -912px -142px;}
 
-.cardMuenze1 {background-position: -0 -282px;}
-.cardMuenze2 {background-position: -114px -282px;}
-.cardMuenze3 {background-position: -228px -282px;}
-.cardMuenze4 {background-position: -342px -282px;}
-.cardMuenze5 {background-position: -456px -282px;}
-.cardMuenze6 {background-position: -570px -282px;}
-.cardMuenze7 {background-position: -684px -282px;}
-.cardMuenze8 {background-position: -798px -282px;}
-.cardMuenze9 {background-position: -912px -282px;}
+.cardMuenze1 {background-position: -0 -284px;}
+.cardMuenze2 {background-position: -114px -284px;}
+.cardMuenze3 {background-position: -228px -284px;}
+.cardMuenze4 {background-position: -342px -284px;}
+.cardMuenze5 {background-position: -456px -284px;}
+.cardMuenze6 {background-position: -570px -284px;}
+.cardMuenze7 {background-position: -684px -284px;}
+.cardMuenze8 {background-position: -798px -284px;}
+.cardMuenze9 {background-position: -912px -284px;}
 
 .cardNordwind {background-position: -1026px 0;}
 .cardSuedwind {background-position: -1140px  0;}
 .cardOstwind {background-position: -1254px 0;}
 .cardWestwind {background-position: -1368px 0;}
 
-.cardFruehling {background-position: -1026px -141px;}
-.cardSommer {background-position: -1140px -141px;}
-.cardHerbst {background-position: -1254px -141px;}
-.cardWinter {background-position: -1368px -141px;}
+.cardFruehling {background-position: -1026px -142px;}
+.cardSommer {background-position: -1140px -142px;}
+.cardHerbst {background-position: -1254px -142px;}
+.cardWinter {background-position: -1368px -142px;}
 
-.cardBambus {background-position: -1026px -282px;}
-.cardPflaume {background-position: -1140px -282px;}
-.cardOrchidee {background-position: -1254px -282px;}
-.cardChrysantheme {background-position: -1368px -282px;}
+.cardBambus {background-position: -1026px -284px;}
+.cardPflaume {background-position: -1140px -284px;}
+.cardOrchidee {background-position: -1254px -284px;}
+.cardChrysantheme {background-position: -1368px -284px;}
 
 .cardDracheGruen {background-position: -1482px 0;}
-.cardDracheRot {background-position: -1482px -141px;}
-.cardDracheWeiss {background-position: -1482px -282px;}
+.cardDracheRot {background-position: -1482px -142px;}
+.cardDracheWeiss {background-position: -1482px -284px;}
