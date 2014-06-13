@@ -58,6 +58,7 @@ div.game-buttons.upperbuttons{
 div.game-buttons ul{
     list-style: none;
     display:block;
+    padding: 0;
 }
 
 div.game-buttons  ul li a {
@@ -70,7 +71,7 @@ div.game-buttons  ul li a {
 div.game-buttons  ul li{
     width:50px;
     float: right;
-    padding: 0 8px;
+    padding: 0 6px;
     text-decoration: none;
     text-align: center;
 }
