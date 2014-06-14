@@ -15,7 +15,7 @@ body {
 
 #game {
   width: 1130px;
-  height: 780px;
+  height: 760px;
   padding:12px;
   margin-top:12px;
 }
@@ -26,8 +26,8 @@ body {
 }
 .card {
     border-radius: 15px;
-    height: 100px;
-    width: 80px;
+    height: 99px;
+    width: 79px;
     /*background: transparent url('../images/mahjong_bigscreen.png');*/
     background-color: transparent;
     background-image:  url('../images/mahjong_bigscreen_fruits.png');
