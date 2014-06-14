@@ -238,10 +238,16 @@ function registerMediaQueryListListener() {
         }
     });
 
-    window.onorientationchange = function() {
+    var portraitMediaQueryList = window.matchMedia("(orientation: portrait)");
+    portraitMediaQueryList.addListener(function(mql) {
         checkAndSetResolution();
         redrawGame();
-    };
+
+    });
+//    window.onorientationchange = function() {
+//        checkAndSetResolution();
+//        redrawGame();
+//    };
 
     function checkAndSetResolution() {
 
@@ -261,12 +267,6 @@ function registerMediaQueryListListener() {
         if (verysmallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
             console.log("set resolution to verysmall");
-        }
-
-        // This should never happen
-        if (matchingGame.resolution === null) {
-            matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-            console.log("resolution was not set");
         }
     }
 }
@@ -293,7 +293,7 @@ function onDeviceReady() {
     var version = localStorage.getItem("version");
     if (!version || version !== "1.2") {
         localStorage.setItem("version", matchingGame.version);
-        
+
         $("div#versionInformationDialog").show();
         $("html").click(function() {
             $("div#versionInformationDialog").hide();
