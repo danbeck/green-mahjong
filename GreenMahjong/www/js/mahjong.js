@@ -238,16 +238,17 @@ function registerMediaQueryListListener() {
         }
     });
 
-    var portraitMediaQueryList = window.matchMedia("(orientation: portrait)");
-    portraitMediaQueryList.addListener(function(mql) {
-        checkAndSetResolution();
-        redrawGame();
-
-    });
-//    window.onorientationchange = function() {
+//    var portraitMediaQueryList = window.matchMedia("(orientation: portrait)");
+//    portraitMediaQueryList.addListener(function(mql) {
 //        checkAndSetResolution();
 //        redrawGame();
-//    };
+//
+//    });
+    window.onorientationchange = function() {
+        alert("orientationchange");
+        checkAndSetResolution();
+        redrawGame();
+    };
 
     function checkAndSetResolution() {
 
