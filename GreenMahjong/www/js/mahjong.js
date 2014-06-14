@@ -644,11 +644,14 @@ function removeTookCards() {
     $(".card-removed").removeClass("card-removed");
     updateSelectableAndMatchingCards(removedCards);
 
-    if ((matchingGame.undoList.length * 2) === $(".card").length) {
+    if (isWinningGame()) {
         showWinningMessage();
     }
 }
 
+function isWinningGame(){
+    return (matchingGame.undoList.length * 2) === $(".card").length;
+}
 function removeCardsFromSelectableCards(removedCards) {
     var pattern;
     var selectableCardsByPattern;
@@ -780,7 +783,7 @@ function updateMatchingCards() {
         }
     }
 
-    if (!existsMatch) {
+    if (!existsMatch && !isWinningGame()) {
         showLoseMessage();
     }
 }
