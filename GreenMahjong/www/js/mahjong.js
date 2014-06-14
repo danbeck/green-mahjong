@@ -245,7 +245,7 @@ function registerMediaQueryListListener() {
 //
 //    });
     window.onorientationchange = function() {
-//        alert("orientationchange");
+        alert("orientationchange");
         setTimeout(function() {
             checkAndSetResolution();
             redrawGame();
