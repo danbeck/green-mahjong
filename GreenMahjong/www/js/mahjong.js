@@ -764,8 +764,13 @@ function updateMatchingCards() {
     }
 
     if (!existsMatch) {
-        console.log("verloren!");
+        showLoseMessage();
     }
+}
+
+function showLoseMessage() {
+    $("div.game-buttons").slideToggle({direction: "down"}, 300);
+    $("div#loseMessage").show();
 }
 
 function cardArrayContainsCard(cards, card) {
