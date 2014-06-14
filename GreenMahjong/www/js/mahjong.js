@@ -296,6 +296,10 @@ function onDeviceReady() {
     $("html").click(function(e) {
         $("div.game-buttons").slideToggle({direction: "down"}, 300);
     });
+    $("#activateHints").click(function(e){
+        e.stopImmediatePropagation();
+        $("body").toggleClass("hint-on");
+    });
 
 //var mql = window.matchMedia("(min-width: 480px)");
 

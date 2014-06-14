@@ -111,13 +111,18 @@ div.game-buttons ul li img{
     box-shadow: 0 0 5px 4px orange;
 }
 
-#game.hint-on .card {
+body.hint-on .card {
     filter:grayscale(80%);
     -webkit-filter:grayscale(80%);
 }
-#game.hint-on .card.card-matching {
+body.hint-on .card.card-matching {
     filter:grayscale(0%);
     -webkit-filter:grayscale(0%);
+}
+
+body.hint-on li#activateHints{
+    filter:grayscale(80%);
+    -webkit-filter:grayscale(80%);
 }
 /*.card-matching {
   -webkit-filter: saturate(2) contrast(2);
