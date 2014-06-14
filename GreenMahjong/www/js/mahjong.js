@@ -257,20 +257,20 @@ function registerMediaQueryListListener() {
 
         if (verybigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
-            console.log("set resolution to verybig");
+            console.alert("set resolution to verybig");
         }
         if (bigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
-            console.log("set resolution to big");
+            console.alert("set resolution to big");
         }
 
         if (smallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
-            console.log("set resolution to small");
+            console.alert("set resolution to small");
         }
         if (verysmallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-            console.log("set resolution to verysmall");
+            console.alert("set resolution to verysmall");
         }
     }
 }
@@ -351,6 +351,7 @@ function redrawGame() {
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
 
+    console.alert("redraw");
     var positionXShadow;
     var positionYShadow;
     var zIndexShadow;
@@ -862,6 +863,7 @@ function changeTheme() {
 }
 
 function setSpriteImageForTiles() {
+
     var resolution = "";
     if (matchingGame.resolution === matchingGame.resolutions.verysmallscreen)
         resolution = "verysmallscreen";
@@ -872,6 +874,7 @@ function setSpriteImageForTiles() {
     if (matchingGame.resolution === matchingGame.resolutions.verybigscreen)
         resolution = "verybigscreen";
 
+    console.alert("resolution: " + resolution);
     $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
 }
 
