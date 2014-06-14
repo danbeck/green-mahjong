@@ -296,7 +296,7 @@ function onDeviceReady() {
     $("html").click(function(e) {
         $("div.game-buttons").slideToggle({direction: "down"}, 300);
     });
-    $("#activateHints").click(function(e){
+    $("#activateHints").click(function(e) {
         e.stopImmediatePropagation();
         $("body").toggleClass("hint-on");
     });
@@ -349,6 +349,7 @@ function redrawGame() {
         });
     });
 
+    setSpriteImageForTiles();
 }
 function startGame() {
     var firstDate = new Date();
@@ -761,8 +762,8 @@ function updateMatchingCards() {
             console.log("match: " + pattern);
         }
     }
-    
-    if (!existsMatch){
+
+    if (!existsMatch) {
         console.log("verloren!");
     }
 }
@@ -813,8 +814,11 @@ function changeTheme() {
     else
         matchingGame.theme = 1;
 
-    $("html").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
+    $("div#background").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
+    setSpriteImageForTiles();
+}
 
+function setSpriteImageForTiles() {
     var resolution = "";
     if (matchingGame.resolution === matchingGame.resolutions.verysmallscreen)
         resolution = "verysmallscreen";
@@ -833,7 +837,7 @@ function undo() {
         var cardsToUndo = matchingGame.undoList[0];
         var pattern = (matchingGame.undoList[0]).data("pattern");
         console.log("pattern to undo: " + pattern);
-        
+
         cardsToUndo.each(function(index) {
             matchingGame.selectableCards[pattern].push($(this));
             index = $(".card").index($(this));
