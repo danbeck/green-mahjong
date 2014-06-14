@@ -151,20 +151,21 @@ div.game-buttons ul li img{
     height: 24px;
 }
 
-#game:before {
+/*#game::before {
     content: "";
     display: inline-block;
     vertical-align: middle;
     width: 0.1rem;
-    /*height: 100%;*/
+    height: 1rem;
     margin-left: -0.1rem;
-}
+}*/
 #game {
     display: box;
     /*margin: 0 auto;*/
     margin: auto;
     top:0;
-    bottom:0;
+    padding:9px;
+    /*bottom:0;*/
     position:absolute;
     left:0;
     right:0;
