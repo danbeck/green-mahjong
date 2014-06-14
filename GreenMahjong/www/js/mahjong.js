@@ -249,7 +249,7 @@ function registerMediaQueryListListener() {
         setTimeout(function() {
             checkAndSetResolution();
             redrawGame();
-        }, 200);
+        }, 2200);
     };
 
     function checkAndSetResolution() {
