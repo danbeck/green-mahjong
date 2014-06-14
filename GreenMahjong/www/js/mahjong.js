@@ -175,39 +175,40 @@ matchingGame.resolution = null;
 
 matchingGame.resolutions = {
     verysmallscreen: {borderWidthRight: 2,
-        borderWidthBelow: 3,
-        cardWidth: 40,
-        cardHeight: 50,
-        shiftValue: 3},
+        borderWidthBelow: 4,
+        cardWidth: 38,
+        cardHeight: 48,
+        shiftValue: 2},
     smallscreen: {borderWidthRight: 3,
         borderWidthBelow: 3,
-        cardWidth: 48,
-        cardHeight: 60,
-        shiftValue: 2},
+        cardWidth: 45,
+        cardHeight: 59,
+        shiftValue: 3},
     bigscreen: {borderWidthRight: 8,
         borderWidthBelow: 7,
-        cardWidth: 80,
-        cardHeight: 100,
+        cardWidth: 79,
+        cardHeight: 99,
         shiftValue: 4},
     verybigscreen: {borderWidthRight: 12,
         borderWidthBelow: 11,
-        cardWidth: 114,
-        cardHeight: 141,
+        cardWidth: 113,
+        cardHeight: 140,
         shiftValue: 4}
 };
 
 function registerMediaQueryListListener() {
 
-    var verybigScreenMediaQueryList = window.matchMedia("(min-width: 1600px)");
-    var bigScreenMediaQueryList = window.matchMedia("(min-width: 1130px) and (max-width:1599px)");
-    var smallScreenMediaQueryList = window.matchMedia("(min-width: 640px) and (max-width:1129px)");
-    var verysmallScreenMediaQueryList = window.matchMedia("(max-width: 639px)");
+    var verybigScreenMediaQueryList = window.matchMedia("(min-width:1600px) and (min-height:1100px)");
+    var bigScreenMediaQueryList = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px),(min-height:780px) and (max-height:1129px) and (min-width:1130px)");
+    var smallScreenMediaQueryList = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px),(min-height:460px) and (max-height:779px) and (min-width:640px)");
+    var verysmallScreenMediaQueryList = window.matchMedia("(max-height:459px), (max-width:639px)");
 
     checkAndSetResolution();
 
     verybigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
+            console.log("dyn - set resolution to verybig");
             redrawGame();
         }
     });
@@ -215,6 +216,7 @@ function registerMediaQueryListListener() {
     bigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
+            console.log("dyn - set resolution to big");
             redrawGame();
         }
     });
@@ -222,6 +224,7 @@ function registerMediaQueryListListener() {
     smallScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
+            console.log("dyn - set resolution to small");
             redrawGame();
         }
     });
@@ -229,6 +232,7 @@ function registerMediaQueryListListener() {
     verysmallScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
+            console.log("dyn - set resolution to verysmall");
             redrawGame();
         }
     });
@@ -242,18 +246,27 @@ function registerMediaQueryListListener() {
 
         if (verybigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
+            console.log("set resolution to verybig");
         }
         if (bigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
+            console.log("set resolution to big");
         }
 
         if (smallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
+            console.log("set resolution to small");
         }
         if (verysmallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
+            console.log("set resolution to verysmall");
         }
 
+        // This should never happen
+        if (matchingGame.resolution === null) {
+            matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
+            console.log("resolution was not set");
+        }
     }
 }
 /**
@@ -286,6 +299,7 @@ function onDeviceReady() {
     });
     $('#undoButton').click(function(e) {
         e.stopImmediatePropagation();
+        hideMessages();
         undo();
     });
     $('#themeButton').click(function(e) {
@@ -315,9 +329,11 @@ function onDeviceReady() {
 }
 
 function redrawGame() {
-    matchingGame.cardWidth = parseInt($(".card").css('width'));
+//    matchingGame.cardWidth = parseInt($(".card").css('width'));
+    matchingGame.cardWidth = matchingGame.resolution.cardWidth;
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
-    matchingGame.cardHeight = parseInt($(".card").css('height'));
+//    matchingGame.cardHeight = parseInt($(".card").css('height'));
+    matchingGame.cardHeight = matchingGame.resolution.cardHeight;
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
 
@@ -352,14 +368,15 @@ function redrawGame() {
     setSpriteImageForTiles();
 }
 function startGame() {
-    var firstDate = new Date();
+//    var firstDate = new Date();
     shuffleCards();
-    var secondDate = new Date();
+//    var secondDate = new Date();
 
     var numberOfCards = matchingGame.deck.length;
-    matchingGame.cardWidth = parseInt($(".card").css('width'));
+    matchingGame.cardWidth = matchingGame.resolution.cardWidth;
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
-    matchingGame.cardHeight = parseInt($(".card").css('height'));
+//    matchingGame.cardHeight = parseInt($(".card").css('height'));
+    matchingGame.cardHeight = matchingGame.resolution.cardHeight;
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
 
@@ -759,7 +776,7 @@ function updateMatchingCards() {
             selectableCardsByPattern.forEach(function(matchingCard) {
                 matchingCard.addClass("card-matching");
             });
-            console.log("match: " + pattern);
+//            console.log("match: " + pattern);
         }
     }
 
@@ -801,18 +818,22 @@ function startNewGame() {
     $("#cards").append('<div class="card"></div>');
     $("#cards").append('<div class="shadow"></div>');
     matchingGame.undoList = [];
-    $("div#winningMessage").hide();
+    hideMessages();
     startGame();
 }
 
 function restartGame() {
-    $("div#winningMessage").hide();
+    hideMessages();
     var numberOfRemovedPatterns = matchingGame.undoList.length;
     for (var i = 0; i < numberOfRemovedPatterns; i++) {
         undo();
     }
 }
 
+function hideMessages() {
+    $("div#winningMessage").hide();
+    $("div#loseMessage").hide();
+}
 function changeTheme() {
     if (matchingGame.theme === 1)
         matchingGame.theme = 0;
