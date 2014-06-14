@@ -630,16 +630,18 @@ function removeTookCards() {
 function removeCardsFromSelectableCards(removedCards) {
     var pattern;
     var selectableCardsByPattern;
-    
+
     pattern = $(removedCards[0]).data("pattern");
     console.log("pattern to remove: " + pattern);
 
     selectableCardsByPattern = matchingGame.selectableCards[pattern];
+    if (selectableCardsByPattern !== undefined) {
+        selectableCardsByPattern.forEach(function(matchingCard) {
+            console.log("remove class card-matching");
+            matchingCard.removeClass("card-matching");
+        });
+    }
     selectableCardsByPattern = removeCardsFromArray(removedCards, selectableCardsByPattern);
-    selectableCardsByPattern.forEach(function(matchingCard) {
-        console.log("remove class card-matching");
-        matchingCard.removeClass("card-matching");
-    });
     matchingGame.selectableCards[pattern] = selectableCardsByPattern;
 }
 
@@ -659,6 +661,10 @@ function removeCardsFromArray(cardsToRemove, cards) {
     console.log("cardsToRemove");
     console.dir(cardsToRemove);
 
+    if (cards === undefined) {
+        return [];
+    }
+
     cards.forEach(function(card) {
         positionX = card.data("position-x");
         positionY = card.data("position-y");
@@ -674,11 +680,11 @@ function removeCardsFromArray(cardsToRemove, cards) {
                 isCardToRemove = true;
             }
         });
-        if (!isCardToRemove){
+        if (!isCardToRemove) {
             resultingCards.push(card);
         }
     });
-    
+
     console.log("Ergebnis: ");
     console.dir(resultingCards);
     return resultingCards;
@@ -717,7 +723,7 @@ function updateSelectableAndMatchingCards(removedCards) {
     neighbours.each(function() {
         selectable = isCardSelectable($(this));
         if (!selectable) {
-            removeCardsFromSelectableCards([$(this)]);
+            removeCardsFromSelectableCards($(this));
             return;
         }
         pattern = $(this).data("pattern");
@@ -737,17 +743,23 @@ function updateSelectableAndMatchingCards(removedCards) {
     updateMatchingCards();
 }
 
-function updateMatchingCards(){
+function updateMatchingCards() {
+    var existsMatch = false;
     matchingGame.matchingCards = {};
     for (pattern in matchingGame.selectableCards) {
         selectableCardsByPattern = matchingGame.selectableCards[pattern];
         if (selectableCardsByPattern.length > 1) {
+            existsMatch = true;
             matchingGame.matchingCards[pattern] = selectableCardsByPattern;
             selectableCardsByPattern.forEach(function(matchingCard) {
                 matchingCard.addClass("card-matching");
             });
             console.log("match: " + pattern);
         }
+    }
+    
+    if (!existsMatch){
+        console.log("verloren!");
     }
 }
 
@@ -816,9 +828,10 @@ function undo() {
     if (matchingGame.undoList.length >= 1) {
         var cardsToUndo = matchingGame.undoList[0];
         var pattern = (matchingGame.undoList[0]).data("pattern");
-        matchingGame.selectableCards[pattern].push(cardsToUndo);
-
+        console.log("pattern to undo: " + pattern);
+        
         cardsToUndo.each(function(index) {
+            matchingGame.selectableCards[pattern].push($(this));
             index = $(".card").index($(this));
             $(".shadow").eq(index).css({"visibility": "visible"});
         });
