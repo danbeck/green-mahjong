@@ -245,9 +245,11 @@ function registerMediaQueryListListener() {
 //
 //    });
     window.onorientationchange = function() {
-        alert("orientationchange");
-        checkAndSetResolution();
-        redrawGame();
+//        alert("orientationchange");
+        setTimeout(function() {
+            checkAndSetResolution();
+            redrawGame();
+        }, 200);
     };
 
     function checkAndSetResolution() {
