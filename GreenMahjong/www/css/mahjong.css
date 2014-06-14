@@ -16,6 +16,9 @@ html {
     /*background-size: cover;*/
 }
 
+body{
+    font:   15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 div#background {
     z-index:-20;
     background: #2f3d0d url(../images/background_fruits.jpg) no-repeat center center;
@@ -69,6 +72,41 @@ div#loseMessage {
     margin: auto;
 }
 
+div#versionInformationDialog{
+    width: 80%;
+    height: 70%;
+    display: none;
+    background-color: red;
+    padding:15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color:#ffcc01;
+    background-color: rgba(0,0,0,0.7);
+    color:#ececea;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    /*text-align: center;*/
+    margin: auto;
+    font-size: 1.3rem;
+}
+
+div#versionInformationDialog section{ 
+    width: 98%;
+    height: 90%;
+    padding: 10px;
+    overflow-y: auto;
+    padding:15px;
+    /*font-size: 1.8rem;*/
+}
+
+div#versionInformationDialog section ul{ 
+    font-size: 1.2rem;
+}
+
 
 div.game-buttons{
     position: fixed;
@@ -113,6 +151,14 @@ div.game-buttons ul li img{
     height: 24px;
 }
 
+#game:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.1rem;
+    /*height: 100%;*/
+    margin-left: -0.1rem;
+}
 #game {
     display: box;
     /*margin: 0 auto;*/
@@ -151,7 +197,7 @@ body.hint-on .card {
 body.hint-on .card.card-matching {
     /*filter:grayscale(0%);*/
     -webkit-filter:none;
-        filter: none;
+    filter: none;
 }
 
 body.hint-on li#activateHints{

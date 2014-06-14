@@ -1,4 +1,5 @@
 var matchingGame = {};
+matchingGame.version = 1.2;
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
     'cardZahl2', 'cardZahl2', 'cardZahl2', 'cardZahl2',
@@ -289,6 +290,15 @@ function onDeviceReady() {
 
 //    FastClick.attach(document.body);
 
+    var version = localStorage.getItem("version");
+    if (!version || version !== "1.2") {
+        localStorage.setItem("version", matchingGame.version);
+        
+        $("div#versionInformationDialog").show();
+        $("html").click(function() {
+            $("div#versionInformationDialog").hide();
+        });
+    }
     $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
         startNewGame();
