@@ -378,7 +378,7 @@ function startGame() {
     var positionYShadow;
     var zIndexShadow;
     var pattern;
-    var shadowShift = matchingGame.cardWidthWithoutBorder / 8;
+    var shadowShift = matchingGame.cardWidthWithoutBorder / 7;
     $(".card").each(function(index) {
 
         shift = matchingGame.shift[index];

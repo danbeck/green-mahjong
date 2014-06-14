@@ -11,12 +11,7 @@ Innen:57x45*/
 
 
 html {
-    /*text-align: center;*/  
-    background-color: #000088; 
-    background-image: url(../images/background_fruits.jpg);
-    //-webkit-background-size: cover;
-    background-repeat: no-repeat;
-    background-position:  center center ;
+    background: #2f3d0d url(../images/background_fruits.jpg) no-repeat center center;
     background-attachment:  fixed;
     background-size: cover;
 }
@@ -63,6 +58,7 @@ div.game-buttons.upperbuttons{
 div.game-buttons ul{
     list-style: none;
     display:block;
+    padding: 0;
 }
 
 div.game-buttons  ul li a {
@@ -75,7 +71,7 @@ div.game-buttons  ul li a {
 div.game-buttons  ul li{
     width:50px;
     float: right;
-    padding: 0 8px;
+    padding: 0 6px;
     text-decoration: none;
     text-align: center;
 }
@@ -87,7 +83,13 @@ div.game-buttons ul li img{
 
 #game {
     display: box;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
+    margin: auto;
+    top:0;
+    bottom:0;
+    position:absolute;
+    left:0;
+    right:0;
 }
 #cards {
     position: relative;  

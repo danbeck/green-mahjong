@@ -12,13 +12,13 @@ Innen:57x45*/
 #game {
   width: 680px;
   height: 460px;
-  padding:6px;
-  margin-top:6px;
 }
+
 #cards {
   width: 380px;
   height: 400px;
 }
+
 .card {
     border-radius: 7px;
     height: 59px;
@@ -26,12 +26,12 @@ Innen:57x45*/
     background: transparent url('../images/mahjong_smallscreen_fruits.png');
 }
 
-
 .shadow {
     height: 65px;
     width: 53px;
     background: transparent url('../images/shadow_smallscreen.png');
 }
+
 .cardZahl1 {background-position: 0 0}
 .cardZahl2 {background-position: -48px 0; }
 .cardZahl3 {background-position: -96px 0;}
