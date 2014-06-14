@@ -442,7 +442,7 @@ function startGame() {
 
     var fourthDate = new Date();
     console.log("time for painting position and shadow: " + (fourthDate - thirdDate));
-
+    setSpriteImageForTiles();
 }
 
 function initMatchingCards() {
@@ -649,7 +649,7 @@ function removeTookCards() {
     }
 }
 
-function isWinningGame(){
+function isWinningGame() {
     return (matchingGame.undoList.length * 2) === $(".card").length;
 }
 function removeCardsFromSelectableCards(removedCards) {
