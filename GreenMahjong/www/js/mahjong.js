@@ -287,6 +287,16 @@ function registerMediaQueryListListener() {
 //        redrawGame();
 //
 //    });
+
+    var mqOrientation = window.matchMedia("(orientation: portrait)");
+    mqOrientation.addListener(function() {
+        alert("orientationchange eventlistener");
+//        setTimeout(function() {
+//            alert("TIMEOUT!");
+        checkAndSetResolution();
+        redrawGame();
+    });
+
     window.addEventListener("orientationchange", function() {
         alert("orientationchange");
 //        setTimeout(function() {
@@ -295,6 +305,17 @@ function registerMediaQueryListListener() {
         redrawGame();
 //        }, 2200);
     });
+//    if (window.screen) {
+//        window.screen.addEventListener("orientationchange", function() {
+//            alert("orientationchange");
+////        setTimeout(function() {
+////            alert("TIMEOUT!");
+//            checkAndSetResolution();
+//            redrawGame();
+////        }, 2200);
+//        });
+//
+//}
 //    window.onorientationchange = function() {
 //        alert("orientationchange - DOM1");
 //////        setTimeout(function() {
@@ -341,6 +362,9 @@ function registerMediaQueryListListener() {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
             alert("set resolution to verysmall");
         }
+
+    if (!matchingGame.resolution)
+        alert("nothing matched!");
     }
 }
 /**
