@@ -219,7 +219,6 @@ function registerMediaQueryListListener() {
     verybigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
-            alert("dyn - set resolution to verybig");
             redrawGame();
         }
     });
@@ -227,7 +226,6 @@ function registerMediaQueryListListener() {
     bigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
-            alert("dyn - set resolution to big");
             redrawGame();
         }
     });
@@ -235,7 +233,6 @@ function registerMediaQueryListListener() {
     smallScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
-            alert("dyn - set resolution to small");
             redrawGame();
         }
     });
@@ -243,7 +240,6 @@ function registerMediaQueryListListener() {
     verysmallScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-            alert("dyn - set resolution to verysmall");
             redrawGame();
         }
     });
@@ -252,24 +248,17 @@ function registerMediaQueryListListener() {
     function checkAndSetResolution() {
         if (verybigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
-            alert("set resolution to verybig");
         }
         if (bigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
-            alert("set resolution to big");
         }
 
         if (smallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
-            alert("set resolution to small");
         }
         if (verysmallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-            alert("set resolution to verysmall");
         }
-
-        if (!matchingGame.resolution)
-            alert("nothing matched!");
     }
 }
 /**
@@ -341,7 +330,6 @@ function redrawGame() {
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
 
-    alert("redraw");
     var positionXShadow;
     var positionYShadow;
     var zIndexShadow;
@@ -864,7 +852,6 @@ function setSpriteImageForTiles() {
     if (matchingGame.resolution === matchingGame.resolutions.verybigscreen)
         resolution = "verybigscreen";
 
-    alert("set sprite image having resolution: " + resolution);
     $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
 }
 
