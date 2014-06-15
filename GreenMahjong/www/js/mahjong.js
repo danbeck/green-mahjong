@@ -282,14 +282,14 @@ function registerMediaQueryListListener() {
 //        redrawGame();
 //
 //    });
-//    window.onorientationchange = function() {
-//        alert("orientationchange");
+    window.onorientationchange = function() {
+        alert("orientationchange");
 //        setTimeout(function() {
 //            alert("TIMEOUT!");
-//            checkAndSetResolution();
-//            redrawGame();
+            checkAndSetResolution();
+            redrawGame();
 //        }, 2200);
-//    };
+    };
 
     function checkAndSetResolution() {
 
