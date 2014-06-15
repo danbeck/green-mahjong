@@ -288,23 +288,50 @@ function registerMediaQueryListListener() {
 //
 //    });
 
-    var mqOrientation = window.matchMedia("(orientation: portrait)");
-    mqOrientation.addListener(function() {
-        alert("orientationchange eventlistener");
-//        setTimeout(function() {
-//            alert("TIMEOUT!");
-        checkAndSetResolution();
-        redrawGame();
-    });
+//    var mqOrientation = window.matchMedia("all and (orientation: portrait)");
+//    mqOrientation.addListener(function() {
+//        alert("matchmedia orientation change-portrait");
+////        setTimeout(function() {
+////            alert("TIMEOUT!");
+//        checkAndSetResolution();
+//        redrawGame();
+//    });
+//
+//
+//    var mqOrientationLandscape = window.matchMedia("all and (orientation: landscape)");
+//    mqOrientationLandscape.addListener(function() {
+//        alert("matchmedia orientation change-landscape");
+////        setTimeout(function() {
+////            alert("TIMEOUT!");
+//        checkAndSetResolution();
+//        redrawGame();
+//    });
 
-    window.addEventListener("orientationchange", function() {
-        alert("orientationchange");
-//        setTimeout(function() {
-//            alert("TIMEOUT!");
-        checkAndSetResolution();
-        redrawGame();
-//        }, 2200);
-    });
+//    window.addEventListener("orientationchange", function() {
+//        alert("orientationchange");
+////        setTimeout(function() {
+////            alert("TIMEOUT!");
+////        }, 2200);
+//    });
+
+    if (OrientationManager.supportsOrientationChange) {
+        $(window).on('orientationchange', function() {
+            alert("The orientation has changed!");
+            checkAndSetResolution();
+            redrawGame();
+        });
+    } else {
+        // use polyfill
+        OrientationManager.bind(function() {
+            alert("The orientation has changed - polyfill!!");
+            checkAndSetResolution();
+            redrawGame();
+        });
+    }
+
+//    $(window).on("orientationchange", function() {
+//        alert("The orientation has changed!");
+//    });
 //    if (window.screen) {
 //        window.screen.addEventListener("orientationchange", function() {
 //            alert("orientationchange");
@@ -363,8 +390,8 @@ function registerMediaQueryListListener() {
             alert("set resolution to verysmall");
         }
 
-    if (!matchingGame.resolution)
-        alert("nothing matched!");
+        if (!matchingGame.resolution)
+            alert("nothing matched!");
     }
 }
 /**
