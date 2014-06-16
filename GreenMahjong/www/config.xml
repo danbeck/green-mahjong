@@ -2,19 +2,17 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id = "de.beck.greenmahjong"
-        version = "1.0.0"> 
+        version = "1.1.0"> 
   <name>Green Mahjong</name>
 
-  <preference name="phonegap-version" value="3.3.0" />
+  <preference name="phonegap-version" value="3.4.0" />
+  <preference name="permissions" value="none"/>
 
   <description>Green Mahjong is a simple mahjong game.</description> 
   <author  href="http://daniel-beck.org">Daniel Beck</author>
-  <!--<feature name="http://api.phonegap.com/1.0/contacts/"/>-->
-  <!--<feature name="http://api.phonegap.com/1.0/file"/>-->
-  <!--<feature name="http://api.phonegap.com/1.0/notification"/>-->
-  <!--<feature name="http://api.phonegap.com/1.0/network"/>-->
   <access origin="*" />
   <content src="index.html" />
   <icon src="greenmahjong.png"/>
   <preference name="android-minSdkVersion" value="14" />
+  <preference name="orientation" value="landscape" />
 </widget>

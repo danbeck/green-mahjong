@@ -11,15 +11,25 @@ Innen:57x45*/
 
 
 html {
-    /*text-align: center;*/  
-    background-image: url(../images/background_fruits.jpg);
-    //-webkit-background-size: cover;
-    background-repeat: no-repeat;
-    background-position:  center center ;
-    background-attachment:  fixed;
-    background-size: cover;
+    /*background: #2f3d0d url(../images/background_fruits.jpg) no-repeat center center;*/
+    /*background-attachment:  fixed;*/
+    /*background-size: cover;*/
 }
 
+body{
+    font:   15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+div#background {
+    z-index:-20;
+    background: #2f3d0d url(../images/background_fruits.jpg) no-repeat center center;
+    /*background-attachment:  fixed;*/
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+}
 div#winningMessage {
     width: 200px;
     height: 280px;
@@ -39,6 +49,62 @@ div#winningMessage {
     z-index: 80;
     text-align: center;
     margin: auto;
+}
+
+div#loseMessage {
+    width: 200px;
+    height: 280px;
+    display: none;
+    background-color: red;
+    padding:25px;
+    border-width: 2px;
+    border-style: solid;
+    border-color:#ffcc01;
+    background-color: rgba(0,0,0,0.7);
+    color:#ececea;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    text-align: center;
+    margin: auto;
+}
+
+div#versionInformationDialog{
+    width: 80%;
+    height: 70%;
+    display: none;
+    background-color: red;
+    padding:15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color:#ffcc01;
+    background-color: rgba(0,0,0,0.7);
+    color:#ececea;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    /*text-align: center;*/
+    margin: auto;
+    font-size: 1.3rem;
+}
+
+div#versionInformationDialog section{ 
+    width: 98%;
+    height: 90%;
+    padding: 10px;
+    overflow-y: auto;
+    padding:15px;
+    /*font-size: 1.8rem;*/
+}
+
+div#versionInformationDialog section ul{ 
+    font-size: 1.2rem;
 }
 
 
@@ -62,6 +128,7 @@ div.game-buttons.upperbuttons{
 div.game-buttons ul{
     list-style: none;
     display:block;
+    padding: 0;
 }
 
 div.game-buttons  ul li a {
@@ -74,7 +141,7 @@ div.game-buttons  ul li a {
 div.game-buttons  ul li{
     width:50px;
     float: right;
-    padding: 0 8px;
+    padding: 0 6px;
     text-decoration: none;
     text-align: center;
 }
@@ -84,21 +151,30 @@ div.game-buttons ul li img{
     height: 24px;
 }
 
+/*#game::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.1rem;
+    height: 1rem;
+    margin-left: -0.1rem;
+}*/
 #game {
-    /*border-radius: 10px;*/
-    /*border: 1px solid #666;*/
-    /*opacity:0.6;*/
-    /*background: rgba(178, 178, 168, .8);*/
-    /*background: rgba(255, 255, 255, .4);*/
-    /*background: green;*/
-    /*margin: 0 auto;*/
     display: box;
-    margin: 0 auto;
-    /*position: absolute;*/
-    /*-webkit-box-pack: center;*/
-    /*-webkit-box-align: center;*/
-    /*-webkit-filter: sepia(0.2);*/
-    /*box-pack: center;*/
+    /*margin: 0 auto;*/
+    margin: auto;
+    top:0;
+    padding:9px;
+    /*bottom:0;*/
+    position:absolute;
+    left:0;
+    right:0;
+}
+
+@-moz-document url-prefix() { 
+    #game {
+        bottom:0;
+    }
 }
 #cards {
     position: relative;  
@@ -116,10 +192,27 @@ div.game-buttons ul li img{
 }
 
 .card-selected {
-    //-webkit-box-shadow: 0 0 20px orange;
-    //box-shadow: 0 0 20px orange;
-    //-webkit-transition-property: opacity, transform, box-shadow;
-    //-webkit-transition-duration: 3s;
     -webkit-box-shadow: 0 0 5px 4px orange;
     box-shadow: 0 0 5px 4px orange;
 }
+
+body.hint-on .card {
+    /*filter:grayscale(80%);*/
+    -webkit-filter:grayscale(100%);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+}
+body.hint-on .card.card-matching {
+    /*filter:grayscale(0%);*/
+    -webkit-filter:none;
+    filter: none;
+}
+
+body.hint-on li#activateHints{
+    filter:grayscale(80%);
+    -webkit-filter:grayscale(80%);
+}
+/*.card-matching {
+  -webkit-filter: saturate(2) contrast(2);
+  -moz-filter: saturate(2) contrast(2);
+  filter: saturate(2) contrast(2);    
+}*/

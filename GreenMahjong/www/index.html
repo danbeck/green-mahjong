@@ -12,13 +12,17 @@
         <!--<meta name="viewport" content="width=1100,height=800,initial-scale=1.0">-->
         <!--<meta name="viewport" content="width=device-width,initial-scale=1.0">-->
         <link href="css/mahjong.css" rel="stylesheet"/>
+        <link href="css/normalize.css" rel="stylesheet"/>
 
         <link href="css/mahjong_verysmallscreen.css" rel="stylesheet"/>
-        <link href="css/mahjong_smallscreen.css" media="(min-width:640px)" rel="stylesheet"/>
-        <link href="css/mahjong_bigscreen.css" media="(min-width:1130px)"  rel="stylesheet"/>
-        <link href="css/mahjong_verybigscreen.css" media="(min-width:1600px)" rel="stylesheet"/>
+        <link href="css/mahjong_smallscreen.css" media="(min-width:640px) and (max-width:1129px) and (min-height:460px),(min-height:460px) and (max-height:779px) and (min-width:640px)" rel="stylesheet"/>
+        <link href="css/mahjong_bigscreen.css" media="(min-width: 1130px) and (max-width:1599px) and (min-height:780px),(min-height:780px) and (max-height:1129px) and (min-width:1130px)"  rel="stylesheet"/>
+        <link href="css/mahjong_verybigscreen.css" media="(min-width:1600px) and (min-height:1100px)" rel="stylesheet"/>
+
     </head>
     <body>
+        <div id="background">
+        </div>
 
 
         <!--        <div class="game-buttons upperbuttons">
@@ -36,27 +40,33 @@
             <ul>
 
                 <li id="newGameButton">
-                    <a href="#" id="newGameButton">
+                    <a href="#">
                         <img src="./images/NewGame.png" alt="New Game" />
                         <span>New</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" id="replayGameButton">
-                        <img src="./images/reload.png" alt="Replay" />
-                        <span>Replay</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" id="undoButton">
+                <!--                <li id="replayGameButton">
+                                    <a href="#" >
+                                        <img src="./images/reload.png" alt="Replay" />
+                                        <span>Replay</span>
+                                    </a>
+                                </li>-->
+                <li id="undoButton">
+                    <a href="#" >
                         <img src="images/undo.png" alt="Undo" />
                         <span>Undo</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" id="themeButton">
+                <li id="themeButton">
+                    <a href="#">
                         <img src="images/theme.png" alt="Theme" />
                         <span>Theme</span>
+                    </a>
+                </li>
+                <li id="activateHints">
+                    <a href="#">
+                        <img src="images/hint.png" alt="Hint" />
+                        <span>Hint</span>
                     </a>
                 </li>
             </ul>
@@ -73,11 +83,29 @@
                             </section>
                         </div>-->
         </div>
-
+        <div id="versionInformationDialog">
+            <section>
+                <h1>Welcome to Green Mahjong version 1.2</h1>
+                <h2>Changelog</h2>
+                <ul><li>A new "hint" function is available. Simply use the "Hint" buttom below to see all possible moves.</li>
+                    <li>The game informs you with a friendly dialog when the game is lost.</li>
+                    <li>The heuristic which chooses the best resolution sprites was improved. The height of the browser is also taken into account.</li>
+                    <li>Many graphical improvements: the board is now centered. The background has a better resolution.</li>
+                </ul>
+            </section>
+            <!--<a id="hideVersionInformation" class="button">OK</a>-->
+        </div>
         <div id="winningMessage">
             <img src="images/cup.png" alt="winning cup">
             <div><h1>COMPLETE</h1>
                 <h2>Congratulations!</h2>
+            </div>
+        </div>
+
+        <div id="loseMessage">
+            <img src="images/smiley_lose.png" alt="you lose">
+            <div><h1>YOU LOSE</h1>
+                <h2>Try it again!</h2>
             </div>
         </div>
 
