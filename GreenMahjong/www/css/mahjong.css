@@ -170,6 +170,12 @@ div.game-buttons ul li img{
     left:0;
     right:0;
 }
+
+@-moz-document url-prefix() { 
+    #game {
+        bottom:0;
+    }
+}
 #cards {
     position: relative;  
 }

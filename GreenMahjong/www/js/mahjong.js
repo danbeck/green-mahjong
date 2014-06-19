@@ -334,22 +334,26 @@ matchingGame.resolutions = {
 
 function registerMediaQueryListListener() {
 
-    var verybigScreenMediaQueryList = window.matchMedia("(min-width:1600px) and (min-height:1100px)  and (orientation:portrait)");
-    var bigScreenMediaQueryList = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px) and (orientation:portrait),(min-height:780px) and (max-height:1129px) and (min-width:1130px)  and (orientation:portrait)");
-    var smallScreenMediaQueryList = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px) and (orientation:portrait),(min-height:460px) and (max-height:779px) and (min-width:640px)  and (orientation:portrait)");
-    var verysmallScreenMediaQueryList = window.matchMedia("(max-height:459px) and (orientation:portrait), (max-width:639px)  and (orientation:portrait)");
+    var verybigScreenMediaQueryList = window.matchMedia("(min-width:1600px) and (min-height:1100px)");
+    var bigScreenMediaQueryList = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px),(min-height:780px) and (max-height:1129px) and (min-width:1130px)");
+    var smallScreenMediaQueryList = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px),(min-height:460px) and (max-height:779px) and (min-width:640px)");
+    var verysmallScreenMediaQueryList = window.matchMedia("(max-height:459px), (max-width:639px)");
 
-    var verybigScreenMediaQueryListL = window.matchMedia("(min-width:1600px) and (min-height:1100px) and (orientation:landscape)");
-    var bigScreenMediaQueryListL = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px) and (orientation:landscape),(min-height:780px) and (max-height:1129px) and (min-width:1130px) and (orientation:landscape)");
-    var smallScreenMediaQueryListL = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px) and (orientation:landscape),(min-height:460px) and (max-height:779px) and (min-width:640px) and (orientation:landscape)");
-    var verysmallScreenMediaQueryListL = window.matchMedia("(max-height:459px) and (orientation:landscape), (max-width:639px) and (orientation:landscape)");
+//    var verybigScreenMediaQueryList = window.matchMedia("(min-width:1600px) and (min-height:1100px)  and (orientation:portrait)");
+//    var bigScreenMediaQueryList = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px) and (orientation:portrait),(min-height:780px) and (max-height:1129px) and (min-width:1130px)  and (orientation:portrait)");
+//    var smallScreenMediaQueryList = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px) and (orientation:portrait),(min-height:460px) and (max-height:779px) and (min-width:640px)  and (orientation:portrait)");
+//    var verysmallScreenMediaQueryList = window.matchMedia("(max-height:459px) and (orientation:portrait), (max-width:639px)  and (orientation:portrait)");
+
+//    var verybigScreenMediaQueryListL = window.matchMedia("(min-width:1600px) and (min-height:1100px) and (orientation:landscape)");
+//    var bigScreenMediaQueryListL = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px) and (orientation:landscape),(min-height:780px) and (max-height:1129px) and (min-width:1130px) and (orientation:landscape)");
+//    var smallScreenMediaQueryListL = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px) and (orientation:landscape),(min-height:460px) and (max-height:779px) and (min-width:640px) and (orientation:landscape)");
+//    var verysmallScreenMediaQueryListL = window.matchMedia("(max-height:459px) and (orientation:landscape), (max-width:639px) and (orientation:landscape)");
 
     checkAndSetResolution();
 
     verybigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
-            console.log("dyn - set resolution to verybig");
             redrawGame();
         }
     });
@@ -357,7 +361,6 @@ function registerMediaQueryListListener() {
     bigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
-            console.log("dyn - set resolution to big");
             redrawGame();
         }
     });
@@ -365,7 +368,6 @@ function registerMediaQueryListListener() {
     smallScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
-            console.log("dyn - set resolution to small");
             redrawGame();
         }
     });
@@ -373,77 +375,24 @@ function registerMediaQueryListListener() {
     verysmallScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-            console.log("dyn - set resolution to verysmall");
-            redrawGame();
-        }
-    });
-    
-    
-    verybigScreenMediaQueryListL.addListener(function(mediaquerylist) {
-        if (mediaquerylist.matches) {
-            matchingGame.resolution = matchingGame.resolutions.verybigscreen;
-            console.log("dyn - set resolution to verybig");
             redrawGame();
         }
     });
 
-    bigScreenMediaQueryListL.addListener(function(mediaquerylist) {
-        if (mediaquerylist.matches) {
-            matchingGame.resolution = matchingGame.resolutions.bigscreen;
-            console.log("dyn - set resolution to big");
-            redrawGame();
-        }
-    });
-
-    smallScreenMediaQueryListL.addListener(function(mediaquerylist) {
-        if (mediaquerylist.matches) {
-            matchingGame.resolution = matchingGame.resolutions.smallscreen;
-            console.log("dyn - set resolution to small");
-            redrawGame();
-        }
-    });
-
-    verysmallScreenMediaQueryListL.addListener(function(mediaquerylist) {
-        if (mediaquerylist.matches) {
-            matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-            console.log("dyn - set resolution to verysmall");
-            redrawGame();
-        }
-    });
-
-//    var portraitMediaQueryList = window.matchMedia("(orientation: portrait)");
-//    portraitMediaQueryList.addListener(function(mql) {
-//        checkAndSetResolution();
-//        redrawGame();
-//
-//    });
-//    window.onorientationchange = function() {
-//        alert("orientationchange");
-//        setTimeout(function() {
-//            alert("TIMEOUT!");
-//            checkAndSetResolution();
-//            redrawGame();
-//        }, 2200);
-//    };
 
     function checkAndSetResolution() {
-
-        if (verybigScreenMediaQueryList.matches || verybigScreenMediaQueryListL.matches) {
+        if (verybigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
-            alert("set resolution to verybig");
         }
-        if (bigScreenMediaQueryList.matches ||bigScreenMediaQueryListL.matches) {
+        if (bigScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
-            alert("set resolution to big");
         }
 
-        if (smallScreenMediaQueryList.matches ||smallScreenMediaQueryListL.matches) {
+        if (smallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
-            alert("set resolution to small");
         }
-        if (verysmallScreenMediaQueryList.matches || verysmallScreenMediaQueryListL.matches) {
+        if (verysmallScreenMediaQueryList.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
-            alert("set resolution to verysmall");
         }
     }
 }
@@ -454,14 +403,6 @@ function registerMediaQueryListListener() {
 function onDeviceReady() {
 
 //    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-//        var ww = ($(window).width() < window.screen.width) ? $(window).width() : window.screen.width; //get proper width
-//        var mw = 1180; // min width of site
-//        var ratio = ww / mw; //calculate ratio
-//        if (ww < mw) { //smaller than minimum size
-//            $('#Viewport').attr('content', 'initial-scale=' + ratio + ', maximum-scale=' + ratio + ', minimum-scale=' + ratio + ', user-scalable=yes, width=' + ww);
-//        } else { //regular size
-//            $('#Viewport').attr('content', 'initial-scale=1.0, maximum-scale=2, minimum-scale=1.0, user-scalable=yes, width=' + ww);
-//        }
 //    }
 
 
@@ -524,7 +465,6 @@ function redrawGame() {
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
 
-    alert("redraw");
     var positionXShadow;
     var positionYShadow;
     var zIndexShadow;
@@ -1047,7 +987,6 @@ function setSpriteImageForTiles() {
     if (matchingGame.resolution === matchingGame.resolutions.verybigscreen)
         resolution = "verybigscreen";
 
-    alert("resolution: " + resolution);
     $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
 }
 
