@@ -831,10 +831,10 @@ function hideMessages() {
     $("div#loseMessage").hide();
 }
 function changeTheme() {
-    if (matchingGame.theme === 2)
+    if (matchingGame.theme === matchingGame.themes.length - 1)
         matchingGame.theme = 0;
     else
-        matchingGame.theme = matchingGame.theme+1;
+        matchingGame.theme = matchingGame.theme + 1;
 
     $("div#background").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
     setSpriteImageForTiles();
