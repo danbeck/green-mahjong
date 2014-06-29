@@ -171,7 +171,7 @@ if (cordovaUsed()) {
 
 matchingGame.theme = 0;
 
-matchingGame.themes = ["fruits", "classic"];
+matchingGame.themes = ["fruits", "classic", "highvisibility"];
 matchingGame.resolution = null;
 
 matchingGame.resolutions = {
@@ -831,10 +831,10 @@ function hideMessages() {
     $("div#loseMessage").hide();
 }
 function changeTheme() {
-    if (matchingGame.theme === 1)
+    if (matchingGame.theme === 2)
         matchingGame.theme = 0;
     else
-        matchingGame.theme = 1;
+        matchingGame.theme = matchingGame.theme+1;
 
     $("div#background").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
     setSpriteImageForTiles();
