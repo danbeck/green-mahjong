@@ -1,3 +1,11 @@
-background_classic.jpg: Elné/Neighya. source: https://www.flickr.com/photos/neighya/8621556892
-backgound_fruits.jpg:  Thanasis Anastasiou. source: https://www.flickr.com/photos/nasos3/4057918728
-background_
+background_classic.jpg
+ - author: Elné/Neighya
+ - source: https://www.flickr.com/photos/neighya/8621556892
+
+backgound_fruits.jpg
+ - author: Thanasis Anastasiou
+ - source: https://www.flickr.com/photos/nasos3/4057918728
+
+background_highvisibility: 
+- author: webtreats
+- source: https://www.flickr.com/photos/webtreatsetc/4451865583
