@@ -70,6 +70,26 @@ div#winningMessage {
     margin: auto;
 }
 
+div#startScreen{
+    width: 100%;
+    height: 100%;
+    /*display: none;*/
+    background-color: red;
+    padding:25px;
+    border-width: 2px;
+    border-style: solid;
+    border-color:#ffcc01;
+    background-color: rgba(0,30,0,1);
+    color:#ececea;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+    text-align: center;
+    margin: auto;    
+}
 div#loseMessage {
     width: 200px;
     height: 280px;
