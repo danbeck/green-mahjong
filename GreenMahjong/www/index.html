@@ -23,14 +23,8 @@
 
         <title>Green Mahjong</title>
         <meta charset="UTF-8">
-        <!--1008+80xx637+99 = 1088x736-->
-        <!--<meta id="Viewport" name="viewport" content="target-densitydpi=device-dpi,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">-->
-        <!--<meta id="Viewport" name="viewport" content="target-densitydpi=device-dpi,width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-        <meta id="Viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-        <!--<meta name="viewport" content="width=1120, initial-scale=1.0">-->
-        <!--<meta name="viewport" content="width=1100,height=800,initial-scale=1.0">-->
-        <!--<meta name="viewport" content="width=device-width,initial-scale=1.0">-->
+        <meta id="Viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link href="css/mahjong.css" rel="stylesheet"/>
         <link href="css/normalize.css" rel="stylesheet"/>
 
@@ -43,18 +37,6 @@
     <body>
         <div id="background">
         </div>
-
-
-        <!--        <div class="game-buttons upperbuttons">
-                    <ul>
-        
-                        <li id="settingsButton">
-                            <a href="#" id="settingsButton">
-                                <img src="./images/config.png" alt="Settings" />
-                                <span>Settings</span>
-                            </a>
-                        </li></ul></div>-->
-
 
         <div class="game-buttons lowerbuttons">
             <ul>
@@ -103,20 +85,35 @@
                             </section>
                         </div>-->
         </div>
-        <div id="startScreen">
+
+        <div id="startScreen" class="scene">
+            <section><h1>Green Mahjong</h1>
+                <p><a class="button" id="playButton">PLAY</a></p>
+                <p><a class="button" id="aboutButton">About</a></p>
+            </section>
+        </div>
+
+
+        <div id="aboutScreen" class="scene">
+            <section><h1>Authors:</h1>
+                <p>Daniel Beck</p>
+                <p>Karin Beck</p>
+                <h1>Contributors:</h1>
+                <p>Cveta Doycheva</p>
+                <p>Richelmy Vinicius Monteiro</p>
+                <p>Michał Rosiak</p>
+            </section>
+            <p><a class="button" id="closeAboutScreenButton">Close</a></p>
+        </div>
+
+
+        <div id="chooseLayoutScreen" class="scene">
             <section><h1 style="color:yellow">Green Mahjong</h1>
-                <p>Change Layout</p>
+                <p>Choose a board layout</p>
                 <div id="layouts">
-                    <img src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg01.jpg" width="140" height="140">
-                    <img src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg02.jpg" width="140" height="140">
+                    <img id="playTurtleLayout" src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg01.jpg" width="140" height="140">
+                    <img id="playFlowerLayout" src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg02.jpg" width="140" height="140">
                 </div>
-                <p>Change Theme</p>
-                <div id="layouts">
-                    <img src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg02.jpg" width="140" height="140">
-                    <img src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg01.jpg" width="140" height="140">
-                </div>
-                <p>PLAY</p>
-                <p>About</p>
             </section>
         </div>
 

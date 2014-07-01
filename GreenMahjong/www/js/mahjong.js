@@ -308,6 +308,35 @@ function onDeviceReady() {
         $("body").toggleClass("hint-on");
     });
 
+    $("#playButton").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        $("#chooseLayoutScreen").show();
+    });
+
+
+    $("#aboutButton").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        $("#aboutScreen").show();
+    });
+
+    $("#closeAboutScreenButton").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#aboutScreen").hide();
+        $("#startScreen").show();
+    });
+
+
+    $("#playTurtleLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#chooseLayoutScreen").hide();
+    });
+    $("#playFlowerLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#chooseLayoutScreen").hide();
+    });
+
 //var mql = window.matchMedia("(min-width: 480px)");
 
     registerMediaQueryListListener();
