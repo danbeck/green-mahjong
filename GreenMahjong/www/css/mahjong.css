@@ -306,6 +306,37 @@ div.game-buttons ul li img{
     }
 }
 
+
+div.layoutSelection{
+    border: 5px solid #ff0 ;
+    margin-top:20px; 
+    margin-left: 20px;
+    display: inline-block; 
+    position: relative;
+}
+
+
+/*@media (max-width:650){
+        div#layouts{
+            clear:both;
+        }
+}*/
+div.newline{
+    /*display: none;*/
+    display:none;
+    /*border: 5px solid #f00 ;*/
+    /*margin-left: 20px;*/
+}
+
+@media (min-width: 651px){
+    div.newline.even{
+        /*display: none;*/
+        display:block;
+        /*border: 5px solid #f00 ;*/
+        /*margin-left: 20px;*/
+    }
+}
+
 #cards {
     position: relative;  
 }
