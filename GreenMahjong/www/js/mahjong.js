@@ -308,11 +308,11 @@ function onDeviceReady() {
         $("body").toggleClass("hint-on");
     });
 
-    $("#playButton").click(function(e) {
-        e.stopImmediatePropagation();
-        $("#startScreen").hide();
-        $("#chooseLayoutScreen").show();
-    });
+//    $("#playButton").click(function(e) {
+//        e.stopImmediatePropagation();
+//        $("#startScreen").hide();
+//        $("#chooseLayoutScreen").show();
+//    });
 
 
     $("#aboutButton").click(function(e) {
@@ -330,11 +330,11 @@ function onDeviceReady() {
 
     $("#playTurtleLayout").click(function(e) {
         e.stopImmediatePropagation();
-        $("#chooseLayoutScreen").hide();
+        $("#startScreen").hide();
     });
     $("#playFlowerLayout").click(function(e) {
         e.stopImmediatePropagation();
-        $("#chooseLayoutScreen").hide();
+        $("#startScreen").hide();
     });
 
 //var mql = window.matchMedia("(min-width: 480px)");
@@ -662,13 +662,22 @@ function removeTookCards() {
     var removedCards = $(".card-removed");
     removeCardsFromSelectableCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
-    $(".card-removed").css({"visibility": "hidden"});
-    $(".card-removed").removeClass("card-removed");
-    updateSelectableAndMatchingCards(removedCards);
+//    window.setInterval(function() {
+//    }, 1000);
+    $(".card-removed").addClass('animated hinge');
+    $('.card-removed').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 
-    if (isWinningGame()) {
-        showWinningMessage();
-    }
+        $(".card-removed").css({"visibility": "hidden"});
+        $(".card-removed").removeClass("card-removed");
+        updateSelectableAndMatchingCards(removedCards);
+        if (isWinningGame()) {
+            showWinningMessage();
+        }
+//        alert("bla");
+    });
+
+//    $(".card-removed").addClass("falling");
+//    $(".card-removed").toggle("explode");
 }
 
 function isWinningGame() {
