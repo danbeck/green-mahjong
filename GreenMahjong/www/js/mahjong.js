@@ -226,7 +226,7 @@ function onDeviceReady() {
         matchingGame.positionY = matchingGame.turtle.positionY;
         matchingGame.shift = matchingGame.turtle.shift;
         matchingGame.selectable = matchingGame.turtle.selectable;
-        startGame();
+        startNewGame();
     });
 
     $("#playFlowerLayout").click(function(e) {
@@ -237,7 +237,7 @@ function onDeviceReady() {
         matchingGame.positionY = matchingGame.flower.positionY;
         matchingGame.shift = matchingGame.flower.shift;
         matchingGame.selectable = matchingGame.flower.selectable;
-        startGame();
+        startNewGame();
     });
     $("#playSpiderLayout").click(function(e) {
         e.stopImmediatePropagation();
@@ -247,7 +247,7 @@ function onDeviceReady() {
         matchingGame.positionY = matchingGame.spider.positionY;
         matchingGame.shift = matchingGame.spider.shift;
         matchingGame.selectable = matchingGame.spider.selectable;
-        startGame();
+        startNewGame();
     });
 
 //var mql = window.matchMedia("(min-width: 480px)");
