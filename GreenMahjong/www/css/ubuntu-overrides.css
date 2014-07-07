@@ -1,8 +1,0 @@
-[data-role="content"]{
-  background: rgba(255, 255, 255, 0);
-}
-
-/*Allow scrolling horizontaly*/
-[data-role="pagestack"] [data-role="page"] {
-  overflow: auto;
-}

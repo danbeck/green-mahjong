@@ -1,187 +1,4 @@
-//var matchingGame = {};
-//matchingGame.version = 1.2;
-//matchingGame.deck = [
-//    'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
-//    'cardZahl2', 'cardZahl2', 'cardZahl2', 'cardZahl2',
-//    'cardZahl3', 'cardZahl3', 'cardZahl3', 'cardZahl3',
-//    'cardZahl4', 'cardZahl4', 'cardZahl4', 'cardZahl4',
-//    'cardZahl5', 'cardZahl5', 'cardZahl5', 'cardZahl5',
-//    'cardZahl6', 'cardZahl6', 'cardZahl6', 'cardZahl6',
-//    'cardZahl7', 'cardZahl7', 'cardZahl7', 'cardZahl7',
-//    'cardZahl8', 'cardZahl8', 'cardZahl8', 'cardZahl8',
-//    'cardZahl9', 'cardZahl9', 'cardZahl9', 'cardZahl9',
-//    'cardBambus1', 'cardBambus1', 'cardBambus1', 'cardBambus1',
-//    'cardBambus2', 'cardBambus2', 'cardBambus2', 'cardBambus2',
-//    'cardBambus3', 'cardBambus3', 'cardBambus3', 'cardBambus3',
-//    'cardBambus4', 'cardBambus4', 'cardBambus4', 'cardBambus4',
-//    'cardBambus5', 'cardBambus5', 'cardBambus5', 'cardBambus5',
-//    'cardBambus6', 'cardBambus6', 'cardBambus6', 'cardBambus6',
-//    'cardBambus7', 'cardBambus7', 'cardBambus7', 'cardBambus7',
-//    'cardBambus8', 'cardBambus8', 'cardBambus8', 'cardBambus8',
-//    'cardBambus9', 'cardBambus9', 'cardBambus9', 'cardBambus9',
-//    'cardMuenze1', 'cardMuenze1', 'cardMuenze1', 'cardMuenze1',
-//    'cardMuenze2', 'cardMuenze2', 'cardMuenze2', 'cardMuenze2',
-//    'cardMuenze3', 'cardMuenze3', 'cardMuenze3', 'cardMuenze3',
-//    'cardMuenze4', 'cardMuenze4', 'cardMuenze4', 'cardMuenze4',
-//    'cardMuenze5', 'cardMuenze5', 'cardMuenze5', 'cardMuenze5',
-//    'cardMuenze6', 'cardMuenze6', 'cardMuenze6', 'cardMuenze6',
-//    'cardMuenze7', 'cardMuenze7', 'cardMuenze7', 'cardMuenze7',
-//    'cardMuenze8', 'cardMuenze8', 'cardMuenze8', 'cardMuenze8',
-//    'cardMuenze9', 'cardMuenze9', 'cardMuenze9', 'cardMuenze9',
-//    'cardNordwind', 'cardNordwind', 'cardNordwind', 'cardNordwind',
-//    'cardSuedwind', 'cardSuedwind', 'cardSuedwind', 'cardSuedwind',
-//    'cardOstwind', 'cardOstwind', 'cardOstwind', 'cardOstwind',
-//    'cardWestwind', 'cardWestwind', 'cardWestwind', 'cardWestwind',
-//    'cardDracheGruen', 'cardDracheGruen', 'cardDracheGruen', 'cardDracheGruen',
-//    'cardDracheRot', 'cardDracheRot', 'cardDracheRot', 'cardDracheRot',
-//    'cardDracheWeiss', 'cardDracheWeiss', 'cardDracheWeiss', 'cardDracheWeiss',
-//    'cardFruehling', 'cardSommer', 'cardHerbst', 'cardWinter',
-//    'cardBambus', 'cardPflaume', 'cardOrchidee', 'cardChrysantheme'
-//];
-//
-//matchingGame.undoList = [];
-//
-//matchingGame.selectableCards = {};
-//
-//matchingGame.matchingCards = {};
-//
-//matchingGame.positionX = [
-//    1, 2, 3,                9, 10, 11,
-//    1,    3, 4, 5, 6, 7, 8, 9,     11,
-//    1, 2, 3, 4,          8, 9, 10, 11,
-//             4,          8,
-//    1, 2, 3, 4,          8, 9, 10, 11,
-//    1,    3, 4, 5, 6, 7, 8, 9,     11,
-//    1, 2, 3,                9, 10, 11,
-//    // 2. Schicht
-//    1, 2, 3,                9, 10, 11,
-//    1,    3, 4, 5, 6, 7, 8, 9,     11,
-//    1, 2, 3, 4,          8, 9, 10, 11,
-//             4,          8,
-//    1, 2, 3, 4,          8, 9, 10, 11,
-//    1,    3, 4, 5, 6, 7, 8, 9,     11,
-//    1, 2, 3,                9, 10, 11,
-//    // 3. Schicht
-//    1, 2, 3,                9, 10, 11,
-//    1,    3, 4,    6,    8, 9,     11,
-//    1, 2, 3,                9, 10, 11,
-//             4,          8,
-//    1, 2, 3,                9, 10, 11,
-//    1,    3, 4,    6,    8, 9,     11,
-//    1, 2, 3,                9, 10, 11,
-//    // 4. Schicht
-//    1,                             11,
-//    
-//          3,                9,
-//    
-//    1,                             11,
-//    
-//          3,                9
-//];
-//
-//matchingGame.positionY = [
-//    0, 0, 0,                          0, 0, 0,
-//    1,    1, 1.5, 1.5, 1.5, 1.5, 1.5, 1,    1,
-//    2, 2, 2, 2.5,                2.5, 2, 2, 2,
-//             3.5,                3.5,
-//    5, 5, 5, 4.5,                4.5, 5, 5, 5,
-//    6,    6, 5.5, 5.5, 5.5, 5.5, 5.5, 6,    6,
-//    7, 7, 7,                          7, 7, 7,
-//    // 2. Schicht
-//    0, 0, 0,                          0, 0, 0,
-//    1,    1, 1.5, 1.5, 1.5, 1.5, 1.5, 1,    1,
-//    2, 2, 2, 2.5,                2.5, 2, 2, 2,
-//             3.5,                3.5,
-//    5, 5, 5, 4.5,                4.5, 5, 5, 5,
-//    6,    6, 5.5, 5.5, 5.5, 5.5, 5.5, 6,    6,
-//    7, 7, 7,                          7, 7, 7,
-//    // 3. Schicht
-//    0, 0, 0,                          0, 0, 0,
-//    1,    1, 1.5,      1.5,      1.5, 1,    1,
-//    2, 2, 2,                          2, 2, 2,
-//             3.5,                3.5,
-//    5, 5, 5,                          5, 5, 5,
-//    6,    6, 5.5,      5.5,      5.5, 6,    6,
-//    7, 7, 7,                          7, 7, 7,
-//    // 4. Schicht
-//    0,                                      0,
-//    
-//          2,                          2,
-//    
-//    5,                                      5,
-//    
-//          7,                          7
-//];
-//
-//matchingGame.shift = [
-//    0, 0, 0,                0, 0, 0,
-//    0,    0, 0, 0, 0, 0, 0, 0,    0,
-//    0, 0, 0, 0,          0, 0, 0, 0,
-//             0,          0,
-//    0, 0, 0, 0,          0, 0, 0, 0,
-//    0,    0, 0, 0, 0, 0, 0, 0,    0,
-//    0, 0, 0,                0, 0, 0,
-//    // 2. Schicht
-//    1, 1, 1,                1, 1, 1,
-//    1,    1, 1, 1, 1, 1, 1, 1,    1,
-//    1, 1, 1, 1,          1, 1, 1, 1,
-//             1,          1,
-//    1, 1, 1, 1,          1, 1, 1, 1,
-//    1,    1, 1, 1, 1, 1, 1, 1,    1,
-//    1, 1, 1,                1, 1, 1,
-//    // 3. Schicht
-//    2, 2, 2,                2, 2, 2,
-//    2,    2, 2,    2,    2, 2,    2,
-//    2, 2, 2,                2, 2, 2,
-//             2,          2,
-//    2, 2, 2,                2, 2, 2,
-//    2,    2, 2,    2,    2, 2,    2,
-//    2, 2, 2,                2, 2, 2,
-//    // 4. Schicht
-//    3,                            3,
-//    
-//          3,                3,
-//    
-//    3,                            3,
-//    
-//          3,                3
-//];
-//
-//matchingGame.selectable = [
-//    false, false, false,                                    false, false, false,
-//    false,        false, false, false, false, false, false, false,        false,
-//    false, false, false, false,                      false, false, false, false,
-//                         false,                      false,
-//    false, false, false, false,                      false, false, false, false,
-//    false,        false, false, false, false, false, false, false,        false,
-//    false, false, false,                                    false, false, false,
-//    // 2. Schicht
-//    false, false, false,                                    false, false, false,
-//    false,        false, false, false, false, false, false, false,        false,
-//    false, false, false, true,                       true,  false, false, false,
-//                         false,                      false,
-//    false, false, false, true,                       true,  false, false, false,
-//    false,        false, false, false, false, false, false, false,        false,
-//    false, false, false,                                    false, false, false,
-//    // 3. Schicht
-//    false, false, true,                                     true,  false, false,
-//    true,         true,  true,         true,         true,  true,         true,
-//    true,  false, false,                                    false, false, true,
-//                         true,                       true,
-//    false, false, false,                                    false, false, false,
-//    true,         true,  true,         true,         true,  true,         true,
-//    true,  false, false,                                    false, false, true,
-//    // 4. Schicht
-//    true,                                                                 true,
-//    
-//                  true,                                     true,
-//    
-//    true,                                                                 true,
-//    
-//                  true,                                     true
-//];
-
-var matchingGame = {};
+var matchingGame = matchingGame|| {};
 matchingGame.version = 1.2;
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
@@ -228,129 +45,6 @@ matchingGame.selectableCards = {};
 
 matchingGame.matchingCards = {};
 
-matchingGame.positionX = [
-              3.5, 4.5,           7,        9,         11.5, 12.5,
-    1.5,           4.5, 5.5,      7.5, 8.5,      10.5, 11.5,             14.5,
-         2.5, 3.5, 4.5,      6.5, 7.5, 8.5, 9.5,       11.5, 12.5, 13.5,
-                        5.5, 6.5, 7.5, 8.5, 9.5, 10.5,
-    1,   2,   3,   4,   5,   6,   7,   8,   9,   10,   11,   12,   13,   14,   15,
-                        5.5, 6.5, 7.5, 8.5, 9.5, 10.5,
-              3.5, 4.5,      6.5, 7.5, 8.5, 9.5,       11.5, 12.5,
-    1.5, 2.5,                     7.5, 8.5,                        13.5, 14.5,
-    // 2. Schicht
-              3.5, 4.5,           7,        9,         11.5, 12.5,
-    1.5,           4.5, 5.5,                     10.5, 11.5,             14.5,
-         2.5, 3.5, 4.5,           7.5, 8.5,            11.5, 12.5, 13.5, 
-                             6.5, 7.5, 8.5, 9.5, 
-    1,   2,   3,   4,        6,   7,   8,   9,   10,         12,   13,   14,   15,
-                             6.5, 7.5, 8.5, 9.5,
-              3.5, 4.5,           7.5, 8.5,            11.5, 12.5,
-    1.5, 2.5,                     7.5, 8.5,                        13.5, 14.5,
-    // 3. Schicht
-                   4.5,                                11.5,
-    1.5,                5.5,                     10.5,                   14.5,
-              3.5,                                           12.5,
-                                 7.5, 8.5,
-    1,        3,                 7,   8,   9,                      13,         15,
-                                 7.5, 8.5,
-              3.5,               7.5, 8.5,                   12.5,
-    1.5,                                                                 14.5,
-    // 4. Schicht
-                                      8
-];
-
-matchingGame.positionY = [
-                  0, 0,           0,        0,         0, 0,
-    1.5,           1, 1.5,      1, 1,      1.5, 1,             1.5,
-         2, 2.5, 2.5,      2, 2, 2, 2,       2.5, 2.5, 2,
-                        3, 3, 3, 3, 3, 3,
-    4.5, 4.5, 4.5, 4.5, 4,   4,   4,   4,   4,   4,   4,   4.5,   4.5,   4.5,   4.5,
-                        5, 5, 5, 5, 5, 5,
-              6.5, 6,      6, 6, 6, 6,       6, 6.5,
-    7, 7,                     7, 7,                        7, 7,
-    // 2. Schicht
-                  0, 0,           0,        0,         0, 0,
-    1.5,           1, 1.5,                     1.5, 1,             1.5,
-         2, 2.5, 2.5,           2, 2,            2.5, 2.5, 2, 
-                             3, 3, 3, 3, 
-    4.5,   4.5,   4.5,   4.5,        4,   4,   4,   4,   4,         4.5,   4.5,   4.5,   4.5,
-                             5, 5, 5, 5,
-              6.5, 6,           6, 6,            6, 6.5,
-    7, 7,                     7, 7,                        7, 7,
-    // 3. Schicht
-                   0,                                0,
-    1.5,                1.5,                     1.5,                   1.5,
-              2.5,                                           2.5,
-                                 3, 3,
-    4.5,        4.5,                 4,   4,   4,                      4.5,         4.5,
-                                 5, 5,
-              6.5,               6, 6,                   6.5,
-    7,                                                                 7,
-    // 4. Schicht
-                                      4.5
-];
-
-matchingGame.shift = [
-              0, 0,           0,        0,         0, 0,
-    0,           0, 0,      0, 0,      0, 0,             0,
-         0, 0, 0,      0, 0, 0, 0,       0, 0, 0,
-                        0, 0, 0, 0, 0, 0,
-    0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
-                        0, 0, 0, 0, 0, 0,
-              0, 0,      0, 0, 0, 0,       0, 0,
-    0, 0,                     0, 0,                        0, 0,
-    // 2. Schicht
-              1, 1,           1,        1,         1, 1,
-    1,           1, 1,                     1, 1,             1,
-         1, 1, 1,           1, 1,            1, 1, 1, 
-                             1, 1, 1, 1, 
-    1,   1,   1,   1,        1,   1,   1,   1,   1,         1,   1,   1,   1,
-                             1, 1, 1, 1,
-              1, 1,           1, 1,            1, 1,
-    1, 1,                     1, 1,                        1, 1,
-    // 3. Schicht
-                   2,                                2,
-    2,                2,                     2,                   2,
-              2,                                           2,
-                                 2, 2,
-    2,        2,                 2,   2,   2,                      2,         2,
-                                 2, 2,
-              2,               2, 2,                   2,
-    2,                                                                 2,
-    // 4. Schicht
-                                      3
-];
-
-matchingGame.selectable = [
-              false, false,           false,        false,         false, false,
-    false,           false, false,      true, true,      false, false,             false,
-         false, false, false,      false, false, false, false,       false, false, false,
-                        false, false, false, false, false, false,
-    false,   false,   false,   false,   false,   false,   false,   false,   false,   false,   false,   false,   false,   false,   false,
-                        true, false, false, false, false, true,
-              false, false,      true, false, false, true,       false, false,
-    false, false,                     false, false,                        false, false,
-    // 2. Schicht
-              true, false,           true,        true,         false, true,
-    false,           true, false,                     false, true,             false,
-         false, false, true,           true, true,            true, false, false, 
-                             true, false, false, true, 
-    false,   false,   false,   true,        true,   false,   false,   false,   true,         true,   false,   false,   false,
-                             true, false, false, true,
-              false, true,           false, false,            true, false,
-    false, false,                     true, true,                        false, false,
-    // 3. Schicht
-                   true,                                true,
-    true,                true,                     true,                   true,
-              true,                                           true,
-                                 true, true,
-    true,        true,                 true,   false,   true,                      true,         true,
-                                 false, false,
-              true,               true, true,                   true,
-    true,                                                                 true,
-    // 4. Schicht
-                                      true
-];
 
 //matchingGame.positionX = [
 //    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
@@ -477,7 +171,7 @@ if (cordovaUsed()) {
 
 matchingGame.theme = 0;
 
-matchingGame.themes = ["fruits", "classic"];
+matchingGame.themes = ["fruits", "classic", "highvisibility"];
 matchingGame.resolution = null;
 
 matchingGame.resolutions = {
@@ -614,13 +308,52 @@ function onDeviceReady() {
         $("body").toggleClass("hint-on");
     });
 
+//    $("#playButton").click(function(e) {
+//        e.stopImmediatePropagation();
+//        $("#startScreen").hide();
+//        $("#chooseLayoutScreen").show();
+//    });
+
+
+    $("#aboutButton").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        $("#aboutScreen").show();
+    });
+
+    $("#closeAboutScreenButton").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#aboutScreen").hide();
+        $("#startScreen").show();
+    });
+
+
+    $("#playTurtleLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        matchingGame.positionX = matchingGame.turtle.positionX ;
+        matchingGame.positionY = matchingGame.turtle.positionY ;
+        matchingGame.shift = matchingGame.turtle.shift ;
+        matchingGame.selectable = matchingGame.turtle.selectable ;
+        startGame();
+    });
+    $("#playFlowerLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        
+        matchingGame.positionX = matchingGame.spider.positionX ;
+        matchingGame.positionY = matchingGame.spider.positionY ;
+        matchingGame.shift = matchingGame.spider.shift ;
+        matchingGame.selectable = matchingGame.spider.selectable ;
+        startGame();
+    });
+
 //var mql = window.matchMedia("(min-width: 480px)");
 
     registerMediaQueryListListener();
 //
 //    $("link[href='css/mahjong.css']").after($("<link href='" + resolution.css + "' rel='stylesheet'>"));
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
-    startGame();
 
     setTimeout(function() {
         $("div.game-buttons").slideToggle({direction: "down"}, 300);
@@ -939,13 +672,22 @@ function removeTookCards() {
     var removedCards = $(".card-removed");
     removeCardsFromSelectableCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
-    $(".card-removed").css({"visibility": "hidden"});
-    $(".card-removed").removeClass("card-removed");
-    updateSelectableAndMatchingCards(removedCards);
+//    window.setInterval(function() {
+//    }, 1000);
+    $(".card-removed").addClass('animated hinge');
+    $('.card-removed').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 
-    if (isWinningGame()) {
-        showWinningMessage();
-    }
+        $(".card-removed").css({"visibility": "hidden"});
+        $(".card-removed").removeClass("card-removed");
+        updateSelectableAndMatchingCards(removedCards);
+        if (isWinningGame()) {
+            showWinningMessage();
+        }
+//        alert("bla");
+    });
+
+//    $(".card-removed").addClass("falling");
+//    $(".card-removed").toggle("explode");
 }
 
 function isWinningGame() {
@@ -1137,10 +879,10 @@ function hideMessages() {
     $("div#loseMessage").hide();
 }
 function changeTheme() {
-    if (matchingGame.theme === 1)
+    if (matchingGame.theme === matchingGame.themes.length - 1)
         matchingGame.theme = 0;
     else
-        matchingGame.theme = 1;
+        matchingGame.theme = matchingGame.theme + 1;
 
     $("div#background").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
     setSpriteImageForTiles();

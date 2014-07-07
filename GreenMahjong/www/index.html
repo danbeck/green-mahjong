@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+        <!--
+        Copyright 2014, Daniel Beck and Karin Beck
+        
+        This file is part of Green Mahjong.
+        
+        Green Mahjong is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.
+        
+        Green Mahjong is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+        
+        You should have received a copy of the GNU General Public License
+        along with Green Mahjong.  If not, see <http://www.gnu.org/licenses/>.
+        -->
+
         <title>Green Mahjong</title>
         <meta charset="UTF-8">
-        <!--1008+80xx637+99 = 1088x736-->
-        <!--<meta id="Viewport" name="viewport" content="target-densitydpi=device-dpi,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">-->
-        <!--<meta id="Viewport" name="viewport" content="target-densitydpi=device-dpi,width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-        <meta id="Viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-        <!--<meta name="viewport" content="width=1120, initial-scale=1.0">-->
-        <!--<meta name="viewport" content="width=1100,height=800,initial-scale=1.0">-->
-        <!--<meta name="viewport" content="width=device-width,initial-scale=1.0">-->
+        <meta id="Viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!--<link rel="stylesheet" href="lib/animate.min.css">-->
         <link href="css/mahjong.css" rel="stylesheet"/>
         <link href="css/normalize.css" rel="stylesheet"/>
 
@@ -23,18 +38,6 @@
     <body>
         <div id="background">
         </div>
-
-
-        <!--        <div class="game-buttons upperbuttons">
-                    <ul>
-        
-                        <li id="settingsButton">
-                            <a href="#" id="settingsButton">
-                                <img src="./images/config.png" alt="Settings" />
-                                <span>Settings</span>
-                            </a>
-                        </li></ul></div>-->
-
 
         <div class="game-buttons lowerbuttons">
             <ul>
@@ -83,6 +86,53 @@
                             </section>
                         </div>-->
         </div>
+
+        <div id="startScreen" class="scene">
+            <section>
+                <h1>Green Mahjong</h1>
+                <!--<br>-->
+                <!--<h2>Choose Layout</h2>-->
+                <div id="layouts">
+                    <div id="playTurtleLayout" class="layoutSelection">
+                        <img  src="images/Turtle.png" width="300" height="220">
+                        <p style="position: absolute; top: 74px;left: 98px"><a class="button">PLAY</a></p>
+                    </div>
+                    <div class="newline"></div>
+                    <div id="playFlowerLayout" class="layoutSelection">
+                        <img  src="images/Flower.png" width="300" height="220">
+                        <p style="position: absolute; top: 74px;left: 98px"><a class="button">PLAY</a></p>
+                    </div>
+                    <div class="newline even"></div>
+                    <div id="playFrogLayout" class="layoutSelection">
+                        <img  src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg01.jpg" width="300" height="220">
+                        <p style="position: absolute; top: 74px;left: 98px"><a class="button" >PLAY</a></p>
+                    </div>
+                    <div class="newline"></div>
+                    <div id="playXLayout" class="layoutSelection">
+                        <img  src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg02.jpg" width="300" height="220">
+                        <p style="position: absolute; top: 74px;left: 98px"><a class="button" >PLAY</a></p>
+                    </div>
+                    <div class="newline even"></div>
+                </div>
+                <br>
+                <br>
+                <p><a class="button" id="aboutButton">About</a></p>
+            </section>
+        </div>
+
+
+        <div id="aboutScreen" class="scene">
+            <section><h1>Authors:</h1>
+                <p>Daniel Beck</p>
+                <p>Karin Beck</p>
+                <h1>Contributors:</h1>
+                <p>Cveta Doycheva</p>
+                <p>Richelmy Vinicius Monteiro</p>
+                <p>Michał Rosiak</p>
+            </section>
+            <p><a class="button" id="closeAboutScreenButton">Close</a></p>
+        </div>
+
         <div id="versionInformationDialog">
             <section>
                 <h1>Welcome to Green Mahjong version 1.2</h1>
@@ -116,13 +166,16 @@
                 <div class="shadow"></div>
             </div>
         </section>    
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">-->
 
+
+        <!--<script src="http://daneden.github.io/animate.css"></script>-->
         <!--<script src='lib/fastclick.js'></script>-->
         <script src="lib/jquery/jquery-2.1.0.min.js"></script>
         <script src="lib/underscore-min.js"></script>
+        <script src="js/spider.js"></script>
+        <script src="js/turtle.js"></script>
         <script src="js/mahjong.js"></script>
-
-        <script src="js/util.js"></script>     
-
+        <!--<script src="http://code.jquery.com/ui/1.11.0-beta.2/jquery-ui.min.js"></script>-->
     </body>
 </html>
