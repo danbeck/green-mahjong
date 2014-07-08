@@ -320,8 +320,16 @@ div.layoutSelection{
     margin-left: 20px;
     display: inline-block; 
     position: relative;
+    cursor:pointer;
     /*ffcc01*/
     background-color: rgba(0,0,0,0.4);
+}
+
+
+div.layoutSelection:hover{
+    border: 3px solid #ff5501 ;
+    -webkit-box-shadow: 0 0 12px 12px black;
+    box-shadow: 0 0 21px 5px black;
 }
 
 /*div.layoutSelection img{
