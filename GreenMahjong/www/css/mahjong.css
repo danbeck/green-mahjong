@@ -85,12 +85,19 @@ div.scene{
     display: none;
 }
 
-div.scene h1,  div.scene h2{
-    color:yellow;
+div.scene h1,  div.scene h2,  div.scene h3{
+    color:#ffcc01;
 }
 
+div.scene h3{
+    margin: 2px 0;    
+}
 div#startScreen{
     display: block ;
+}
+
+div#startScreen h1{
+    padding-top: 8px;
 }
 
 .button {
@@ -308,13 +315,21 @@ div.game-buttons ul li img{
 
 
 div.layoutSelection{
-    border: 5px solid #ff0 ;
+    border: 3px solid #ffcc01 ;
     margin-top:20px; 
     margin-left: 20px;
     display: inline-block; 
     position: relative;
+    /*ffcc01*/
+    background-color: rgba(0,0,0,0.4);
 }
 
+/*div.layoutSelection img{
+    border: 5px solid #ffcc01 ;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}*/
 
 /*@media (max-width:650){
         div#layouts{
