@@ -325,6 +325,10 @@ div.layoutSelection{
     background-color: rgba(0,0,0,0.4);
 }
 
+div[data-selectable=true]:hover{
+    -webkit-box-shadow: 0 0 12px 12px #ffcc01;
+    box-shadow: 0 0 21px 5px #ffcc01;
+}
 
 div.layoutSelection:hover{
     border: 3px solid #ff5501 ;
@@ -375,9 +379,11 @@ div.newline{
     position: absolute;
 }
 
-.card-selected {
-    -webkit-box-shadow: 0 0 5px 4px orange;
-    box-shadow: 0 0 5px 4px orange;
+
+
+div.card-selected, div.card-selected[data-selectable=true]:hover {
+    -webkit-box-shadow: 0 0 5px 7px orange;
+    box-shadow: 0 0 5px 7px orange;
 }
 
 body.hint-on .card {
