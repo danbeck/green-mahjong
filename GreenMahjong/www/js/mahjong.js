@@ -675,7 +675,7 @@ function removeTookCards() {
 //    window.setInterval(function() {
 //    }, 1000);
     $(".card-removed").addClass('animated hinge');
-    $('.card-removed').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+    $('#game').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 
         $(".card-removed").css({"visibility": "hidden"});
         $(".card-removed").removeClass("card-removed");
@@ -683,6 +683,7 @@ function removeTookCards() {
         if (isWinningGame()) {
             showWinningMessage();
         }
+        $('#game').off('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
 //        alert("bla");
     });
 
