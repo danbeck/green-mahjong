@@ -176,6 +176,7 @@ function onDeviceReady() {
     $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
         // startNewGame();
+        hideMessages();
         $("#startScreen").show();
     });
     $('#replayGameButton').click(function(e) {
