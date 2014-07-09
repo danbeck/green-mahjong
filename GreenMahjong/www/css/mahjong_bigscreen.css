@@ -32,14 +32,15 @@ body {
   font-size: 16px;
 }
 
-#game {
+/*#game {
   width: 1130px;
   height: 780px;
-}
+}*/
 
 #cards {
-  width: 380px;
-  height: 400px;
+  width: 1130px;
+  height: 780px;
+  /*height: 400px;*/
 }
 .card {
     border-radius: 15px;

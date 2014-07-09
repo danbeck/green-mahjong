@@ -243,18 +243,46 @@ div.game-buttons ul li img{
     height: 1rem;
     margin-left: -0.1rem;
 }*/
-#game {
-    display: box;
-    /*margin: 0 auto;*/
-    margin: auto;
-    top:0;
-    padding:9px;
-    /*bottom:0;*/
-    position:absolute;
-    left:0;
-    right:0;
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    /*width: whatever width you want;*/
+}
+
+
+#game {
+    /*display: box;*/
+    /*margin: 0 auto;*/
+    /*margin: auto;*/
+    /*top:0;*/
+    size: auto;
+    padding:9px;
+    /*bottom:0;*/
+    /*position:absolute;*/
+/*    left:0;
+    right:0;*/
+}
+
+
+
+/*@-moz-document url-prefix() { 
+    #game {
+        bottom:0;
+    }
+}*/
 .animated.hinge {
     -webkit-animation-duration: 1.1s;
     -moz-animation-duration: 1.1s;
@@ -307,11 +335,6 @@ div.game-buttons ul li img{
     }
 }
 
-@-moz-document url-prefix() { 
-    #game {
-        bottom:0;
-    }
-}
 
 
 div.layoutSelection{
@@ -365,7 +388,11 @@ div.newline{
 }
 
 #cards {
-    position: relative;  
+    position: relative; 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:200px;
 }
 
 .card {

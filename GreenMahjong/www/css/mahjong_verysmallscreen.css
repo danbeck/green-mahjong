@@ -28,13 +28,13 @@ Klein:
 Aussen:60x48
 Innen:57x45*/
 
-#game {
+/*#game {
   width: 530px;
   height: 380px;
-}
+}*/
 #cards {
-  width: 380px;
-  height: 400px;
+  width: 530px;
+  height: 380px;
 }
 .card {
     border-radius: 7px;
