@@ -1,4 +1,4 @@
-var matchingGame = {};
+var matchingGame = matchingGame || {};
 matchingGame.version = 1.2;
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
@@ -45,115 +45,6 @@ matchingGame.selectableCards = {};
 
 matchingGame.matchingCards = {};
 
-matchingGame.positionX = [
-    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-    4, 5, 6, 7, 8, 9, 10, 11,
-    3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-    3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    4, 5, 6, 7, 8, 9, 10, 11,
-    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-    // 2. Schicht
-    5, 6, 7, 8, 9, 10,
-    5, 6, 7, 8, 9, 10,
-    5, 6, 7, 8, 9, 10,
-    5, 6, 7, 8, 9, 10,
-    5, 6, 7, 8, 9, 10,
-    5, 6, 7, 8, 9, 10,
-    // 3. Schicht
-    6, 7, 8, 9,
-    6, 7, 8, 9,
-    6, 7, 8, 9,
-    6, 7, 8, 9,
-    // 4. Schicht
-    7, 8,
-    7, 8,
-    // 5. Schicht
-    7.5
-];
-
-matchingGame.positionY = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    1, 1, 1, 1, 1, 1, 1, 1,
-    2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-    3.5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3.5, 3.5,
-    5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
-    6, 6, 6, 6, 6, 6, 6, 6,
-    7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
-    // 2. Schicht
-    1, 1, 1, 1, 1, 1,
-    2, 2, 2, 2, 2, 2,
-    3, 3, 3, 3, 3, 3,
-    4, 4, 4, 4, 4, 4,
-    5, 5, 5, 5, 5, 5,
-    6, 6, 6, 6, 6, 6,
-    // 3. Schicht
-    2, 2, 2, 2,
-    3, 3, 3, 3,
-    4, 4, 4, 4,
-    5, 5, 5, 5,
-    // 4. Schicht
-    3, 3,
-    4, 4,
-    // 5. Schicht
-    3.5
-];
-
-matchingGame.shift = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    // 3. Schicht
-    2, 2, 2, 2,
-    2, 2, 2, 2,
-    2, 2, 2, 2,
-    2, 2, 2, 2,
-    // 4. Schicht
-    3, 3,
-    3, 3,
-    // 5. Schicht
-    4
-];
-
-matchingGame.selectable = [
-    true, false, false, false, false, false, false, false, false, false, false, true,
-    true, false, false, false, false, false, false, true,
-    true, false, false, false, false, false, false, false, false, true,
-    true, false, false, false, false, false, false, false, false, false, false, false, false,
-    false, false, false, false, false, false, false, false, false, false, false, false, false, true,
-    true, false, false, false, false, false, false, false, false, true,
-    true, false, false, false, false, false, false, true,
-    true, false, false, false, false, false, false, false, false, false, false, true,
-    true, false, false, false, false, true,
-    true, false, false, false, false, true,
-    true, false, false, false, false, true,
-    true, false, false, false, false, true,
-    true, false, false, false, false, true,
-    true, false, false, false, false, true,
-    // 3. Schicht
-    true, false, false, true,
-    true, false, false, true,
-    true, false, false, true,
-    true, false, false, true,
-    // 4. Schicht
-    false, false,
-    false, false,
-    // 5. Schicht
-    true
-];
 
 //matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
 //matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
@@ -171,7 +62,7 @@ if (cordovaUsed()) {
 
 matchingGame.theme = 0;
 
-matchingGame.themes = ["fruits", "classic"];
+matchingGame.themes = ["fruits", "classic", "highvisibility"];
 matchingGame.resolution = null;
 
 matchingGame.resolutions = {
@@ -284,7 +175,8 @@ function onDeviceReady() {
     }
     $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
-        startNewGame();
+        // startNewGame();
+        $("#startScreen").show();
     });
     $('#replayGameButton').click(function(e) {
         e.stopImmediatePropagation();
@@ -308,13 +200,62 @@ function onDeviceReady() {
         $("body").toggleClass("hint-on");
     });
 
+//    $("#playButton").click(function(e) {
+//        e.stopImmediatePropagation();
+//        $("#startScreen").hide();
+//        $("#chooseLayoutScreen").show();
+//    });
+
+
+    $("#aboutButton").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        $("#aboutScreen").show();
+    });
+
+    $("#closeAboutScreenButton").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#aboutScreen").hide();
+        $("#startScreen").show();
+    });
+
+    $("#playTurtleLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        matchingGame.positionX = matchingGame.turtle.positionX;
+        matchingGame.positionY = matchingGame.turtle.positionY;
+        matchingGame.shift = matchingGame.turtle.shift;
+        matchingGame.selectable = matchingGame.turtle.selectable;
+        startNewGame();
+    });
+
+    $("#playFlowerLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+
+        matchingGame.positionX = matchingGame.flower.positionX;
+        matchingGame.positionY = matchingGame.flower.positionY;
+        matchingGame.shift = matchingGame.flower.shift;
+        matchingGame.selectable = matchingGame.flower.selectable;
+        startNewGame();
+    });
+    $("#playSpiderLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+
+        matchingGame.positionX = matchingGame.spider.positionX;
+        matchingGame.positionY = matchingGame.spider.positionY;
+        matchingGame.shift = matchingGame.spider.shift;
+        matchingGame.selectable = matchingGame.spider.selectable;
+        startNewGame();
+    });
+
 //var mql = window.matchMedia("(min-width: 480px)");
 
     registerMediaQueryListListener();
 //
 //    $("link[href='css/mahjong.css']").after($("<link href='" + resolution.css + "' rel='stylesheet'>"));
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
-    startGame();
 
     setTimeout(function() {
         $("div.game-buttons").slideToggle({direction: "down"}, 300);
@@ -633,13 +574,22 @@ function removeTookCards() {
     var removedCards = $(".card-removed");
     removeCardsFromSelectableCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
-    $(".card-removed").css({"visibility": "hidden"});
-    $(".card-removed").removeClass("card-removed");
-    updateSelectableAndMatchingCards(removedCards);
+//    window.setInterval(function() {
+//    }, 1000);
+    $(".card-removed").addClass('animated hinge');
+    $('.card-removed').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 
-    if (isWinningGame()) {
-        showWinningMessage();
-    }
+        $(".card-removed").css({"visibility": "hidden"});
+        $(".card-removed").removeClass("card-removed");
+        updateSelectableAndMatchingCards(removedCards);
+        if (isWinningGame()) {
+            showWinningMessage();
+        }
+//        alert("bla");
+    });
+
+//    $(".card-removed").addClass("falling");
+//    $(".card-removed").toggle("explode");
 }
 
 function isWinningGame() {
@@ -831,10 +781,10 @@ function hideMessages() {
     $("div#loseMessage").hide();
 }
 function changeTheme() {
-    if (matchingGame.theme === 1)
+    if (matchingGame.theme === matchingGame.themes.length - 1)
         matchingGame.theme = 0;
     else
-        matchingGame.theme = 1;
+        matchingGame.theme = matchingGame.theme + 1;
 
     $("div#background").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
     setSpriteImageForTiles();
