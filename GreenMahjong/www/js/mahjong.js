@@ -1,4 +1,4 @@
-var matchingGame = matchingGame|| {};
+var matchingGame = matchingGame || {};
 matchingGame.version = 1.2;
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
@@ -284,7 +284,8 @@ function onDeviceReady() {
     }
     $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
-        startNewGame();
+        // startNewGame();
+        $("#startScreen").show();
     });
     $('#replayGameButton').click(function(e) {
         e.stopImmediatePropagation();
@@ -327,25 +328,35 @@ function onDeviceReady() {
         $("#startScreen").show();
     });
 
-
     $("#playTurtleLayout").click(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
-        matchingGame.positionX = matchingGame.turtle.positionX ;
-        matchingGame.positionY = matchingGame.turtle.positionY ;
-        matchingGame.shift = matchingGame.turtle.shift ;
-        matchingGame.selectable = matchingGame.turtle.selectable ;
-        startGame();
+        matchingGame.positionX = matchingGame.turtle.positionX;
+        matchingGame.positionY = matchingGame.turtle.positionY;
+        matchingGame.shift = matchingGame.turtle.shift;
+        matchingGame.selectable = matchingGame.turtle.selectable;
+        startNewGame();
     });
+
     $("#playFlowerLayout").click(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
-        
-        matchingGame.positionX = matchingGame.spider.positionX ;
-        matchingGame.positionY = matchingGame.spider.positionY ;
-        matchingGame.shift = matchingGame.spider.shift ;
-        matchingGame.selectable = matchingGame.spider.selectable ;
-        startGame();
+
+        matchingGame.positionX = matchingGame.flower.positionX;
+        matchingGame.positionY = matchingGame.flower.positionY;
+        matchingGame.shift = matchingGame.flower.shift;
+        matchingGame.selectable = matchingGame.flower.selectable;
+        startNewGame();
+    });
+    $("#playSpiderLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+
+        matchingGame.positionX = matchingGame.spider.positionX;
+        matchingGame.positionY = matchingGame.spider.positionY;
+        matchingGame.shift = matchingGame.spider.shift;
+        matchingGame.selectable = matchingGame.spider.selectable;
+        startNewGame();
     });
 
 //var mql = window.matchMedia("(min-width: 480px)");

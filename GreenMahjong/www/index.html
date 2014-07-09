@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="greenmahjong.appcache">
     <head>
 
         <!--
@@ -34,6 +34,9 @@
         <link href="css/mahjong_bigscreen.css" media="(min-width: 1130px) and (max-width:1599px) and (min-height:780px),(min-height:780px) and (max-height:1129px) and (min-width:1130px)"  rel="stylesheet"/>
         <link href="css/mahjong_verybigscreen.css" media="(min-width:1600px) and (min-height:1100px)" rel="stylesheet"/>
 
+        <link rel="icon" type="image/x-icon" href="greenmahjong32.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="greenmahjong32.ico">
+        <link type="image/x-icon" href="greenmahjong32.ico">
     </head>
     <body>
         <div id="background">
@@ -89,28 +92,32 @@
 
         <div id="startScreen" class="scene">
             <section>
-                <h1>Green Mahjong</h1>
+                <h1><a><img  src="images/GreenMahjongTitle.png" alt="Green Mahjong"></a></h1>
                 <!--<br>-->
                 <!--<h2>Choose Layout</h2>-->
                 <div id="layouts">
                     <div id="playTurtleLayout" class="layoutSelection">
+                        <h3>Turtle</h3>
                         <img  src="images/Turtle.png" width="300" height="220">
-                        <p style="position: absolute; top: 74px;left: 98px"><a class="button">PLAY</a></p>
+                        <p style="position: absolute; top: 95px;left: 98px"><a class="button">PLAY</a></p>
                     </div>
                     <div class="newline"></div>
                     <div id="playFlowerLayout" class="layoutSelection">
+                        <h3>Flower</h3>
                         <img  src="images/Flower.png" width="300" height="220">
-                        <p style="position: absolute; top: 74px;left: 98px"><a class="button">PLAY</a></p>
+                        <p style="position: absolute; top: 95px;left: 98px"><a class="button">PLAY</a></p>
                     </div>
                     <div class="newline even"></div>
-                    <div id="playFrogLayout" class="layoutSelection">
+                    <div id="playSpiderLayout" class="layoutSelection">
+                        <h3>Spider</h3>
                         <img  src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg01.jpg" width="300" height="220">
-                        <p style="position: absolute; top: 74px;left: 98px"><a class="button" >PLAY</a></p>
+                        <p style="position: absolute; top: 95px;left: 98px"><a class="button" >PLAY</a></p>
                     </div>
                     <div class="newline"></div>
                     <div id="playXLayout" class="layoutSelection">
+                        <h3>Frog</h3>
                         <img  src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg02.jpg" width="300" height="220">
-                        <p style="position: absolute; top: 74px;left: 98px"><a class="button" >PLAY</a></p>
+                        <p style="position: absolute; top: 95px;left: 98px"><a class="button" >PLAY</a></p>
                     </div>
                     <div class="newline even"></div>
                 </div>
@@ -173,6 +180,7 @@
         <!--<script src='lib/fastclick.js'></script>-->
         <script src="lib/jquery/jquery-2.1.0.min.js"></script>
         <script src="lib/underscore-min.js"></script>
+        <script src="js/flower.js"></script>
         <script src="js/spider.js"></script>
         <script src="js/turtle.js"></script>
         <script src="js/mahjong.js"></script>
