@@ -1,0 +1,47 @@
+CACHE MANIFEST
+# v1 - 2014-07-09
+# This is a comment.
+index.html
+lib/jquery/jquery-2.1.0.min.js
+lib/animate.min.js
+lib/underscore-min.js
+js/flower.js
+js/mahjong.js
+js/spider.js
+js/turtle.js
+images/Flower.png
+images/GreenMahjongTitle.png
+images/NewGame.png
+images/Turtle.png
+images/background_classic.png
+images/background_fruits.png
+images/background_highvisibility.png
+images/config.png
+images/cup.png
+images/hint.png
+images/mahjong_bigscreen_classic.png
+images/mahjong_bigscreen_fruits.png
+images/mahjong_bigscreen_highvisibility.png
+images/mahjong_smallscreen_classic.png
+images/mahjong_smallscreen_fruits.png
+images/mahjong_smallscreen_highvisibility.png
+images/mahjong_verybigscreen_classic.png
+images/mahjong_verybigscreen_fruits.png
+images/mahjong_verybigscreen_highvisibility.png
+images/mahjong_verysmallscreen_classic.png
+images/mahjong_verysmallscreen_fruits.png
+images/mahjong_verysmallscreen_highvisibility.png
+images/reload.png
+images/shadow_bigscreen.png
+images/shadow_smallscreen.png
+images/shadow_verybigscreen.png
+images/shadow_shadow_verysmallscreen.png
+images/smiley_lose.png
+images/theme.png
+images/undo.png
+css/mahjong.css
+css/mahjong_bigscreen.css
+css/mahjong_smallscreen.css
+css/mahjong_verybigscreen.css
+css/mahjong_verysmallscreen.css
+css/normalize.css
