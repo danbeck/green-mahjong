@@ -162,7 +162,7 @@ function onDeviceReady() {
 //    }
 
     var version = localStorage.getItem("version");
-    if (!version || version !== "2.0") {
+    if (version !== "2.0") {
         localStorage.setItem("version", matchingGame.version);
 
         $("div#versionInformationDialog").show();
@@ -170,6 +170,14 @@ function onDeviceReady() {
             $("div#versionInformationDialog").hide();
         });
     }
+
+    var theme = localStorage.getItem("theme");
+    if (theme) {
+        matchingGame.theme = theme;
+    }
+
+    changeTheme(matchingGame.theme);
+
     $('#newGameButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         // startNewGame();
@@ -573,13 +581,6 @@ function removeTookCards() {
     removeCardsFromSelectableCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
 
-//    var animatedDivs = $(".card-removed").clone().removeAttr("data-pattern data-position-x data-position-y data-shift data-selectable")
-//            .css("z-index", 20).removeClass("card-removed");
-//    $("#cards").append(animatedDivs);
-//    animatedDivs.addClass('animated hinge');
-//    animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-//        $(this).remove();
-//    });
     var animatedDivs = $(".card-removed").clone().removeAttr("data-pattern data-position-x data-position-y data-shift data-selectable")
             .css("z-index", 20).removeClass("card-removed");
     $("#cards").append(animatedDivs);
@@ -587,8 +588,6 @@ function removeTookCards() {
     animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
         $(this).remove();
     });
-
-//    animateCards($(".card-removed"));
 
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
@@ -789,13 +788,20 @@ function hideMessages() {
     $("div#winningMessage").hide();
     $("div#loseMessage").hide();
 }
-function changeTheme() {
-    if (matchingGame.theme === matchingGame.themes.length - 1)
-        matchingGame.theme = 0;
-    else
-        matchingGame.theme = matchingGame.theme + 1;
+function changeTheme(themeid) {
+    if (themeid !== undefined) {
+        matchingGame.theme = themeid;
+    }
+    else {
+        if (matchingGame.theme === matchingGame.themes.length - 1)
+            matchingGame.theme = 0;
+        else
+            matchingGame.theme = matchingGame.theme + 1;
+    }
 
-    $("div#background").css("background-image", "url(images/background_" + matchingGame.themes[matchingGame.theme] + ".jpg)");
+    var matchingTheme = matchingGame.themes[matchingGame.theme];
+    $("div#background").css("background-image", "url(images/background_" + matchingTheme + ".jpg)");
+    $("div#cards").attr("data-theme", matchingTheme);
     setSpriteImageForTiles();
 }
 
