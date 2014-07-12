@@ -1,10 +1,11 @@
 CACHE MANIFEST
-# v1 - 2014-07-09
+# v1 - 2014-07-10
 # This is a comment.
 index.html
 lib/jquery/jquery-2.1.0.min.js
 lib/animate.min.js
 lib/underscore-min.js
+lib/fastclick.js
 js/flower.js
 js/mahjong.js
 js/spider.js
