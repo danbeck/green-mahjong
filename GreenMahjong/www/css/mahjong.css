@@ -236,15 +236,6 @@ div.game-buttons ul li img{
     height: 24px;
 }
 
-/*#game::before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    width: 0.1rem;
-    height: 1rem;
-    margin-left: -0.1rem;
-}*/
-
 .outer {
     display: table;
     position: absolute;
@@ -265,16 +256,8 @@ div.game-buttons ul li img{
 
 
 #game {
-    /*display: box;*/
-    /*margin: 0 auto;*/
-    /*margin: auto;*/
-    /*top:0;*/
     size: auto;
     padding:9px;
-    /*bottom:0;*/
-    /*position:absolute;*/
-/*    left:0;
-    right:0;*/
 }
 
 
@@ -299,24 +282,24 @@ div.game-buttons ul li img{
        animation-timing-function:ease-in-out;
     }
     20%{
-        -webkit-transform:rotate(80deg);
-        transform:rotate(80deg);
+        -webkit-transform:rotate(60deg);
+        transform:rotate(60deg);
         -webkit-transform-origin:top left;
         transform-origin:top left;
         -webkit-animation-timing-function:ease-in-out;
         animation-timing-function:ease-in-out
     }
     40%{
-        -webkit-transform:rotate(60deg);
-        transform:rotate(60deg);
+        -webkit-transform:rotate(40deg);
+        transform:rotate(40deg);
         -webkit-transform-origin:top left;
         transform-origin:top left;
         -webkit-animation-timing-function:ease-in-out;
         animation-timing-function:ease-in-out;
     }
     41%{
-        -webkit-transform:rotate(60deg) translateY(0);
-        transform:rotate(60deg) translateY(0);
+        -webkit-transform:rotate(40deg) translateY(0);
+        transform:rotate(40deg) translateY(0);
         -webkit-transform-origin:top left;
         transform-origin:top left;
         -webkit-animation-timing-function:ease-in-out;
@@ -327,8 +310,50 @@ div.game-buttons ul li img{
         -webkit-transform:translateY(200px);
         transform:translateY(200px);
         opacity:0;
-    }}
-@keyframes hinge{0%{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}20%,60%{-webkit-transform:rotate(80deg);-ms-transform:rotate(80deg);transform:rotate(80deg);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}40%{-webkit-transform:rotate(60deg);-ms-transform:rotate(60deg);transform:rotate(60deg);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}80%{-webkit-transform:rotate(60deg) translateY(0);-ms-transform:rotate(60deg) translateY(0);transform:rotate(60deg) translateY(0);-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;opacity:1}100%{-webkit-transform:translateY(700px);-ms-transform:translateY(700px);transform:translateY(700px);opacity:0}}
+    }
+}
+
+
+@keyframes hinge{
+    0%{
+      -webkit-transform:rotate(0deg);
+       transform:rotate(0deg);
+       -webkit-transform-origin:top left;
+       transform-origin:top left;
+       -webkit-animation-timing-function:ease-in-out;
+       animation-timing-function:ease-in-out;
+    }
+    20%{
+        -webkit-transform:rotate(60deg);
+        transform:rotate(60deg);
+        -webkit-transform-origin:top left;
+        transform-origin:top left;
+        -webkit-animation-timing-function:ease-in-out;
+        animation-timing-function:ease-in-out
+    }
+    40%{
+        -webkit-transform:rotate(40deg);
+        transform:rotate(40deg);
+        -webkit-transform-origin:top left;
+        transform-origin:top left;
+        -webkit-animation-timing-function:ease-in-out;
+        animation-timing-function:ease-in-out;
+    }
+    41%{
+        -webkit-transform:rotate(40deg) translateY(0);
+        transform:rotate(40deg) translateY(0);
+        -webkit-transform-origin:top left;
+        transform-origin:top left;
+        -webkit-animation-timing-function:ease-in-out;
+        animation-timing-function:ease-in-out;
+        opacity:1;
+    }
+    100%{
+        -webkit-transform:translateY(200px);
+        transform:translateY(200px);
+        opacity:0;
+    }
+}
 .hinge{-webkit-animation-name:hinge;animation-name:hinge}
 
 @media (min-height:405){
@@ -353,10 +378,10 @@ div.layoutSelection{
 }
 
 
-div[data-selectable=true]:hover{
+/*div[data-selectable=true]:hover{
     -webkit-box-shadow: 0 0 12px 12px #ffcc01;
     box-shadow: 0 0 21px 5px #ffcc01;
-}
+}*/
 
 div.layoutSelection:hover{
     border: 3px solid #ff5501 ;

@@ -573,6 +573,13 @@ function removeTookCards() {
     removeCardsFromSelectableCards(removedCards);
     matchingGame.undoList.unshift(removedCards);
 
+//    var animatedDivs = $(".card-removed").clone().removeAttr("data-pattern data-position-x data-position-y data-shift data-selectable")
+//            .css("z-index", 20).removeClass("card-removed");
+//    $("#cards").append(animatedDivs);
+//    animatedDivs.addClass('animated hinge');
+//    animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+//        $(this).remove();
+//    });
     var animatedDivs = $(".card-removed").clone().removeAttr("data-pattern data-position-x data-position-y data-shift data-selectable")
             .css("z-index", 20).removeClass("card-removed");
     $("#cards").append(animatedDivs);
@@ -581,7 +588,7 @@ function removeTookCards() {
         $(this).remove();
     });
 
-    animateCards($(".card-removed"));
+//    animateCards($(".card-removed"));
 
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
@@ -591,13 +598,6 @@ function removeTookCards() {
     }
 
     function animateCards(cards) {
-        var animatedDivs = cards.clone().removeAttr("data-pattern data-position-x data-position-y data-shift data-selectable")
-                .css("z-index", 20).removeClass("card-removed");
-        $("#cards").append(animatedDivs);
-        animatedDivs.addClass('animated hinge');
-        animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            $(this).remove();
-        });
     }
 }
 
