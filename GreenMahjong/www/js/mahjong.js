@@ -228,6 +228,7 @@ function onDeviceReady() {
     $("#playTurtleLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
+        $("#cards").attr("data-layout", "turtle");
         matchingGame.positionX = matchingGame.turtle.positionX;
         matchingGame.positionY = matchingGame.turtle.positionY;
         matchingGame.shift = matchingGame.turtle.shift;
@@ -238,7 +239,7 @@ function onDeviceReady() {
     $("#playFlowerLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
-
+        $("#cards").attr("data-layout", "flower");
         matchingGame.positionX = matchingGame.flower.positionX;
         matchingGame.positionY = matchingGame.flower.positionY;
         matchingGame.shift = matchingGame.flower.shift;
@@ -248,11 +249,22 @@ function onDeviceReady() {
     $("#playSpiderLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
-
+        $("#cards").attr("data-layout", "cloud");
         matchingGame.positionX = matchingGame.spider.positionX;
         matchingGame.positionY = matchingGame.spider.positionY;
         matchingGame.shift = matchingGame.spider.shift;
         matchingGame.selectable = matchingGame.spider.selectable;
+        startNewGame();
+    });
+    
+    $("#playCloudLayout").fastClick(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+        $("#cards").attr("data-layout", "cloud");
+        matchingGame.positionX = matchingGame.cloud.positionX;
+        matchingGame.positionY = matchingGame.cloud.positionY;
+        matchingGame.shift = matchingGame.cloud.shift;
+        matchingGame.selectable = matchingGame.cloud.selectable;
         startNewGame();
     });
 
