@@ -348,6 +348,7 @@ function onDeviceReady() {
         matchingGame.selectable = matchingGame.flower.selectable;
         startNewGame();
     });
+    
     $("#playSpiderLayout").click(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
@@ -356,6 +357,17 @@ function onDeviceReady() {
         matchingGame.positionY = matchingGame.spider.positionY;
         matchingGame.shift = matchingGame.spider.shift;
         matchingGame.selectable = matchingGame.spider.selectable;
+        startNewGame();
+    });
+    
+    $("#playCloudLayout").click(function(e) {
+        e.stopImmediatePropagation();
+        $("#startScreen").hide();
+
+        matchingGame.positionX = matchingGame.cloud.positionX;
+        matchingGame.positionY = matchingGame.cloud.positionY;
+        matchingGame.shift = matchingGame.cloud.shift;
+        matchingGame.selectable = matchingGame.cloud.selectable;
         startNewGame();
     });
 
