@@ -174,9 +174,9 @@ function onDeviceReady() {
     var theme = localStorage.getItem("theme");
     if (theme) {
         matchingGame.theme = theme;
+        changeTheme(matchingGame.theme);
     }
 
-    changeTheme(matchingGame.theme);
 
     $('#newGameButton').fastClick(function(e) {
         e.stopImmediatePropagation();
@@ -799,6 +799,8 @@ function changeTheme(themeid) {
             matchingGame.theme = matchingGame.theme + 1;
     }
 
+
+    localStorage.setItem("theme", matchingGame.theme);
     var matchingTheme = matchingGame.themes[matchingGame.theme];
     $("div#background").css("background-image", "url(images/background_" + matchingTheme + ".jpg)");
     $("div#cards").attr("data-theme", matchingTheme);
