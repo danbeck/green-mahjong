@@ -173,7 +173,7 @@ function onDeviceReady() {
 
     var theme = localStorage.getItem("theme");
     if (theme) {
-        matchingGame.theme = theme;
+        matchingGame.theme = parseInt(theme);
         changeTheme(matchingGame.theme);
     }
 
