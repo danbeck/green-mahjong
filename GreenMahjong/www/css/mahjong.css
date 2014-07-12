@@ -83,6 +83,7 @@ div.scene{
     color:#ececea;
     text-align: center;
     display: none;
+    overflow-y:auto;
 }
 
 div.scene h1,  div.scene h2,  div.scene h3{
@@ -344,9 +345,12 @@ div.layoutSelection{
     display: inline-block; 
     position: relative;
     cursor:pointer;
+    /*overflow-y: auto;*/
     /*ffcc01*/
+    /*height: 100%;*/
     background-color: rgba(0,0,0,0.4);
 }
+
 
 div[data-selectable=true]:hover{
     -webkit-box-shadow: 0 0 12px 12px #ffcc01;
