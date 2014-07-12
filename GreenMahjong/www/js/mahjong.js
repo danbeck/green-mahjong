@@ -161,7 +161,10 @@ function onDeviceReady() {
 //    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 //    }
 
-
+    window.addEventListener('load', function() {
+        new FastClick(document.body);
+    }, false);
+    
 //    FastClick.attach(document.body);
 
     var version = localStorage.getItem("version");
