@@ -23,7 +23,8 @@
 
     <title>Green Mahjong</title>
     <meta charset="UTF-8">
-
+    <link rel="resource" type="application/l10n" href="locales/locales.ini" />
+    
     <meta id="Viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--<link rel="stylesheet" href="lib/animate.min.css">-->
     <link href="css/mahjong.css" rel="stylesheet"/>
@@ -48,7 +49,7 @@
         <li id="newGameButton">
           <a href="#">
             <img src="./images/NewGame.png" alt="New Game" />
-            <span>New</span>
+            <span data-l10n-id="new">New</span>
           </a>
         </li>
         <!--                <li id="replayGameButton">
@@ -60,19 +61,19 @@
         <li id="undoButton">
           <a href="#" >
             <img src="images/undo.png" alt="Undo" />
-            <span>Undo</span>
+            <span data-l10n-id="undo">Undo</span>
           </a>
         </li>
         <li id="themeButton">
           <a href="#">
             <img src="images/theme.png" alt="Theme" />
-            <span>Theme</span>
+            <span data-l10n-id="theme">Theme</span>
           </a>
         </li>
         <li id="activateHints">
           <a href="#">
             <img src="images/hint.png" alt="Hint" />
-            <span>Hint</span>
+            <span data-l10n-id="hint">Hint</span>
           </a>
         </li>
       </ul>
@@ -99,70 +100,74 @@
           <div id="playTurtleLayout" class="layoutSelection">
             <h3>Turtle</h3>
             <img  src="images/Turtle.png" width="300" height="220">
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button">PLAY</a></p>
+            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
           </div>
           <div class="newline"></div>
           <div id="playFlowerLayout" class="layoutSelection">
             <h3>Flower</h3>
             <img  src="images/Flower.png" width="300" height="220">
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button">PLAY</a></p>
+            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
           </div>
           <div class="newline even"></div>
           <div id="playSpiderLayout" class="layoutSelection">
             <h3>Spider</h3>
             <img  src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg01.jpg" width="300" height="220">
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" >PLAY</a></p>
+            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
           </div>
           <div class="newline"></div>
           <div id="playCloudLayout" class="layoutSelection">
             <h3>Cloud</h3>
             <img  src="http://games.kde.org/games/kmahjongg/screenshots/originals/kmahjongg02.jpg" width="300" height="220">
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" >PLAY</a></p>
+            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
           </div>
           <div class="newline even"></div>
         </div>
         <br>
         <br>
-        <p><a class="button" id="aboutButton">About</a></p>
+        <p><a class="button" id="aboutButton" data-l10n-id="about">About</a></p>
       </section>
     </div>
 
 
     <div id="aboutScreen" class="scene">
-      <section><h1>Authors:</h1>
+      <section><h1 data-l10n-id="authors">Authors:</h1>
         <p>Daniel Beck</p>
         <p>Karin Beck</p>
-        <h1>Contributors:</h1>
+        <h1 data-l10n-id="contributors">Contributors:</h1>
         <p>Cveta Doycheva</p>
         <p>Richelmy Vinicius Monteiro</p>
         <p>Michał Rosiak</p>
       </section>
-      <p><a class="button" id="closeAboutScreenButton">Close</a></p>
+      <p><a class="button" id="closeAboutScreenButton" data-l10n-id="close">Close</a></p>
     </div>
 
     <div id="versionInformationDialog">
       <section>
-        <h1>Welcome to Green Mahjong version 1.2</h1>
-        <h2>Changelog</h2>
-        <ul><li>A new "hint" function is available. Simply use the "Hint" buttom below to see all possible moves.</li>
-          <li>The game informs you with a friendly dialog when the game is lost.</li>
-          <li>The heuristic which chooses the best resolution sprites was improved. The height of the browser is also taken into account.</li>
-          <li>Many graphical improvements: the board is now centered. The background has a better resolution.</li>
+        <h1>Welcome to Green Mahjong version 2.0</h1>
+        <h2>Changelog version 2.0</h2>
+        <ul><li>Layout! Choose between the layout "turtle", "spider", "cloud" and "flower"</li>
+          <li>The theme "high visibility"</li>
+          <li>Theme "classic" was greatly improved</li>
+          <li>Animations</li>
+          <li>The game can be used Offline</li>
+          <li>The game board is now centered on chrome, too </li>
+          <li>Speed improvements on FirefoxOS.</li>
+          <li>Localization in the following languages: polish, french, german, portuguese and spanish.</li>
         </ul>
       </section>
       <!--<a id="hideVersionInformation" class="button">OK</a>-->
     </div>
     <div id="winningMessage">
       <img src="images/cup.png" alt="winning cup">
-      <div><h1>COMPLETE</h1>
-        <h2>Congratulations!</h2>
+      <div><h1 data-l10n-id="complete">COMPLETE</h1>
+        <h2 data-l10n-id="congratulation">Congratulations!</h2>
       </div>
     </div>
 
     <div id="loseMessage">
       <img src="images/smiley_lose.png" alt="you lose">
-      <div><h1>YOU LOSE</h1>
-        <h2>Try it again!</h2>
+      <div><h1 data-l10n-id="you-loose">YOU LOSE</h1>
+        <h2 data-l10n-id="try-it-again">Try it again!</h2>
       </div>
     </div>
 
@@ -184,6 +189,7 @@
     <script src="lib/jquery/jquery-2.1.0.min.js"></script>
     <script src="lib/jquery.fastclick.js"></script>
     <script src="lib/underscore-min.js"></script>
+    <script src="lib/l10n.js"></script>
     <script src="js/flower.js"></script>
     <script src="js/spider.js"></script>
     <script src="js/turtle.js"></script>
