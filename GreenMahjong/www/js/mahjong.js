@@ -67,7 +67,7 @@ matchingGame.resolution = null;
 
 matchingGame.resolutions = {
     verysmallscreen: {borderWidthRight: 2,
-        borderWidthBelow: 4,
+        borderWidthBelow: 2,
         cardWidth: 38,
         cardHeight: 48,
         shiftValue: 2},
@@ -249,7 +249,7 @@ function onDeviceReady() {
     $("#playSpiderLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
-        $("#cards").attr("data-layout", "cloud");
+        $("#cards").attr("data-layout", "spider");
         matchingGame.positionX = matchingGame.spider.positionX;
         matchingGame.positionY = matchingGame.spider.positionY;
         matchingGame.shift = matchingGame.spider.shift;

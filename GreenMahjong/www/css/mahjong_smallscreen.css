@@ -39,6 +39,21 @@ Innen:57x45*/
   height: 460px;
 }
 
+#cards[data-layout=flower] {
+  width: 480px;
+  height: 460px;
+}
+
+#cards[data-layout=spider] {
+  width: 640px;
+  height: 460px;
+}
+
+#cards[data-layout=cloud] {
+  width: 600px;
+  height: 380px;
+}
+
 .card {
     border-radius: 7px;
     height: 59px;
