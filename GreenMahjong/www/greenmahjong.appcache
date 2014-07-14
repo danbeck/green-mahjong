@@ -3,17 +3,23 @@ CACHE MANIFEST
 # This is a comment.
 index.html
 lib/jquery/jquery-2.1.0.min.js
-lib/animate.min.js
 lib/underscore-min.js
 lib/fastclick.js
+lib/l10n.js
+locales/bg/app.properties
+locales/de/app.properties
+locales/en/app.properties
+locales/es/app.properties
+locales/fr/app.properties
+locales/pl/app.properties
+locales/pt/app.properties
 js/flower.js
 js/mahjong.js
 js/spider.js
 js/turtle.js
-images/Flower.png
 images/GreenMahjongTitle.png
 images/NewGame.png
-images/Turtle.png
+images/layouts_thumbs.png
 images/background_classic.png
 images/background_fruits.png
 images/background_highvisibility.png
