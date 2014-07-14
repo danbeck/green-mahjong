@@ -378,10 +378,10 @@ div.layoutSelection{
 }
 
 
-/*div[data-selectable=true]:hover{
-    -webkit-box-shadow: 0 0 12px 12px #ffcc01;
-    box-shadow: 0 0 21px 5px #ffcc01;
-}*/
+div.card:hover{
+    -webkit-box-shadow: 0 0 0 3px #ffcc01;
+    box-shadow: 0 0 0 3px #ffcc01;
+}
 
 div.layoutSelection:hover{
     border: 3px solid #ff5501 ;
