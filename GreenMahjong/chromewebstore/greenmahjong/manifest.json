@@ -2,7 +2,7 @@
     "name": "Green Mahjong",
     "description": "Green Mahjong is a solitaire Mahjong game. The goal is to match open pairs of identical tiles and remove them from the board.",
     "manifest_version": 2, 
-    "version": "1",
+    "version": "2",
     "app": {
         "urls": [
             "http://daniel-beck.org/greenmahjong/"
@@ -14,6 +14,7 @@
     "icons": {
         "128": "greenmahjong128.png"
     },
+    "offline_enabled":true,
     "permissions": [
     ]
 }
