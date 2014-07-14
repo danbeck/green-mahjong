@@ -1,5 +1,5 @@
 var matchingGame = matchingGame || {};
-matchingGame.version = 2.0;
+matchingGame.version = "2.0";
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
     'cardZahl2', 'cardZahl2', 'cardZahl2', 'cardZahl2',
@@ -107,6 +107,12 @@ function registerMediaQueryListListener() {
 
     checkAndSetResolution();
 
+// Listen for orientation changes
+    window.addEventListener("orientationchange", function() {
+        checkAndSetResolution();
+        redrawGame();
+    }, false);
+
     verybigScreenMediaQueryList.addListener(function(mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
@@ -162,7 +168,7 @@ function onDeviceReady() {
 //    }
 
     var version = localStorage.getItem("version");
-    if (version !== "2.0") {
+    if (version !== matchingGame.version) {
         localStorage.setItem("version", matchingGame.version);
 
         $("div#versionInformationDialog").show();
@@ -256,7 +262,7 @@ function onDeviceReady() {
         matchingGame.selectable = matchingGame.spider.selectable;
         startNewGame();
     });
-    
+
     $("#playCloudLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
