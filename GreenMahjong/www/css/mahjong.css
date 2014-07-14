@@ -376,7 +376,36 @@ div.layoutSelection{
     /*height: 100%;*/
     background-color: rgba(0,0,0,0.4);
 }
+div#layouts div.turtle{
+  width: 300px;
+  height: 220px;
+  background-image: url('../images/layouts_thumbs.png');
+  background-position: 0px 0px;
+}
 
+
+div#layouts div.flower{
+  width: 300px;
+  height: 220px;
+  background-image: url('../images/layouts_thumbs.png');
+  background-position: 300px 0px;
+}
+
+
+div#layouts div.spider{
+  width: 300px;
+  height: 220px;
+  background-image: url('../images/layouts_thumbs.png');
+  background-position: 600px 0px;
+}
+
+
+div#layouts div.cloud{
+  width: 300px;
+  height: 220px;
+  background-image: url('../images/layouts_thumbs.png');
+  background-position: 900px 0px;
+}
 
 div.card:hover{
     -webkit-box-shadow: 0 0 0 3px #ffcc01;
