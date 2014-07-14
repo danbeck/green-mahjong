@@ -171,10 +171,10 @@ function onDeviceReady() {
     if (version !== matchingGame.version) {
         localStorage.setItem("version", matchingGame.version);
 
-        $("div#versionInformationDialog").show();
-        $("html").fastClick(function() {
-            $("div#versionInformationDialog").hide();
-        });
+//        $("div#versionInformationDialog").show();
+//        $("html").fastClick(function() {
+//            $("div#versionInformationDialog").hide();
+//        });
     }
 
     var theme = localStorage.getItem("theme");
