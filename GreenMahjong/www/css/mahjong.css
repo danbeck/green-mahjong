@@ -388,7 +388,7 @@ div#layouts div.flower{
   width: 300px;
   height: 220px;
   background-image: url('../images/layouts_thumbs.png');
-  background-position: 300px 0px;
+  background-position: 900px 0px;
 }
 
 
@@ -404,7 +404,7 @@ div#layouts div.cloud{
   width: 300px;
   height: 220px;
   background-image: url('../images/layouts_thumbs.png');
-  background-position: 900px 0px;
+  background-position: 300px 0px;
 }
 
 div.card:hover{
