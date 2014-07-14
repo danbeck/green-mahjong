@@ -10,6 +10,7 @@
         "32": "/greenmahjong/firefox/icon-32.png",
         "16": "/greenmahjong/firefox/icon-16.png"
     },
+    "appcache_path": "/greenmahjong.manifest",
     "developer":{
         "name": "Daniel Beck",
         "url": "http://daniel-beck.org"
