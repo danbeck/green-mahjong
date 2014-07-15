@@ -412,11 +412,9 @@ div.card:hover{
   box-shadow: 0 0 0 3px #ffcc01;
 }
 
-@-moz-document url-prefix() { 
-  div.card:hover{
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
+div.card:focus:active{
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 div.layoutSelection:hover{
