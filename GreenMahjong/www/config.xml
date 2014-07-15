@@ -5,7 +5,7 @@
         version = "2.0.0"> 
   <name>Green Mahjong</name>
 
-  <preference name="phonegap-version" value="3.5.0" />
+  <preference name="phonegap-version" value="3.4.0" />
   <preference name="permissions" value="none"/>
 
   <description>Green Mahjong is a simple mahjong game.</description> 
@@ -13,6 +13,6 @@
   <access origin="*" />
   <content src="index.html" />
   <icon src="greenmahjong.png"/>
-  <preference name="android-minSdkVersion" value="14" />
+  <preference name="android-minSdkVersion" value="16" />
   <preference name="orientation" value="landscape" />
 </widget>
