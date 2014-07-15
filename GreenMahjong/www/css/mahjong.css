@@ -407,7 +407,7 @@ div#layouts div.cloud{
   background-position: 300px 0px;
 }
 
-div.card:hover{
+/*div.card:hover{
   -webkit-box-shadow: 0 0 0 3px #ffcc01;
   box-shadow: 0 0 0 3px #ffcc01;
 }
@@ -415,7 +415,7 @@ div.card:hover{
 div.card:focus:active{
   -webkit-box-shadow: none;
   box-shadow: none;
-}
+}*/
 
 div.layoutSelection:hover{
   border: 3px solid #ff5501 ;
