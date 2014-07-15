@@ -95,16 +95,6 @@ function registerMediaQueryListListener() {
     var smallScreenMediaQueryList = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px),(min-height:460px) and (max-height:779px) and (min-width:640px)");
     var verysmallScreenMediaQueryList = window.matchMedia("(max-height:459px), (max-width:639px)");
 
-//    var verybigScreenMediaQueryList = window.matchMedia("(min-width:1600px) and (min-height:1100px)  and (orientation:portrait)");
-//    var bigScreenMediaQueryList = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px) and (orientation:portrait),(min-height:780px) and (max-height:1129px) and (min-width:1130px)  and (orientation:portrait)");
-//    var smallScreenMediaQueryList = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px) and (orientation:portrait),(min-height:460px) and (max-height:779px) and (min-width:640px)  and (orientation:portrait)");
-//    var verysmallScreenMediaQueryList = window.matchMedia("(max-height:459px) and (orientation:portrait), (max-width:639px)  and (orientation:portrait)");
-
-//    var verybigScreenMediaQueryListL = window.matchMedia("(min-width:1600px) and (min-height:1100px) and (orientation:landscape)");
-//    var bigScreenMediaQueryListL = window.matchMedia("(min-width: 1130px) and (max-width:1599px) and (min-height:780px) and (orientation:landscape),(min-height:780px) and (max-height:1129px) and (min-width:1130px) and (orientation:landscape)");
-//    var smallScreenMediaQueryListL = window.matchMedia("(min-width:640px) and (max-width:1129px) and (min-height:460px) and (orientation:landscape),(min-height:460px) and (max-height:779px) and (min-width:640px) and (orientation:landscape)");
-//    var verysmallScreenMediaQueryListL = window.matchMedia("(max-height:459px) and (orientation:landscape), (max-width:639px) and (orientation:landscape)");
-
     checkAndSetResolution();
 
 // Listen for orientation changes
@@ -188,12 +178,12 @@ function onDeviceReady() {
         e.stopImmediatePropagation();
         // startNewGame();
         hideMessages();
-        $("#startScreen").show();
+        $("#startScreen").slideDown(550);
     });
-    $('#replayGameButton').fastClick(function(e) {
-        e.stopImmediatePropagation();
-        restartGame();
-    });
+//    $('#replayGameButton').fastClick(function(e) {
+//        e.stopImmediatePropagation();
+//        restartGame();
+//    });
     $('#undoButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         hideMessages();
@@ -212,13 +202,6 @@ function onDeviceReady() {
         $("body").toggleClass("hint-on");
     });
 
-//    $("#playButton").fastClick(function(e) {
-//        e.stopImmediatePropagation();
-//        $("#startScreen").hide();
-//        $("#chooseLayoutScreen").show();
-//    });
-
-
     $("#aboutButton").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
@@ -233,7 +216,7 @@ function onDeviceReady() {
 
     $("#playTurtleLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
-        $("#startScreen").hide();
+        $("#startScreen").slideUp(550);
         $("#cards").attr("data-layout", "turtle");
         matchingGame.positionX = matchingGame.turtle.positionX;
         matchingGame.positionY = matchingGame.turtle.positionY;
@@ -244,7 +227,7 @@ function onDeviceReady() {
 
     $("#playFlowerLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
-        $("#startScreen").hide();
+        $("#startScreen").slideUp(550);
         $("#cards").attr("data-layout", "flower");
         matchingGame.positionX = matchingGame.flower.positionX;
         matchingGame.positionY = matchingGame.flower.positionY;
@@ -254,7 +237,7 @@ function onDeviceReady() {
     });
     $("#playSpiderLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
-        $("#startScreen").hide();
+        $("#startScreen").slideUp(550);
         $("#cards").attr("data-layout", "spider");
         matchingGame.positionX = matchingGame.spider.positionX;
         matchingGame.positionY = matchingGame.spider.positionY;
@@ -265,7 +248,7 @@ function onDeviceReady() {
 
     $("#playCloudLayout").fastClick(function(e) {
         e.stopImmediatePropagation();
-        $("#startScreen").hide();
+        $("#startScreen").slideUp(550);
         $("#cards").attr("data-layout", "cloud");
         matchingGame.positionX = matchingGame.cloud.positionX;
         matchingGame.positionY = matchingGame.cloud.positionY;
