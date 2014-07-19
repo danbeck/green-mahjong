@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Green Mahjong.  If not, see <http://www.gnu.org/licenses/>.
 */
-    
+
 /*
 Größe: 
 ===
@@ -32,36 +32,55 @@ body {
   font-size: 16px;
 }
 
-#game {
+/*#game {
+  width: 1600px;
+  height: 1100px;
+}*/
+
+div.game-buttons  ul li{
+  width:70px;
+  padding: 0 16px;
+}
+
+div.game-buttons ul li img{
+  width: 48px;
+  height:48px;
+}
+#cards {
   width: 1600px;
   height: 1100px;
 }
 
-div.game-buttons  ul li{
-    width:70px;
-    padding: 0 16px;
+#cards[data-layout=flower] {
+  width: 1180px;
+  height: 1050px;
+  /*height: 400px;*/
 }
 
-div.game-buttons ul li img{
-    width: 48px;
-    height:48px;
+#cards[data-layout=spider] {
+  width: 1550px;
+  height: 1000px;
+  /*height: 400px;*/
 }
-#cards {
-  width: 380px;
-  height: 400px;
+
+#cards[data-layout=cloud] {
+  width: 1360px;
+  height: 810px;
 }
+
+
 .card {
-    border-radius: 14px;
-    height: 142px;
-    width: 113px;
-    background: transparent url('../images/mahjong_verybigscreen_fruits.png');
+  border-radius: 14px;
+  height: 142px;
+  width: 113px;
+  background: transparent url('../images/mahjong_verybigscreen_fruits.png');
 }
 
 
 .shadow {
-    height: 153px;
-    width: 125px;
-    background: transparent url('../images/shadow_verybigscreen.png');
+  height: 153px;
+  width: 125px;
+  background: transparent url('../images/shadow_verybigscreen.png');
 }
 
 .cardZahl1 {background-position: 0 0}

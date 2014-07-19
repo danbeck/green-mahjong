@@ -32,14 +32,30 @@ body {
   font-size: 16px;
 }
 
-#game {
+/*#game {
   width: 1130px;
   height: 780px;
-}
+}*/
 
 #cards {
-  width: 380px;
-  height: 400px;
+  width: 1130px;
+  height: 780px;
+  /*height: 400px;*/
+}
+#cards[data-layout=flower] {
+  width: 820px;
+  height: 770px;
+  /*height: 400px;*/
+}
+
+#cards[data-layout=spider] {
+  width: 1050px;
+  height: 770px;
+}
+
+#cards[data-layout=cloud] {
+  width: 1020px;
+  height: 620px;
 }
 .card {
     border-radius: 15px;

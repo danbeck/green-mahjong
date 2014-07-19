@@ -10,9 +10,28 @@
         "32": "/greenmahjong/firefox/icon-32.png",
         "16": "/greenmahjong/firefox/icon-16.png"
     },
+    "appcache_path": "/greenmahjong.manifest",
     "developer":{
         "name": "Daniel Beck",
         "url": "http://daniel-beck.org"
     },
-    "default_locale": "en"
+    "default_locale": "en",
+    "locales": {
+      "pl": {
+        "name": "Green Mahjong",
+        "description" : "Znajdź pasujące pary w grze mahjong! Celem gry jest dopasowanie par identycznych kart, i usunąć je z planszy. Koniec gry następuje gdy zostaną usunięte wszystkie pary kart z planszy."
+      },
+      "pt": {
+        "name": "Green Mahjong",
+        "description" : "Encontre os pares combinantes neste jogo solitário de mahjong! O objetivo é combinar pares abertos de peças idênticas e removê-las do tabuleiro, expondo as espaços sob eles para jogar. O jogo termina quando todos os pares de peças forem removidas do tabuleiro ou quando não existem combinações possíveis restantes."
+      }
+      "de": {
+        "name": "Green Mahjong",
+        "description" : Green Mahjong ist ein solitaire Mahjong Spiel. Entfernen Sie paarweise alle 144 Steine bis keine mehr übrig sind."
+      }
+      "fr": {
+        "name": "Green Mahjong",
+        "description" : Green Mahjong est un jeu de mahjong solitaire. Éliminez les tuiles par paires identiques jusqu'à ce qu'il ne reste plus de tuiles sur le plateau."
+      }
+    }
 }

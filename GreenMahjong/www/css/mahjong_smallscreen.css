@@ -28,14 +28,30 @@ Klein:
 Aussen:60x48
 Innen:57x45*/
 
-#game {
+/*#game {
+  width: 680px;
+  height: 460px;
+}
+*/
+
+#cards {
   width: 680px;
   height: 460px;
 }
 
-#cards {
-  width: 380px;
-  height: 400px;
+#cards[data-layout=flower] {
+  width: 480px;
+  height: 460px;
+}
+
+#cards[data-layout=spider] {
+  width: 640px;
+  height: 460px;
+}
+
+#cards[data-layout=cloud] {
+  width: 600px;
+  height: 380px;
 }
 
 .card {
