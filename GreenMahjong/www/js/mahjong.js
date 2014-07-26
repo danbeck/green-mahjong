@@ -45,6 +45,10 @@ matchingGame.selectableCards = {};
 
 matchingGame.matchingCards = {};
 
+matchingGame.elapsedSeconds = 0;
+matchingGame.timer = null;
+matchingGame.undoUsed;
+matchingGame.points;
 
 //matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
 //matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
@@ -173,11 +177,23 @@ function onDeviceReady() {
         changeTheme(matchingGame.theme);
     }
 
+    $('#pauseButton').fastClick(function(e) {
+        e.stopImmediatePropagation();
+        stopTimer();
+        $("#pauseScreen").show();
+    });
+    
+    $('#resumeGame').fastClick(function(e) {
+        e.stopImmediatePropagation();
+        resumeTimer();
+        $("#pauseScreen").hide();
+    });
 
     $('#newGameButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         // startNewGame();
         hideMessages();
+        stopTimer();
         $("#startScreen").slideDown(550);
     });
 //    $('#replayGameButton').fastClick(function(e) {
@@ -187,6 +203,7 @@ function onDeviceReady() {
     $('#undoButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         hideMessages();
+        resumeTimer();
         undo();
     });
     $('#themeButton').fastClick(function(e) {
@@ -309,6 +326,10 @@ function redrawGame() {
     setSpriteImageForTiles();
 }
 function startGame() {
+    startTimer();
+    resetPoints();
+    matchingGame.undoUsed = false;
+    
 //    var firstDate = new Date();
     shuffleCards();
 //    var secondDate = new Date();
@@ -558,6 +579,7 @@ function getNumberOfHigherOverlaps(positionX, positionY, shift) {
 function checkPattern() {
     if (isMatchPattern()) {
         $(".card-selected").removeClass("card-selected").addClass("card-removed");
+        updatePoints(true);
         removeTookCards();
     } else {
         $(".card-selected").removeClass("card-selected");
@@ -736,13 +758,16 @@ function updateMatchingCards() {
     }
 
     if (!existsMatch && !isWinningGame()) {
+        stopTimer();
         showLoseMessage();
     }
 }
 
 function showLoseMessage() {
     $("div.game-buttons").slideToggle({direction: "down"}, 300);
+    $("h3#pointsReached").text("Points: " + matchingGame.points);
     $("div#loseMessage").show();
+    console.log("Punkte: " + matchingGame.points);
 }
 
 function cardArrayContainsCard(cards, card) {
@@ -765,8 +790,11 @@ function cardArrayContainsCard(cards, card) {
 }
 
 function showWinningMessage() {
+    stopTimer();
+    updatePoints(true);
     $("div.game-buttons").slideToggle({direction: "down"}, 300);
-    $("div#winningMessage").show();
+    $("h3#pointsReached").text("Points: " + matchingGame.points);
+    $("div#winningMessage").show();   
 }
 function startNewGame() {
     $("#cards").empty();
@@ -824,6 +852,7 @@ function setSpriteImageForTiles() {
 }
 
 function undo() {
+    matchingGame.undoUsed = true;
     if (matchingGame.undoList.length >= 1) {
         var cardsToUndo = matchingGame.undoList[0];
         var pattern = (matchingGame.undoList[0]).data("pattern");
@@ -838,6 +867,7 @@ function undo() {
         (matchingGame.undoList[0]).css({"visibility": "visible"});
         updateSelectableAndMatchingCards(cardsToUndo);
         matchingGame.undoList.shift();
+        updatePoints(false);
     }
 }
 
@@ -850,4 +880,62 @@ function showAlert(message) {
 
 function cordovaUsed() {
     return navigator.notification;
+}
+
+function startTimer(){
+    $("#timer").text("0:0");
+    matchingGame.timer = setInterval(updateTimer, "1000");
+    matchingGame.elapsedSeconds = 0;
+}
+
+function stopTimer(){
+    clearInterval(matchingGame.timer);
+    matchingGame.timer = null;   
+}
+
+function resumeTimer(){
+    if (matchingGame.timer === null){
+        matchingGame.timer = setInterval(updateTimer, "1000");
+    }
+}
+
+function updateTimer(){
+    matchingGame.elapsedSeconds++;
+    var timerText = Math.floor(matchingGame.elapsedSeconds/60) + ":" + matchingGame.elapsedSeconds % 60;
+    $("#timer").text(timerText);  
+}
+
+function updatePoints(incrementPoints){
+    if (incrementPoints){
+        matchingGame.points = matchingGame.points + 10;
+    } else {
+        matchingGame.points = matchingGame.points - 10;
+    }
+    
+    $("#points").text(matchingGame.points);
+}
+
+function resetPoints(){
+    matchingGame.points = 0;
+    $("#points").text(matchingGame.points);
+}
+
+function calculatePoints(gameWon){
+    var bonusGameWon = 200;
+    var timeLimitForBonus = 28800;
+    var timeBonus = 2;
+    var pointsLowerBound = 400;
+    if (gameWon){
+        matchingGame.points = matchingGame.points + bonusGameWon;
+        if (matchingGame.elapsedSeconds < timeLimitForBonus){
+            var timeDifference = timeLimitForBonus - matchingGame.elapsedSeconds;
+            matchingGame.points = matchingGame.points + (timeDifference * timeBonus);
+        } else {
+            var timeDifference = matchingGame.elapsedSeconds - timeLimitForBonus;
+            matchingGame.points = matchingGame.points - (timeDifference);
+            if (matchingGame.points < pointsLowerBound){
+                matchingGame.points = pointsLowerBound;
+            }
+        }
+    }
 }

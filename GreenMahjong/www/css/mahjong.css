@@ -260,7 +260,25 @@ div.game-buttons ul li img{
   padding:9px;
 }
 
+#pauseScreen{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9)
+}
 
+#timer {
+  size: auto;
+  padding:9px;
+  color: white;
+}
+
+#points {
+  size: auto;
+  padding:9px;
+  color: white;
+}
 
 /*@-moz-document url-prefix() { 
     #game {
@@ -361,8 +379,6 @@ div.game-buttons ul li img{
     bottom:0;
   }
 }
-
-
 
 div.layoutSelection{
   border: 3px solid #ffcc01 ;

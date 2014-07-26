@@ -140,6 +140,10 @@
       </section>
       <p><a class="button" id="closeAboutScreenButton" data-l10n-id="close">Close</a></p>
     </div>
+      
+    <div id="pauseScreen" class="scene">
+      <p><a class="button" id="resumeGame" data-l10n-id="resume">Resume</a></p>
+    </div>
 
     <div id="versionInformationDialog">
       <section>
@@ -161,6 +165,7 @@
       <img src="images/cup.png" alt="winning cup">
       <div><h1 data-l10n-id="complete">COMPLETE</h1>
         <h2 data-l10n-id="congratulation">Congratulations!</h2>
+        <h3 id="pointsReached">Test</h3>
       </div>
     </div>
 
@@ -168,10 +173,16 @@
       <img src="images/smiley_lose.png" alt="you lose">
       <div><h1 data-l10n-id="you-loose">YOU LOSE</h1>
         <h2 data-l10n-id="try-it-again">Try it again!</h2>
+        <h3 id="pointsReached">Test</h3>
       </div>
     </div>
 
     <div class="outer">
+        <div id="timer" class="inner">0:0</div>
+        <a id="pauseButton" href="#">
+            <img src="./images/NewGame.png" alt="Pause Game" />
+          </a>
+      <div id="points" class="inner">0</div>
       <section id="game" class="middle">
         <div id="cards" class="inner">      
           <div class="card">
