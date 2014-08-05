@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Green Mahjong
-Comment=A solitair mahjong game
-Exec=qmlscene $@ greenmahjong.qml
-Icon=./greenmahjong.png
-Terminal=false
-Type=Application
-X-Ubuntu-Touch=true
-

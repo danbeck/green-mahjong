@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=app
+Exec=ubuntu-html5-app-launcher $@ --www=www --inspector
+Icon=greenmahjong.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+
