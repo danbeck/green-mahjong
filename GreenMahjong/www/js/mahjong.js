@@ -50,6 +50,7 @@ matchingGame.timer = null;
 matchingGame.undoUsed;
 matchingGame.points;
 
+matchingGame.gameScreenShown = false;
 //matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
 //matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
 
@@ -179,10 +180,10 @@ function onDeviceReady() {
 
     $('#pauseButton').fastClick(function(e) {
         e.stopImmediatePropagation();
-        stopTimer();
+//        stopTimer();
         $("#pauseScreen").show();
     });
-    
+
     $('#resumeGame').fastClick(function(e) {
         e.stopImmediatePropagation();
         resumeTimer();
@@ -193,8 +194,11 @@ function onDeviceReady() {
         e.stopImmediatePropagation();
         // startNewGame();
         hideMessages();
-        stopTimer();
+//        stopTimer();
+        $("#gameScene").hide();
+        $("div.game-buttons").hide();
         $("#startScreen").slideDown(550);
+        matchingGame.gameScreenShown = false;
     });
 //    $('#replayGameButton').fastClick(function(e) {
 //        e.stopImmediatePropagation();
@@ -212,7 +216,8 @@ function onDeviceReady() {
     });
 
     $("html").fastClick(function(e) {
-        $("div.game-buttons").slideToggle({direction: "down"}, 300);
+        if (matchingGame.gameScreenShown)
+            $("div.game-buttons").slideToggle({direction: "down"}, 300);
     });
     $("#activateHints").fastClick(function(e) {
         e.stopImmediatePropagation();
@@ -232,8 +237,7 @@ function onDeviceReady() {
     });
 
     $("#playTurtleLayout").fastClick(function(e) {
-        e.stopImmediatePropagation();
-        $("#startScreen").slideUp(550);
+        showGameScreen(e);
         $("#cards").attr("data-layout", "turtle");
         matchingGame.positionX = matchingGame.turtle.positionX;
         matchingGame.positionY = matchingGame.turtle.positionY;
@@ -243,8 +247,7 @@ function onDeviceReady() {
     });
 
     $("#playFlowerLayout").fastClick(function(e) {
-        e.stopImmediatePropagation();
-        $("#startScreen").slideUp(550);
+        showGameScreen(e);
         $("#cards").attr("data-layout", "flower");
         matchingGame.positionX = matchingGame.flower.positionX;
         matchingGame.positionY = matchingGame.flower.positionY;
@@ -253,8 +256,7 @@ function onDeviceReady() {
         startNewGame();
     });
     $("#playSpiderLayout").fastClick(function(e) {
-        e.stopImmediatePropagation();
-        $("#startScreen").slideUp(550);
+        showGameScreen(e);
         $("#cards").attr("data-layout", "spider");
         matchingGame.positionX = matchingGame.spider.positionX;
         matchingGame.positionY = matchingGame.spider.positionY;
@@ -264,8 +266,7 @@ function onDeviceReady() {
     });
 
     $("#playCloudLayout").fastClick(function(e) {
-        e.stopImmediatePropagation();
-        $("#startScreen").slideUp(550);
+        showGameScreen(e);
         $("#cards").attr("data-layout", "cloud");
         matchingGame.positionX = matchingGame.cloud.positionX;
         matchingGame.positionY = matchingGame.cloud.positionY;
@@ -274,6 +275,9 @@ function onDeviceReady() {
         startNewGame();
     });
 
+    $("#gameScene").hide();
+    $("div.game-buttons").hide();
+//  $("div.game-buttons").slideToggle({direction: "down"}, 300);
 //var mql = window.matchMedia("(min-width: 480px)");
 
     registerMediaQueryListListener();
@@ -281,9 +285,20 @@ function onDeviceReady() {
 //    $("link[href='css/mahjong.css']").after($("<link href='" + resolution.css + "' rel='stylesheet'>"));
     // var backButton = document.querySelector("li a[data-role=\"back\"]");
 
-    setTimeout(function() {
-        $("div.game-buttons").slideToggle({direction: "down"}, 300);
-    }, 1500);
+//    setTimeout(function() {
+//        $("div.game-buttons").slideToggle({direction: "down"}, 300);
+//    }, 1500);
+
+    function showGameScreen(e) {
+        e.stopImmediatePropagation();
+        $("#gameScene").show();
+        $("#startScreen").slideUp(550);
+        $("div.game-buttons").show();
+        setTimeout(function() {
+            $("div.game-buttons").slideToggle({direction: "down"}, 300);
+        }, 1500);
+        matchingGame.gameScreenShown = true;
+    }
 }
 
 function redrawGame() {
@@ -326,10 +341,10 @@ function redrawGame() {
     setSpriteImageForTiles();
 }
 function startGame() {
-    startTimer();
+//    startTimer();
     resetPoints();
     matchingGame.undoUsed = false;
-    
+
 //    var firstDate = new Date();
     shuffleCards();
 //    var secondDate = new Date();
@@ -579,7 +594,7 @@ function getNumberOfHigherOverlaps(positionX, positionY, shift) {
 function checkPattern() {
     if (isMatchPattern()) {
         $(".card-selected").removeClass("card-selected").addClass("card-removed");
-        updatePoints(true);
+//        updatePoints(true);
         removeTookCards();
     } else {
         $(".card-selected").removeClass("card-selected");
@@ -758,16 +773,16 @@ function updateMatchingCards() {
     }
 
     if (!existsMatch && !isWinningGame()) {
-        stopTimer();
+//        stopTimer();
         showLoseMessage();
     }
 }
 
 function showLoseMessage() {
     $("div.game-buttons").slideToggle({direction: "down"}, 300);
-    $("h3#pointsReached").text("Points: " + matchingGame.points);
+//    $("h3#pointsReached").text("Points: " + matchingGame.points);
     $("div#loseMessage").show();
-    console.log("Punkte: " + matchingGame.points);
+//    console.log("Punkte: " + matchingGame.points);
 }
 
 function cardArrayContainsCard(cards, card) {
@@ -790,11 +805,11 @@ function cardArrayContainsCard(cards, card) {
 }
 
 function showWinningMessage() {
-    stopTimer();
-    updatePoints(true);
+//    stopTimer();
+//    updatePoints(true);
     $("div.game-buttons").slideToggle({direction: "down"}, 300);
-    $("h3#pointsReached").text("Points: " + matchingGame.points);
-    $("div#winningMessage").show();   
+//    $("h3#pointsReached").text("Points: " + matchingGame.points);
+    $("div#winningMessage").show();
 }
 function startNewGame() {
     $("#cards").empty();
@@ -867,7 +882,7 @@ function undo() {
         (matchingGame.undoList[0]).css({"visibility": "visible"});
         updateSelectableAndMatchingCards(cardsToUndo);
         matchingGame.undoList.shift();
-        updatePoints(false);
+//        updatePoints(false);
     }
 }
 
@@ -882,58 +897,58 @@ function cordovaUsed() {
     return navigator.notification;
 }
 
-function startTimer(){
+function startTimer() {
     $("#timer").text("0:0");
     matchingGame.timer = setInterval(updateTimer, "1000");
     matchingGame.elapsedSeconds = 0;
 }
 
-function stopTimer(){
+function stopTimer() {
     clearInterval(matchingGame.timer);
-    matchingGame.timer = null;   
+    matchingGame.timer = null;
 }
 
-function resumeTimer(){
-    if (matchingGame.timer === null){
+function resumeTimer() {
+    if (matchingGame.timer === null) {
         matchingGame.timer = setInterval(updateTimer, "1000");
     }
 }
 
-function updateTimer(){
+function updateTimer() {
     matchingGame.elapsedSeconds++;
-    var timerText = Math.floor(matchingGame.elapsedSeconds/60) + ":" + matchingGame.elapsedSeconds % 60;
-    $("#timer").text(timerText);  
+    var timerText = Math.floor(matchingGame.elapsedSeconds / 60) + ":" + matchingGame.elapsedSeconds % 60;
+    $("#timer").text(timerText);
 }
 
-function updatePoints(incrementPoints){
-    if (incrementPoints){
+function updatePoints(incrementPoints) {
+    if (incrementPoints) {
         matchingGame.points = matchingGame.points + 10;
     } else {
         matchingGame.points = matchingGame.points - 10;
     }
-    
+
     $("#points").text(matchingGame.points);
 }
 
-function resetPoints(){
+function resetPoints() {
     matchingGame.points = 0;
     $("#points").text(matchingGame.points);
 }
 
-function calculatePoints(gameWon){
+function calculatePoints(gameWon) {
     var bonusGameWon = 200;
     var timeLimitForBonus = 28800;
     var timeBonus = 2;
     var pointsLowerBound = 400;
-    if (gameWon){
+    if (gameWon) {
         matchingGame.points = matchingGame.points + bonusGameWon;
-        if (matchingGame.elapsedSeconds < timeLimitForBonus){
+        if (matchingGame.elapsedSeconds < timeLimitForBonus) {
             var timeDifference = timeLimitForBonus - matchingGame.elapsedSeconds;
             matchingGame.points = matchingGame.points + (timeDifference * timeBonus);
         } else {
             var timeDifference = matchingGame.elapsedSeconds - timeLimitForBonus;
             matchingGame.points = matchingGame.points - (timeDifference);
-            if (matchingGame.points < pointsLowerBound){
+            if (matchingGame.points < pointsLowerBound) {
                 matchingGame.points = pointsLowerBound;
             }
         }

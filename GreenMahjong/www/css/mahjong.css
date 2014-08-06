@@ -86,6 +86,72 @@ div.scene{
   overflow-y:auto;
 }
 
+div.relativescene{
+  z-index:20;
+  background: #2f3d0d url(../images/background_fruits.jpg) no-repeat center center;
+  /*background-attachment:  fixed;*/
+  background-size: cover;
+  /*position: ;*/
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  color:#ececea;
+  text-align: center;
+  display: none;
+  overflow-y:auto;
+}
+
+/*#layouts li{
+  height: 3.5rem;
+  border-bottom: 0.1rem solid #c7c7c7;
+  box-sizing: border-box;
+  width:100%;
+}
+
+#layouts ul {
+  list-style: none outside none;
+  overflow: hidden;
+}
+
+
+#layouts ul li > a:after {
+    background: url("../img/chevron@27.png") no-repeat scroll 0.5rem 0.5rem / 40% 75% transparent;
+    content: "";
+    height: 2rem;
+    margin-top: -1rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 2rem;
+    z-index: 0;
+}
+
+
+#layouts ul li > a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ebebeb;
+    border-image: none;
+    border-right: medium none;
+    border-style: solid none none;
+    border-width: 1px medium medium;
+    color: #787878;
+    background-color:#2f3d0d;
+    display: block;
+    font-size: 0.9rem;
+    height: 3.4rem;
+    line-height: 3.4rem;
+    overflow: hidden;
+    padding-left: 1rem;
+    padding-right: 1.5rem;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}*/
 div.scene h1,  div.scene h2,  div.scene h3{
   color:#ffcc01;
 }
@@ -261,11 +327,11 @@ div.game-buttons ul li img{
 }
 
 #pauseScreen{
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.9)
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9)
 }
 
 #timer {
