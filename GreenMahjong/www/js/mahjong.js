@@ -639,7 +639,7 @@ function removeTookCards() {
 }
 
 function isWinningGame() {
-    return (matchingGame.undoList.length * 2) === $(".card").length;
+    return (matchingGame.undoList.length * 2) === ( $(".card").length -2 );
 }
 function removeCardsFromSelectableCards(removedCards) {
     var pattern;
