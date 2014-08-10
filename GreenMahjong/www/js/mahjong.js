@@ -167,7 +167,7 @@ function onDeviceReady() {
         localStorage.setItem("version", matchingGame.version);
 
 //        $("div#versionInformationDialog").show();
-//        $("html").fastClick(function() {
+//        $("html").click(function() {
 //            $("div#versionInformationDialog").hide();
 //        });
     }
@@ -178,19 +178,19 @@ function onDeviceReady() {
         changeTheme(matchingGame.theme);
     }
 
-    $('#pauseButton').fastClick(function(e) {
+    $('#pauseButton').click(function(e) {
         e.stopImmediatePropagation();
 //        stopTimer();
         $("#pauseScreen").show();
     });
 
-    $('#resumeGame').fastClick(function(e) {
+    $('#resumeGame').click(function(e) {
         e.stopImmediatePropagation();
         resumeTimer();
         $("#pauseScreen").hide();
     });
 
-    $('#newGameButton').fastClick(function(e) {
+    $('#newGameButton').click(function(e) {
         e.stopImmediatePropagation();
         // startNewGame();
         hideMessages();
@@ -200,43 +200,43 @@ function onDeviceReady() {
         $("#startScreen").slideDown(550);
         matchingGame.gameScreenShown = false;
     });
-//    $('#replayGameButton').fastClick(function(e) {
+//    $('#replayGameButton').click(function(e) {
 //        e.stopImmediatePropagation();
 //        restartGame();
 //    });
-    $('#undoButton').fastClick(function(e) {
+    $('#undoButton').click(function(e) {
         e.stopImmediatePropagation();
         hideMessages();
         resumeTimer();
         undo();
     });
-    $('#themeButton').fastClick(function(e) {
+    $('#themeButton').click(function(e) {
         e.stopImmediatePropagation();
         changeTheme();
     });
 
-    $("html").fastClick(function(e) {
+    $("html").click(function(e) {
         if (matchingGame.gameScreenShown)
             $("div.game-buttons").slideToggle({direction: "down"}, 300);
     });
-    $("#activateHints").fastClick(function(e) {
+    $("#activateHints").click(function(e) {
         e.stopImmediatePropagation();
         $("body").toggleClass("hint-on");
     });
 
-    $("#aboutButton").fastClick(function(e) {
+    $("#aboutButton").click(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
         $("#aboutScreen").show();
     });
 
-    $("#closeAboutScreenButton").fastClick(function(e) {
+    $("#closeAboutScreenButton").click(function(e) {
         e.stopImmediatePropagation();
         $("#aboutScreen").hide();
         $("#startScreen").show();
     });
 
-    $("#playTurtleLayout").fastClick(function(e) {
+    $("#playTurtleLayout").click(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "turtle");
         matchingGame.positionX = matchingGame.turtle.positionX;
@@ -246,7 +246,7 @@ function onDeviceReady() {
         startNewGame();
     });
 
-    $("#playFlowerLayout").fastClick(function(e) {
+    $("#playFlowerLayout").click(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "flower");
         matchingGame.positionX = matchingGame.flower.positionX;
@@ -255,7 +255,7 @@ function onDeviceReady() {
         matchingGame.selectable = matchingGame.flower.selectable;
         startNewGame();
     });
-    $("#playSpiderLayout").fastClick(function(e) {
+    $("#playSpiderLayout").click(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "spider");
         matchingGame.positionX = matchingGame.spider.positionX;
@@ -265,7 +265,7 @@ function onDeviceReady() {
         startNewGame();
     });
 
-    $("#playCloudLayout").fastClick(function(e) {
+    $("#playCloudLayout").click(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "cloud");
         matchingGame.positionX = matchingGame.cloud.positionX;
@@ -412,7 +412,7 @@ function startGame() {
         $(this).attr("data-position-y", positionY);
         $(this).attr("data-shift", shift);
         $(this).attr("data-selectable", selectable);
-        $(this).fastClick(selectCard);
+        $(this).click(selectCard);
     });
 
     initMatchingCards();
