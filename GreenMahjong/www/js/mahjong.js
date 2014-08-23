@@ -167,7 +167,7 @@ function onDeviceReady() {
         localStorage.setItem("version", matchingGame.version);
 
 //        $("div#versionInformationDialog").show();
-//        $("html").click(function() {
+//        $("html").fastClick(function() {
 //            $("div#versionInformationDialog").hide();
 //        });
     }
@@ -178,25 +178,25 @@ function onDeviceReady() {
         changeTheme(matchingGame.theme);
     }
 
-    $('#pauseButton').click(function(e) {
+    $('#pauseButton').fastClick(function(e) {
         e.stopImmediatePropagation();
 //        stopTimer();
         $("#pauseScreen").show();
     });
 
-    $('#resumeGame').click(function(e) {
+    $('#resumeGame').fastClick(function(e) {
         e.stopImmediatePropagation();
         resumeTimer();
         $("#pauseScreen").hide();
     });
 
-    $('#newGameButton').click(function(e) {
+    $('#newGameButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         // startNewGame();
         hideMessages();
 //        stopTimer();
         $("#gameScene").hide();
-        $("div.game-buttons").hide();
+//        $("div.game-buttons").hide();
         $("#startScreen").slideDown(550);
         matchingGame.gameScreenShown = false;
     });
@@ -204,39 +204,39 @@ function onDeviceReady() {
 //        e.stopImmediatePropagation();
 //        restartGame();
 //    });
-    $('#undoButton').click(function(e) {
+    $('#undoButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         hideMessages();
         resumeTimer();
         undo();
     });
-    $('#themeButton').click(function(e) {
+    $('#themeButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         changeTheme();
     });
 
-    $("html").click(function(e) {
-        if (matchingGame.gameScreenShown)
-            $("div.game-buttons").slideToggle({direction: "down"}, 300);
-    });
-    $("#activateHints").click(function(e) {
+//    $("html").fastClick(function(e) {
+////        if (matchingGame.gameScreenShown)
+////            $("div.game-buttons").slideToggle({direction: "down"}, 300);
+//    });
+    $("#activateHints").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("body").toggleClass("hint-on");
     });
 
-    $("#aboutButton").click(function(e) {
+    $("#aboutButton").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#startScreen").hide();
         $("#aboutScreen").show();
     });
 
-    $("#closeAboutScreenButton").click(function(e) {
+    $("#closeAboutScreenButton").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#aboutScreen").hide();
         $("#startScreen").show();
     });
 
-    $("#playTurtleLayout").click(function(e) {
+    $("#playTurtleLayout").fastClick(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "turtle");
         matchingGame.positionX = matchingGame.turtle.positionX;
@@ -246,7 +246,7 @@ function onDeviceReady() {
         startNewGame();
     });
 
-    $("#playFlowerLayout").click(function(e) {
+    $("#playFlowerLayout").fastClick(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "flower");
         matchingGame.positionX = matchingGame.flower.positionX;
@@ -255,7 +255,7 @@ function onDeviceReady() {
         matchingGame.selectable = matchingGame.flower.selectable;
         startNewGame();
     });
-    $("#playSpiderLayout").click(function(e) {
+    $("#playSpiderLayout").fastClick(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "spider");
         matchingGame.positionX = matchingGame.spider.positionX;
@@ -265,7 +265,7 @@ function onDeviceReady() {
         startNewGame();
     });
 
-    $("#playCloudLayout").click(function(e) {
+    $("#playCloudLayout").fastClick(function(e) {
         showGameScreen(e);
         $("#cards").attr("data-layout", "cloud");
         matchingGame.positionX = matchingGame.cloud.positionX;
@@ -276,7 +276,7 @@ function onDeviceReady() {
     });
 
     $("#gameScene").hide();
-    $("div.game-buttons").hide();
+//    $("div.game-buttons").hide();
 //  $("div.game-buttons").slideToggle({direction: "down"}, 300);
 //var mql = window.matchMedia("(min-width: 480px)");
 
@@ -293,10 +293,10 @@ function onDeviceReady() {
         e.stopImmediatePropagation();
         $("#gameScene").show();
         $("#startScreen").slideUp(550);
-        $("div.game-buttons").show();
-        setTimeout(function() {
-            $("div.game-buttons").slideToggle({direction: "down"}, 300);
-        }, 1500);
+//        $("div.game-buttons").show();
+//        setTimeout(function() {
+//            $("div.game-buttons").slideToggle({direction: "down"}, 300);
+//        }, 1500);
         matchingGame.gameScreenShown = true;
     }
 }
@@ -412,7 +412,7 @@ function startGame() {
         $(this).attr("data-position-y", positionY);
         $(this).attr("data-shift", shift);
         $(this).attr("data-selectable", selectable);
-        $(this).click(selectCard);
+        $(this).fastClick(selectCard);
     });
 
     initMatchingCards();

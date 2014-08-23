@@ -66,6 +66,18 @@ Innen:57x45*/
     background: transparent url('../images/shadow_verysmallscreen.png');
 }
 
+
+#gameScene{
+  position: absolute;
+  top:0;
+  /*left:102px;*/
+  left:60px;
+}
+
+/*#game {
+  position: relative;
+}*/
+
 .cardZahl1 {background-position: 0 0}
 .cardZahl2 {background-position: -40px 0; }
 .cardZahl3 {background-position: -80px 0;}
@@ -114,3 +126,21 @@ Innen:57x45*/
 .cardDracheGruen {background-position: -520px 0;}
 .cardDracheRot {background-position: -520px -50px;}
 .cardDracheWeiss {background-position: -520px -100px;}
+
+
+.image {
+  /*border-radius: 15px;*/
+  height: 38px;
+  width: 40px;
+  border: none;
+  /*background: transparent url('../images/mahjong_bigscreen.png');*/
+  background-color: transparent;
+  background-image:  url('../images/application_icons_small.png');
+}
+
+
+.menu {background-position: 0 0}
+.undo {background-position: -120px 0}
+.new {background-position: -160px 0}
+.hint {background-position: -200px 0}
+.theme {background-position: -200px 0}

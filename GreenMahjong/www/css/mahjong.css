@@ -1,4 +1,4 @@
-/*
+/*  
 Copyright 2014, Daniel Beck and Karin Beck
 
 This file is part of Green Mahjong.
@@ -186,6 +186,28 @@ div#startScreen h1{
   text-decoration:none;
   text-shadow:0px 1px 0px #ffee66;
 }
+
+
+.button.small{
+  border-radius:8px;
+  padding:6px 6px;
+  margin-bottom:6px;
+  /*background:rgba(190,190,190,0.4);*/
+  background:rgba(30, 60, 15, 1);
+  border:none;
+  box-shadow:none;
+}
+
+.button span{
+
+  font-size:13px;
+
+  color:black;
+  text-shadow:none;
+  /*color: #333333;*/
+  /*-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);*/
+  /*background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);*/
+}
 .button:hover {
   /*    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
       background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
@@ -261,24 +283,36 @@ div#versionInformationDialog section ul{
 div.game-buttons{
   position: fixed;
   z-index: 100;
-  width:100%;
+  /*width:100%;*/
+  height: 100%;
+  top:0;
+  bottom:0;
+  display:inline-block;
 }
 
 div.game-buttons.lowerbuttons{
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1));
+  /*rgb()*/
+  /*rgb()*/
+  background: linear-gradient(rgba(35,44,12,0.5), rgba(35,44,12,1));
+  /*background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1));*/
   bottom:0px;
   right:0px;
 }
 div.game-buttons.upperbuttons{
-  background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.5));
+  /*background: linear-gradient(rgba(35,44,12,1), rgba(35,44,12,0.5));*/
+  /*  border-color: #ffaa22;
+    border-bottom-width: 1pt;
+    border-bottom-style: solid;*/
   top:0px;
-  right:0px;
+  left:0px;
 }
 
 div.game-buttons ul{
   list-style: none;
   display:block;
   padding: 0;
+  padding-top:8px;
+  margin:0;
 }
 
 div.game-buttons  ul li a {
@@ -286,15 +320,23 @@ div.game-buttons  ul li a {
   color: white;
   font-size: 1.0rem;
   /*font-weight: bold;*/
-
 }
+
 div.game-buttons  ul li{
   width:50px;
-  float: right;
+  /*float: right;*/
   padding: 0 6px;
   text-decoration: none;
   text-align: center;
 }
+
+/*div.game-buttons  ul li:first-child{
+  width:50px;
+  float: left;
+  padding: 0 6px;
+  text-decoration: none;
+  text-align: center;
+}*/
 
 div.game-buttons ul li img{
   width:24px;
@@ -578,3 +620,20 @@ body.hint-on li#activateHints{
   -moz-filter: saturate(2) contrast(2);
   filter: saturate(2) contrast(2);    
 }*/
+
+.image {
+  /*border-radius: 15px;*/
+  height: 46px;
+  width: 50px;
+  border: none;
+  /*background: transparent url('../images/mahjong_bigscreen.png');*/
+  background-color: transparent;
+  background-image:  url('../images/application_icons.png');
+}
+
+
+.menu {background-position: 0 0}
+.undo {background-position: -150px 0}
+.new {background-position: -200px 0}
+.hint {background-position: -250px 0}
+.theme {background-position: -250px 0}

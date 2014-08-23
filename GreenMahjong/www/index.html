@@ -43,15 +43,29 @@
     <div id="background">
     </div>
 
-    <div class="game-buttons lowerbuttons">
+    <div class="game-buttons upperbuttons">
       <ul>
 
-        <li id="newGameButton">
-          <a href="#">
-            <img src="./images/NewGame.png" alt="New Game" />
-            <span data-l10n-id="new">New</span>
+        <li id="menuGameButton">
+          <a class="button small"  href="#">
+            <!--<img src="./images/NewGame.png" alt="New Game" />-->
+              <div class="image enu"></div> 
+           <!--<span data-l10n-id="new">New</span>-->
           </a>
         </li>
+        <li id="newGameButton">
+          <a class="button small"  href="#">
+            <!--<img src="./images/NewGame.png" alt="New Game" />-->
+              <div class="image new"></div> 
+           <!--<span data-l10n-id="new">New</span>-->
+          </a>
+        </li>
+<!--        <li id="configButton">
+          <a href="#">
+            <img src="./images/NewGame.png" alt="Config" />
+            <span data-l10n-id="config">Config</span>
+          </a>
+        </li>-->
         <!--                <li id="replayGameButton">
                             <a href="#" >
                                 <img src="./images/reload.png" alt="Replay" />
@@ -59,21 +73,26 @@
                             </a>
                         </li>-->
         <li id="undoButton">
-          <a href="#" >
-            <img src="images/undo.png" alt="Undo" />
-            <span data-l10n-id="undo">Undo</span>
+          <a class="button small" href="#" >
+            <div class="image undo"></div>
+            
+            <!--<img src="images/undo.png" alt="Undo" />-->
+            <!--<span data-l10n-id="undo">Undo</span>-->
           </a>
         </li>
         <li id="themeButton">
-          <a href="#">
-            <img src="images/theme.png" alt="Theme" />
-            <span data-l10n-id="theme">Theme</span>
+           <a class="button small" href="#" >
+            <div class="image theme"></div>
+            
+            <!--<img src="images/undo.png" alt="Undo" />-->
+            <!--<span data-l10n-id="undo">Undo</span>-->
           </a>
         </li>
         <li id="activateHints">
-          <a href="#">
-            <img src="images/hint.png" alt="Hint" />
-            <span data-l10n-id="hint">Hint</span>
+          <a class="button small" href="#">
+             <div class="image hint"></div> 
+            <!--<img src="images/hint.png" alt="Hint" />-->
+            <!--<span data-l10n-id="hint">Hint</span>-->
           </a>
         </li>
       </ul>
@@ -91,7 +110,7 @@
                   </div>-->
     </div>
 
-    <div id="startScreen" class="relativescene">
+    <div id="startScreen" class="scene">
       <section>
         <!--<h1><a><img  src="images/GreenMahjongTitle.png" alt="Green Mahjong"></a></h1>-->
         <h1 data-l10n-id="chooseLayout">Choose a layout</h1>
@@ -104,11 +123,12 @@
                       <li id="playSpiderLayout"><a data-l10n-id="Spider">Spider</a></li>
                       <li id="playCloudLayout"><a data-l10n-id="Cloud">Cloud</a></li>
                     </ul>-->
-          <div id="playTurtleLayout" class="layoutSelection">
+          <a id="playTurtleLayout" href="#ingame"><div class="layoutSelection">
             <h3 data-l10n-id="Turtle">Turtle</h3>
             <div class="turtle"></div>
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
+            <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
           </div>
+          </a>
           <div class="newline"></div>
           <div id="playFlowerLayout" class="layoutSelection">
             <h3 data-l10n-id="Flower">Flower</h3>

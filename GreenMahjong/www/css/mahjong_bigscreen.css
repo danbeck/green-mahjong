@@ -81,6 +81,13 @@ div.game-buttons ul li img{
     background: transparent url('../images/shadow_bigscreen.png');
 }
 
+#gameScene{
+  /*position: absolute;*/
+  top:0;
+  left:102px;
+  /*left:62px;*/
+}
+
 .cardZahl1 {background-position: 0 0}
 .cardZahl2 {background-position: -80px 0; }
 .cardZahl3 {background-position: -160px 0;}
