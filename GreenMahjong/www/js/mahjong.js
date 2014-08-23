@@ -275,6 +275,18 @@ function onDeviceReady() {
         startNewGame();
     });
 
+
+    $("#menuGameButton").fastClick(function(){
+//              $("#gameScene").hide();
+              $("#menuScreen").show();
+  
+    });
+    
+    $("#resumeGameButton").fastClick(function(){
+              $("#menuScreen").hide();
+  
+    });
+    
     $("#gameScene").hide();
 //    $("div.game-buttons").hide();
 //  $("div.game-buttons").slideToggle({direction: "down"}, 300);

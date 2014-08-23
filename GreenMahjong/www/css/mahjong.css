@@ -187,8 +187,16 @@ div#startScreen h1{
   text-shadow:0px 1px 0px #ffee66;
 }
 
-
+#menuScreen h2.addBorder{
+  border:1px solid #ffcc01;
+  padding:15px;
+  margin:20px 40px;
+  background-color:rgba(255, 200,01,1);
+  color: black;
+  /*font*/
+}
 .button.small{
+  color:#ffcc01;
   border-radius:8px;
   padding:6px 6px;
   margin-bottom:6px;
@@ -196,6 +204,8 @@ div#startScreen h1{
   background:rgba(30, 60, 15, 1);
   border:none;
   box-shadow:none;
+  
+  text-shadow:0px 1px 0px #ffee66;
 }
 
 .button span{
@@ -488,6 +498,7 @@ div.game-buttons ul li img{
 }
 
 div.layoutSelection{
+  border-radius:6px;
   border: 3px solid #ffcc01 ;
   margin-top:20px; 
   margin-left: 0px;

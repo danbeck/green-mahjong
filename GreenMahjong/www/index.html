@@ -48,72 +48,37 @@
 
         <li id="menuGameButton">
           <a class="button small"  href="#">
-            <!--<img src="./images/NewGame.png" alt="New Game" />-->
-              <div class="image enu"></div> 
-           <!--<span data-l10n-id="new">New</span>-->
+            <div class="image menu"></div> 
           </a>
         </li>
-        <li id="newGameButton">
-          <a class="button small"  href="#">
-            <!--<img src="./images/NewGame.png" alt="New Game" />-->
-              <div class="image new"></div> 
-           <!--<span data-l10n-id="new">New</span>-->
-          </a>
-        </li>
-<!--        <li id="configButton">
-          <a href="#">
-            <img src="./images/NewGame.png" alt="Config" />
-            <span data-l10n-id="config">Config</span>
-          </a>
-        </li>-->
-        <!--                <li id="replayGameButton">
-                            <a href="#" >
-                                <img src="./images/reload.png" alt="Replay" />
-                                <span>Replay</span>
-                            </a>
-                        </li>-->
+        <!--        <li id="newGameButton">
+                  <a class="button small"  href="#">
+                    <img src="./images/NewGame.png" alt="New Game" />
+                      <div class="image new"></div>
+                  </a>
+                </li>-->
         <li id="undoButton">
           <a class="button small" href="#" >
             <div class="image undo"></div>
-            
-            <!--<img src="images/undo.png" alt="Undo" />-->
-            <!--<span data-l10n-id="undo">Undo</span>-->
           </a>
         </li>
-        <li id="themeButton">
-           <a class="button small" href="#" >
-            <div class="image theme"></div>
-            
-            <!--<img src="images/undo.png" alt="Undo" />-->
-            <!--<span data-l10n-id="undo">Undo</span>-->
-          </a>
-        </li>
+        <!--        <li id="themeButton">
+                   <a class="button small" href="#" >
+                    <div class="image theme"></div>
+                  </a>
+                </li>-->
         <li id="activateHints">
           <a class="button small" href="#">
-             <div class="image hint"></div> 
-            <!--<img src="images/hint.png" alt="Hint" />-->
-            <!--<span data-l10n-id="hint">Hint</span>-->
+            <div class="image hint"></div>
           </a>
         </li>
       </ul>
-
-
-      <!--            <div data-role="dialog" id="newGameDialog">
-                      <section>
-                          <h1>Do you really want to abondon this game and start a new game</h1>
-                          <p>Feed Url  feed search you want to add.</p><p> You can also search for feeds.</p>
-                          <menu>
-                              <button data-role="button" id="newGameNo">Cancel</button>
-                              <button data-role="button" id="newGameYes" class="success" >Add</button>
-                          </menu>
-                      </section>
-                  </div>-->
     </div>
 
     <div id="startScreen" class="scene">
       <section>
         <!--<h1><a><img  src="images/GreenMahjongTitle.png" alt="Green Mahjong"></a></h1>-->
-        <h1 data-l10n-id="chooseLayout">Choose a layout</h1>
+        <!--<h1 data-l10n-id="chooseLayout">Choose a layout</h1>-->
         <!--<br>-->
         <!--<h2>Choose Layout</h2>-->
         <div id="layouts">
@@ -124,10 +89,10 @@
                       <li id="playCloudLayout"><a data-l10n-id="Cloud">Cloud</a></li>
                     </ul>-->
           <a id="playTurtleLayout" href="#ingame"><div class="layoutSelection">
-            <h3 data-l10n-id="Turtle">Turtle</h3>
-            <div class="turtle"></div>
-            <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
-          </div>
+              <h3 data-l10n-id="Turtle">Turtle</h3>
+              <div class="turtle"></div>
+              <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
+            </div>
           </a>
           <div class="newline"></div>
           <div id="playFlowerLayout" class="layoutSelection">
@@ -148,11 +113,36 @@
             <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
           </div>
           <div class="newline even"></div>
+          <div id="playBugLayout" class="layoutSelection">
+            <h3 data-l10n-id="Bug">Bug</h3>
+            <div class="spider"></div>
+            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
+          </div>
+          <div class="newline"></div>
+          <div id="playFourHillsLayout" class="layoutSelection">
+            <h3>Four Hills - EASY</h3>
+            <div class="cloud"></div>
+            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
+          </div>
+          <div class="newline even"></div>
         </div>
         <br>
         <br>
-        <p><a class="button" id="aboutButton" data-l10n-id="about">About</a></p>
+        <!--<p><a class="button" id="aboutButton" data-l10n-id="about">About</a></p>-->
       </section>
+    </div>
+
+
+
+    <div id="menuScreen" class="scene" style="background: rgba(0,0,0,0.75)">
+      <section><h1 data-l10n-id="gamePaused">Game Paused</h1>
+        <!--<br>-->
+        <h2 class="addBorder" id="newGameButton">Start new game</h2>
+        <h2 class="addBorder"  id="themeButton">Change Theme</h2>
+        <h2 class="addBorder" id="aboutButton">About the Game</h2>
+        <h2 class="addBorder" id="resumeGameButton">Resume Game</h2>
+      </section>
+      <!--<p><a class="button" id="closeAboutScreenButton" data-l10n-id="close">Resume game</a></p>-->
     </div>
 
 
