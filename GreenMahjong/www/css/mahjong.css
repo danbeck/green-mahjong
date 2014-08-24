@@ -514,8 +514,17 @@ div.newline{
   /*margin-left: 20px;*/
 }
 
-@media (min-width: 651px){
+@media (min-width: 651px) and (max-width:1009px){
   div.newline.even{
+    /*display: none;*/
+    display:block;
+    /*border: 5px solid #f00 ;*/
+    /*margin-left: 20px;*/
+  }
+}
+
+@media (min-width: 1010px){
+  div.newline.threeDivisible{
     /*display: none;*/
     display:block;
     /*border: 5px solid #f00 ;*/
