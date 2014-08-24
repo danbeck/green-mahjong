@@ -139,3 +139,20 @@ div.game-buttons ul li img{
 .cardDracheGruen {background-position: -1482px 0;}
 .cardDracheRot {background-position: -1482px -142px;}
 .cardDracheWeiss {background-position: -1482px -284px;}
+
+.image {
+  /*border-radius: 15px;*/
+  height: 47px;
+  width: 50px;
+  border: none;
+  /*background: transparent url('../images/mahjong_bigscreen.png');*/
+  background-color: transparent;
+  background-image:  url('../images/application_icons.png');
+}
+
+
+.menu {background-position: 0 0}
+.undo {background-position: -150px 0}
+.new {background-position: -200px 0}
+.hint {background-position: -250px 0}
+.theme {background-position: -250px 0}

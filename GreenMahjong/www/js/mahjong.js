@@ -858,8 +858,7 @@ function changeTheme(themeid) {
 
     localStorage.setItem("theme", matchingGame.theme);
     var matchingTheme = matchingGame.themes[matchingGame.theme];
-    $("div#background").css("background-image", "url(images/background_" + matchingTheme + ".jpg)");
-    $("div#cards").attr("data-theme", matchingTheme);
+    $("body").attr("data-theme", matchingTheme);
     setSpriteImageForTiles();
 }
 
@@ -874,8 +873,9 @@ function setSpriteImageForTiles() {
         resolution = "bigscreen";
     if (matchingGame.resolution === matchingGame.resolutions.verybigscreen)
         resolution = "verybigscreen";
+    $("body").attr("data-resolution", resolution);
 
-    $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
+//    $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
 }
 
 function undo() {

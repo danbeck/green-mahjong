@@ -645,6 +645,77 @@ body.hint-on li#activateHints{
 }
 
 
+body[data-theme=turtle] .button.small{
+  background: rgb(30, 60, 15);
+}
+body[data-theme=classic] .button.small{
+  background: #383227;
+}
+body[data-theme=highvisibility] .button.small{
+  background: #444445;
+}
+
+body[data-theme=classic][data-resolution=verysmallscreen] .card{
+  background-image: url(../images/mahjong_verysmallscreen_classic.png);
+}
+
+body[data-theme=classic][data-resolution=smallscreen] .card{
+  background-image: url(../images/mahjong_smallscreen_classic.png);
+}
+
+body[data-theme=classic][data-resolution=bigscreen] .card{
+  background-image: url(../images/mahjong_bigscreen_classic.png);
+}
+
+body[data-theme=classic][data-resolution=verybigscreen] .card{
+  background-image: url(../images/mahjong_verybigscreen_classic.png);
+}
+
+body[data-theme=fruits][data-resolution=verysmallscreen] .card{
+  background-image: url(../images/mahjong_verysmallscreen_fruits.png);
+}
+
+body[data-theme=fruits][data-resolution=smallscreen] .card{
+  background-image: url(../images/mahjong_smallscreen_fruits.png);
+}
+
+body[data-theme=fruits][data-resolution=bigscreen] .card{
+  background-image: url(../images/mahjong_bigscreen_fruits.png);
+}
+
+body[data-theme=fruits][data-resolution=verybigscreen] .card{
+  background-image: url(../images/mahjong_verybigscreen_fruits.png);
+}
+
+body[data-theme=highvisibility][data-resolution=verysmallscreen] .card{
+  background-image: url(../images/mahjong_verysmallscreen_highvisibility.png);
+}
+
+body[data-theme=highvisibility][data-resolution=smallscreen] .card{
+  background-image: url(../images/mahjong_smallscreen_highvisibility.png);
+}
+
+body[data-theme=highvisibility][data-resolution=bigscreen] .card{
+  background-image: url(../images/mahjong_bigscreen_highvisibility.png);
+}
+
+body[data-theme=highvisibility][data-resolution=verybigscreen] .card{
+  background-image: url(../images/mahjong_verybigscreen_highvisibility.png);
+}
+
+body[data-theme=fruits] div#background{
+  background-image: url(../images/background_fruits.jpg);
+}
+
+body[data-theme=classic] div#background{
+  background-image: url(../images/background_classic.jpg);
+}
+
+body[data-theme=highvisibility] div#background{
+  background-image: url(../images/background_highvisibility.jpg);
+}
+
+
 .menu {background-position: 0 0}
 .undo {background-position: -150px 0}
 .new {background-position: -200px 0}
