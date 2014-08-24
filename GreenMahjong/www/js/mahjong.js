@@ -51,8 +51,6 @@ matchingGame.undoUsed;
 matchingGame.points;
 
 matchingGame.gameScreenShown = false;
-//matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
-//matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
 
 matchingGame.resolution = null;
 
@@ -166,10 +164,6 @@ function onDeviceReady() {
     if (version !== matchingGame.version) {
         localStorage.setItem("version", matchingGame.version);
 
-//        $("div#versionInformationDialog").show();
-//        $("html").fastClick(function() {
-//            $("div#versionInformationDialog").hide();
-//        });
     }
 
     var theme = localStorage.getItem("theme");
@@ -192,11 +186,9 @@ function onDeviceReady() {
 
     $('#newGameButton').fastClick(function(e) {
         e.stopImmediatePropagation();
-        // startNewGame();
         hideMessages();
-//        stopTimer();
+        $("#menuScreen").hide();
         $("#gameScene").hide();
-//        $("div.game-buttons").hide();
         $("#startScreen").slideDown(550);
         matchingGame.gameScreenShown = false;
     });
@@ -275,6 +267,27 @@ function onDeviceReady() {
         startNewGame();
     });
 
+    $("#playBugLayout").fastClick(function(e) {
+        showGameScreen(e);
+        $("#cards").attr("data-layout", "bug");
+        matchingGame.positionX = matchingGame.bug.positionX;
+        matchingGame.positionY = matchingGame.bug.positionY;
+        matchingGame.shift = matchingGame.bug.shift;
+        matchingGame.selectable = matchingGame.bug.selectable;
+        startNewGame();
+    });
+
+    $("#playFourHillsLayout").fastClick(function(e) {
+        showGameScreen(e);
+        $("#cards").attr("data-layout", "fourHills");
+        matchingGame.positionX = matchingGame.fourHills.positionX;
+        matchingGame.positionY = matchingGame.fourHills.positionY;
+        matchingGame.shift = matchingGame.fourHills.shift;
+        matchingGame.selectable = matchingGame.fourHills.selectable;
+        startNewGame();
+    });
+
+
 
     $("#menuGameButton").fastClick(function() {
         $("div.game-buttons").hide();
@@ -284,39 +297,23 @@ function onDeviceReady() {
 
     $("#resumeGameButton").fastClick(function() {
         $("#menuScreen").hide();
-
+        $("div.game-buttons").show();
     });
 
     $("#gameScene").hide();
 
     $("div.game-buttons").hide();
-    ////    $("div.game-buttons").hide();
-//  $("div.game-buttons").slideToggle({direction: "down"}, 300);
-//var mql = window.matchMedia("(min-width: 480px)");
-
     registerMediaQueryListListener();
-//
-//    $("link[href='css/mahjong.css']").after($("<link href='" + resolution.css + "' rel='stylesheet'>"));
-    // var backButton = document.querySelector("li a[data-role=\"back\"]");
-
-//    setTimeout(function() {
-//        $("div.game-buttons").slideToggle({direction: "down"}, 300);
-//    }, 1500);
 
     function showGameScreen(e) {
         e.stopImmediatePropagation();
         $("#gameScene").show();
         $("#startScreen").slideUp(550);
-//        $("div.game-buttons").show();
-//        setTimeout(function() {
-//            $("div.game-buttons").slideToggle({direction: "down"}, 300);
-//        }, 1500);
         matchingGame.gameScreenShown = true;
     }
 }
 
 function redrawGame() {
-//    matchingGame.cardWidth = parseInt($(".card").css('width'));
     matchingGame.cardWidth = matchingGame.resolution.cardWidth;
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
 //    matchingGame.cardHeight = parseInt($(".card").css('height'));
@@ -361,20 +358,16 @@ function startGame() {
 
     matchingGame.undoUsed = false;
 
-//    var firstDate = new Date();
     shuffleCards();
-//    var secondDate = new Date();
 
     var numberOfCards = matchingGame.deck.length;
     matchingGame.cardWidth = matchingGame.resolution.cardWidth;
     matchingGame.cardWidthWithoutBorder = matchingGame.cardWidth - matchingGame.resolution.borderWidthRight;
-//    matchingGame.cardHeight = parseInt($(".card").css('height'));
     matchingGame.cardHeight = matchingGame.resolution.cardHeight;
     matchingGame.cardHeightWithoutBorder = matchingGame.cardHeight - matchingGame.resolution.borderWidthBelow;
     var zIndexBase = 8;
 
     for (var i = 0; i < (numberOfCards - 1); i++) {
-        //$(".card:first-child").clone().appendTo("#cards");
         $("#cards").append('<div class="card"></div>');
         $("#cards").append('<div class="shadow"></div>');
     }
