@@ -276,19 +276,21 @@ function onDeviceReady() {
     });
 
 
-    $("#menuGameButton").fastClick(function(){
-//              $("#gameScene").hide();
-              $("#menuScreen").show();
-  
+    $("#menuGameButton").fastClick(function() {
+        $("div.game-buttons").hide();
+        $("#menuScreen").show();
+
     });
-    
-    $("#resumeGameButton").fastClick(function(){
-              $("#menuScreen").hide();
-  
+
+    $("#resumeGameButton").fastClick(function() {
+        $("#menuScreen").hide();
+
     });
-    
+
     $("#gameScene").hide();
-//    $("div.game-buttons").hide();
+
+    $("div.game-buttons").hide();
+    ////    $("div.game-buttons").hide();
 //  $("div.game-buttons").slideToggle({direction: "down"}, 300);
 //var mql = window.matchMedia("(min-width: 480px)");
 
@@ -354,7 +356,9 @@ function redrawGame() {
 }
 function startGame() {
 //    startTimer();
+    $("div.game-buttons").show();
     resetPoints();
+
     matchingGame.undoUsed = false;
 
 //    var firstDate = new Date();
@@ -651,7 +655,7 @@ function removeTookCards() {
 }
 
 function isWinningGame() {
-    return (matchingGame.undoList.length * 2) === ( $(".card").length -2 );
+    return (matchingGame.undoList.length * 2) === ($(".card").length - 2);
 }
 function removeCardsFromSelectableCards(removedCards) {
     var pattern;
