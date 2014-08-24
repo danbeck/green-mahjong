@@ -38,6 +38,29 @@ html {
 body{
   font:   15px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+#timer,.points{
+  position:fixed;
+  font-size: 1.4rem;
+  color: #ffcc01;
+  z-index:19;
+  border-radius: 6px;
+  padding:1px 3px;
+  background-color: rgba(30, 60, 15, 1);
+  left: 16px;
+}
+
+.points{
+  bottom:15px;
+}
+#points{
+  text-align: center;
+}
+
+#timer{
+  bottom:85px;
+}
+
 div#background {
   z-index:-20;
   background: #2f3d0d url(../images/background_fruits.jpg) no-repeat center center;
@@ -317,25 +340,6 @@ div.game-buttons ul li img{
   padding:9px;
 }
 
-#pauseScreen{
-  display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.9)
-}
-
-#timer {
-  size: auto;
-  padding:9px;
-  color: white;
-}
-
-#points {
-  size: auto;
-  padding:9px;
-  color: white;
-}
 
 /*@-moz-document url-prefix() { 
     #game {

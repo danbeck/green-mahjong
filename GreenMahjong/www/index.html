@@ -166,17 +166,20 @@
     </div>
     <div id="winningMessage">
       <img src="images/cup.png" alt="winning cup">
-      <div><h1 data-l10n-id="complete">COMPLETE</h1>
-        <h2 data-l10n-id="congratulation">Congratulations!</h2>
+      <div><h1 data-l10n-id="congratulation">Congratulations!</h1>
+        <h3 class="pointsReached"></h3>
       </div>
     </div>
 
     <div id="loseMessage">
       <img src="images/smiley_lose.png" alt="you lose">
-      <div><h1 data-l10n-id="you-loose">YOU LOSE</h1>
-        <h2 data-l10n-id="try-it-again">Try it again!</h2>
+      <div><h1 data-l10n-id="try-it-again">Try it again!</h1>
+        <h3 class="pointsReached"></h3>
       </div>
     </div>
+
+    <div id="timer" >00:00</div>
+    <span class="points"> <span id="points">0</span></span>
 
     <div class="outer" id="gameScene">
       <section id="game" class="middle">
@@ -204,6 +207,7 @@
     <script src="js/cloud.js"></script>
     <script src="js/fourHills.js"></script>
     <script src="js/bug.js"></script>
+    <script src="js/pointCalculation.js"></script>
     <script src="js/mahjong.js"></script>
     <!--<script src="http://code.jquery.com/ui/1.11.0-beta.2/jquery-ui.min.js"></script>-->
   </body>

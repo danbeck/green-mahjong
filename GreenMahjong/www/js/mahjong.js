@@ -1,5 +1,9 @@
 var matchingGame = matchingGame || {};
 matchingGame.version = "2.0";
+matchingGame.layoutTurtle = "turtle";
+matchingGame.layoutFlower = "flower";
+matchingGame.layoutSpider = "spider";
+matchingGame.layoutCloud = "cloud";
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
     'cardZahl2', 'cardZahl2', 'cardZahl2', 'cardZahl2',
@@ -48,6 +52,8 @@ matchingGame.matchingCards = {};
 matchingGame.elapsedSeconds = 0;
 matchingGame.timer = null;
 matchingGame.undoUsed;
+matchingGame.hintsUsed = false;
+matchingGame.gameEnded;
 matchingGame.points;
 
 matchingGame.gameScreenShown = false;
@@ -187,6 +193,10 @@ function onDeviceReady() {
     $('#newGameButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         hideMessages();
+        stopTimer();
+        if (!matchingGame.gameEnded) {
+            calculatePoints();
+        }
         $("#menuScreen").hide();
         $("#gameScene").hide();
         $("#startScreen").slideDown(550);
@@ -206,14 +216,10 @@ function onDeviceReady() {
         e.stopImmediatePropagation();
         changeTheme();
     });
-
-//    $("html").fastClick(function(e) {
-////        if (matchingGame.gameScreenShown)
-////            $("div.game-buttons").slideToggle({direction: "down"}, 300);
-//    });
     $("#activateHints").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("body").toggleClass("hint-on");
+        updateHintsUsed();
     });
 
     $("#aboutButton").fastClick(function(e) {
@@ -292,12 +298,13 @@ function onDeviceReady() {
     $("#menuGameButton").fastClick(function() {
         $("div.game-buttons").hide();
         $("#menuScreen").show();
-
+        stopTimer();
     });
 
     $("#resumeGameButton").fastClick(function() {
         $("#menuScreen").hide();
         $("div.game-buttons").show();
+        resumeTimer();
     });
 
     $("#gameScene").hide();
@@ -352,10 +359,11 @@ function redrawGame() {
     setSpriteImageForTiles();
 }
 function startGame() {
-//    startTimer();
     $("div.game-buttons").show();
+    startTimer();
     resetPoints();
-
+    initHintsUsed();
+    matchingGame.gameEnded = false;
     matchingGame.undoUsed = false;
 
     shuffleCards();
@@ -603,7 +611,7 @@ function getNumberOfHigherOverlaps(positionX, positionY, shift) {
 function checkPattern() {
     if (isMatchPattern()) {
         $(".card-selected").removeClass("card-selected").addClass("card-removed");
-//        updatePoints(true);
+        updatePoints(true);
         removeTookCards();
     } else {
         $(".card-selected").removeClass("card-selected");
@@ -788,10 +796,13 @@ function updateMatchingCards() {
 }
 
 function showLoseMessage() {
+    matchingGame.gameEnded = true;
+    calculatePoints(false);
+
     $("div.game-buttons").slideToggle({direction: "down"}, 300);
-//    $("h3#pointsReached").text("Points: " + matchingGame.points);
+    $(".pointsReached").text("Points: " + matchingGame.points);
     $("div#loseMessage").show();
-//    console.log("Punkte: " + matchingGame.points);
+    console.log("Punkte: " + matchingGame.points);
 }
 
 function cardArrayContainsCard(cards, card) {
@@ -814,10 +825,11 @@ function cardArrayContainsCard(cards, card) {
 }
 
 function showWinningMessage() {
-//    stopTimer();
-//    updatePoints(true);
+    matchingGame.gameEnded = true;
+    stopTimer();
+    calculatePoints(true);
     $("div.game-buttons").slideToggle({direction: "down"}, 300);
-//    $("h3#pointsReached").text("Points: " + matchingGame.points);
+    $("#pointsReached").text("Points: " + matchingGame.points);
     $("div#winningMessage").show();
 }
 function startNewGame() {
@@ -876,6 +888,7 @@ function setSpriteImageForTiles() {
 }
 
 function undo() {
+    matchingGame.gameEnded = false;
     matchingGame.undoUsed = true;
     if (matchingGame.undoList.length >= 1) {
         var cardsToUndo = matchingGame.undoList[0];
@@ -907,7 +920,7 @@ function cordovaUsed() {
 }
 
 function startTimer() {
-    $("#timer").text("0:0");
+    $("#timer").text("00:00");
     matchingGame.timer = setInterval(updateTimer, "1000");
     matchingGame.elapsedSeconds = 0;
 }
@@ -923,19 +936,31 @@ function resumeTimer() {
     }
 }
 
-function updateTimer() {
+
+function updateTimer(){
     matchingGame.elapsedSeconds++;
-    var timerText = Math.floor(matchingGame.elapsedSeconds / 60) + ":" + matchingGame.elapsedSeconds % 60;
-    $("#timer").text(timerText);
+    var numberOfMinutes = Math.floor(matchingGame.elapsedSeconds/60);
+    var numberOfSeconds = matchingGame.elapsedSeconds % 60;
+    var timerText = "";
+    if (numberOfMinutes < 10){
+        timerText += "0";
+    }
+    timerText += numberOfMinutes;
+    timerText += ":";
+    if (numberOfSeconds < 10){
+        timerText += "0";
+    }
+    timerText += numberOfSeconds;
+    $("#timer").text(timerText);  
 }
 
-function updatePoints(incrementPoints) {
-    if (incrementPoints) {
-        matchingGame.points = matchingGame.points + 10;
+function updatePoints(incrementPoints){
+    if (incrementPoints){
+        matchingGame.points = matchingGame.points + 2;
     } else {
-        matchingGame.points = matchingGame.points - 10;
+        matchingGame.points = matchingGame.points - 2;
     }
-
+    
     $("#points").text(matchingGame.points);
 }
 
@@ -944,21 +969,121 @@ function resetPoints() {
     $("#points").text(matchingGame.points);
 }
 
-function calculatePoints(gameWon) {
+
+function calculatePoints(gameWon){
     var bonusGameWon = 200;
-    var timeLimitForBonus = 28800;
+    var timeLimitForBonus = 480;
     var timeBonus = 2;
     var pointsLowerBound = 400;
-    if (gameWon) {
+    console.log("timeLimitForBonus: " + timeLimitForBonus);
+    console.log("matchingGame.elapsedSeconds: " + matchingGame.elapsedSeconds);
+    if (gameWon){
         matchingGame.points = matchingGame.points + bonusGameWon;
-        if (matchingGame.elapsedSeconds < timeLimitForBonus) {
+        if (matchingGame.elapsedSeconds < timeLimitForBonus){
             var timeDifference = timeLimitForBonus - matchingGame.elapsedSeconds;
             matchingGame.points = matchingGame.points + (timeDifference * timeBonus);
         } else {
             var timeDifference = matchingGame.elapsedSeconds - timeLimitForBonus;
             matchingGame.points = matchingGame.points - (timeDifference);
-            if (matchingGame.points < pointsLowerBound) {
+            if (matchingGame.points < pointsLowerBound){
                 matchingGame.points = pointsLowerBound;
+            }
+        }
+    }
+    
+    var layout = $("#cards").data("layout");
+    console.log("undoUsed: " + matchingGame.undoUsed + ", matchingGame.hintsUsed: " + matchingGame.hintsUsed);
+    var points = new Points(matchingGame.elapsedSeconds, gameWon, layout, matchingGame.undoUsed, matchingGame.hintsUsed, matchingGame.points);
+    console.log("vor saveGameStatistics: " + points);
+    points.saveGameStatistics();
+}
+
+function initHintsUsed(){
+    if($("body").hasClass('hint-on')) {
+        matchingGame.hintsUsed = true;
+    }
+    else {
+        matchingGame.hintsUsed = false;
+    }
+}
+
+function updateHintsUsed(){
+    if($("body").hasClass('hint-on')) {
+        matchingGame.hintsUsed = true;
+    }
+}
+
+function showStatisticsInPauseScreen(){
+    var gameStatistics = getGameStatistics();
+    if (!gameStatistics){
+        gameStatistics = new GameStatistics();
+    }
+        
+    $("#numberOfGamesInGamesWon").text(gameStatistics.numberOfGames);
+    $("#numberOfGamesWon").text(gameStatistics.numberOfGamesWon);
+    console.log("gameStatistics.numberOfGamesWonWithoutUndoOrHints: " + gameStatistics.numberOfGamesWonWithoutUndoOrHints);
+    $("#numberOfGamesWonWithUndoOrHints").text(gameStatistics.numberOfGamesWonWithoutUndoOrHints);
+    $("#numberOfGamesInGamesWithoutUndoOrHints").text(gameStatistics.numberOfGames);
+    $("#highScore").text(gameStatistics.highScore);
+    
+    console.log("if-Wert: " + (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0));
+    console.log("gameStatistics.layoutsWon: " + gameStatistics.layoutsWon);
+    console.log("gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0: " + (gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0));
+    if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0){
+        $("#layoutTurtle").hide();
+    } else {
+        $("#layoutTurtle").show();
+    }
+    
+    if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutFlower) < 0){
+        $("#layoutFlower").hide();
+    } else {
+        $("#layoutFlower").show();
+    }
+    
+    if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutSpider) < 0){
+        $("#layoutSpider").hide();
+    } else {
+        $("#layoutSpider").show();
+    }
+    
+    if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutCloud) < 0){
+        $("#layoutCloud").hide();
+    } else {
+        $("#layoutCloud").show();
+    }
+    
+    console.log("gameStatistics.shortestWinningTime: " + gameStatistics.shortestWinningTime);
+    if (gameStatistics.shortestWinningTime === 0 || gameStatistics.shortestWinningTime > 480){
+        $("#gameWonUnder8Minutes").hide();
+    } else {
+        $("#gameWonUnder8Minutes").show();
+    }
+    
+    if (gameStatistics.numberOfGamesWonWithoutHints <= 0){
+        $("#gameWonWithoutHints").hide();
+    } else {
+        $("#gameWonWithoutHints").show();
+    }
+    
+    if (gameStatistics.numberOfGamesWonWithoutUndo <= 0){
+        $("#gameWonWithoutUndo").hide();
+    } else {
+        $("#gameWonWithoutUndo").show();
+    }
+    
+    if (gameStatistics.numberOfGamesWon >= 10){
+        $("#10gamesWon").show();
+    } else {
+        $("#10gamesWon").hide();
+        if (gameStatistics.numberOfGamesWon >= 5){
+            $("#5gamesWon").show();
+        } else {
+            $("#5gamesWon").hide();
+            if (gameStatistics.numberOfGamesWon >= 1){
+                $("#1gameWon").show();
+            } else {
+                $("#1gameWon").hide();
             }
         }
     }
