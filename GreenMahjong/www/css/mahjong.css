@@ -139,8 +139,12 @@ div#startScreen h1{
 
 #menuScreen h2.addBorder{
   border:1px solid #ffcc01;
-  padding:15px;
-  margin:20px 40px;
+  padding:12px;
+  /*margin:20px 40px;*/
+  max-width: 280px;
+  /*text-align: center;*/
+  margin-left: auto;
+  margin-right: auto;
   background-color:rgba(255, 200,01,1);
   color: black;
   /*font*/
@@ -247,8 +251,8 @@ div.game-buttons{
   bottom:0;
   display:inline-block;
   /*background: linear-gradient(rgba(35,44,12,0.5), rgba(35,44,12,1));*/
-/*  bottom:0px;
-  right:0px;*/
+  /*  bottom:0px;
+    right:0px;*/
   top:0px;
   left:0px;
 }
@@ -490,7 +494,7 @@ div.card:focus:active{
 }*/
 
 div.layoutSelection:hover{
-  border: 3px solid #ff5501 ;
+  border: 3px solid #ffcc01 ;
   -webkit-box-shadow: 0 0 12px 12px black;
   box-shadow: 0 0 21px 5px black;
 }
