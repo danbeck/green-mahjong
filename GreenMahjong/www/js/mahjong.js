@@ -799,7 +799,7 @@ function showLoseMessage() {
     matchingGame.gameEnded = true;
     calculatePoints(false);
 
-    $("div.game-buttons").slideToggle({direction: "down"}, 300);
+//    $("div.game-buttons").slideToggle({direction: "down"}, 300);
     $(".pointsReached").text("Points: " + matchingGame.points);
     $("div#loseMessage").show();
     console.log("Punkte: " + matchingGame.points);
@@ -828,7 +828,7 @@ function showWinningMessage() {
     matchingGame.gameEnded = true;
     stopTimer();
     calculatePoints(true);
-    $("div.game-buttons").slideToggle({direction: "down"}, 300);
+//    $("div.game-buttons").slideToggle({direction: "down"}, 300);
     $("#pointsReached").text("Points: " + matchingGame.points);
     $("div#winningMessage").show();
 }

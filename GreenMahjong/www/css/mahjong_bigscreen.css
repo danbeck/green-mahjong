@@ -62,9 +62,13 @@ body {
     height: 99px;
     width: 79px;
     /*background: transparent url('../images/mahjong_bigscreen.png');*/
-    background-color: transparent;
-    background-image:  url('../images/mahjong_bigscreen_fruits.png');
+    /*background-color: transparent;*/
+    /*background-image:  url('../images/mahjong_bigscreen_fruits.png');*/
 }
+
+/*body.hint-on .card {
+  background-image:  url('../images/mahjong_bigscreen_fruits_bw.png'); 
+}*/
 
 div.game-buttons  ul li{
     width:70px;
@@ -83,7 +87,7 @@ div.game-buttons ul li img{
 
 #gameScene{
   /*position: absolute;*/
-  top:0;
+  top:45px;
   left:102px;
   /*left:62px;*/
 }

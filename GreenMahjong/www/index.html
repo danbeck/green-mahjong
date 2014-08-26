@@ -75,9 +75,9 @@
       </ul>
     </div>
 
-    <div id="startScreen" class="scene">
-      <section>
-        <div id="layouts">
+    <div id="startScreen" class="outer">
+      <section class="middle">
+        <div id="layouts" class="inner">
           <a id="playTurtleLayout" href="#ingame"><div class="layoutSelection">
               <h3 data-l10n-id="Turtle">Turtle</h3>
               <div class="turtle"></div>
@@ -172,14 +172,14 @@
     </div>
 
     <div id="loseMessage">
-      <img src="images/smiley_lose.png" alt="you lose">
+      <!--<img src="images/smiley_lose.png" alt="you lose">-->
       <div><h1 data-l10n-id="try-it-again">Try it again!</h1>
         <h3 class="pointsReached"></h3>
       </div>
     </div>
 
     <div id="timer" >00:00</div>
-    <span class="points"> <span id="points">0</span></span>
+    <span class="points">Points: <span id="points">0</span></span>
 
     <div class="outer" id="gameScene">
       <section id="game" class="middle">
