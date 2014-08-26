@@ -594,7 +594,7 @@ body.hint-on .card.card-matching,body.hint-on .card.animated.hinge {
   filter: none;
 }*/
 
-body.hint-on li#activateHints{
+body.hint-on li#activateHints .image{
   filter:grayscale(80%);
   -webkit-filter:grayscale(80%);
 }
