@@ -75,9 +75,9 @@
       </ul>
     </div>
 
-    <div id="startScreen" class="outer">
-      <section class="middle">
-        <div id="layouts" class="inner">
+    <div id="startScreen" class="scene">
+      <section>
+        <div id="layouts">
           <a id="playTurtleLayout" href="#ingame"><div class="layoutSelection">
               <h3 data-l10n-id="Turtle">Turtle</h3>
               <div class="turtle"></div>
@@ -105,20 +105,17 @@
           <div class="newline even"></div>
           <div id="playBugLayout" class="layoutSelection">
             <h3 data-l10n-id="Bug">Bug - EASY</h3>
-            <div class="spider"></div>
+            <div class="bug"></div>
             <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
           </div>
           <div class="newline"></div>
           <div id="playFourHillsLayout" class="layoutSelection">
             <h3>Four Hills - NORMAL</h3>
-            <div class="cloud"></div>
+            <div class="fourHills"></div>
             <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
           </div>
           <div class="newline even threeDivisible"></div>
         </div>
-        <br>
-        <br>
-        <!--<p><a class="button" id="aboutButton" data-l10n-id="about">About</a></p>-->
       </section>
     </div>
 
@@ -134,6 +131,27 @@
         <h2 class="addBorder" id="resumeGameButton">Resume Game</h2>
       </section>
       <!--<p><a class="button" id="closeAboutScreenButton" data-l10n-id="close">Resume game</a></p>-->
+    </div>
+
+
+    <div id="gameStatisticsScreen" class="scene">
+      <section><h1 data-l10n-id="statistics">Statistics</h1>
+        <h4 data-l10n-id="numberOfGamesWon">Number of games won: <span id="numberOfGamesWon"></span><span data-l10n-id="numberOfGamesInGamesWon"> from </span><span id="numberOfGamesInGamesWon"></span></h4>
+        <h4 data-l10n-id="numberOfGamesWonWithUndoOrHints">Games won without undo or hints: <span id="numberOfGamesWonWithUndoOrHints"></span><span data-l10n-id="numberOfGamesInGamesWithoutUndoOrHints"> from </span><span id="numberOfGamesInGamesWithoutUndoOrHints"></h4>
+        <h4 data-l10n-id="highScore">High score: <span id="highScore"></span></h4>
+        <h1 data-l10n-id="achievements">Achievements</h1>
+        <h4 id="layoutTurtle" data-l10n-id="layoutTurtle">Layout turtle won</h4>
+        <h4 id="layoutFlower" data-l10n-id="layoutFlower">Layout flower won</h4>
+        <h4 id="layoutSpider" data-l10n-id="layoutSpider">Layout spider won</h4>
+        <h4 id="layoutCloud" data-l10n-id="layoutCloud">Layout cloud won</h4>
+        <h4 id="gameWonUnder8Minutes" data-l10n-id="gameWonUnder8Minutes">Won under 8 minutes</h4>
+        <h4 id="gameWonWithoutHints" data-l10n-id="gameWonWithoutHints">Won without hints</h4>
+        <h4 id="gameWonWithoutUndo" data-l10n-id="gameWonWithoutUndo">Won without undo</h4>
+        <h4 id="1gameWon" data-l10n-id="1gameWon">Level novice: First game won!</h4>
+        <h4 id="5gamesWon" data-l10n-id="5gamesWon">Level elite: At least 5 games won!</h4>
+        <h4 id="10gamesWon" data-l10n-id="10gamesWon">Level heroic: At least 10 games won!</h4>
+      </section>
+      <p><a class="button" id="closeGameStatisticsScreen" data-l10n-id="back-to-menu">Back to menu</a></p>
     </div>
 
 
@@ -179,7 +197,7 @@
       </div>
     </div>
 
-    <div id="timer" >00:00</div>
+    <div id="timer">00:00</div>
     <span class="points">Points: <span id="points">0</span></span>
 
     <div class="outer" id="gameScene">
