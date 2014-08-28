@@ -193,7 +193,7 @@ function onDeviceReady() {
         $("#pauseScreen").hide();
     });
 
-    $('#newGameButton').fastClick(function(e) {
+    $('#newGameButton, #newGameButtonLost, newGameButtonWin').fastClick(function(e) {
         e.stopImmediatePropagation();
         hideMessages();
         stopTimer();
@@ -235,7 +235,7 @@ function onDeviceReady() {
         $("#gameStatisticsScreen").hide();
     });
 
-    $("#gameStatisticsButton").fastClick(function(e) {
+    $("#gameStatisticsButton, #gameStatisticsButtonWin, #gameStatisticsButtonLost").fastClick(function(e) {
         e.stopImmediatePropagation();
 //        $("#startScreen").hide();
         showStatisticsInPauseScreen();
@@ -312,6 +312,7 @@ function onDeviceReady() {
     $("#menuGameButton").fastClick(function() {
         $("div.game-buttons").hide();
         $("#menuScreen").show();
+        hideMessages();
         stopTimer();
     });
 
@@ -813,7 +814,7 @@ function showLoseMessage() {
     matchingGame.gameEnded = true;
     calculatePoints(false);
 
-//    $("div.game-buttons").slideToggle({direction: "down"}, 300);
+    $("div.game-buttons").hide();
     $(".pointsReached").text("Points: " + matchingGame.points);
     $("div#loseMessage").show();
     console.log("Punkte: " + matchingGame.points);
@@ -842,6 +843,7 @@ function showWinningMessage() {
     matchingGame.gameEnded = true;
     stopTimer();
     calculatePoints(true);
+    $("div.game-buttons").hide();
 //    $("div.game-buttons").slideToggle({direction: "down"}, 300);
     $("#pointsReached").text("Points: " + matchingGame.points);
     $("div#winningMessage").show();

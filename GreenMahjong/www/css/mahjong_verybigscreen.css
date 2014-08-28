@@ -39,7 +39,7 @@ body {
 
 div.game-buttons  ul li{
   width:70px;
-  padding: 0 16px;
+  padding: 0 0 0 16px;
 }
 
 div.game-buttons ul li img{

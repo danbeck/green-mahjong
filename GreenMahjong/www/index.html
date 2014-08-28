@@ -183,10 +183,13 @@
       </section>
       <!--<a id="hideVersionInformation" class="button">OK</a>-->
     </div>
-    <div id="winningMessage">
-      <img src="images/cup.png" alt="winning cup">
-      <div><h1 data-l10n-id="congratulation">Congratulations!</h1>
-        <h3 class="pointsReached"></h3>
+    <div id="winningMessage" style="padding-bottom: 90px;">
+      <img src="images/cup_small.png" alt="winning cup">
+      <div class="scrollable">
+        <!--<h1 data-l10n-id="congratulation">Congratulations!</h1>-->
+        <h3 class="pointsReached">Test</h3>
+        <h2 class="addBorder" id="newGameButtonWin">Start new game</h2>
+        <h2 class="addBorder"  id="gameStatisticsButtonWin">Game statistics</h2>
       </div>
     </div>
 
@@ -194,6 +197,8 @@
       <!--<img src="images/smiley_lose.png" alt="you lose">-->
       <div><h1 data-l10n-id="try-it-again">You lose</h1>
         <h3 class="pointsReached"></h3>
+        <h2 class="addBorder" id="newGameButtonLost">Start new game</h2>
+        <h2 class="addBorder"  id="gameStatisticsButtonLost">Game statistics</h2>
       </div>
     </div>
 
