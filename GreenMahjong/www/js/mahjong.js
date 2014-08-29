@@ -69,6 +69,8 @@ if (cordovaUsed()) {
 }
 
 
+matchingGame.gameState = "startScreen";
+
 matchingGame.theme = 0;
 
 matchingGame.themes = ["fruits", "classic", "highvisibility"];
@@ -181,17 +183,79 @@ function onDeviceReady() {
         changeTheme(matchingGame.theme);
     }
 
+//    window.history.pushState("jiberrish", null, null);
+//
+//    window.history.pushState("jiberrish2", null, null);
+
+//    var oldHash = "";
+//    window.onpopstate = function(e, l) {
+//
+//        if (location.hash.substring(0, 1) === "#" && oldHash !== location.hash) {
+//            console.log("forward/backward: " + oldHash + " -> " + location.hash);
+//
+//            if (oldHash === "#menu" && location.hash === "#ingame") {
+//                $("#menuScreen").hide();
+//                $("div.game-buttons").show();
+//                history.go(-2);
+//                resumeTimer();
+//            }
+//            else if (oldHash === "#about" && location.hash === "#menu") {
+//                $("#aboutScreen").hide();
+//                history.go(-1);
+//            }
+//            else if (oldHash === "#gameStatistics" && location.hash === "#menu") {
+//                $("#gameStatisticsScreen").hide();
+//                history.go(-1);
+//            }
+//            else if (oldHash === "#ingame" && location.hash === "#startScreen") {
+//                $("#startScreen").show();
+////                history.go(-1);
+//            }
+////            else if (oldHash === "#menu" && location.hash === "#ingame") {
+//////                $("#startScreen").show();
+////                history.go(-1);
+////            }
+////             else if (oldHash === "#ingame" && location.hash === "#ingame") {
+////                
+////            }
+//
+////        if (matchingGame.gameState === "menuScreen") {
+////        if (matchingGame.gameState === "gameScreen") {
+////            matchingGame.gameState = "startScreen";
+////            $("#startScreen").show();
+////        }
+////        if (matchingGame.gameState === "aboutScreen") {
+////            matchingGame.gameState = "menuScreen";
+////            $("#aboutScreen").hide();
+////        }
+////        if (matchingGame.gameState === "statisticsScreenFromMenu") {
+////            matchingGame.gameState = "menuScreen";
+////            $("#aboutScreen").hide();
+////        }
+////        if (matchingGame.gameState === "statisticsScreenFromWinOrLostScreen") {
+////            matchingGame.gameState = "gameScreen";
+////            $("#aboutScreen").hide();
+////        }
+////        }
+//            oldHash = location.hash;
+//            return;
+//        }
+//    };
+
+
+    matchingGame.gameState = "startScreen";
     $('#pauseButton').fastClick(function(e) {
         e.stopImmediatePropagation();
         stopTimer();
         $("#pauseScreen").show();
     });
 
-    $('#resumeGame').fastClick(function(e) {
-        e.stopImmediatePropagation();
-        resumeTimer();
-        $("#pauseScreen").hide();
-    });
+//    $('#resumeGame').fastClick(function(e) {
+//        e.stopImmediatePropagation();
+//        resumeTimer();
+//        $("#pauseScreen").hide();
+//        matchingGame.gameState = "gameScreen";
+//    });
 
     $('#newGameButton, #newGameButtonLost, newGameButtonWin').fastClick(function(e) {
         e.stopImmediatePropagation();
@@ -204,6 +268,7 @@ function onDeviceReady() {
         $("#gameScene").hide();
         $("#startScreen").slideDown(550);
         matchingGame.gameScreenShown = false;
+        matchingGame.gameState = "gameScreen";
     });
 //    $('#replayGameButton').click(function(e) {
 //        e.stopImmediatePropagation();
@@ -228,23 +293,38 @@ function onDeviceReady() {
     $("#aboutButton").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#aboutScreen").show();
+        matchingGame.gameState = "aboutScreen";
     });
 
     $("#closeGameStatisticsScreen").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#gameStatisticsScreen").hide();
+        if (matchingGame.gameState === "statisticsScreenFromMenu")
+            matchingGame.gameState = "menuScreen";
+        else
+            matchingGame.gameState = "gameScreen";
     });
 
-    $("#gameStatisticsButton, #gameStatisticsButtonWin, #gameStatisticsButtonLost").fastClick(function(e) {
+    $("#gameStatisticsButton").fastClick(function(e) {
         e.stopImmediatePropagation();
 //        $("#startScreen").hide();
         showStatisticsInPauseScreen();
         $("#gameStatisticsScreen").show();
+        matchingGame.gameState = "statisticsScreenFromMenu";
+    });
+
+    $("#gameStatisticsButtonWin, #gameStatisticsButtonLost").fastClick(function(e) {
+        e.stopImmediatePropagation();
+//        $("#startScreen").hide();
+        showStatisticsInPauseScreen();
+        $("#gameStatisticsScreen").show();
+        matchingGame.gameState = "statisticsScreenFromWinOrLostScreen";
     });
 
     $("#closeAboutScreenButton").fastClick(function(e) {
         e.stopImmediatePropagation();
         $("#aboutScreen").hide();
+        matchingGame.gameState = "menuScreen";
 //        $("#startScreen").show();
     });
 
@@ -256,6 +336,7 @@ function onDeviceReady() {
         matchingGame.shift = matchingGame.turtle.shift;
         matchingGame.selectable = matchingGame.turtle.selectable;
         startNewGame();
+        matchingGame.gameState = "gameScreen";
     });
 
     $("#playFlowerLayout").fastClick(function(e) {
@@ -266,6 +347,7 @@ function onDeviceReady() {
         matchingGame.shift = matchingGame.flower.shift;
         matchingGame.selectable = matchingGame.flower.selectable;
         startNewGame();
+        matchingGame.gameState = "gameScreen";
     });
     $("#playSpiderLayout").fastClick(function(e) {
         showGameScreen(e);
@@ -275,6 +357,7 @@ function onDeviceReady() {
         matchingGame.shift = matchingGame.spider.shift;
         matchingGame.selectable = matchingGame.spider.selectable;
         startNewGame();
+        matchingGame.gameState = "gameScreen";
     });
 
     $("#playCloudLayout").fastClick(function(e) {
@@ -285,6 +368,7 @@ function onDeviceReady() {
         matchingGame.shift = matchingGame.cloud.shift;
         matchingGame.selectable = matchingGame.cloud.selectable;
         startNewGame();
+        matchingGame.gameState = "gameScreen";
     });
 
     $("#playBugLayout").fastClick(function(e) {
@@ -295,6 +379,7 @@ function onDeviceReady() {
         matchingGame.shift = matchingGame.bug.shift;
         matchingGame.selectable = matchingGame.bug.selectable;
         startNewGame();
+        matchingGame.gameState = "gameScreen";
     });
 
     $("#playFourHillsLayout").fastClick(function(e) {
@@ -305,6 +390,7 @@ function onDeviceReady() {
         matchingGame.shift = matchingGame.fourHills.shift;
         matchingGame.selectable = matchingGame.fourHills.selectable;
         startNewGame();
+        matchingGame.gameState = "gameScreen";
     });
 
 
@@ -314,12 +400,14 @@ function onDeviceReady() {
         $("#menuScreen").show();
         hideMessages();
         stopTimer();
+        matchingGame.gameState = "menuScreen";
     });
 
     $("#resumeGameButton").fastClick(function() {
         $("#menuScreen").hide();
         $("div.game-buttons").show();
         resumeTimer();
+        matchingGame.gameState = "gameScreen";
     });
 
     $("#gameScene").hide();

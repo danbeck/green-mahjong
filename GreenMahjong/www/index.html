@@ -46,29 +46,18 @@
     <div class="game-buttons upperbuttons">
       <ul>
 
-        <li id="menuGameButton">
-          <a class="button small"  href="#">
+        <li >
+          <a id="menuGameButton" class="button small"  href="#menu">
             <div class="image menu"></div> 
           </a>
         </li>
-        <!--        <li id="newGameButton">
-                  <a class="button small"  href="#">
-                    <img src="./images/NewGame.png" alt="New Game" />
-                      <div class="image new"></div>
-                  </a>
-                </li>-->
         <li id="undoButton">
-          <a class="button small" href="#" >
+          <a class="button small">
             <div class="image undo"></div>
           </a>
         </li>
-        <!--        <li id="themeButton">
-                   <a class="button small" href="#" >
-                    <div class="image theme"></div>
-                  </a>
-                </li>-->
         <li id="activateHints">
-          <a class="button small" href="#">
+          <a class="button small">
             <div class="image hint"></div>
           </a>
         </li>
@@ -79,41 +68,46 @@
       <section>
         <div id="layouts">
           <a id="playTurtleLayout" href="#ingame"><div class="layoutSelection">
-              <h3 data-l10n-id="Turtle">Turtle</h3>
+              <h3 data-l10n-id="Turtle-Easy">Turtle</h3>
               <div class="turtle"></div>
               <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
             </div>
           </a>
           <div class="newline"></div>
-          <div id="playFlowerLayout" class="layoutSelection">
-            <h3 data-l10n-id="Flower">Flower</h3>
-            <div class="flower"></div>
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
-          </div>
+          <a id="playFlowerLayout" href="#ingame"><div class="layoutSelection">
+              <h3 data-l10n-id="Flower-Medium">Flower</h3>
+              <div class="flower"></div>
+              <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
+            </div>
+          </a>
           <div class="newline even"></div>
-          <div id="playSpiderLayout" class="layoutSelection">
-            <h3 data-l10n-id="Spider">Spider</h3>
-            <div class="spider"></div>
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
-          </div>
+          <a id="playSpiderLayout" href="#ingame"> <div class="layoutSelection">
+              <h3 data-l10n-id="Spider-Hard">Spider</h3>
+              <div class="spider"></div>
+              <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
+            </div>
+          </a>
           <div class="newline threeDivisible"></div>
-          <div id="playCloudLayout" class="layoutSelection">
-            <h3 data-l10n-id="Cloud">Cloud - Hard</h3>
-            <div class="cloud"></div>
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
-          </div>
+          <a id="playCloudLayout"  href="#ingame"> <div class="layoutSelection">
+              <h3 data-l10n-id="Cloud-Inferno">Cloud - Inferno</h3>
+              <div class="cloud"></div>
+              <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
+            </div>
+          </a>
           <div class="newline even"></div>
-          <div id="playBugLayout" class="layoutSelection">
-            <h3 data-l10n-id="Bug">Bug - EASY</h3>
-            <div class="bug"></div>
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
-          </div>
+          <a id="playBugLayout"  href="#ingame"> <div class="layoutSelection">
+              <h3 data-l10n-id="Bug-Easy">Bug - EASY</h3>
+              <div class="bug"></div>
+              <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
+            </div>
+          </a>
           <div class="newline"></div>
-          <div id="playFourHillsLayout" class="layoutSelection">
-            <h3>Four Hills - NORMAL</h3>
-            <div class="fourHills"></div>
-            <p style="position: absolute; top: 95px;left: 98px"><a class="button" data-l10n-id="play">PLAY</a></p>
-          </div>
+          <a id="playFourHillsLayout" href="#ingame"> <div class="layoutSelection">
+              <h3 data-l10n-id="FourHills-Tricky">Four Hills - TRICKY</h3>
+              <div class="fourHills"></div>
+              <p style="position: absolute; top: 95px;left: 98px"><span class="button" data-l10n-id="play">PLAY</span></p>
+            </div>
+          </a>
           <div class="newline even threeDivisible"></div>
         </div>
       </section>
@@ -124,11 +118,11 @@
     <div id="menuScreen" class="scene" style="background: rgba(0,0,0,0.75)">
       <section><h1 data-l10n-id="gamePaused">Game Paused</h1>
         <!--<br>-->
-        <h2 class="addBorder" id="newGameButton">Start new game</h2>
-        <h2 class="addBorder"  id="themeButton">Change Theme</h2>
-        <h2 class="addBorder"  id="gameStatisticsButton">Game statistics</h2>
-        <h2 class="addBorder" id="aboutButton">About the Game</h2>
-        <h2 class="addBorder" id="resumeGameButton">Resume Game</h2>
+        <a class="addBorder" id="newGameButton" href="#startScreen" data-l10n-id="startNewGame">Start new game</a>
+        <h2 class="addBorder"  id="themeButton" data-l10n-id="changeTheme">Change Theme</h2>
+        <a class="addBorder"  id="gameStatisticsButton" href="#gameStatistics"  data-l10n-id="gameStatistics">Game statistics</a>
+        <a class="addBorder" id="aboutButton" href="#about"  data-l10n-id="about">About the Game</a>
+        <a class="addBorder" id="resumeGameButton" href="#ingame"  data-l10n-id="resumeGame">Resume Game</a>
       </section>
       <!--<p><a class="button" id="closeAboutScreenButton" data-l10n-id="close">Resume game</a></p>-->
     </div>
@@ -136,8 +130,8 @@
 
     <div id="gameStatisticsScreen" class="scene">
       <section><h1 data-l10n-id="statistics">Statistics</h1>
-        <h4 data-l10n-id="numberOfGamesWon">Number of games won: <span id="numberOfGamesWon"></span><span data-l10n-id="numberOfGamesInGamesWon"> from </span><span id="numberOfGamesInGamesWon"></span></h4>
-        <h4 data-l10n-id="numberOfGamesWonWithUndoOrHints">Games won without undo or hints: <span id="numberOfGamesWonWithUndoOrHints"></span><span data-l10n-id="numberOfGamesInGamesWithoutUndoOrHints"> from </span><span id="numberOfGamesInGamesWithoutUndoOrHints"></h4>
+        <h4 data-l10n-id="numberOfGamesWon">Number of games won: <span id="numberOfGamesWon"></span><span data-l10n-id="from"> from </span><span id="numberOfGamesInGamesWon"></span></h4>
+        <h4 data-l10n-id="numberOfGamesWonWithUndoOrHints">Games won without undo or hints: <span id="numberOfGamesWonWithUndoOrHints"></span><span data-l10n-id="from"> from </span><span id="numberOfGamesInGamesWithoutUndoOrHints"></h4>
         <h4 data-l10n-id="highScore">High score: <span id="highScore"></span></h4>
         <h1 data-l10n-id="achievements">Achievements</h1>
         <h4 id="layoutTurtle" data-l10n-id="layoutTurtle">Layout turtle won</h4>
@@ -151,7 +145,7 @@
         <h4 id="5gamesWon" data-l10n-id="5gamesWon">Level elite: At least 5 games won!</h4>
         <h4 id="10gamesWon" data-l10n-id="10gamesWon">Level heroic: At least 10 games won!</h4>
       </section>
-      <p><a class="button" id="closeGameStatisticsScreen" data-l10n-id="back-to-menu">Back to menu</a></p>
+      <p><a class="button" id="closeGameStatisticsScreen" data-l10n-id="back-to-menu" href="#menu">Back to menu</a></p>
     </div>
 
 
@@ -164,7 +158,7 @@
         <p>Richelmy Vinicius Monteiro</p>
         <p>Michał Rosiak</p>
       </section>
-      <p><a class="button" id="closeAboutScreenButton" data-l10n-id="close">Close</a></p>
+      <p><a class="button" id="closeAboutScreenButton" data-l10n-id="back-to-menu" href="#menu" >Back to menu</a></p>
     </div>
 
     <div id="versionInformationDialog">
@@ -183,13 +177,13 @@
       </section>
       <!--<a id="hideVersionInformation" class="button">OK</a>-->
     </div>
-    <div id="winningMessage" style="padding-bottom: 90px;">
+    <div id="winningMessage" style="padding-bottom: 90px;" class="popup">
       <img src="images/cup_small.png" alt="winning cup">
       <div class="scrollable">
         <!--<h1 data-l10n-id="congratulation">Congratulations!</h1>-->
         <h3 class="pointsReached">Test</h3>
-        <h2 class="addBorder" id="newGameButtonWin">Start new game</h2>
-        <h2 class="addBorder"  id="gameStatisticsButtonWin">Game statistics</h2>
+        <a class="button" id="newGameButtonWin" href="#startScreen">Start new game</a>
+        <a class="button"  id="gameStatisticsButtonWin" href="#gameStatistics">Game statistics</a>
       </div>
     </div>
 
@@ -197,8 +191,8 @@
       <!--<img src="images/smiley_lose.png" alt="you lose">-->
       <div><h1 data-l10n-id="try-it-again">You lose</h1>
         <h3 class="pointsReached"></h3>
-        <h2 class="addBorder" id="newGameButtonLost">Start new game</h2>
-        <h2 class="addBorder"  id="gameStatisticsButtonLost">Game statistics</h2>
+        <a class="button" id="newGameButtonLost" href="#startScreen">Start new game</a>
+        <a class="button"  id="gameStatisticsButtonLost" href="#gameStatistics">Game statistics</a>
       </div>
     </div>
 
@@ -215,11 +209,7 @@
         </div>
       </section>
     </div>
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">-->
-
-
-    <!--<script src="http://daneden.github.io/animate.css"></script>-->
-    <!--<script src='lib/fastclick.js'></script>-->
+    
     <script src='lib/fastclick.js'></script>
     <script src="lib/jquery/jquery-2.1.0.min.js"></script>
     <script src="lib/jquery.fastclick.js"></script>
@@ -233,6 +223,5 @@
     <script src="js/bug.js"></script>
     <script src="js/pointCalculation.js"></script>
     <script src="js/mahjong.js"></script>
-    <!--<script src="http://code.jquery.com/ui/1.11.0-beta.2/jquery-ui.min.js"></script>-->
   </body>
 </html>
