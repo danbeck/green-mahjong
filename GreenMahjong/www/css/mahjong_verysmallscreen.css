@@ -52,6 +52,12 @@ Innen:57x45*/
   height: 300px;
 }
 
+
+#cards[data-layout=fourHills] {
+  height: 420px;
+  width: 470px;
+}
+
 .card {
     border-radius: 7px;
     height: 48px;
@@ -69,10 +75,9 @@ Innen:57x45*/
 
 #gameScene{
   position: absolute;
-  top:0;
   /*left:102px;*/
   left:60px;
-  top:35px;
+  top:27px;
 }
 
 /*#game {

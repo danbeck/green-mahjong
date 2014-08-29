@@ -54,6 +54,13 @@ Innen:57x45*/
   height: 380px;
 }
 
+
+#cards[data-layout=fourHills] {
+  height: 530px;
+  width: 570px;
+}
+
+
 .card {
     border-radius: 7px;
     height: 59px;
@@ -72,7 +79,7 @@ Innen:57x45*/
   top:0;
   /*left:102px;*/
   left:62px;
-  top:35px;
+  top:30px;
 }
 .cardZahl1 {background-position: 0 0}
 .cardZahl2 {background-position: -48px 0; }

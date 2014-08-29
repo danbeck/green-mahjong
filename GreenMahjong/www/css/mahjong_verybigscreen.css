@@ -68,6 +68,11 @@ div.game-buttons ul li img{
   height: 810px;
 }
 
+#cards[data-layout=fourHills] {
+  height: 1200px;
+  width: 1340px;
+}
+
 
 .card {
   border-radius: 14px;
@@ -86,9 +91,8 @@ div.game-buttons ul li img{
 
 #gameScene{
   /*position: absolute;*/
-  top:0;
   left:102px;
-  top:60px;
+  top:35px;
   /*left:62px;*/
 }
 
