@@ -260,7 +260,7 @@ function onDeviceReady() {
 //        matchingGame.gameState = "gameScreen";
 //    });
 
-    $('#newGameButton, #newGameButtonLost, newGameButtonWin').fastClick(function(e) {
+    $('#newGameButton, #newGameButtonLost, #newGameButtonWin').fastClick(function(e) {
         e.stopImmediatePropagation();
         hideMessages();
         stopTimer();
