@@ -131,13 +131,15 @@
     <div id="gameStatisticsScreen" class="scene">
       <section><h1 data-l10n-id="statistics">Statistics</h1>
         <h4 data-l10n-id="numberOfGamesWon">Number of games won: <span id="numberOfGamesWon"></span><span data-l10n-id="from"> from </span><span id="numberOfGamesInGamesWon"></span></h4>
-        <h4 data-l10n-id="numberOfGamesWonWithUndoOrHints">Games won without undo or hints: <span id="numberOfGamesWonWithUndoOrHints"></span><span data-l10n-id="from"> from </span><span id="numberOfGamesInGamesWithoutUndoOrHints"></h4>
+        <h4 data-l10n-id="numberOfGamesWonWithUndoOrHints">Games won without undo or hints: <span id="numberOfGamesWonWithUndoOrHints"></span><span data-l10n-id="from"> from </span><span id="numberOfGamesInGamesWithoutUndoOrHints"></span></h4>
         <h4 data-l10n-id="highScore">High score: <span id="highScore"></span></h4>
         <h1 data-l10n-id="achievements">Achievements</h1>
         <h4 id="layoutTurtle" data-l10n-id="layoutTurtle">Layout turtle won</h4>
         <h4 id="layoutFlower" data-l10n-id="layoutFlower">Layout flower won</h4>
         <h4 id="layoutSpider" data-l10n-id="layoutSpider">Layout spider won</h4>
         <h4 id="layoutCloud" data-l10n-id="layoutCloud">Layout cloud won</h4>
+        <h4 id="layoutBug" data-l10n-id="layoutBug">Layout bug won</h4>
+        <h4 id="layoutFourHills" data-l10n-id="layoutFourHills">Layout four hills won</h4>
         <h4 id="gameWonUnder8Minutes" data-l10n-id="gameWonUnder8Minutes">Won under 8 minutes</h4>
         <h4 id="gameWonWithoutHints" data-l10n-id="gameWonWithoutHints">Won without hints</h4>
         <h4 id="gameWonWithoutUndo" data-l10n-id="gameWonWithoutUndo">Won without undo</h4>
@@ -182,22 +184,22 @@
       <div class="scrollable">
         <!--<h1 data-l10n-id="congratulation">Congratulations!</h1>-->
         <h3 class="pointsReached">Test</h3>
-        <a class="button" id="newGameButtonWin" href="#startScreen">Start new game</a>
-        <a class="button"  id="gameStatisticsButtonWin" href="#gameStatistics">Game statistics</a>
+        <a class="button" id="newGameButtonWin" href="#startScreen" data-l10n-id="startNewGame">Start new game</a>
+        <a class="button"  id="gameStatisticsButtonWin" href="#gameStatistics" data-l10n-id="gameStatistics">Game statistics</a>
       </div>
     </div>
 
-    <div id="loseMessage">
+    <div id="loseMessage" class="popup">
       <!--<img src="images/smiley_lose.png" alt="you lose">-->
       <div><h1 data-l10n-id="try-it-again">You lose</h1>
         <h3 class="pointsReached"></h3>
-        <a class="button" id="newGameButtonLost" href="#startScreen">Start new game</a>
-        <a class="button"  id="gameStatisticsButtonLost" href="#gameStatistics">Game statistics</a>
+        <a class="button" id="newGameButtonLost" href="#startScreen"  data-l10n-id="startNewGame">Start new game</a>
+        <a class="button"  id="gameStatisticsButtonLost" href="#gameStatistics"  data-l10n-id="gameStatistics">Game statistics</a>
       </div>
     </div>
 
     <div id="timer">00:00</div>
-    <span class="points">Points: <span id="points">0</span></span>
+    <span class="points"><span data-l10n-id="points">Points: </span><span id="points">0</span></span>
 
     <div class="outer" id="gameScene">
       <section id="game" class="middle">

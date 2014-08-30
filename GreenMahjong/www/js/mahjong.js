@@ -4,6 +4,9 @@ matchingGame.layoutTurtle = "turtle";
 matchingGame.layoutFlower = "flower";
 matchingGame.layoutSpider = "spider";
 matchingGame.layoutCloud = "cloud";
+matchingGame.layoutBug = "bug";
+matchingGame.layoutFourHills = "fourHills";
+
 matchingGame.deck = [
     'cardZahl1', 'cardZahl1', 'cardZahl1', 'cardZahl1',
     'cardZahl2', 'cardZahl2', 'cardZahl2', 'cardZahl2',
@@ -316,6 +319,7 @@ function onDeviceReady() {
     $("#gameStatisticsButtonWin, #gameStatisticsButtonLost").fastClick(function(e) {
         e.stopImmediatePropagation();
 //        $("#startScreen").hide();
+        hideMessages();
         showStatisticsInPauseScreen();
         $("#gameStatisticsScreen").show();
         matchingGame.gameState = "statisticsScreenFromWinOrLostScreen";
@@ -330,7 +334,7 @@ function onDeviceReady() {
 
     $("#playTurtleLayout").fastClick(function(e) {
         showGameScreen(e);
-        $("#cards").attr("data-layout", "turtle");
+        $("#cards").attr("data-layout", matchingGame.layoutTurtle);
         matchingGame.positionX = matchingGame.turtle.positionX;
         matchingGame.positionY = matchingGame.turtle.positionY;
         matchingGame.shift = matchingGame.turtle.shift;
@@ -341,7 +345,7 @@ function onDeviceReady() {
 
     $("#playFlowerLayout").fastClick(function(e) {
         showGameScreen(e);
-        $("#cards").attr("data-layout", "flower");
+        $("#cards").attr("data-layout", matchingGame.layoutFlower);
         matchingGame.positionX = matchingGame.flower.positionX;
         matchingGame.positionY = matchingGame.flower.positionY;
         matchingGame.shift = matchingGame.flower.shift;
@@ -351,7 +355,7 @@ function onDeviceReady() {
     });
     $("#playSpiderLayout").fastClick(function(e) {
         showGameScreen(e);
-        $("#cards").attr("data-layout", "spider");
+        $("#cards").attr("data-layout", matchingGame.layoutSpider);
         matchingGame.positionX = matchingGame.spider.positionX;
         matchingGame.positionY = matchingGame.spider.positionY;
         matchingGame.shift = matchingGame.spider.shift;
@@ -362,7 +366,7 @@ function onDeviceReady() {
 
     $("#playCloudLayout").fastClick(function(e) {
         showGameScreen(e);
-        $("#cards").attr("data-layout", "cloud");
+        $("#cards").attr("data-layout", matchingGame.layoutCloud);
         matchingGame.positionX = matchingGame.cloud.positionX;
         matchingGame.positionY = matchingGame.cloud.positionY;
         matchingGame.shift = matchingGame.cloud.shift;
@@ -373,7 +377,7 @@ function onDeviceReady() {
 
     $("#playBugLayout").fastClick(function(e) {
         showGameScreen(e);
-        $("#cards").attr("data-layout", "bug");
+        $("#cards").attr("data-layout", matchingGame.layoutBug);
         matchingGame.positionX = matchingGame.bug.positionX;
         matchingGame.positionY = matchingGame.bug.positionY;
         matchingGame.shift = matchingGame.bug.shift;
@@ -384,7 +388,7 @@ function onDeviceReady() {
 
     $("#playFourHillsLayout").fastClick(function(e) {
         showGameScreen(e);
-        $("#cards").attr("data-layout", "fourHills");
+        $("#cards").attr("data-layout", matchingGame.layoutFourHills);
         matchingGame.positionX = matchingGame.fourHills.positionX;
         matchingGame.positionY = matchingGame.fourHills.positionY;
         matchingGame.shift = matchingGame.fourHills.shift;
@@ -903,7 +907,7 @@ function showLoseMessage() {
     calculatePoints(false);
 
     $("div.game-buttons").hide();
-    $(".pointsReached").text("Points: " + matchingGame.points);
+    $(".pointsReached").text(matchingGame.points);
     $("div#loseMessage").show();
     console.log("Punkte: " + matchingGame.points);
 }
@@ -1155,6 +1159,18 @@ function showStatisticsInPauseScreen() {
         $("#layoutCloud").hide();
     } else {
         $("#layoutCloud").show();
+    }
+    
+    if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutBug) < 0) {
+        $("#layoutBug").hide();
+    } else {
+        $("#layoutBug").show();
+    }
+    
+    if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutFourHills) < 0) {
+        $("#layoutFourHills").hide();
+    } else {
+        $("#layoutFourHills").show();
     }
 
     console.log("gameStatistics.shortestWinningTime: " + gameStatistics.shortestWinningTime);

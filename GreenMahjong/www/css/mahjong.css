@@ -189,7 +189,7 @@ div#startScreen h1{
   text-shadow:0px 1px 0px #ffee66;
 }
 
-.popup a.button, #menuScreen a.addBorder, #menuScreen h2.addBorder,#loseMessage h2.addBorder, #winningMessage h2.addBorder{
+#loseMessage a.button,#winningMessage a.button, .popup a.button, #menuScreen a.addBorder, #menuScreen h2.addBorder,#loseMessage h2.addBorder, #winningMessage h2.addBorder{
   border:1px solid #ffcc01;
   padding:12px;
   /*margin:20px 40px;*/
@@ -198,7 +198,8 @@ div#startScreen h1{
   /*  margin-left: auto;
     margin-right: auto;*/
   text-decoration: none;
-  background-color:rgba(255, 200,01,1);
+  background:rgba(255, 200,01,1);
+  border-radius: 0;
   color: black;
   cursor:pointer;
   display:block;
