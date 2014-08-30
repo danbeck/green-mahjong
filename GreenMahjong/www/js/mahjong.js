@@ -533,6 +533,7 @@ function startGame() {
         pattern = matchingGame.deck[index];
         $(this).addClass(pattern);
         pattern = getCardPattern(pattern);
+        console.log("pattern: "+ pattern);
         $(this).attr("data-pattern", pattern);
         $(this).attr("data-position-x", positionX);
         $(this).attr("data-position-y", positionY);
@@ -935,7 +936,7 @@ function showWinningMessage() {
     calculatePoints(true);
     $("div.game-buttons").hide();
 //    $("div.game-buttons").slideToggle({direction: "down"}, 300);
-    $("#pointsReached").text("Points: " + matchingGame.points);
+    $(".pointsReached").text(matchingGame.points);
     $("div#winningMessage").show();
 }
 function startNewGame() {
