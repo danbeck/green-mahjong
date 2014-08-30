@@ -1107,7 +1107,7 @@ function calculatePoints(gameWon) {
         }
     }
 
-    var layout = $("#cards").data("layout");
+    var layout = $("#cards").attr("data-layout");
     console.log("undoUsed: " + matchingGame.undoUsed + ", matchingGame.hintsUsed: " + matchingGame.hintsUsed);
     var points = new Points(matchingGame.elapsedSeconds, gameWon, layout, matchingGame.undoUsed, matchingGame.hintsUsed, matchingGame.points);
     console.log("vor saveGameStatistics: " + points);
