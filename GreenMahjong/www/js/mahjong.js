@@ -304,8 +304,10 @@ function onDeviceReady() {
         $("#gameStatisticsScreen").hide();
         if (matchingGame.gameState === "statisticsScreenFromMenu")
             matchingGame.gameState = "menuScreen";
-        else
+        else {
             matchingGame.gameState = "gameScreen";
+            displayMessages();
+        }
     });
 
     $("#gameStatisticsButton").fastClick(function(e) {
@@ -612,10 +614,6 @@ function getCardPattern(cardName) {
 
 function shuffleCards() {
     matchingGame.deck = _.shuffle(matchingGame.deck);
-}
-
-function shuffle() {
-    return 0.5 - Math.random();
 }
 
 function selectCard(e) {
@@ -961,6 +959,15 @@ function hideMessages() {
     $("div#winningMessage").hide();
     $("div#loseMessage").hide();
 }
+
+function displayMessages(){
+    if (isWinningGame()){
+        $("div#winningMessage").show();
+    } else {
+        $("div#loseMessage").show();
+    }
+}
+
 function changeTheme(themeid) {
     if (themeid !== undefined) {
         matchingGame.theme = themeid;

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v2 - 2014-08-06
+# v3 - 2014-08-30
 # This is a comment. 
 index.html
 lib/jquery/jquery-2.1.0.min.js
@@ -17,15 +17,13 @@ js/flower.js
 js/mahjong.js
 js/spider.js
 js/turtle.js
-images/GreenMahjongTitle.png
-images/NewGame.png
+js/bug.js
+js/fourHills.js
 images/layouts_thumbs.png
 images/background_classic.png
 images/background_fruits.png
 images/background_highvisibility.png
-images/config.png
-images/cup.png
-images/hint.png
+images/cup_small.png
 images/mahjong_bigscreen_classic.png
 images/mahjong_bigscreen_fruits.png
 images/mahjong_bigscreen_highvisibility.png
@@ -38,14 +36,24 @@ images/mahjong_verybigscreen_highvisibility.png
 images/mahjong_verysmallscreen_classic.png
 images/mahjong_verysmallscreen_fruits.png
 images/mahjong_verysmallscreen_highvisibility.png
-images/reload.png
+images/mahjong_bigscreen_classic_bw.png
+images/mahjong_bigscreen_fruits_bw.png
+images/mahjong_bigscreen_highvisibility_bw.png
+images/mahjong_smallscreen_classic_bw.png
+images/mahjong_smallscreen_fruits_bw.png
+images/mahjong_smallscreen_highvisibility_bw.png
+images/mahjong_verybigscreen_classic_bw.png
+images/mahjong_verybigscreen_fruits_bw.png
+images/mahjong_verybigscreen_highvisibility_bw.png
+images/mahjong_verysmallscreen_classic_bw.png
+images/mahjong_verysmallscreen_fruits_bw.png
+images/mahjong_verysmallscreen_highvisibility_bw.png
 images/shadow_bigscreen.png
 images/shadow_smallscreen.png
 images/shadow_verybigscreen.png
 images/shadow_shadow_verysmallscreen.png
-images/smiley_lose.png
-images/theme.png
-images/undo.png
+images/application_icons.png
+images/application_icons_small.png
 css/mahjong.css
 css/mahjong_bigscreen.css
 css/mahjong_smallscreen.css
