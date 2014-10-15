@@ -100,23 +100,18 @@ window.sparouter = (function() {
                 if (page.getAttribute("data-remove-from-browser-history")) {
                     window.location.replace(hash);
                 }
-
-                changePageOrCallPageListener(document.location.hash);
             }
-            else {
-                changePageOrCallPageListener(document.location.hash);
-            }
+            changePageOrCallPageListener(document.location.hash);
 
             function defaultChangePageBehaviorOveridden(hash) {
                 return that.pagesListeners[hash];
             }
             function changePageOrCallPageListener(hash) {
-                if (defaultChangePageBehaviorOveridden(hash)) {
+                if (defaultChangePageBehaviorOveridden(hash))
                     callCustomChangePageListener();
-                }
-                else {
-                    changePage(hash);
-                }
+                else
+                    changePage(hash.substring(1));
+
             }
             function wasBackButtonPressed() {
                 // in this case, the gotToHash local variable which was saved in the "click"-phase
