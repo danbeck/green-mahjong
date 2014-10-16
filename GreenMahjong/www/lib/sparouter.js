@@ -14,6 +14,26 @@ window.sparouter = (function() {
         this.pagesListeners = {};
     }
 
+    Sparouter.prototype.changePage = function(page) {
+        this.allPagesInvisible();
+        this.showPage(page);
+    };
+
+    Sparouter.prototype.showPage = function(page) {
+        this.page(page).style.display = "block";
+    };
+
+    Sparouter.prototype.page = function(page) {
+        return window.document.querySelector("div[data-page=" + page + "]");
+    };
+
+    Sparouter.prototype.allPagesInvisible = function() {
+        var datapages = window.document.querySelectorAll("div[data-page]");
+        for (var i = 0; i < datapages.length; i++) {
+            datapages[i].style.display = "none";
+        }
+    };
+
     Sparouter.prototype.onpage = function(page, callback) {
         this.pagesListeners[page] = callback;
         return this;
@@ -98,19 +118,19 @@ window.sparouter = (function() {
                 var oldHash = event.oldURL.split("#")[1];
                 var page = window.document.querySelector("div[data-page=" + oldHash + "]");
                 if (page.getAttribute("data-remove-from-browser-history")) {
-                    window.location.replace(hash);
+                    window.location.replace(document.location.hash);
                 }
             }
-            changePageOrCallPageListener(document.location.hash);
+            changePageOrCallPageListener(document.location.hash.substring(1));
 
             function defaultChangePageBehaviorOveridden(hash) {
                 return that.pagesListeners[hash];
             }
             function changePageOrCallPageListener(hash) {
                 if (defaultChangePageBehaviorOveridden(hash))
-                    callCustomChangePageListener();
+                    callCustomChangePageListener(hash);
                 else
-                    changePage(hash.substring(1));
+                    that.changePage(hash);
 
             }
             function wasBackButtonPressed() {
@@ -119,29 +139,12 @@ window.sparouter = (function() {
                 return document.location.hash !== that.goToHash;
             }
 
-            function callCustomChangePageListener() {
-                var callbackfunc = that.pagesListeners[document.location.hash];
+            function callCustomChangePageListener(hash) {
+                var callbackfunc = that.pagesListeners[hash];
 //                var oldHash = event.oldURL.substring(event.oldURL.indexOf('#') + 1);
-                var newPage = callbackfunc({hash: document.location.hash, effect: null, options: that.options});
-                makeAllPagesInvisible();
-                showPage(newPage);
-
-            }
-
-            function changePage(hash) {
-                makeAllPagesInvisible();
-                showPage(hash);
-            }
-            function showPage(hash) {
-                var newPage = window.document.querySelector("div[data-page=" + hash + "]");
-                newPage.style.display = "block";
-            }
-
-            function makeAllPagesInvisible() {
-                var datapages = window.document.querySelectorAll("div[data-page]");
-                for (var i = 0; i < datapages.length; i++) {
-                    datapages[i].style.display = "none";
-                }
+                var newPage = callbackfunc({hash: hash, effect: null, options: that.options});
+                if (newPage)
+                    that.changePage(newPage);
             }
         };
 //        ter.initialized = true;

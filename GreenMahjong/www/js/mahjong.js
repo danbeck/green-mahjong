@@ -168,12 +168,10 @@ function onDeviceReady() {
 //    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 //    }
 //    sparouter();
-    var router = sparouter().init(function() {
+    var router = sparouter();
+    var router = router.init(function() {
         return "startScreen";
-    }).onpage("#game", function(event) {
-
-        if (!event.options)
-            return "#game";
+    }).onpage("game", function(event) {
 
         if (event.options === "turtle") {
             $("#cards").attr("data-layout", matchingGame.layoutTurtle);
@@ -200,7 +198,8 @@ function onDeviceReady() {
             loadBoardData(matchingGame.fourHills);
         }
         startNewGame();
-        return "game";
+        router.allPagesInvisible();
+        router.page("game").style.display = "table";
     });
     router.start();
 
