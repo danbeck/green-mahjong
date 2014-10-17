@@ -12,7 +12,7 @@
   <author  href="http://daniel-beck.org">Daniel Beck</author>
   <access origin="*" />
   <content src="index.html" />
-  <icon src="greenmahjong.png"/>
+  <icon src="greenmahjong256.png"/>
   <preference name="android-minSdkVersion" value="16" />
   <!--<preference name="orientation" value="landscape" />-->
 </widget>
