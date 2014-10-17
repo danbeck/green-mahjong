@@ -8,7 +8,7 @@
   <preference name="phonegap-version" value="3.6.3" />
   <preference name="permissions" value="none"/>
 
-  <description>Green Mahjong is a simple mahjong game.</description> 
+  <description>Green Mahjong is a nice opensource mahjong game.</description> 
   <author  href="http://daniel-beck.org">Daniel Beck</author>
   <access origin="*" />
   <content src="index.html" />
