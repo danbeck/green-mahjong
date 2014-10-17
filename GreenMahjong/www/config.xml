@@ -14,5 +14,5 @@
   <content src="index.html" />
   <icon src="greenmahjong.png"/>
   <preference name="android-minSdkVersion" value="16" />
-  <preference name="orientation" value="landscape" />
+  <!--<preference name="orientation" value="landscape" />-->
 </widget>
