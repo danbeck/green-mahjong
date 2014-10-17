@@ -200,6 +200,12 @@ function onDeviceReady() {
         startNewGame();
         router.allPagesInvisible();
         router.page("game").style.display = "table";
+    }).onpage("menu", function() {
+        router.showPage("menu");
+    }).onpage("about", function() {
+        router.showPage("about");
+    }).onpage("gamestatistics", function() {
+        router.showPage("gamestatistics");
     });
     router.start();
 
