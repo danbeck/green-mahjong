@@ -86,7 +86,7 @@ window.sparouter = (function() {
                     that.goToHash = hash;
                     that.options = options;
                     that.transitionEffect = effect;
-                    if (currentLink.getAttribute("data-remove-from-browser-history")) {
+                    if (currentLink.hasAttribute("data-remove-from-browser-history")) {
                         window.location.replace(hash);
                     }
                     else {
@@ -96,11 +96,16 @@ window.sparouter = (function() {
             }
         }
         function handleBackLinks() {
-            var backbuttons = window.document.querySelectorAll("a[data-browser-back]");
+            var backbuttons = window.document.querySelectorAll("a[data-back]");
             for (var i = 0; i < backbuttons.length; i++) {
                 backbuttons[i].addEventListener("click", function(e) {
                     e.preventDefault();
-                    history.back();
+                    var dataBack = backbuttons[i].getAttribute("data-back");
+                    if (dataBack !== "") {
+//                    history.back();
+                        var dataBackAsInt = parseInt(dataBack);
+                        history.go(dataBackAsInt);
+                    }
                 });
             }
         }
@@ -113,13 +118,16 @@ window.sparouter = (function() {
                     ", oldurl:" + event.oldURL + ", newurl:" + event.newURL + ", state: " + JSON.stringify(event.state));
 //            var hash = document.location.hash.substring(1);
 
+            event.preventDefault();
             if (wasBackButtonPressed()) {
-                // Browser-back 
-                var oldHash = event.oldURL.split("#")[1];
-                var page = window.document.querySelector("div[data-page=" + oldHash + "]");
-                if (page.getAttribute("data-remove-from-browser-history")) {
-                    window.location.replace(document.location.hash);
-                }
+                // Browser-back
+                console.log("back button pressed!")
+//                var oldHash = event.oldURL.split("#")[1];
+//                var page = window.document.querySelector("div[data-page=" + oldHash + "]");
+//                history.back();
+//                if (page.getAttribute("data-remove-from-browser-history")) {
+//                    window.location.replace(document.location.hash);
+//                }
             }
             changePageOrCallPageListener(document.location.hash.substring(1));
 

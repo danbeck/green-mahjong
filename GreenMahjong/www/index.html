@@ -125,11 +125,11 @@
         <div id="menuScreen" class="scene" style="background: rgba(0,0,0,0.75)" data-page="menu">
             <section><h1 data-l10n-id="gamePaused">Game Paused</h1>
                 <!--<br>-->
-                <a class="addBorder" id="newGameButton" href="#start" data-l10n-id="startNewGame">Start new game</a>
+                <a class="addBorder" id="newGameButton" data-l10n-id="startNewGame" data-back="-2">Start new game</a>
                 <h2 class="addBorder"  id="themeButton" data-l10n-id="changeTheme">Change Theme</h2>
                 <a class="addBorder"  id="gameStatisticsButton" href="#gamestatistics"  data-l10n-id="gameStatistics">Game statistics</a>
                 <a class="addBorder" id="aboutButton" href="#about"  data-l10n-id="about">About the Game</a>
-                <a class="addBorder" id="resumeGameButton" href="#game"  data-l10n-id="resumeGame">Resume Game</a>
+                <a class="addBorder" id="resumeGameButton" href="#game"  data-l10n-id="resumeGame" data-remove-from-browser-history>Resume Game</a>
             </section>
             <!--<p><a class="button" id="closeAboutScreenButton" data-l10n-id="close">Resume game</a></p>-->
         </div>
@@ -155,7 +155,7 @@
                 <h4 id="10gamesWon" data-l10n-id="10gamesWon">Level heroic: At least 10 games won!</h4>
             </section>
             <p><a class="button" id="closeGameStatisticsScreen" data-l10n-id="closeStatistics" href="#menu"
-                  data-option="removeFromHistory">Close statistics</a></p>
+                  data-remove-from-browser-history>Close statistics</a></p>
         </div>
 
 
@@ -169,7 +169,7 @@
                 <p>Michał Rosiak</p>
             </section>
             <p><a class="button" id="closeAboutScreenButton" data-l10n-id="back-to-menu" href="#menu"
-                  data-option="removeFromHistory" >Back to menu</a></p>
+                  data-remove-from-browser-history>Back to menu</a></p>
         </div>
 
         <div id="versionInformationDialog">
