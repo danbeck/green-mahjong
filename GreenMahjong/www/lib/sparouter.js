@@ -39,11 +39,6 @@ window.sparouter = (function() {
         return this;
     };
 
-//    Sparouter.prototype.removeUrlFromHistory = function(callback) {
-//        this.removeUrlFromHistory = true;
-//        return this;
-//    };
-
     Sparouter.prototype.init = function(callback) {
         this.initpage = callback();
 
@@ -116,18 +111,11 @@ window.sparouter = (function() {
         window.onhashchange = function(event) {
             console.log("onhashchange: ", +document.location + ", hash:" + document.location.hash +
                     ", oldurl:" + event.oldURL + ", newurl:" + event.newURL + ", state: " + JSON.stringify(event.state));
-//            var hash = document.location.hash.substring(1);
 
             event.preventDefault();
             if (wasBackButtonPressed()) {
                 // Browser-back
-                console.log("back button pressed!")
-//                var oldHash = event.oldURL.split("#")[1];
-//                var page = window.document.querySelector("div[data-page=" + oldHash + "]");
-//                history.back();
-//                if (page.getAttribute("data-remove-from-browser-history")) {
-//                    window.location.replace(document.location.hash);
-//                }
+                console.log("back button pressed!");
             }
             changePageOrCallPageListener(document.location.hash.substring(1));
 
@@ -149,23 +137,11 @@ window.sparouter = (function() {
 
             function callCustomChangePageListener(hash) {
                 var callbackfunc = that.pagesListeners[hash];
-//                var oldHash = event.oldURL.substring(event.oldURL.indexOf('#') + 1);
                 var newPage = callbackfunc({hash: hash, effect: null, options: that.options});
                 if (newPage)
                     that.changePage(newPage);
             }
         };
-//        ter.initialized = true;
-//        handleLinks();
-//        handleBackLinks();
-//
-//        makeAllPagesInvisible();
-//        window.document.querySelectorAll("div[data-page]")[0].style.display = "block";
-
-//        var page = callback();
-//        history.pushState({}, "start", "#" + page);
-//
-//        return this;
     };
 
     var sparouter = function() {
@@ -175,13 +151,3 @@ window.sparouter = (function() {
     return sparouter;
 
 }());
-
-
-//window.onload = function() {
-//    console.log("on start");
-//    var router = sparouter().init(function() {
-//        console.log("here we go!");
-//        return "startScreen";
-//    });
-//    router.start();
-//};
