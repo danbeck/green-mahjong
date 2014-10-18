@@ -23,6 +23,10 @@ window.sparouter = (function () {
         this.page(page).style.display = "block";
     };
 
+    Sparouter.prototype.hidePage = function (page) {
+        this.page(page).style.display = "none";
+    };
+
     Sparouter.prototype.page = function (page) {
         return window.document.querySelector("div[data-page=" + page + "]");
     };
@@ -50,6 +54,7 @@ window.sparouter = (function () {
 
         initRouter();
         handleLinks();
+        handleBackLinks();
 
         function initRouter() {
             if (this.initpage)
@@ -74,14 +79,13 @@ window.sparouter = (function () {
             for (var i = 0; i < aLinks.length; i++) {
                 aLinks[i].addEventListener("click", function (e) {
                     e.preventDefault();
-                    var currentLink = this;
-                    var hash = currentLink.getAttribute("href");
-                    var options = currentLink.getAttribute("data-page-options");
-                    var effect = currentLink.getAttribute("data-transition-effect");
+                    var hash = this.getAttribute("href");
+                    var options = this.getAttribute("data-page-options");
+                    var effect = this.getAttribute("data-transition-effect");
                     that.goToHash = hash;
                     that.options = options;
                     that.transitionEffect = effect;
-                    if (currentLink.hasAttribute("data-remove-from-browser-history")) {
+                    if (this.hasAttribute("data-remove-from-browser-history")) {
                         window.location.replace(hash);
                     }
                     else {
@@ -93,15 +97,32 @@ window.sparouter = (function () {
         function handleBackLinks() {
             var backbuttons = window.document.querySelectorAll("a[data-back]");
             for (var i = 0; i < backbuttons.length; i++) {
-                backbuttons[i].addEventListener("click", function (e) {
+                addBackButtonListener(backbuttons[i]);
+            }
+
+            function addBackButtonListener(backButton) {
+                backButton.addEventListener("click", function (e) {
                     e.preventDefault();
-                    var dataBack = backbuttons[i].getAttribute("data-back");
+                    var options = this.getAttribute("data-page-options");
+                    var effect = this.getAttribute("data-transition-effect");
+                    var dataBack = backButton.getAttribute("data-back");
                     if (dataBack !== "") {
-//                    history.back();
                         var dataBackAsInt = parseInt(dataBack);
+                        that.options = options;
+                        that.transitionEffect = effect;
+
+//                        for (; dataBackAsInt !== 0; dataBackAsInt++) {
+//                        history.go(dataBackAsInt);
+//                            console.log("back!");
+//                        history.back();
+//                        history.back();
                         history.go(dataBackAsInt);
+//
+//                        }
                     }
                 });
+
+
             }
         }
 

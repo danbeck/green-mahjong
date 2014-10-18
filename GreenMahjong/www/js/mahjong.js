@@ -109,33 +109,33 @@ function registerMediaQueryListListener() {
     checkAndSetResolution();
 
 // Listen for orientation changes
-    window.addEventListener("orientationchange", function() {
+    window.addEventListener("orientationchange", function () {
         checkAndSetResolution();
         redrawGame();
     }, false);
 
-    verybigScreenMediaQueryList.addListener(function(mediaquerylist) {
+    verybigScreenMediaQueryList.addListener(function (mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verybigscreen;
             redrawGame();
         }
     });
 
-    bigScreenMediaQueryList.addListener(function(mediaquerylist) {
+    bigScreenMediaQueryList.addListener(function (mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.bigscreen;
             redrawGame();
         }
     });
 
-    smallScreenMediaQueryList.addListener(function(mediaquerylist) {
+    smallScreenMediaQueryList.addListener(function (mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.smallscreen;
             redrawGame();
         }
     });
 
-    verysmallScreenMediaQueryList.addListener(function(mediaquerylist) {
+    verysmallScreenMediaQueryList.addListener(function (mediaquerylist) {
         if (mediaquerylist.matches) {
             matchingGame.resolution = matchingGame.resolutions.verysmallscreen;
             redrawGame();
@@ -169,9 +169,9 @@ function onDeviceReady() {
 //    }
 //    sparouter();
     var router = sparouter();
-    var router = router.init(function() {
+    var router = router.init(function () {
         return "startScreen";
-    }).onpage("game", function(event) {
+    }).onpage("game", function (event) {
 
         if (event.options === "turtle") {
             $("#cards").attr("data-layout", matchingGame.layoutTurtle);
@@ -197,15 +197,35 @@ function onDeviceReady() {
             $("#cards").attr("data-layout", matchingGame.layoutFourHills);
             loadBoardData(matchingGame.fourHills);
         }
-        startNewGame();
+
+        if (event.options !== "resumeGame")
+            startNewGame();
         router.allPagesInvisible();
         router.page("game").style.display = "table";
-    }).onpage("menu", function() {
+    }).onpage("menu", function () {
+        router.hidePage("gamestatistics");
+        router.hidePage("about");
         router.showPage("menu");
-    }).onpage("about", function() {
+    }).onpage("about", function () {
         router.showPage("about");
-    }).onpage("gamestatistics", function() {
+    }).onpage("gamestatistics", function (event) {
+        showStatisticsInPauseScreen();
         router.showPage("gamestatistics");
+    }).onpage("gamestatisticswin", function (event) {
+        showStatisticsInPauseScreen();
+        return "gamestatisticswin";
+    }).onpage("gamestatisticslose", function (event) {
+        showStatisticsInPauseScreen();
+        return "gamestatisticslose";
+    }).onpage("start", function (event) {
+        hideMessages();
+        if (event.options === "startNewGame") {
+            stopTimer();
+            if (!matchingGame.gameEnded) {
+                calculatePoints();
+            }
+        }
+        return "start";
     });
     router.start();
 
@@ -232,88 +252,103 @@ function onDeviceReady() {
     }
 
     matchingGame.gameState = "startScreen";
-    $('#pauseButton').fastClick(function(e) {
+    $('#pauseButton').fastClick(function (e) {
         e.stopImmediatePropagation();
         stopTimer();
         $("#pauseScreen").show();
     });
 
+//    $('#newGameButton').fastClick(function (e) {
+////        e.stopImmediatePropagation();
+//        hideMessages();
+//        stopTimer();
+//        if (!matchingGame.gameEnded) {
+//            calculatePoints();
+//        }
+////        $("#menuScreen").hide();
+////        $("#gameScene").hide();
+////        $("#startScreen").slideDown(550);
+////        matchingGame.gameScreenShown = false;
+////        matchingGame.gameState = "gameScreen";
+//    });
 
-    $('#newGameButton, #newGameButtonLost, #newGameButtonWin').fastClick(function(e) {
-        e.stopImmediatePropagation();
-        hideMessages();
-        stopTimer();
-        if (!matchingGame.gameEnded) {
-            calculatePoints();
-        }
-        $("#menuScreen").hide();
-        $("#gameScene").hide();
-        $("#startScreen").slideDown(550);
-//        matchingGame.gameScreenShown = false;
-        matchingGame.gameState = "gameScreen";
-    });
 
-    $('#undoButton').fastClick(function(e) {
+
+//    $('#newGameButtonLost, #newGameButtonWin').fastClick(function (e) {
+//        e.stopImmediatePropagation();
+//        hideMessages();
+//        stopTimer();
+//        if (!matchingGame.gameEnded) {
+//            calculatePoints();
+//        }
+//        $("#menuScreen").hide();
+//        $("#gameScene").hide();
+//        $("#startScreen").slideDown(550);
+////        matchingGame.gameScreenShown = false;
+//        matchingGame.gameState = "gameScreen";
+//    });
+
+    $('#undoButton').fastClick(function (e) {
         e.stopImmediatePropagation();
         hideMessages();
         resumeTimer();
         undo();
     });
-    $('#themeButton').fastClick(function(e) {
+    $('#themeButton').fastClick(function (e) {
         e.stopImmediatePropagation();
         changeTheme();
     });
-    $("#activateHints").fastClick(function(e) {
+    $("#activateHints").fastClick(function (e) {
         e.stopImmediatePropagation();
         $("body").toggleClass("hint-on");
         updateHintsUsed();
     });
 
-    $("#aboutButton").fastClick(function(e) {
-        e.stopImmediatePropagation();
-        $("#aboutScreen").show();
-        matchingGame.gameState = "aboutScreen";
-    });
+//    $("#aboutButton").fastClick(function (e) {
+//        e.stopImmediatePropagation();
+//        $("#aboutScreen").show();
+//        matchingGame.gameState = "aboutScreen";
+//    });
 
-    $("#closeGameStatisticsScreen").fastClick(function(e) {
-        e.stopImmediatePropagation();
-        $("#gameStatisticsScreen").hide();
-        if (matchingGame.gameState === "statisticsScreenFromMenu")
-            matchingGame.gameState = "menuScreen";
-        else {
-            matchingGame.gameState = "gameScreen";
-            displayMessages();
-        }
-    });
+//    $("#closeGameStatisticsScreen").fastClick(function (e) {
+//        e.stopImmediatePropagation();
+//        $("#gameStatisticsScreen").hide();
+//        if (matchingGame.gameState === "statisticsScreenFromMenu")
+//            matchingGame.gameState = "menuScreen";
+//        else {
+//            matchingGame.gameState = "gameScreen";
+//            displayMessages();
+//        }
+//    });
 
-    $("#gameStatisticsButton").fastClick(function(e) {
-        e.stopImmediatePropagation();
-//        $("#startScreen").hide();
-        showStatisticsInPauseScreen();
-        $("#gameStatisticsScreen").show();
-        matchingGame.gameState = "statisticsScreenFromMenu";
-    });
+//    $("#gameStatisticsButton").fastClick(function (e) {
+//        e.stopImmediatePropagation();
+////        $("#startScreen").hide();
+//        showStatisticsInPauseScreen();
+//        $("#gameStatisticsScreen").show();
+//        matchingGame.gameState = "statisticsScreenFromMenu";
+//    });
+//
+//    $("#gameStatisticsButtonWin, #gameStatisticsButtonLost").fastClick(function (e) {
+//        e.stopImmediatePropagation();
+////        $("#startScreen").hide();
+//        hideMessages();
+//        showStatisticsInPauseScreen();
+//        $("#gameStatisticsScreen").show();
+//        matchingGame.gameState = "statisticsScreenFromWinOrLostScreen";
+//    });
 
-    $("#gameStatisticsButtonWin, #gameStatisticsButtonLost").fastClick(function(e) {
-        e.stopImmediatePropagation();
-//        $("#startScreen").hide();
-        hideMessages();
-        showStatisticsInPauseScreen();
-        $("#gameStatisticsScreen").show();
-        matchingGame.gameState = "statisticsScreenFromWinOrLostScreen";
-    });
+//    $("#closeAboutScreenButton").fastClick(function (e) {
+//        e.stopImmediatePropagation();
+//        $("#aboutScreen").hide();
+////        $("#startScreen").show();
+//    });
 
-    $("#closeAboutScreenButton").fastClick(function(e) {
-        e.stopImmediatePropagation();
-        $("#aboutScreen").hide();
-//        $("#startScreen").show();
-    });
-
-    $("#resumeGameButton").fastClick(function() {
-        $("#menuScreen").hide();
-        $("div.game-buttons").show();
-        resumeTimer();
-    });
+//    $("#resumeGameButton").fastClick(function () {
+//        $("#menuScreen").hide();
+//        $("div.game-buttons").show();
+//        resumeTimer();
+//    });
 
     $("#gameScene").hide();
 
@@ -334,7 +369,7 @@ function redrawGame() {
     var zIndexShadow;
 
     var shadowShift = matchingGame.cardWidthWithoutBorder / 8;
-    $(".card").each(function(index) {
+    $(".card").each(function (index) {
 
         var positionX = matchingGame.cardWidthWithoutBorder * (matchingGame.positionX[index] - 1) - getShiftValueX(matchingGame.shift[index]);
         var positionY = (matchingGame.cardHeightWithoutBorder + matchingGame.cardHeightWithoutBorder * (matchingGame.positionY[index] - 1)) - getShiftValueY(matchingGame.shift[index]);
@@ -396,7 +431,7 @@ function startGame() {
     var zIndexShadow;
     var pattern;
     var shadowShift = matchingGame.cardWidthWithoutBorder / 7;
-    $(".card").each(function(index) {
+    $(".card").each(function (index) {
 
         shift = matchingGame.shift[index];
         positionX = matchingGame.positionX[index];
@@ -425,7 +460,7 @@ function startGame() {
         pattern = matchingGame.deck[index];
         $(this).addClass(pattern);
         pattern = getCardPattern(pattern);
-        console.log("pattern: " + pattern);
+//        console.log("pattern: " + pattern);
         $(this).attr("data-pattern", pattern);
         $(this).attr("data-position-x", positionX);
         $(this).attr("data-position-y", positionY);
@@ -450,7 +485,7 @@ function initMatchingCards() {
     matchingGame.selectableCards = {};
     matchingGame.matchingCards = {};
 
-    $(".card").each(function() {
+    $(".card").each(function () {
         selectable = $(this).data("selectable");
         if (selectable) {
             pattern = $(this).data("pattern");
@@ -469,7 +504,7 @@ function initMatchingCards() {
 
 function getNumberOfOverlappingCards(positionX, positionY, shift) {
     var overlappingCards = $(".card[data-position-x=" + positionX + "][data-position-y=" + positionY + "]");
-    overlappingCards = overlappingCards.filter(function() {
+    overlappingCards = overlappingCards.filter(function () {
         return (parseInt($(this).data("shift")) > shift);
     });
 
@@ -480,7 +515,7 @@ function getExistBlockingNeighbours(positionX, positionY, shift) {
     var positionXOfNeighbour;
 
     var blockingNeighboursWithSamePositionY = $(".card[data-position-y=" + positionY + "][data-shift=" + shift + "]");
-    blockingNeighboursWithSamePositionY = blockingNeighboursWithSamePositionY.filter(function() {
+    blockingNeighboursWithSamePositionY = blockingNeighboursWithSamePositionY.filter(function () {
         positionXOfNeighbour = $(this).data("position-x");
         return (positionXOfNeighbour < positionX || positionXOfNeighbour > positionX);
     });
@@ -548,13 +583,13 @@ function getShiftValueY(zIndex) {
 }
 
 function getNumberOfAboveNeighbors(positionX, positionY, zIndex) {
-    return $(".card").filter(function() {
+    return $(".card").filter(function () {
         return (($(this).css("visibility") === "visible") && ((parseInt($(this).css("top")) + matchingGame.cardHeightWithoutBorder) === positionY) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) === positionX));
     }).length;
 }
 
 function getRightNeigbors(positionX, positionY, shift) {
-    return $(".card").filter(function() {
+    return $(".card").filter(function () {
         return (($(this).css("visibility") === "visible")
                 && ($(this).data("position-x") - positionX === 1)
                 && (Math.abs($(this).data("position-y") - positionY) < 1)
@@ -567,7 +602,7 @@ function getNumberOfRightNeighbors(positionX, positionY, shift) {
 }
 
 function getLeftNeighbours(positionX, positionY, shift) {
-    return $(".card").filter(function() {
+    return $(".card").filter(function () {
         var isNeighbour = (($(this).css("visibility") === "visible")
                 && (($(this).data("position-x") - positionX) === -1)
                 && (Math.abs($(this).data("position-y") - positionY) < 1)
@@ -581,13 +616,13 @@ function getNumberOfLeftNeighbors(positionX, positionY, shift) {
 }
 
 function getBeneathNeighbors(positionX, positionY, zIndex) {
-    return $(".card").filter(function() {
+    return $(".card").filter(function () {
         return (($(this).css("visibility") === "visible") && ((parseInt($(this).css("top")) - matchingGame.cardHeightWithoutBorder) === positionY) && (parseInt($(this).css("z-index")) === zIndex) && (parseInt($(this).css("left")) === positionX));
     });
 }
 
 function getUnderlayingNeighbours(positionX, positionY, shift) {
-    return $(".card").filter(function() {
+    return $(".card").filter(function () {
         var isUnderlayingNeighbour = (($(this).css("visibility") === "visible")
                 && (Math.abs($(this).data("position-y") - positionY) < 1)
                 && ($(this).data("shift") - shift === -1)
@@ -597,7 +632,7 @@ function getUnderlayingNeighbours(positionX, positionY, shift) {
 }
 
 function getNumberOfHigherOverlaps(positionX, positionY, shift) {
-    return $(".card").filter(function() {
+    return $(".card").filter(function () {
         var isHigherOverlap = (($(this).css("visibility") === "visible")
                 && (Math.abs($(this).data("position-y") - positionY) < 1)
                 && ($(this).data("shift") > shift)
@@ -625,7 +660,7 @@ function isMatchPattern() {
 
 function removeTookCards() {
     var index;
-    $(".card-removed").each(function(index) {
+    $(".card-removed").each(function (index) {
         index = $(".card").index($(this));
         $(".shadow").eq(index).css({"visibility": "hidden"});
     });
@@ -638,7 +673,7 @@ function removeTookCards() {
             .css("z-index", 20).removeClass("card-removed");
     $("#cards").append(animatedDivs);
     animatedDivs.addClass('animated hinge');
-    animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+    animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
         $(this).remove();
     });
 
@@ -665,7 +700,7 @@ function removeCardsFromSelectableCards(removedCards) {
 
     selectableCardsByPattern = matchingGame.selectableCards[pattern];
     if (selectableCardsByPattern !== undefined) {
-        selectableCardsByPattern.forEach(function(matchingCard) {
+        selectableCardsByPattern.forEach(function (matchingCard) {
             console.log("remove class card-matching");
             matchingCard.removeClass("card-matching");
         });
@@ -694,12 +729,12 @@ function removeCardsFromArray(cardsToRemove, cards) {
         return [];
     }
 
-    cards.forEach(function(card) {
+    cards.forEach(function (card) {
         positionX = card.data("position-x");
         positionY = card.data("position-y");
         shift = card.data("shift");
         isCardToRemove = false;
-        cardsToRemove.each(function() {
+        cardsToRemove.each(function () {
             cardToRemove = $(this);
             positionXCardToRemove = cardToRemove.data("position-x");
             positionYCardToRemove = cardToRemove.data("position-y");
@@ -729,7 +764,7 @@ function updateSelectableAndMatchingCards(removedCards) {
     var positionY;
     var shift;
 
-    removedCards.each(function() {
+    removedCards.each(function () {
         positionX = $(this).data("position-x");
         positionY = $(this).data("position-y");
         shift = $(this).data("shift");
@@ -749,7 +784,7 @@ function updateSelectableAndMatchingCards(removedCards) {
     var selectable;
     var pattern;
     var selectableCardsByPattern;
-    neighbours.each(function() {
+    neighbours.each(function () {
         selectable = isCardSelectable($(this));
         if (!selectable) {
             removeCardsFromSelectableCards($(this));
@@ -780,7 +815,7 @@ function updateMatchingCards() {
         if (selectableCardsByPattern.length > 1) {
             existsMatch = true;
             matchingGame.matchingCards[pattern] = selectableCardsByPattern;
-            selectableCardsByPattern.forEach(function(matchingCard) {
+            selectableCardsByPattern.forEach(function (matchingCard) {
                 matchingCard.addClass("card-matching");
             });
 //            console.log("match: " + pattern);
@@ -813,7 +848,7 @@ function cardArrayContainsCard(cards, card) {
     }
 
     var containsCard = false;
-    cards.forEach(function(otherCard) {
+    cards.forEach(function (otherCard) {
         //console.log("Vergleichsobjekt positionX: " + otherCard.data("position-x") + ", positionY: " + otherCard.data("position-y") + ", shift: " + otherCard.data("shift"));
         if (otherCard.data("position-x") === positionX && otherCard.data("position-y") === positionY && otherCard.data("shift") === shift) {
             containsCard = true;
@@ -903,7 +938,7 @@ function undo() {
         var pattern = (matchingGame.undoList[0]).data("pattern");
         console.log("pattern to undo: " + pattern);
 
-        cardsToUndo.each(function(index) {
+        cardsToUndo.each(function (index) {
             matchingGame.selectableCards[pattern].push($(this));
             index = $(".card").index($(this));
             $(".shadow").eq(index).css({"visibility": "visible"});
@@ -1027,83 +1062,83 @@ function showStatisticsInPauseScreen() {
         gameStatistics = new GameStatistics();
     }
 
-    $("#numberOfGamesInGamesWon").text(gameStatistics.numberOfGames);
-    $("#numberOfGamesWon").text(gameStatistics.numberOfGamesWon);
+    $("[data-point='numberOfGamesInGamesWon']").text(gameStatistics.numberOfGames);
+    $("[data-point='numberOfGamesWon']").text(gameStatistics.numberOfGamesWon);
     console.log("gameStatistics.numberOfGamesWonWithoutUndoOrHints: " + gameStatistics.numberOfGamesWonWithoutUndoOrHints);
-    $("#numberOfGamesWonWithUndoOrHints").text(gameStatistics.numberOfGamesWonWithoutUndoOrHints);
-    $("#numberOfGamesInGamesWithoutUndoOrHints").text(gameStatistics.numberOfGames);
-    $("#highScore").text(gameStatistics.highScore);
+    $("[data-point='numberOfGamesWonWithUndoOrHints']").text(gameStatistics.numberOfGamesWonWithoutUndoOrHints);
+    $("[data-point='numberOfGamesInGamesWithoutUndoOrHints']").text(gameStatistics.numberOfGames);
+    $("[data-point='highScore']").text(gameStatistics.highScore);
 
     console.log("if-Wert: " + (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0));
     console.log("gameStatistics.layoutsWon: " + gameStatistics.layoutsWon);
     console.log("gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0: " + (gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0));
     if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutTurtle) < 0) {
-        $("#layoutTurtle").hide();
+        $("[data-point='layoutTurtle']").hide();
     } else {
-        $("#layoutTurtle").show();
+        $("[data-point='layoutTurtle']").show();
     }
 
     if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutFlower) < 0) {
-        $("#layoutFlower").hide();
+        $("[data-point='layoutFlower']").hide();
     } else {
-        $("#layoutFlower").show();
+        $("[data-point='layoutFlower']").show();
     }
 
     if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutSpider) < 0) {
-        $("#layoutSpider").hide();
+        $("[data-point='layoutSpider']").hide();
     } else {
-        $("#layoutSpider").show();
+        $("[data-point='layoutSpider']").show();
     }
 
     if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutCloud) < 0) {
-        $("#layoutCloud").hide();
+        $("[data-point='layoutCloud']").hide();
     } else {
-        $("#layoutCloud").show();
+        $("[data-point='layoutCloud']").show();
     }
 
     if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutBug) < 0) {
-        $("#layoutBug").hide();
+        $("[data-point='layoutBug']").hide();
     } else {
-        $("#layoutBug").show();
+        $("[data-point='layoutBug']").show();
     }
 
     if (gameStatistics.layoutsWon === null || gameStatistics.layoutsWon.indexOf(matchingGame.layoutFourHills) < 0) {
-        $("#layoutFourHills").hide();
+        $("[data-point='layoutFourHills']").hide();
     } else {
-        $("#layoutFourHills").show();
+        $("[data-point='layoutFourHills']").show();
     }
 
     console.log("gameStatistics.shortestWinningTime: " + gameStatistics.shortestWinningTime);
     if (gameStatistics.shortestWinningTime === 0 || gameStatistics.shortestWinningTime > 480) {
-        $("#gameWonUnder8Minutes").hide();
+        $("[data-point='gameWonUnder8Minutes']").hide();
     } else {
-        $("#gameWonUnder8Minutes").show();
+        $("[data-point='gameWonUnder8Minutes']").show();
     }
 
     if (gameStatistics.numberOfGamesWonWithoutHints <= 0) {
-        $("#gameWonWithoutHints").hide();
+        $("[data-point='gameWonWithoutHints']").hide();
     } else {
-        $("#gameWonWithoutHints").show();
+        $("[data-point='gameWonWithoutHints']").show();
     }
 
     if (gameStatistics.numberOfGamesWonWithoutUndo <= 0) {
-        $("#gameWonWithoutUndo").hide();
+        $("[data-point='gameWonWithoutUndo']").hide();
     } else {
-        $("#gameWonWithoutUndo").show();
+        $("[data-point='gameWonWithoutUndo']").show();
     }
 
     if (gameStatistics.numberOfGamesWon >= 10) {
-        $("#10gamesWon").show();
+        $("[data-point='10gamesWon']").show();
     } else {
-        $("#10gamesWon").hide();
+        $("[data-point='10gamesWon']").hide();
         if (gameStatistics.numberOfGamesWon >= 5) {
-            $("#5gamesWon").show();
+            $("[data-point='5gamesWon']").show();
         } else {
-            $("#5gamesWon").hide();
+            $("[data-point='5gamesWon']").hide();
             if (gameStatistics.numberOfGamesWon >= 1) {
-                $("#1gameWon").show();
+                $("[data-point='1gameWon']").show();
             } else {
-                $("#1gameWon").hide();
+                $("[data-point='1gameWon']").hide();
             }
         }
     }

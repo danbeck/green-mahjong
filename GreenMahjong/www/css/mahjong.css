@@ -189,7 +189,11 @@ div#startScreen h1{
   text-shadow:0px 1px 0px #ffee66;
 }
 
-#gameStatisticsScreen a.button, #aboutScreen a.button,#loseMessage a.button,#winningMessage a.button, .popup a.button, #menuScreen a.addBorder, #menuScreen h2.addBorder,#loseMessage h2.addBorder, #winningMessage h2.addBorder{
+div.scene.gameStatisticsScreen, #aboutScreen{
+  z-index:90;
+}
+
+.gameStatisticsScreen a.button, #aboutScreen a.button,#loseMessage a.button,#winningMessage a.button, .popup a.button, #menuScreen a.addBorder, #menuScreen h2.addBorder,#loseMessage h2.addBorder, #winningMessage h2.addBorder{
   border:1px solid #ffcc01;
   padding:12px;
   /*margin:20px 40px;*/
