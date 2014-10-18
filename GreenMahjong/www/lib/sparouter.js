@@ -1,9 +1,9 @@
 
-window.sparouter = (function() {
+window.sparouter = (function () {
 
     function RootingError(message) {
         this.message = message;
-        this.toString = function() {
+        this.toString = function () {
             "The following error occured: " + message;
         };
     }
@@ -14,38 +14,38 @@ window.sparouter = (function() {
         this.pagesListeners = {};
     }
 
-    Sparouter.prototype.changePage = function(page) {
+    Sparouter.prototype.changePage = function (page) {
         this.allPagesInvisible();
         this.showPage(page);
     };
 
-    Sparouter.prototype.showPage = function(page) {
+    Sparouter.prototype.showPage = function (page) {
         this.page(page).style.display = "block";
     };
 
-    Sparouter.prototype.page = function(page) {
+    Sparouter.prototype.page = function (page) {
         return window.document.querySelector("div[data-page=" + page + "]");
     };
 
-    Sparouter.prototype.allPagesInvisible = function() {
+    Sparouter.prototype.allPagesInvisible = function () {
         var datapages = window.document.querySelectorAll("div[data-page]");
         for (var i = 0; i < datapages.length; i++) {
             datapages[i].style.display = "none";
         }
     };
 
-    Sparouter.prototype.onpage = function(page, callback) {
+    Sparouter.prototype.onpage = function (page, callback) {
         this.pagesListeners[page] = callback;
         return this;
     };
 
-    Sparouter.prototype.init = function(callback) {
+    Sparouter.prototype.init = function (callback) {
         this.initpage = callback();
 
         return this;
     };
 
-    Sparouter.prototype.start = function() {
+    Sparouter.prototype.start = function () {
         var that = this;
 
         initRouter();
@@ -53,7 +53,7 @@ window.sparouter = (function() {
 
         function initRouter() {
             if (this.initpage)
-                history.pushState({}, "start", "#" + this.initpage());
+                window.location.replace("#" + this.initpage());
             else {
                 loadDefaultPage();
             }
@@ -63,7 +63,7 @@ window.sparouter = (function() {
             var pages = window.document.querySelectorAll("div[data-page]");
             if (pages.length > 0) {
                 var hash = pages[0].getAttribute("data-page");
-                history.pushState({}, "start", "#" + hash);
+                window.location.replace("#" + hash);
             }
             else
                 throw new RootingError("No div[data-page] elements exist in the HTML");
@@ -72,7 +72,7 @@ window.sparouter = (function() {
         function handleLinks() {
             var aLinks = window.document.querySelectorAll("a[href^='#']");
             for (var i = 0; i < aLinks.length; i++) {
-                aLinks[i].addEventListener("click", function(e) {
+                aLinks[i].addEventListener("click", function (e) {
                     e.preventDefault();
                     var currentLink = this;
                     var hash = currentLink.getAttribute("href");
@@ -93,7 +93,7 @@ window.sparouter = (function() {
         function handleBackLinks() {
             var backbuttons = window.document.querySelectorAll("a[data-back]");
             for (var i = 0; i < backbuttons.length; i++) {
-                backbuttons[i].addEventListener("click", function(e) {
+                backbuttons[i].addEventListener("click", function (e) {
                     e.preventDefault();
                     var dataBack = backbuttons[i].getAttribute("data-back");
                     if (dataBack !== "") {
@@ -105,10 +105,10 @@ window.sparouter = (function() {
             }
         }
 
-        window.onpopstate = function(event) {
+        window.onpopstate = function (event) {
             console.log("onpopstate: ", +document.location + ", state: " + JSON.stringify(event.state));
         };
-        window.onhashchange = function(event) {
+        window.onhashchange = function (event) {
             console.log("onhashchange: ", +document.location + ", hash:" + document.location.hash +
                     ", oldurl:" + event.oldURL + ", newurl:" + event.newURL + ", state: " + JSON.stringify(event.state));
 
@@ -144,7 +144,7 @@ window.sparouter = (function() {
         };
     };
 
-    var sparouter = function() {
+    var sparouter = function () {
 
         return new Sparouter();
     };
