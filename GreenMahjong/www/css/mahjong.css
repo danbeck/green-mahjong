@@ -306,14 +306,8 @@ div#versionInformationDialog section ul{
 div.game-buttons{
   position: fixed;
   z-index: 100;
-  /*width:100%;*/
-  height: 100%;
   top:0;
-  bottom:0;
   display:inline-block;
-  /*background: linear-gradient(rgba(35,44,12,0.5), rgba(35,44,12,1));*/
-  /*  bottom:0px;
-    right:0px;*/
   top:0px;
   left:0px;
 }
