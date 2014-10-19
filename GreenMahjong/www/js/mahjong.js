@@ -167,12 +167,9 @@ function onDeviceReady() {
 
 //    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 //    }
-//    sparouter();
-    var router = sparouter();
-    var router = router.init(function () {
-        return "startScreen";
+    var router = sparouter.init(function () {
+        return "start";
     }).onpage("game", function (event) {
-
         if (event.options === "turtle") {
             $("#cards").attr("data-layout", matchingGame.layoutTurtle);
             loadBoardData(matchingGame.turtle);
@@ -200,6 +197,7 @@ function onDeviceReady() {
 
         if (event.options !== "resumeGame")
             startNewGame();
+
         router.allPagesInvisible();
         router.page("game").style.display = "table";
     }).onpage("menu", function () {
@@ -219,6 +217,7 @@ function onDeviceReady() {
         return "gamestatisticslose";
     }).onpage("start", function (event) {
         hideMessages();
+        hideGameButtons();
         if (event.options === "startNewGame") {
             stopTimer();
             if (!matchingGame.gameEnded) {
@@ -239,7 +238,6 @@ function onDeviceReady() {
     var version = localStorage.getItem("version");
     if (version !== matchingGame.version) {
         localStorage.setItem("version", matchingGame.version);
-
     }
 
     var theme = localStorage.getItem("theme");
@@ -274,10 +272,13 @@ function onDeviceReady() {
         updateHintsUsed();
     });
 
-    $("#gameScene").hide();
-
-    $("div.game-buttons").hide();
+//    $("#gameScene").hide();
+    
     registerMediaQueryListListener();
+}
+
+function hideGameButtons() {
+    $("div.game-buttons").hide();
 }
 
 function redrawGame() {
@@ -607,9 +608,6 @@ function removeTookCards() {
     if (isWinningGame()) {
         showWinningMessage();
     }
-
-    function animateCards(cards) {
-    }
 }
 
 function isWinningGame() {
@@ -756,7 +754,7 @@ function showLoseMessage() {
     matchingGame.gameEnded = true;
     calculatePoints(false);
 
-    $("div.game-buttons").hide();
+    hideGameButtons();
     $(".pointsReached").text(matchingGame.points);
     $("div#loseMessage").show();
     console.log("Punkte: " + matchingGame.points);
