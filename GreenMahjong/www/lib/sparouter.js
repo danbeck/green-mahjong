@@ -105,14 +105,9 @@ window.sparouter = (function () {
                         history.go(dataBackAsInt);
                     }
                 });
-
-
             }
         }
 
-        window.onpopstate = function (event) {
-            console.log("onpopstate: ", +document.location + ", state: " + JSON.stringify(event.state));
-        };
         window.onhashchange = function (event) {
             console.log("onhashchange: ", +document.location + ", hash:" + document.location.hash +
                     ", oldurl:" + event.oldURL + ", newurl:" + event.newURL + ", state: " + JSON.stringify(event.state));
