@@ -309,7 +309,7 @@ div#versionInformationDialog section ul{
 
 div.game-buttons{
   position: fixed;
-  z-index: 100;
+  z-index: 80;
   top:0;
   display:inline-block;
   top:0px;
