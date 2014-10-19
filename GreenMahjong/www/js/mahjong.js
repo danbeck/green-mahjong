@@ -258,36 +258,6 @@ function onDeviceReady() {
         $("#pauseScreen").show();
     });
 
-//    $('#newGameButton').fastClick(function (e) {
-////        e.stopImmediatePropagation();
-//        hideMessages();
-//        stopTimer();
-//        if (!matchingGame.gameEnded) {
-//            calculatePoints();
-//        }
-////        $("#menuScreen").hide();
-////        $("#gameScene").hide();
-////        $("#startScreen").slideDown(550);
-////        matchingGame.gameScreenShown = false;
-////        matchingGame.gameState = "gameScreen";
-//    });
-
-
-
-//    $('#newGameButtonLost, #newGameButtonWin').fastClick(function (e) {
-//        e.stopImmediatePropagation();
-//        hideMessages();
-//        stopTimer();
-//        if (!matchingGame.gameEnded) {
-//            calculatePoints();
-//        }
-//        $("#menuScreen").hide();
-//        $("#gameScene").hide();
-//        $("#startScreen").slideDown(550);
-////        matchingGame.gameScreenShown = false;
-//        matchingGame.gameState = "gameScreen";
-//    });
-
     $('#undoButton').fastClick(function (e) {
         e.stopImmediatePropagation();
         hideMessages();
@@ -303,52 +273,6 @@ function onDeviceReady() {
         $("body").toggleClass("hint-on");
         updateHintsUsed();
     });
-
-//    $("#aboutButton").fastClick(function (e) {
-//        e.stopImmediatePropagation();
-//        $("#aboutScreen").show();
-//        matchingGame.gameState = "aboutScreen";
-//    });
-
-//    $("#closeGameStatisticsScreen").fastClick(function (e) {
-//        e.stopImmediatePropagation();
-//        $("#gameStatisticsScreen").hide();
-//        if (matchingGame.gameState === "statisticsScreenFromMenu")
-//            matchingGame.gameState = "menuScreen";
-//        else {
-//            matchingGame.gameState = "gameScreen";
-//            displayMessages();
-//        }
-//    });
-
-//    $("#gameStatisticsButton").fastClick(function (e) {
-//        e.stopImmediatePropagation();
-////        $("#startScreen").hide();
-//        showStatisticsInPauseScreen();
-//        $("#gameStatisticsScreen").show();
-//        matchingGame.gameState = "statisticsScreenFromMenu";
-//    });
-//
-//    $("#gameStatisticsButtonWin, #gameStatisticsButtonLost").fastClick(function (e) {
-//        e.stopImmediatePropagation();
-////        $("#startScreen").hide();
-//        hideMessages();
-//        showStatisticsInPauseScreen();
-//        $("#gameStatisticsScreen").show();
-//        matchingGame.gameState = "statisticsScreenFromWinOrLostScreen";
-//    });
-
-//    $("#closeAboutScreenButton").fastClick(function (e) {
-//        e.stopImmediatePropagation();
-//        $("#aboutScreen").hide();
-////        $("#startScreen").show();
-//    });
-
-//    $("#resumeGameButton").fastClick(function () {
-//        $("#menuScreen").hide();
-//        $("div.game-buttons").show();
-//        resumeTimer();
-//    });
 
     $("#gameScene").hide();
 
@@ -926,8 +850,6 @@ function setSpriteImageForTiles() {
     if (matchingGame.resolution === matchingGame.resolutions.verybigscreen)
         resolution = "verybigscreen";
     $("body").attr("data-resolution", resolution);
-
-//    $(".card").css("background-image", "url(images/mahjong_" + resolution + "_" + matchingGame.themes[matchingGame.theme] + ".png)");
 }
 
 function undo() {
