@@ -123,7 +123,6 @@ window.sparouter = (function () {
                     callCustomChangePageListener(hash);
                 else
                     that.changePage(hash);
-
             }
 
             function callCustomChangePageListener(hash) {
@@ -134,10 +133,6 @@ window.sparouter = (function () {
             }
         };
     };
-
-    var sparouter = function () {
-        return new Sparouter();
-    };
-    return sparouter;
+    return new Sparouter();
 
 }());
