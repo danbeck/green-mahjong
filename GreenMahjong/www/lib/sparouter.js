@@ -1,4 +1,3 @@
-
 window.sparouter = (function () {
 
     function RootingError(message) {
@@ -59,9 +58,8 @@ window.sparouter = (function () {
         function initRouter() {
             if (this.initpage)
                 window.location.replace("#" + this.initpage());
-            else {
+            else
                 loadDefaultPage();
-            }
         }
 
         function loadDefaultPage() {
@@ -72,7 +70,6 @@ window.sparouter = (function () {
             }
             else
                 throw new RootingError("No div[data-page] elements exist in the HTML");
-
         }
         function handleLinks() {
             var aLinks = window.document.querySelectorAll("a[href^='#']");
@@ -85,12 +82,7 @@ window.sparouter = (function () {
                     that.goToHash = hash;
                     that.options = options;
                     that.transitionEffect = effect;
-                    if (this.hasAttribute("data-remove-from-browser-history")) {
-                        window.location.replace(hash);
-                    }
-                    else {
-                        window.location.hash = hash;
-                    }
+                    window.location.hash = hash;
                 });
             }
         }
@@ -110,15 +102,7 @@ window.sparouter = (function () {
                         var dataBackAsInt = parseInt(dataBack);
                         that.options = options;
                         that.transitionEffect = effect;
-
-//                        for (; dataBackAsInt !== 0; dataBackAsInt++) {
-//                        history.go(dataBackAsInt);
-//                            console.log("back!");
-//                        history.back();
-//                        history.back();
                         history.go(dataBackAsInt);
-//
-//                        }
                     }
                 });
 
@@ -134,10 +118,6 @@ window.sparouter = (function () {
                     ", oldurl:" + event.oldURL + ", newurl:" + event.newURL + ", state: " + JSON.stringify(event.state));
 
             event.preventDefault();
-            if (wasBackButtonPressed()) {
-                // Browser-back
-                console.log("back button pressed!");
-            }
             changePageOrCallPageListener(document.location.hash.substring(1));
 
             function defaultChangePageBehaviorOveridden(hash) {
@@ -150,11 +130,6 @@ window.sparouter = (function () {
                     that.changePage(hash);
 
             }
-            function wasBackButtonPressed() {
-                // in this case, the gotToHash local variable which was saved in the "click"-phase
-                // of the rooter is the same as the URL we are going to.
-                return document.location.hash !== that.goToHash;
-            }
 
             function callCustomChangePageListener(hash) {
                 var callbackfunc = that.pagesListeners[hash];
@@ -166,7 +141,6 @@ window.sparouter = (function () {
     };
 
     var sparouter = function () {
-
         return new Sparouter();
     };
     return sparouter;
