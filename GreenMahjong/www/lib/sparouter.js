@@ -74,7 +74,7 @@ window.sparouter = (function () {
         function handleLinks() {
             var aLinks = window.document.querySelectorAll("a[href^='#']");
             for (var i = 0; i < aLinks.length; i++) {
-                aLinks[i].addEventListener("click", function (e) {
+                new FastButton(aLinks[i], function (e) {
                     e.preventDefault();
                     var hash = this.getAttribute("href");
                     var options = this.getAttribute("data-page-options");
@@ -93,7 +93,7 @@ window.sparouter = (function () {
             }
 
             function addBackButtonListener(backButton) {
-                backButton.addEventListener("click", function (e) {
+                new FastButton(backButton, function (e) {
                     e.preventDefault();
                     var options = this.getAttribute("data-page-options");
                     var effect = this.getAttribute("data-transition-effect");
