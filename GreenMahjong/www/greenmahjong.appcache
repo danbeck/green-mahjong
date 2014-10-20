@@ -16,6 +16,7 @@ js/local/fr/app.properties
 js/local/pl/app.properties
 js/local/pt/app.properties
 js/local/zh/app.properties
+js/local/locales.ini
 js/bug.js
 js/cloud.js
 js/flower.js
