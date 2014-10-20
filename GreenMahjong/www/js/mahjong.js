@@ -197,10 +197,13 @@ function onDeviceReady() {
 
         if (event.options !== "resumeGame")
             startNewGame();
+        else 
+            resumeTimer();
 
         router.allPagesInvisible();
         router.page("game").style.display = "table";
     }).onpage("menu", function () {
+        stopTimer();
         router.hidePage("gamestatistics");
         router.hidePage("about");
         router.showPage("menu");

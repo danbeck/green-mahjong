@@ -113,6 +113,18 @@ window.sparouter = (function () {
                     ", oldurl:" + event.oldURL + ", newurl:" + event.newURL + ", state: " + JSON.stringify(event.state));
 
             event.preventDefault();
+            if (wasBackButtonPressed()) {
+                // Browser-back
+                console.log("back button pressed!");
+                var index = event.oldURL.indexOf("#");
+                if (index !== -1) {
+                    var oldHash = event.oldURL.substring(index + 1);
+                    var oldpage = window.document.querySelector("div[data-page='" + oldHash + "']");
+                    if (oldpage !== null) {
+                        that.options = oldpage.getAttribute("data-back-options");
+                    }
+                }
+            }
             changePageOrCallPageListener(document.location.hash.substring(1));
 
             function defaultChangePageBehaviorOveridden(hash) {
@@ -123,6 +135,12 @@ window.sparouter = (function () {
                     callCustomChangePageListener(hash);
                 else
                     that.changePage(hash);
+            }
+
+            function wasBackButtonPressed() {
+                // in this case, the gotToHash local variable which was saved in the "click"-phase
+                // of the rooter is the same as the URL we are going to.
+                return document.location.hash !== that.goToHash;
             }
 
             function callCustomChangePageListener(hash) {
