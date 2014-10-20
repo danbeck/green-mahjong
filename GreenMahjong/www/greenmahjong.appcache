@@ -3,9 +3,11 @@ CACHE MANIFEST
 # This is a comment. 
 index.html
 lib/jquery/jquery-2.1.0.min.js
-lib/underscore-min.js
 lib/fastclick.js
+lib/jquery.fastclick.js
 lib/l10n.js
+lib/sparouter.js
+lib/underscore-min.js
 locales/bg/app.properties
 locales/de/app.properties
 locales/en/app.properties
@@ -13,12 +15,15 @@ locales/es/app.properties
 locales/fr/app.properties
 locales/pl/app.properties
 locales/pt/app.properties
+locales/zh/app.properties
+js/bug.js
+js/cloud.js
 js/flower.js
+js/fourHills.js
 js/mahjong.js
+js/pointCalculation.js
 js/spider.js
 js/turtle.js
-js/bug.js
-js/fourHills.js
 images/layouts_thumbs.png
 images/background_classic.png
 images/background_fruits.png
