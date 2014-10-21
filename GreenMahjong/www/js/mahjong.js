@@ -195,10 +195,13 @@ function onDeviceReady() {
             loadBoardData(matchingGame.fourHills);
         }
 
-        if (event.options !== "resumeGame")
-            startNewGame();
-        else 
+        if (event.options === "resumeGame")
             resumeTimer();
+        else if (event.options === "resumeFinishedGame")
+            // do noting
+            ;
+        else
+            startNewGame();
 
         router.allPagesInvisible();
         router.page("game").style.display = "table";
@@ -276,7 +279,7 @@ function onDeviceReady() {
     });
 
 //    $("#gameScene").hide();
-    
+
     registerMediaQueryListListener();
 }
 
@@ -754,6 +757,7 @@ function updateMatchingCards() {
 }
 
 function showLoseMessage() {
+    stopTimer();
     matchingGame.gameEnded = true;
     calculatePoints(false);
 
