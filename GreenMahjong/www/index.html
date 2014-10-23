@@ -253,7 +253,7 @@
       <!--<img src="images/smiley_lose.png" alt="you lose">-->
       <div><h1 data-l10n-id="try-it-again">You lose</h1>
         <h3><span data-l10n-id="points">Points: </span><span class="pointsReached">Test</span></h3>
-        <a class="button" id="newGameButtonLost" data-l10n-id="startNewGame" data-back="-1" data-page-options="startNewGame"  data-page-option="closeLosingMessage">Start new game</a>
+        <a class="button" id="newGameButtonLost" data-l10n-id="startNewGame" data-back="-1" data-page-options="startNewGame">Start new game</a>
         <a class="button" data-l10n-id="gameStatistics" href="#gamestatisticslose">Game statistics</a>
       </div>
     </div>
@@ -261,7 +261,7 @@
     <div id="timer">00:00</div>
     <span class="points"><span data-l10n-id="points">Points: </span><span id="points">0</span></span>
 
-    <div class="outer" id="gameScene" data-page="game">
+    <div class="outer" id="gameScene" data-page="game" data-back-options="startNewGame">
       <section id="game" class="middle">
         <!--<div id="timer" class="inner">Test</div>-->
         <div id="cards" class="inner">      
