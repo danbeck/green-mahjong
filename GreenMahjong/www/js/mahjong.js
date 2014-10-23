@@ -891,7 +891,9 @@ function cordovaUsed() {
 
 function startTimer() {
     $("#timer").text("00:00");
-    matchingGame.timer = setInterval(updateTimer, "1000");
+    if (matchingGame.timer === null) {
+        matchingGame.timer = setInterval(updateTimer, "1000");
+    }
     matchingGame.elapsedSeconds = 0;
 }
 
