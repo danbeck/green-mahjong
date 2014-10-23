@@ -102,6 +102,7 @@ window.sparouter = (function () {
                         var dataBackAsInt = parseInt(dataBack);
                         that.options = options;
                         that.transitionEffect = effect;
+                        that.backLinkPressed = true;
                         history.go(dataBackAsInt);
                     }
                 });
@@ -125,6 +126,7 @@ window.sparouter = (function () {
                     }
                 }
             }
+            that.backLinkPressed = false;
             changePageOrCallPageListener(document.location.hash.substring(1));
 
             function defaultChangePageBehaviorOveridden(hash) {
@@ -138,6 +140,8 @@ window.sparouter = (function () {
             }
 
             function wasBackButtonPressed() {
+                if(that.backLinkPressed === true)
+                    return false;
                 // in this case, the gotToHash local variable which was saved in the "click"-phase
                 // of the rooter is the same as the URL we are going to.
                 return document.location.hash !== that.goToHash;
