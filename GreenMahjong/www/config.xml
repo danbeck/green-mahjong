@@ -14,12 +14,10 @@
   <content src="index.html" />
   <icon src="greenmahjong256.png"/>
   <preference name="android-minSdkVersion" value="16" />
-<!--  <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.3" />
+  <!--  <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.3" />
+  -->  
   <preference name="splash-screen-duration" value="0" />
-  <preference name="fullscreen" value="true" />-->
-  <gap:config-file platform="android" parent="/manifest">
-    <application android:theme="@android:style/Theme.NoTitleBar"></application>
-  </gap:config-file>
+  <preference name="fullscreen" value="true" />
 
   <!--<preference name="orientation" value="landscape" />-->
 </widget>
