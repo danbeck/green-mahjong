@@ -13,6 +13,8 @@
   <access origin="*" />
   <content src="index.html" />
   <icon src="greenmahjong256.png"/>
+  <icon src="greenmahjong-ios.png" platform="ios"/>
+
   <preference name="android-minSdkVersion" value="15" />
   <!--  <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.3" />
   -->  
