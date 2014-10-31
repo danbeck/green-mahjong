@@ -3,23 +3,30 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id = "de.beck.greenmahjong"
         version = "2.2.0"> 
-  <name>Green Mahjong</name>
+    <name>Green Mahjong</name>
 
-  <preference name="phonegap-version" value="3.6.3" />
-  <preference name="permissions" value="none"/>
+    <preference name="phonegap-version" value="3.6.3" />
+    <preference name="permissions" value="none"/>
 
-  <description>Green Mahjong is a nice opensource mahjong game.</description> 
-  <author  href="http://daniel-beck.org">Daniel Beck</author>
-  <access origin="*" />
-  <content src="index.html" />
-  <icon src="greenmahjong256.png"/>
-  <icon src="greenmahjong-ios.png" platform="ios"/>
+    <description>Green Mahjong is a nice opensource mahjong game.</description> 
+    <author  href="http://daniel-beck.org">Daniel Beck</author>
+    <access origin="*" />
+    <content src="index.html" />
+    <icon src="greenmahjong256.png"/>
+    <platform name="ios">
+        <icon src="greenmahjong-ios.png"/>
+        <icon src="greenmahjong57.png" width="57" height="57"/>
+        <icon src="greenmahjong72.png" width="72" height="72"/>
+        <icon src="greenmahjong76.png" width="76" height="76"/>
+        <icon src="greenmahjong120.png" width="120" height="120"/>
+        <icon src="greenmahjong152.png" width="152" height="152"/>
+    </platform>
 
-  <preference name="android-minSdkVersion" value="15" />
-  <!--  <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.3" />
-  -->  
-  <preference name="splash-screen-duration" value="0" />
-  <preference name="fullscreen" value="true" />
+    <preference name="android-minSdkVersion" value="16" />
+    <!--  <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.3" />
+    -->  
+    <preference name="splash-screen-duration" value="0" />
+    <preference name="fullscreen" value="true" />
 
-  <!--<preference name="orientation" value="landscape" />-->
+    <!--<preference name="orientation" value="landscape" />-->
 </widget>
