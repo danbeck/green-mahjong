@@ -603,10 +603,13 @@ function removeTookCards() {
     var animatedDivs = $(".card-removed").clone().removeAttr("data-pattern data-position-x data-position-y data-shift data-selectable")
             .css("z-index", 20).removeClass("card-removed");
     $("#cards").append(animatedDivs);
-    animatedDivs.addClass('animated hinge');
-    animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-        $(this).remove();
-    });
+    animatedDivs.fadeOut({duration:500, complete:function(){
+    		animatedDivs.remove();
+    }});
+//    animatedDivs.addClass('animated hinge');
+//    animatedDivs.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+//        $(this).remove();
+//    });
 
     $(".card-removed").css({"visibility": "hidden"});
     $(".card-removed").removeClass("card-removed");
