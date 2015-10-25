@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id = "de.beck.greenmahjong"
-        version = "2.2.1"> 
+        version = "2.3.0"> 
     <name>Green Mahjong</name>
 
     <preference name="phonegap-version" value="cli-5.2.0" />
